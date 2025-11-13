@@ -22,6 +22,10 @@ const trackTitles = {
     'tianmen': {
         zh: '天门山决赛赛道',
         en: 'Tianmen Mountain Final Track'
+    },
+    'simulation2026': {
+        zh: '全新赛季: AI物理智能新征程',
+        en: 'New Season: AI Physical Intelligence New Journey'
     }
 };
 
