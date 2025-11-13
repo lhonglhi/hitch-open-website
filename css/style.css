@@ -265,11 +265,48 @@
             font-weight: 600;
         }
 
+        .hero-description {
+            font-size: 16px;
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
         .hero-date {
             font-size: 24px;
             color: #CD202B;
             margin-bottom: 40px;
             font-weight: 600;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat-card {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px 30px;
+            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.3);
+            min-width: 160px;
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .hero-stat-label {
+            font-size: 12px;
+            color: #cccccc;
         }
 
         .cta-buttons {
@@ -312,6 +349,15 @@
             color: #000000;
         }
 
+        .button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         /* Section Styles */
         .section {
             padding: 100px 50px;
@@ -327,13 +373,14 @@
         }
 
         .section-subtitle {
-            font-size: 18px;
+            font-size: 20px;
             color: #888888;
             text-align: center;
             margin-bottom: 60px;
-            max-width: 800px;
+            max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
         }
 
         /* Stats Section */
@@ -388,7 +435,7 @@
         .record-card h3 {
             font-size: 24px;
             margin-bottom: 20px;
-            color: #CD202B;
+            color: #ffffff;
         }
 
         .record-time {
@@ -409,6 +456,44 @@
         }
 
         /* Mission Section */
+        .mission-section {
+            position: relative;
+            background-image: url('../images/mission-bg-image.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            padding: 100px 50px;
+            max-width: 100%;
+            margin: 0;
+            width: 100%;
+        }
+
+        .mission-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.75) 50%,
+                rgba(0, 0, 0, 0.85) 100%
+            );
+            z-index: 1;
+        }
+
+        .mission-section .section-title,
+        .mission-section .section-subtitle,
+        .mission-section .mission-grid {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .mission-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -432,7 +517,7 @@
         .mission-card h3 {
             font-size: 24px;
             margin-bottom: 20px;
-            color: #CD202B;
+            color: #ffffff;
         }
 
         .mission-card p {
@@ -469,6 +554,14 @@
         .impact-label {
             font-size: 16px;
             color: #cccccc;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .impact-sublabel {
+            font-size: 13px;
+            color: #888888;
+            line-height: 1.5;
         }
 
         .media-stats {
@@ -487,7 +580,7 @@
 
         .media-stat strong {
             display: block;
-            color: #CD202B;
+            color: #ffffff;
             margin-bottom: 10px;
             font-size: 18px;
         }
@@ -676,7 +769,7 @@
         }
 
         .team-modal-university {
-            color: #CD202B;
+            color: #ffffff;
             font-size: 32px;
             font-weight: 700;
             margin-bottom: 10px;
@@ -696,12 +789,12 @@
         }
 
         .team-modal-section-title {
-            color: #CD202B;
+            color: #ffffff;
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid rgba(205, 32, 43, 0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .team-modal-description {
@@ -926,7 +1019,8 @@
 
         .timeline-status {
             position: absolute;
-            top: 35px;
+            top: 50%;
+            transform: translateY(-50%);
             right: 35px;
             padding: 6px 16px;
             border-radius: 20px;
@@ -978,6 +1072,7 @@
                 position: relative;
                 top: auto;
                 right: auto;
+                transform: none;
                 margin-top: 15px;
                 display: inline-block;
             }
@@ -1840,12 +1935,60 @@
                 font-size: 16px;
             }
 
+            /* Hide hero stats on mobile */
+            .hero-stats {
+                display: none !important;
+            }
+
+            /* Fix hero content padding on mobile */
+            .hero-content {
+                padding: 0 30px;
+            }
+
+            .hero-description {
+                font-size: 13px;
+                margin-bottom: 20px;
+                margin-left: 0;
+                margin-right: 0;
+                line-height: 1.6;
+                max-width: 100%;
+            }
+
+            /* Impact Section Mobile */
+            .impact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .impact-number {
+                font-size: 48px;
+            }
+
+            .impact-label {
+                font-size: 15px;
+            }
+
+            .impact-sublabel {
+                font-size: 12px;
+            }
+
+            /* Mission Section Mobile */
+            .mission-section {
+                padding: 60px 20px;
+            }
+
             .section {
                 padding: 60px 20px;
             }
 
             .section-title {
                 font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 17px;
+                max-width: 100%;
+                padding: 0 10px;
             }
 
             .records-grid {
@@ -1939,6 +2082,28 @@
 
             .track-image-caption p {
                 font-size: 13px;
+            }
+        }
+
+        /* Extra small devices (iPhone SE, etc.) */
+        @media (max-width: 375px) {
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .hero-description {
+                font-size: 12px;
+                margin-left: 0;
+                margin-right: 0;
+                line-height: 1.5;
+            }
+
+            .hero-subtitle {
+                font-size: 24px;
+            }
+
+            .hero-tagline {
+                font-size: 14px;
             }
         }
 

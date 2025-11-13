@@ -31,7 +31,7 @@
       "status": "completed",
       "track": "oval",
       "hasModal": true,
-      "trackImage": "images/round2-track-image.png"
+      "trackImage": "images/tracks/oval-track.png"
     },
     {
       "id": "formula",
@@ -50,7 +50,7 @@
       "status": "completed",
       "track": "formula",
       "hasModal": true,
-      "trackImage": "images/round2-track-image.png"
+      "trackImage": "images/tracks/formula-track.png"
     },
     {
       "id": "tianmen",
@@ -69,7 +69,7 @@
       "status": "completed",
       "track": "tianmen",
       "hasModal": true,
-      "trackImage": "images/round2-track-image.png"
+      "trackImage": "images/tracks/tianmen-track.png"
     },
     {
       "id": "simulation2026",
@@ -78,16 +78,17 @@
         "en": "R1｜2026"
       },
       "title": {
-        "zh": "全新赛季：AI智能竞速新征程",
-        "en": "New Season: AI Racing New Journey"
+        "zh": "全新赛季: AI物理智能新征程",
+        "en": "New Season: AI Physical Intelligence New Journey"
       },
       "description": {
-        "zh": "",
-        "en": ""
+        "zh": "敬请期待更多赛事详情",
+        "en": "Stay tuned for more details"
       },
       "status": "upcoming",
       "track": "simulation2026",
-      "hasModal": false
+      "hasModal": true,
+      "trackImage": "images/tracks/upcoming-track.png"
     }
   ]
 }

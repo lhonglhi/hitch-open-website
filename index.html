@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hitch Open 世界AI竞速锦标赛</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- Apple Touch Icon (for iOS home screen) -->
+    <link rel="apple-touch-icon" sizes="256x256" href="images/webclip.png">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,7 +20,7 @@
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <img src="images/160x160-logo.png" alt="HITCH OPEN" style="height: 50px; width: auto;">
+                <img src="images/160x160-logo.png" alt="HITCH OPEN">
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about" data-zh="关于赛事" data-en="About">关于赛事</a></li>
@@ -39,26 +48,26 @@
             <h1><img src="images/hitchOpen-trademark.svg" alt="HITCH OPEN™" class="hero-logo"></h1>
             <div class="hero-subtitle">世界AI竞速锦标赛</div>
             <div class="hero-tagline">物理智能开源数据平台</div>
-            <p style="font-size: 16px; margin-bottom: 30px; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+            <p class="hero-description">
                 全球首个AI自主决策自然实验室启航，<br>
                 L4-L5全自动驾驶挑战张家界天门山九十九道弯，让AI在大自然中理解物理世界
             </p>
-            <div class="hero-stats" style="display: flex; gap: 30px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap;">
-                <div style="border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 20px 30px; backdrop-filter: blur(5px); background: rgba(0,0,0,0.3); min-width: 160px; text-align: center;">
-                    <div style="font-size: 36px; font-weight: 700;">9</div>
-                    <div style="font-size: 12px; color: #ccc;">所参赛高校</div>
+            <div class="hero-stats">
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">9</div>
+                    <div class="hero-stat-label">所参赛高校</div>
                 </div>
-                <div style="border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 20px 30px; backdrop-filter: blur(5px); background: rgba(0,0,0,0.3); min-width: 160px; text-align: center;">
-                    <div style="font-size: 36px; font-weight: 700;">99</div>
-                    <div style="font-size: 12px; color: #ccc;">道极限弯道</div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">99</div>
+                    <div class="hero-stat-label">道极限弯道</div>
                 </div>
-                <div style="border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 20px 30px; backdrop-filter: blur(5px); background: rgba(0,0,0,0.3); min-width: 160px; text-align: center;">
-                    <div style="font-size: 36px; font-weight: 700;">10.77</div>
-                    <div style="font-size: 12px; color: #ccc;">公里赛道全长</div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">10.77</div>
+                    <div class="hero-stat-label">公里赛道全长</div>
                 </div>
-                <div style="border: 2px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 20px 30px; backdrop-filter: blur(5px); background: rgba(0,0,0,0.3); min-width: 160px; text-align: center;">
-                    <div style="font-size: 36px; font-weight: 700;">1100</div>
-                    <div style="font-size: 12px; color: #ccc;">米海拔海拔落差</div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">1100</div>
+                    <div class="hero-stat-label">米海拔海拔落差</div>
                 </div>
             </div>
             <div class="cta-buttons">
@@ -101,7 +110,7 @@
     </section>
 
     <!-- Mission Section -->
-    <section class="section">
+    <section class="mission-section">
         <h2 class="section-title">Hitch Open以竞速之名，开启物理智能时代</h2>
         <p class="section-subtitle">
             Hitch Open世界AI竞速锦标赛，以真实极限环境验证人工智能的感知与决策能力，推动AI从虚拟智能迈向物理智能。
@@ -129,42 +138,48 @@
     <!-- Impact Section -->
     <section class="impact">
         <div class="section">
-            <h2 class="section-title">赛事影响力</h2>
+            <h2 class="section-title">传播影响力</h2>
+
+            <!-- Core Impact Stats -->
             <div class="impact-grid">
                 <div class="impact-item">
                     <div class="impact-number">50万+</div>
-                    <div class="impact-label">Hitch Open决赛期间天门山现场观赛人数</div>
+                    <div class="impact-label">天门山现场观赛人数</div>
+                    <div class="impact-sublabel">Hitch Open 决赛期间现场观众总数</div>
                 </div>
                 <div class="impact-item">
                     <div class="impact-number">10亿+</div>
-                    <div class="impact-label">主流媒体报导触达人数</div>
+                    <div class="impact-label">主流媒体报道触达人数</div>
+                    <div class="impact-sublabel">各大官方及门户媒体累计触达规模</div>
                 </div>
                 <div class="impact-item">
                     <div class="impact-number">846万+</div>
-                    <div class="impact-label">微博话题当日热度</div>
+                    <div class="impact-label">微博话题热度峰值</div>
+                    <div class="impact-sublabel">当日话题热度最高点</div>
                 </div>
             </div>
 
+            <!-- Secondary Media Details -->
             <div class="media-stats">
                 <div class="media-stat">
                     <strong>官方媒体报道</strong>
-                    <p>28家官方权威媒体报道</p>
-                </div>
-                <div class="media-stat">
-                    <strong>报刊图文报道</strong>
-                    <p>2次登上头版</p>
+                    <p>28 家国家级与行业主流媒体联合发声</p>
                 </div>
                 <div class="media-stat">
                     <strong>社交媒体扩散</strong>
-                    <p>1600万话题活跃度</p>
+                    <p>全网曝光 5000 万+，互动量突破 1600 万+</p>
                 </div>
                 <div class="media-stat">
-                    <strong>高校自媒体链条激活</strong>
-                    <p>6所参赛高校官方报道</p>
+                    <strong>高校媒体联动</strong>
+                    <p>清华、复旦、上交等 6 所高校官方矩阵报道，覆盖 100 万+ 青年科技受众</p>
                 </div>
                 <div class="media-stat">
-                    <strong>产业媒体剖析</strong>
-                    <p>7家产业媒体深度报道</p>
+                    <strong>产业媒体专题解析</strong>
+                    <p>第一财经、钛媒体、36Kr 等 7 家头部媒体深度剖析 AI 物理智能价值</p>
+                </div>
+                <div class="media-stat">
+                    <strong>海外传播网络</strong>
+                    <p>新华社英文版、China Daily 等多家海外媒体转发报道</p>
                 </div>
             </div>
         </div>
@@ -178,7 +193,7 @@
             <div class="media-grid" id="mediaGrid">
                 <!-- Media cards will be dynamically loaded from data/media.json -->
             </div>
-            <div style="text-align: center; margin-top: 40px;">
+            <div class="button-container">
                 <button class="btn btn-secondary" id="moreNewsBtn">查看更多报道</button>
             </div>
         </div>
@@ -432,7 +447,7 @@
             </div>
         </div>
         <div class="social-links">
-            <a href="https://discord.gg/kyNC2nWB" class="social-link" aria-label="Discord" target="_blank" rel="noopener noreferrer" style="display: none;">
+            <a href="https://discord.gg/kyNC2nWB" class="social-link hidden" aria-label="Discord" target="_blank" rel="noopener noreferrer">
                 <img src="images/discord.svg" alt="Discord">
             </a>
             <a href="https://www.douyin.com/user/MS4wLjABAAAAh6rH98XZdzUzeEnFjf6nRYkk0b-K2p3aXwzRZ4nJkkAl5C-rdABGfGdoJdFEn4Q0?from_tab_name=main" class="social-link" aria-label="抖音" target="_blank" rel="noopener noreferrer">
