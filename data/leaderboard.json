@@ -1,0 +1,116 @@
+{
+  "title": {
+    "zh": "2025赛季积分排行榜",
+    "en": "2025 Season Leaderboard"
+  },
+  "headers": {
+    "rank": {
+      "zh": "排名",
+      "en": "Rank"
+    },
+    "team": {
+      "zh": "队伍",
+      "en": "Team"
+    },
+    "record": {
+      "zh": "天门山 AI 竞速纪录",
+      "en": "Tianmen Mountain AI Racing Record"
+    },
+    "points": {
+      "zh": "积分",
+      "en": "Points"
+    }
+  },
+  "items": [
+    {
+      "rank": 1,
+      "team": {
+        "zh": "清华大学",
+        "en": "Tsinghua University"
+      },
+      "record": "16:10.838",
+      "points": 32,
+      "rankClass": "rank-1"
+    },
+    {
+      "rank": 2,
+      "team": {
+        "zh": "湖南大学",
+        "en": "Hunan University"
+      },
+      "record": "17:42.333",
+      "points": 28,
+      "rankClass": "rank-2"
+    },
+    {
+      "rank": 3,
+      "team": {
+        "zh": "吉林大学",
+        "en": "Jilin University"
+      },
+      "record": "24:21.723",
+      "points": 21,
+      "rankClass": "rank-3"
+    },
+    {
+      "rank": 4,
+      "team": {
+        "zh": "武汉理工大学",
+        "en": "Wuhan University of Technology"
+      },
+      "record": "38:20.206",
+      "points": 15,
+      "rankClass": ""
+    },
+    {
+      "rank": 5,
+      "team": {
+        "zh": "复旦大学",
+        "en": "Fudan University"
+      },
+      "record": "–",
+      "points": 13,
+      "rankClass": ""
+    },
+    {
+      "rank": 6,
+      "team": {
+        "zh": "浙江大学",
+        "en": "Zhejiang University"
+      },
+      "record": "–",
+      "points": 8,
+      "rankClass": ""
+    },
+    {
+      "rank": 7,
+      "team": {
+        "zh": "海南大学",
+        "en": "Hainan University"
+      },
+      "record": "–",
+      "points": 7,
+      "rankClass": ""
+    },
+    {
+      "rank": 8,
+      "team": {
+        "zh": "上海交通大学",
+        "en": "Shanghai Jiao Tong University"
+      },
+      "record": "DNF",
+      "points": "–",
+      "rankClass": ""
+    },
+    {
+      "rank": 9,
+      "team": {
+        "zh": "西安交通大学",
+        "en": "Xi'an Jiaotong University"
+      },
+      "record": "DNF",
+      "points": "–",
+      "rankClass": ""
+    }
+  ]
+}
