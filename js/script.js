@@ -67,6 +67,9 @@ async function loadData() {
         renderTimeline();
         renderHighlights();
 
+        // Apply translations from JSON to initial page load
+        updateStaticContent(currentLang);
+
         console.log('✓ All data loaded and rendered successfully');
     } catch (error) {
         console.error('Error loading data:', error);
@@ -494,24 +497,17 @@ function closeLightbox() {
     console.log('Lightbox closed');
 }
 
-// Language switching
-function switchLanguage(lang) {
-    currentLang = lang;
+// Update static content with translations
+function updateStaticContent(lang) {
+    if (!translationsData) return;
 
-    // Update active button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
+    const t = translationsData[lang];
 
     // Update navigation links
     document.querySelectorAll('#navLinks a').forEach(link => {
         const text = link.getAttribute(`data-${lang}`);
         if (text) link.textContent = text;
     });
-
-    // Update main content
-    const t = translationsData[lang];
 
     // Hero section
     const heroSubtitle = document.querySelector('.hero-subtitle');
@@ -609,13 +605,6 @@ function switchLanguage(lang) {
     const highlightsTitle = document.getElementById('highlightsTitle');
     if (highlightsTitle) highlightsTitle.textContent = t.highlightsTitle;
 
-    // Re-render all JSON-driven sections with new language
-    renderMedia();
-    renderTeams();
-    renderLeaderboard();
-    renderTimeline();
-    renderHighlights();
-
     // Update all elements with data-zh and data-en attributes
     document.querySelectorAll('[data-zh][data-en]').forEach(element => {
         const text = element.getAttribute(`data-${lang}`);
@@ -627,6 +616,27 @@ function switchLanguage(lang) {
             }
         }
     });
+}
+
+// Language switching
+function switchLanguage(lang) {
+    currentLang = lang;
+
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+
+    // Update static content
+    updateStaticContent(lang);
+
+    // Re-render all JSON-driven sections with new language
+    renderMedia();
+    renderTeams();
+    renderLeaderboard();
+    renderTimeline();
+    renderHighlights();
 
     console.log(`✓ Language switched to ${lang}`);
 }
