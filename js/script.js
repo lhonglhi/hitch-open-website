@@ -605,6 +605,69 @@ function updateStaticContent(lang) {
     const highlightsTitle = document.getElementById('highlightsTitle');
     if (highlightsTitle) highlightsTitle.textContent = t.highlightsTitle;
 
+    // Update mission cards
+    const mission1Title = document.getElementById('mission1Title');
+    if (mission1Title) mission1Title.textContent = t.mission1Title;
+    const mission1Text = document.getElementById('mission1Text');
+    if (mission1Text) mission1Text.textContent = t.mission1Text;
+
+    const mission2Title = document.getElementById('mission2Title');
+    if (mission2Title) mission2Title.textContent = t.mission2Title;
+    const mission2Text = document.getElementById('mission2Text');
+    if (mission2Text) mission2Text.textContent = t.mission2Text;
+
+    const mission3Title = document.getElementById('mission3Title');
+    if (mission3Title) mission3Title.textContent = t.mission3Title;
+    const mission3Text = document.getElementById('mission3Text');
+    if (mission3Text) mission3Text.textContent = t.mission3Text;
+
+    const mission4Title = document.getElementById('mission4Title');
+    if (mission4Title) mission4Title.textContent = t.mission4Title;
+    const mission4Text = document.getElementById('mission4Text');
+    if (mission4Text) mission4Text.textContent = t.mission4Text;
+
+    // Update impact labels
+    const impactLabel1 = document.getElementById('impactLabel1');
+    if (impactLabel1) impactLabel1.textContent = t.impactLabel1;
+    const impactSublabel1 = document.getElementById('impactSublabel1');
+    if (impactSublabel1) impactSublabel1.textContent = t.impactSublabel1;
+
+    const impactLabel2 = document.getElementById('impactLabel2');
+    if (impactLabel2) impactLabel2.textContent = t.impactLabel2;
+    const impactSublabel2 = document.getElementById('impactSublabel2');
+    if (impactSublabel2) impactSublabel2.textContent = t.impactSublabel2;
+
+    const impactLabel3 = document.getElementById('impactLabel3');
+    if (impactLabel3) impactLabel3.textContent = t.impactLabel3;
+    const impactSublabel3 = document.getElementById('impactSublabel3');
+    if (impactSublabel3) impactSublabel3.textContent = t.impactSublabel3;
+
+    // Update media stats
+    const mediaStatTitle1 = document.getElementById('mediaStatTitle1');
+    if (mediaStatTitle1) mediaStatTitle1.textContent = t.mediaStatTitle1;
+    const mediaStatText1 = document.getElementById('mediaStatText1');
+    if (mediaStatText1) mediaStatText1.textContent = t.mediaStatText1;
+
+    const mediaStatTitle2 = document.getElementById('mediaStatTitle2');
+    if (mediaStatTitle2) mediaStatTitle2.textContent = t.mediaStatTitle2;
+    const mediaStatText2 = document.getElementById('mediaStatText2');
+    if (mediaStatText2) mediaStatText2.textContent = t.mediaStatText2;
+
+    const mediaStatTitle3 = document.getElementById('mediaStatTitle3');
+    if (mediaStatTitle3) mediaStatTitle3.textContent = t.mediaStatTitle3;
+    const mediaStatText3 = document.getElementById('mediaStatText3');
+    if (mediaStatText3) mediaStatText3.textContent = t.mediaStatText3;
+
+    const mediaStatTitle4 = document.getElementById('mediaStatTitle4');
+    if (mediaStatTitle4) mediaStatTitle4.textContent = t.mediaStatTitle4;
+    const mediaStatText4 = document.getElementById('mediaStatText4');
+    if (mediaStatText4) mediaStatText4.textContent = t.mediaStatText4;
+
+    const mediaStatTitle5 = document.getElementById('mediaStatTitle5');
+    if (mediaStatTitle5) mediaStatTitle5.textContent = t.mediaStatTitle5;
+    const mediaStatText5 = document.getElementById('mediaStatText5');
+    if (mediaStatText5) mediaStatText5.textContent = t.mediaStatText5;
+
     // Update all elements with data-zh and data-en attributes
     document.querySelectorAll('[data-zh][data-en]').forEach(element => {
         const text = element.getAttribute(`data-${lang}`);
