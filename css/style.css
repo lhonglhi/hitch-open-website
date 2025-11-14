@@ -2057,15 +2057,16 @@
             }
 
             .cta-section {
-                padding: 40px 15px;
+                padding: 40px 0px;
             }
 
             .cta-car-image {
                 max-width: 100%;
+                width: 100%;
             }
 
             .cta-content {
-                margin-top: -120px;
+                margin-top: -80px;
                 max-width: 100%;
                 padding: 0 20px 40px;
             }
