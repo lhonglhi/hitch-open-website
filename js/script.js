@@ -537,10 +537,10 @@ function updateStaticContent(lang) {
     if (aboutText) aboutText.innerHTML = t.aboutText;
 
     // Update mission section
-    const missionTitle = document.querySelector('#about + .section .section-title');
+    const missionTitle = document.getElementById('missionTitle');
     if (missionTitle) missionTitle.textContent = t.missionTitle;
 
-    const missionSubtitle = document.querySelector('#about + .section .section-subtitle');
+    const missionSubtitle = document.getElementById('missionSubtitle');
     if (missionSubtitle) missionSubtitle.textContent = t.missionSubtitle;
 
     // Update record cards
@@ -556,7 +556,10 @@ function updateStaticContent(lang) {
     const impactTitle = document.querySelector('.impact .section-title');
     if (impactTitle) impactTitle.textContent = t.impactTitle;
 
-    // Update contact info
+    // Update contact section
+    const contactTitle = document.getElementById('contactTitle');
+    if (contactTitle) contactTitle.textContent = t.contactTitle;
+
     const contactItems = document.querySelectorAll('.contact-item');
     if (contactItems[0]) contactItems[0].innerHTML = `${t.contactGeneral}：<a href="mailto:info@intelligentracing.org">info@intelligentracing.org</a>`;
     if (contactItems[1]) contactItems[1].innerHTML = `${t.contactMedia}：<a href="mailto:media@intelligentracing.com">media@intelligentracing.com</a>`;
