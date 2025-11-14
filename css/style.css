@@ -2023,6 +2023,12 @@
                 padding: 10px;
             }
 
+            .leaderboard-table th:first-child,
+            .leaderboard-table td:first-child {
+                font-size: 13px;
+                padding: 10px 8px;
+            }
+
             .track-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
