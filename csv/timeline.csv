@@ -1,0 +1,5 @@
+﻿id,date_zh,date_en,title_zh,title_en,description_zh,description_en,status,track,hasModal,trackImage
+oval,R1｜2025年6月30日,R1｜30 Jun 2025,仿真椭圆赛道,Virtual Oval Track,第一站：基础赛道测试与算法验证,Round 1: Basic Track Testing & Algorithm Validation,completed,oval,True,images/tracks/oval-track.png
+formula,R2｜2025年8月19日,R2｜19 Aug 2025,仿真复赛方程式赛道,Virtual Formula Track,第二站：复杂赛道高速挑战,Round 2: Complex High-Speed Challenge,completed,formula,True,images/tracks/formula-track.png
+tianmen,R3｜2025年9月25日<br>至10月18日,R3｜25 Sep –<br>18 Oct 2025,天门山决赛,Tianmen Mountain Finals,终极对决：99道弯极限挑战,Ultimate Challenge: 99 Hairpin Turns,completed,tianmen,True,images/tracks/tianmen-track.png
+simulation2026,R1｜2026年,R1｜2026,全新赛季: AI物理智能新征程,New Season: AI Physical Intelligence New Journey,敬请期待更多赛事详情,Stay tuned for more details,upcoming,simulation2026,True,images/tracks/upcoming-track.png

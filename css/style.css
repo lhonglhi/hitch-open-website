@@ -369,8 +369,8 @@
 
         /* Section Styles */
         .section {
-            padding: 100px 50px;
-            max-width: 1400px;
+            padding: 120px 60px;
+            max-width: 1440px;
             margin: 0 auto;
         }
 
@@ -471,7 +471,7 @@
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            padding: 100px 50px;
+            padding: 120px 60px;
             max-width: 100%;
             margin: 0;
             width: 100%;

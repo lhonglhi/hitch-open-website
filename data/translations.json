@@ -26,10 +26,13 @@
     "mission4Title": "以赛鉴智",
     "mission4Text": "以公开竞赛与数据开源机制为标准，联合政府、科研、产业和投资界，检验AI安全性与产业可行性，为新质生产力与物理智能治理提供中国样本。",
     "impactTitle": "传播影响力",
+    "impactNumber1": "50万+",
     "impactLabel1": "天门山现场观赛人数",
     "impactSublabel1": "Hitch Open 决赛期间现场观众总数",
+    "impactNumber2": "10亿+",
     "impactLabel2": "主流媒体报道触达人数",
     "impactSublabel2": "各大官方及门户媒体累计触达规模",
+    "impactNumber3": "846万+",
     "impactLabel3": "微博话题热度峰值",
     "impactSublabel3": "当日话题热度最高点",
     "mediaStatTitle1": "官方媒体报道",
@@ -63,7 +66,9 @@
     "contactTitle": "联系我们",
     "contactGeneral": "通用咨询",
     "contactMedia": "媒体合作",
-    "highlightsTitle": "2025赛季高光时刻"
+    "highlightsTitle": "2025赛季高光时刻",
+    "teamModalIntroTitle": "赛队介绍",
+    "teamModalProfessorsTitle": "带队教授"
   },
   "en": {
     "heroTitle": "HITCH OPEN",
@@ -92,10 +97,13 @@
     "mission4Title": "Evaluating AI Through Competition",
     "mission4Text": "With open competition and transparent data-sharing standards, Hitch Open unites government, academia, industry, and investment sectors to verify AI safety and real-world feasibility—establishing a new model for physical intelligence governance.",
     "impactTitle": "Global Media Impact",
+    "impactNumber1": "500,000+",
     "impactLabel1": "On-site Spectators at Tianmen Mountain",
     "impactSublabel1": "Total attendance during the Hitch Open Finals",
+    "impactNumber2": "1 Billion+",
     "impactLabel2": "Mainstream Media Reach",
     "impactSublabel2": "Total audience reached across major national and digital media",
+    "impactNumber3": "8.46 M+",
     "impactLabel3": "Weibo Topic Peak Heat",
     "impactSublabel3": "Highest trending peak on event day",
     "mediaStatTitle1": "Official Media Coverage",
@@ -129,6 +137,8 @@
     "contactTitle": "Contact Us",
     "contactGeneral": "General Inquiries",
     "contactMedia": "Media Partnership",
-    "highlightsTitle": "2025 Season Highlights"
+    "highlightsTitle": "2025 Season Highlights",
+    "teamModalIntroTitle": "Team Introduction",
+    "teamModalProfessorsTitle": "Faculty Advisors"
   }
 }

@@ -629,6 +629,14 @@ function updateStaticContent(lang) {
     const mission4Text = document.getElementById('mission4Text');
     if (mission4Text) mission4Text.textContent = t.mission4Text;
 
+    // Update impact numbers
+    const impactNumber1 = document.getElementById('impactNumber1');
+    if (impactNumber1) impactNumber1.textContent = t.impactNumber1;
+    const impactNumber2 = document.getElementById('impactNumber2');
+    if (impactNumber2) impactNumber2.textContent = t.impactNumber2;
+    const impactNumber3 = document.getElementById('impactNumber3');
+    if (impactNumber3) impactNumber3.textContent = t.impactNumber3;
+
     // Update impact labels
     const impactLabel1 = document.getElementById('impactLabel1');
     if (impactLabel1) impactLabel1.textContent = t.impactLabel1;
@@ -670,6 +678,12 @@ function updateStaticContent(lang) {
     if (mediaStatTitle5) mediaStatTitle5.textContent = t.mediaStatTitle5;
     const mediaStatText5 = document.getElementById('mediaStatText5');
     if (mediaStatText5) mediaStatText5.textContent = t.mediaStatText5;
+
+    // Update team modal section titles
+    const teamModalIntroTitle = document.getElementById('teamModalIntroTitle');
+    if (teamModalIntroTitle) teamModalIntroTitle.textContent = t.teamModalIntroTitle;
+    const teamModalProfessorsTitle = document.getElementById('teamModalProfessorsTitle');
+    if (teamModalProfessorsTitle) teamModalProfessorsTitle.textContent = t.teamModalProfessorsTitle;
 
     // Update all elements with data-zh and data-en attributes
     document.querySelectorAll('[data-zh][data-en]').forEach(element => {
