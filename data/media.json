@@ -233,7 +233,7 @@
         "en": "Tsinghua University Official News"
       },
       "isLarge": true,
-      "isHidden": true,
+      "isHidden": false,
       "url": "https://www.tsinghua.edu.cn/info/1182/121912.htm",
       "image": "images/media/2025/news-10-19-3.jpg"
     },
@@ -278,7 +278,7 @@
         "en": "Shanghai Securities News"
       },
       "isLarge": false,
-      "isHidden": true,
+      "isHidden": false,
       "url": "https://www.cnstock.com/commonDetail/555454",
       "image": "images/media/2025/news-10-17-1.jpg"
     },
@@ -293,7 +293,7 @@
         "en": "CCTV Sports"
       },
       "isLarge": false,
-      "isHidden": true,
+      "isHidden": false,
       "url": "https://pic.cctv.cn/cctv/cctvh5/cctv5/2023/cctvsportsshare/2025/04/cctv5_share/index.html?newlink=app://ARTI1760667909370655&id=ARTI1760667909370655",
       "image": "images/media/2025/news-10-17-2.jpg"
     },
