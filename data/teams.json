@@ -1,0 +1,363 @@
+{
+  "title": {
+    "zh": "2025赛季参赛队伍",
+    "en": "2025 Season Teams"
+  },
+  "subtitle": {
+    "zh": "来自全国顶尖高校的精英战队",
+    "en": "Elite Teams from Top National Universities"
+  },
+  "items": [
+    {
+      "name": {
+        "zh": "清华大学",
+        "en": "Tsinghua University"
+      },
+      "teamName": {
+        "zh": "极限竞速战队",
+        "en": "Extreme Racing Team"
+      },
+      "description": {
+        "zh": "清华大学赛车队包括大学生方程式车队、大学生智能汽车竞赛车队等，自2009开始，以车辆与运载学院的学生科技活动实验室为基地，由来自车辆工程、电子信息、机械工程、材料科学、美术学院以及经济管理学院等不同专业、院系的三十余名本科生、硕士研究生和博士研究生组成，聚焦于汽车电动化/智能化，培养和发挥学生的积极主动性、创造能力，全面提升学生的工程素养、专业水平和综合素质。近几年，车队不断突破自我、挑战极限，在充满激情与智慧的赛道上，正以坚定的步伐迈向未来，书写新的辉煌篇章。",
+        "en": "Tsinghua University Racing Team includes the Formula Student Team, Intelligent Vehicle Competition Team, etc. Since 2009, based on the Student Technology Activity Laboratory of the School of Vehicle and Mobility, it consists of more than 30 undergraduate, master's and doctoral students from different majors and departments such as Vehicle Engineering, Electronic Information, Mechanical Engineering, Materials Science, Academy of Arts and Design, and School of Economics and Management, focusing on automotive electrification/intelligence, cultivating and developing students' initiative and creativity, and comprehensively improving students' engineering literacy, professional level and comprehensive quality. In recent years, the team has continuously broken through itself, challenged limits, and is striding towards the future on the track full of passion and wisdom, writing new glorious chapters."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "于良耀",
+            "en": "Yu Liangyao"
+          },
+          "avatar": "images/teams/professors/yu-liangyao.jpg",
+          "bio": {
+            "zh": "于良耀，博士、副教授、博士生导师，工作单位：清华大学车辆与运载学院。学士、硕士、博士学位均于清华大学车辆学院获得，专业方向：汽车动力学控制、智能底盘、汽车电子、机电一体化系统研究",
+            "en": "Dr. Yu Liangyao, Associate Professor and Doctoral Supervisor at Tsinghua University School of Vehicle and Mobility. He received his Bachelor's, Master's, and Doctoral degrees from Tsinghua University School of Vehicle Engineering. Research areas: vehicle dynamics control, intelligent chassis, automotive electronics, and mechatronics systems."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/tsinghua.png"
+    },
+    {
+      "name": {
+        "zh": "浙江大学",
+        "en": "Zhejiang University"
+      },
+      "teamName": {
+        "zh": "杭州龙战队",
+        "en": "Hangzhou Dragon Racing Team"
+      },
+      "description": {
+        "zh": "浙江大学杭州龙赛车队是一个跨学科的大学生创新团队，自2012开 始，以计算机学院智能汽车研究中心为主体，由来自计算机、车辆工程、电子信息等不同专业的二十余名本科生、硕士研究生和博士研究生组成，车队聚焦于汽车智能化发展，培养学生的创造能力。2014年，浙江大学杭州龙车队的萝卜车参加了美国印第安纳波利斯举办的第四届国际电动卡丁 车比赛(evGrandPrix)，取得第六名的成绩。近年来，车队聚焦人工智能技术在汽车中的应用，研究汽车智能化的新方法、新技术，为智能汽车的机器 人化不断探索。",
+        "en": "The Zhejiang University Hangzhou Dragon Racing Team is an interdisciplinary student innovation team established in 2012 under the Intelligent Vehicle Research Center of the College of Computer Science. The team consists of over twenty undergraduate, master’s, and doctoral students from multiple disciplines, focusing on intelligent vehicle technologies and AI applications. They have achieved remarkable results in international competitions, including the EV Grand Prix in Indianapolis, and continue to explore innovative approaches for intelligent and autonomous vehicles."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "杨国青",
+            "en": "Yang GuoQing"
+          },
+          "avatar": "images/teams/professors/yang-guoqing.jpg",
+          "bio": {
+            "zh": "杨国青博士，浙江大学智能汽车研究中心 副主任，脑机智能全国重点实验室类脑工程中心主任",
+            "en": "Dr. Yang Guoqing is the Deputy Director of the Intelligent Vehicle Research Center at Zhejiang University and the Director of the Brain‑Inspired Engineering Center at the National Key Laboratory of Brain–Machine Intelligence."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/zhejiang.png"
+    },
+    {
+      "name": {
+        "zh": "上海交通大学",
+        "en": "Shanghai Jiao Tong University"
+      },
+      "teamName": {
+        "zh": "溥渊未来战队",
+        "en": "Puyuan Future Racing Team"
+      },
+      "description": {
+        "zh": "溥渊未来队依托于上海交通大学溥渊未来技术学院，智能网联电动汽车创新中心，智能车实验室。智能车实验室是国内从事无人驾驶、 环境感知较早的单位之一，具有牢固的国际国内合作基础，在无人驾驶领域积累了丰富的理论和工程经验。中心整合校内多学科力量，组建了跨学科交叉研究团队。实验室聚焦汽车“新四化”进程，不断提升智能网联电动汽车研究的整体实力，更好服务于国家科技发展战略和社会发展需求。车队的目标是建立一支长期发展、持续进步、在国内外具有知名度的大学生赛车队伍。 通过参与各项赛事，车队不断挑战自我，力求在未来的比赛中取得更优异的成绩 。",
+        "en": "The Puyuan Future Racing Team is based at the Puyuan Institute of Future Technology, Shanghai Jiao Tong University, and supported by the Intelligent Connected Electric Vehicle Innovation Center and the Intelligent Vehicle Laboratory. As one of China’s earliest research units in autonomous driving and environmental perception, the team integrates multi-disciplinary expertise and focuses on advancing the 'New Four Modernizations' in vehicles. Its goal is to establish a high-performing, internationally recognized university racing team."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "秦通",
+            "en": "Qin Tong"
+          },
+          "avatar": "images/teams/professors/qin-tong.jpg",
+          "bio": {
+            "zh": "秦通，上海交通大学溥渊未来技术学院副教授，博士生导师。博士毕业于香港科技大学电子及计算机工程系，机器人研究所。博士毕业后，作为华为首批“天才少年”，加入华为智能驾驶产品部，担任SLAM技术专家，参与研发华为ADS智能驾驶系统",
+            "en": "Dr. Qin Tong is an Associate Professor and doctoral advisor at the PuYuan Institute of Future Technology, Shanghai Jiao Tong University. He received his PhD from the Department of Electronic and Computer Engineering (Robotics Institute) at The Hong Kong University of Science and Technology. After graduation, he joined Huawei’s Intelligent Driving Product Department as one of the company’s first “Genius Youth” hires, serving as a SLAM specialist and contributing to the development of Huawei’s ADS intelligent driving system."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/sjtu.png"
+    },
+    {
+      "name": {
+        "zh": "西交利物浦大学",
+        "en": "Xi’an Jiaotong–Liverpool University"
+      },
+      "teamName": {
+        "zh": "西交利物浦联合战队",
+        "en": "XJTLU Joint Racing Team"
+      },
+      "description": {
+        "zh": "西交利物浦联合战队是一支汇聚三所高校优势资源的精英团队，以人工智能竞速无人驾驶赛车为方向，致力于培养学生的创新能力和实践能力，全面提升团队的综合素养。西交利物浦大学凭借国际化教育理念和跨学科创新能力，为战队注入多元思维与前沿科研理念，助力赛车智能化系统设计与优化。西安交通大学凭借深厚技术底蕴和工程实践能力，专注于赛车硬件设计与制造，确保其性能与稳定性。利物浦大学则依托在计算机科学与前沿技术研究方面的卓越成就，为赛车自动驾驶系统提供强大技术支持，提升其智能化水平。",
+        "en": "The XJTU–XJTLU Joint Racing Team unites the strengths of Xi’an Jiaotong University, Xi’an Jiaotong-Liverpool University, and the University of Liverpool. The team focuses on AI-based autonomous racing and aims to cultivate innovation and practical engineering skills. Each institution contributes its strengths in intelligent system design, hardware engineering, and advanced computing technologies, building a robust interdisciplinary collaboration for intelligent racing development."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "黄思奇",
+            "en": "Huang SiQi"
+          },
+          "avatar": "images/teams/professors/huang-siqi.jpg",
+          "bio": {
+            "zh": "西交利物浦大学太仓校区人工智能与先进计算学院助理教授",
+            "en": "Dr. Huang Siqi is an Assistant Professor at the School of Artificial Intelligence and Advanced Computing, Taicang Campus, Xi’an Jiaotong‑Liverpool University."
+          }
+        },
+        {
+          "name": {
+            "zh": "陈仕韬",
+            "en": "Chen ShiTao"
+          },
+          "avatar": "images/teams/professors/chen-shitao.jpg",
+          "bio": {
+            "zh": "西安交通大学舜宇光学人工智能研究院常务副院长",
+            "en": "Dr. Chen Shitao is the Executive Vice Dean of the Sunny Optical Institute of Artificial Intelligence at Xi’an Jiaotong University."
+          }
+        },
+        {
+          "name": {
+            "zh": "程光亮",
+            "en": "Cheng GuangLiang"
+          },
+          "avatar": "images/teams/professors/cheng-guangliang.jpg",
+          "bio": {
+            "zh": "利物浦大学计算机科学系副教授",
+            "en": "Dr. Cheng Guangliang is an Associate Professor in the Department of Computer Science at the University of Liverpool."
+          }
+        },
+        {
+          "name": {
+            "zh": "李浩然",
+            "en": "Li HaoRan"
+          },
+          "avatar": "images/teams/professors/li-haoran.jpg",
+          "bio": {
+            "zh": "西交利物浦大学智能机器人学院助理教授，博士生导师",
+            "en": "Dr. Li Haoran is an Assistant Professor and doctoral supervisor at the School of Intelligent Robotics, Xi’an Jiaotong‑Liverpool University."
+          }
+        },
+        {
+          "name": {
+            "zh": "刘洪斌",
+            "en": "Liu HongBin"
+          },
+          "avatar": "images/teams/professors/liu-hongbin.jpg",
+          "bio": {
+            "zh": "西交利物浦大学人工智能与先进计算学院助理教授",
+            "en": "Dr. Liu Hongbin is an Assistant Professor at the School of Artificial Intelligence and Advanced Computing, Xi’an Jiaotong‑Liverpool University."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/xjtlu.png"
+    },
+    {
+      "name": {
+        "zh": "复旦大学",
+        "en": "Fudan University"
+      },
+      "teamName": {
+        "zh": "CodeWisdom战队",
+        "en": "CodeWisdom Racing Team"
+      },
+      "description": {
+        "zh": "复旦大学软件工程实验室（暨CodeWisdom研究团队）隶属复旦大学计算与智能创新学院，团队现有教授2名（彭鑫、赵文耘）、副教授6名（陈碧欢、吴毅坚、沈立炜、沙朝锋、李敏波、董震）、讲师1名（李弋），负责人是彭鑫教授。团队研究工作聚焦国家战略性需求和产业共性问题，主要围绕智能化时代的软件工程与系统软件技术展开，具体包括软件智能化开发与运维方法与技术（AI4SE）以及面向智能化系统的工程化方法与技术（SE4AI）两个方面。前者关注于将大模型与Agent等智能化技术应用于复杂软件的开发、测试与运维之中，后者关注于智能汽车、智能制造、自主无人系统等新型智能化系统中的基础软件支撑与开发测试方法以及新型AI原生系统的构建与质量保障。",
+        "en": "The CodeWisdom Racing Team from Fudan University is affiliated with the School of Computing and Intelligence Innovation. The team’s research focuses on software engineering and intelligent systems, emphasizing AI4SE (AI for Software Engineering) and SE4AI (Software Engineering for AI). Their mission is to integrate advanced AI models and intelligent technologies into complex software development and autonomous systems, driving innovations in smart mobility and automation."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "彭鑫",
+            "en": "Peng Xin"
+          },
+          "avatar": "images/teams/professors/peng-xin.jpg",
+          "bio": {
+            "zh": "复旦大学计算与智能创新学院副院长、教授，国家级人才计划入选者",
+            "en": "Prof. Peng Xin is Vice Dean and Professor at the School of Computing and Intelligence Innovation, Fudan University, and a recipient of a national‑level talent program."
+          }
+        },
+        {
+          "name": {
+            "zh": "沈立炜",
+            "en": "Shen LiWei"
+          },
+          "avatar": "images/teams/professors/shen-liwei.jpg",
+          "bio": {
+            "zh": "复旦大学计算与智能创新学院副教授、博导",
+            "en": "Dr. Shen Liwei is an Associate Professor and doctoral supervisor at the School of Computing and Intelligence Innovation, Fudan University."
+          }
+        },
+        {
+          "name": {
+            "zh": "陈碧欢",
+            "en": "Chen BiHuan"
+          },
+          "avatar": "images/teams/professors/chen-bihuan.jpg",
+          "bio": {
+            "zh": "复旦大学计算与智能创新学院副教授、博导",
+            "en": "Dr. Chen Bihuan is an Associate Professor and doctoral supervisor at the School of Computing and Intelligence Innovation, Fudan University."
+          }
+        },
+        {
+          "name": {
+            "zh": "李弋",
+            "en": "Li Yi"
+          },
+          "avatar": "images/teams/professors/li-yi.jpg",
+          "bio": {
+            "zh": "复旦大学计算与智能创新学院讲师",
+            "en": "Dr. Li Yi is a Lecturer at the School of Computing and Intelligence Innovation, Fudan University."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/fudan.png"
+    },
+    {
+      "name": {
+        "zh": "湖南大学",
+        "en": "Hunan University"
+      },
+      "teamName": {
+        "zh": "HIVE智能战队",
+        "en": "HIVE Intelligent Racing Team"
+      },
+      "description": {
+        "zh": "HIVE智能车队源自湖南大学HIVE智能车辆课题组，重点研究智能车辆与智慧出行的环境感知识别、融合定位建图、自主决策规划、动力驱动控制、多车网联协同等基础理论方法和关键技术，先后承担和参与了智能网联技术相关的国际合作项目7项、国家/省部级项目40余项、企业横向项目10余项，发表智能网联领域的SCI/EI学术论文100余篇，授权发明专利近百项。HIVE智能车队曾参加PRCV空地智能无人系统环境感知挑战赛，获定位组冠军；自然科学基金委OnSite自动驾驶比赛，获得综合组第二名；中国国际智能网联汽车算法挑战赛二等奖；中国工业协会-第二届“先导杯”智能车联网开放数据挑战赛第二名。",
+        "en": "The HIVE Intelligent Racing Team of Hunan University originates from the HIVE Intelligent Vehicle Research Group. It specializes in core technologies for intelligent and connected vehicles, including environment perception, localization, decision-making, and control. The team has undertaken numerous national and international research projects, published over a hundred academic papers, and earned top awards in multiple AI and autonomous driving competitions across China."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "秦晓辉",
+            "en": "Qin XiaoHui"
+          },
+          "avatar": "images/teams/professors/qin-xiaohui.jpg",
+          "bio": {
+            "zh": "秦晓辉，博士，湖南大学副研究员江苏省集萃青年研究员，江苏省双创博士，江苏省333工程人才，无锡市太湖人才计划顶尖团队核心骨干",
+            "en": "Dr. Qin Xiaohui is an Associate Researcher at Hunan University and a JITRI (Jiangsu Industrial Technology Research Institute) Young Researcher. He has been recognized as a Jiangsu Entrepreneurship and Innovation PhD talent and a member of the Jiangsu 333 Talent Program, and serves as a core member of a top‑tier team under Wuxi’s Taihu Talent Program."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/hunan.png"
+    },
+    {
+      "name": {
+        "zh": "武汉理工大学",
+        "en": "Wuhan University of Technology"
+      },
+      "teamName": {
+        "zh": "智驭战队",
+        "en": "Zhiyu Racing Team"
+      },
+      "description": {
+        "zh": "武汉理工大学赛车队自2010年参与中国大学生方程式系列赛事和中国汽车工程学会巴哈大赛，先后组建燃油方程式赛车队（2010）、电动方程式赛车队（2013）、燃油巴哈赛车队（2016）、电动巴哈赛车队 （2018）、无人驾驶方程式赛车队（2021）、氢能巴哈赛车队（2024）、智驭车队（2025）。2024年的比赛中，电动、氢能巴哈双双获得冠军，燃油方程式获得亚军，电动方程式获得季军，燃油巴哈获得第四名、全国一等奖，无人驾驶方程式获得全国三等奖。武汉理工大学是目前国内唯一一所参加了中国汽车工程学会方程式系列赛事六大类比赛的高校。",
+        "en": "The Zhiyu Racing Team from Wuhan University of Technology has a long history of excellence in student racing competitions, including the Formula Student and Baja series. Established in 2010, the team now covers six categories of racing, ranging from fuel and electric vehicles to hydrogen and autonomous driving. In 2024, the team achieved multiple championships and continues to lead in innovation in intelligent racing engineering."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "胡杰",
+            "en": "Hu Jie"
+          },
+          "avatar": "images/teams/professors/hu-jie.jpg",
+          "bio": {
+            "zh": "胡杰，武汉理工大学汽车工程学院教授/博导，国家卓越工程师学院副院长，新能源与智能网联车工程技术研究中心副主任( 湖北省 )，湖北省车规级芯片产业技术创新联合体副主任",
+            "en": "Prof. Hu Jie is a Professor and doctoral supervisor at the School of Automotive Engineering, Wuhan University of Technology; Vice Dean of the National Institute of Excellent Engineers; Deputy Director of the New Energy and Intelligent Connected Vehicle Engineering Technology Research Center (Hubei Province); and Deputy Director of the Hubei Automotive‑grade Chips Industry Technology Innovation Consortium."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/whut.png"
+    },
+    {
+      "name": {
+        "zh": "吉林大学",
+        "en": "Jilin University"
+      },
+      "teamName": {
+        "zh": "智翼人工智能战队",
+        "en": "Zhiyi AI Racing Team"
+      },
+      "description": {
+        "zh": "吉林大学学生赛车队平台由五只车队构成，包括吉速燃油方程式车队、吉速电动方程式车队、肯赛节能车队、巴哈越野车队以及人工智能车队。车队创建于2007年，18年来历经低谷与辉煌，参加中国、德国、日本、东南亚各地举办的八项赛事，至今已取得15项国内外赛事冠军以及若干其余奖项。车队以全面提升学生的创新能力、实践能力、沟通协作能力为目标，鼓励和指导学生完成赛车开发并参加高水平赛事，目前车队学生群体已覆盖汽车工程学院、机械与航空航天工程学院、材料学院、通信工程学院、新能源与环境学院、法学院等10余个学院，每年培养本科生超过300人次。",
+        "en": "Jilin University Racing Team platform consists of five teams, including the Jisu Fuel Formula Team, Jisu Electric Formula Team, Kensey Energy Saving Team, Baja Off-Road Team, and Artificial Intelligence Team. Founded in 2007, the team has experienced valleys and glories over 18 years, participating in eight competitions held in China, Germany, Japan, and Southeast Asia, and has won 15 domestic and international championships and numerous other awards. The team aims to comprehensively improve students' innovation ability, practical ability, and communication and collaboration ability, encouraging and guiding students to complete racing car development and participate in high-level competitions. Currently, the team's student group covers more than 10 colleges including the College of Automotive Engineering, College of Mechanical and Aerospace Engineering, College of Materials, College of Communication Engineering, College of New Energy and Environment, and Law School, training more than 300 undergraduates annually."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "宋东鉴",
+            "en": "Song Dongjian"
+          },
+          "avatar": "images/teams/professors/song-dongjian.jpg",
+          "bio": {
+            "zh": "吉林大学汽车工程学院副教授、博士生导师、吉林省高层次人才",
+            "en": "Associate Professor and Doctoral Supervisor at Jilin University School of Automotive Engineering, High-level Talent of Jilin Province"
+          }
+        },
+        {
+          "name": {
+            "zh": "孙博华",
+            "en": "Sun Bohua"
+          },
+          "avatar": "images/teams/professors/sun-bohua.jpg",
+          "bio": {
+            "zh": "吉林大学汽车工程学院教师、中国汽车工程学会青委会委员",
+            "en": "Teacher at Jilin University School of Automotive Engineering, Member of Youth Committee of China Society of Automotive Engineers"
+          }
+        },
+        {
+          "name": {
+            "zh": "张素民",
+            "en": "Zhang Sumin"
+          },
+          "avatar": "images/teams/professors/zhang-sumin.jpg",
+          "bio": {
+            "zh": "吉林大学汽车底盘集成与仿生全国重点实验室教授，博士生导师",
+            "en": "Professor and Doctoral Supervisor at Jilin University National Key Laboratory of Automotive Chassis Integration and Bionics"
+          }
+        }
+      ],
+      "logo": "images/teams/logos/jilin.png"
+    },
+    {
+      "name": {
+        "zh": "海南大学",
+        "en": "Hainan University"
+      },
+      "teamName": {
+        "zh": "Azure Matrix蔚蓝矩阵战队",
+        "en": "Azure Matrix Racing Team"
+      },
+      "description": {
+        "zh": "海南大学极限竞速车队由海南大学创新创业学院为牵头，整合机电工程学院、信息与通信学院实验室与团队资源，抽调海南大学RoboMaster南海鲨战队、海南大学大学生方程式车队南海车队和大学生智能汽车竞赛车队等团队核心成员组建团队参赛。团队成员包括自动化、车辆工 程、信息与通信工程、计算机等专业，以及电子信息、控制工程等专业的硕士生和博士生。团队依托国家级创新创业学院、工程实训中心、电工电子实验教学中心等校级平台，围绕极限竞速赛的关键问题进行集体攻关。“以赛促学，以赛促建”为目标导向，积极推动学生工程实践能力和创新创业能力的提升，为深化创新创业教育改革贡献力量。",
+        "en": "The Azure Matrix Racing Team from Hainan University is led by the School of Innovation and Entrepreneurship, integrating resources from the Schools of Mechatronic Engineering and Information & Communication. Composed of outstanding students from automation, computer science, and related fields, the team focuses on advancing autonomous driving and racing technologies while promoting hands-on innovation and engineering education."
+      },
+      "professors": [
+        {
+          "name": {
+            "zh": "谢小峰",
+            "en": "Xie XiaoFeng"
+          },
+          "avatar": "images/teams/professors/xie-xiaofeng.jpg",
+          "bio": {
+            "zh": "谢小峰，海南大学创新创业学院副院长，副教授，博士生导师\n中国人工智能学会青年工作委员会委员、海南省人工智能学会理事",
+            "en": "Dr. Xie Xiaofeng is the Vice Dean of the School of Innovation and Entrepreneurship at Hainan University, an Associate Professor, and a doctoral supervisor. He serves on the Youth Working Committee of the Chinese Association for Artificial Intelligence and is a council member of the Hainan Artificial Intelligence Society."
+          }
+        }
+      ],
+      "logo": "images/teams/logos/hainan.png"
+    }
+  ]
+}

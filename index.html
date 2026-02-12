@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitch Open 世界AI竞速锦标赛</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- Apple Touch Icon (for iOS home screen) -->
+    <link rel="apple-touch-icon" sizes="256x256" href="images/webclip.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="#home">
+                    <img src="images/160x160-logo.png" alt="HITCH OPEN">
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" data-zh="关于赛事" data-en="About">关于赛事</a></li>
+                <li><a href="#media-coverage" data-zh="新闻" data-en="News">新闻</a></li>
+                <li><a href="#track" data-zh="赛程" data-en="Schedule">赛程</a></li>
+                <li><a href="#teams" data-zh="参赛队伍" data-en="Teams">参赛队伍</a></li>
+                <li><a href="#leaderboard" data-zh="积分榜" data-en="Leaderboard">积分榜</a></li>
+                <li><a href="#partners" data-zh="合作伙伴" data-en="Partners">合作伙伴</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+                <span class="lang-separator">/</span>
+                <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="video/hero-bg-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in-up">
+            <h1><img src="images/hitchOpen-trademark.svg" alt="HITCH OPEN™" class="hero-logo"></h1>
+            <div class="hero-subtitle">世界AI竞速锦标赛</div>
+            <div class="hero-tagline">物理智能开源数据平台</div>
+            <p class="hero-description">
+                全球首个AI自主决策自然实验室启航，<br>
+                L4-L5全自动驾驶挑战张家界天门山九十九道弯，让AI在大自然中理解物理世界
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">9</div>
+                    <div class="hero-stat-label">所参赛高校</div>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">99</div>
+                    <div class="hero-stat-label">道极限弯道</div>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">10.77</div>
+                    <div class="hero-stat-label">公里赛道全长</div>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="hero-stat-number">1100</div>
+                    <div class="hero-stat-label">米海拔海拔落差</div>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#track" class="btn btn-secondary">2025赛季</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- AlphaGo Moment Section -->
+    <!-- About Section (includes records) -->
+    <section id="about" class="section">
+        <h2 class="section-title">物理智能时代的AlphaGo时刻</h2>
+        <p class="section-subtitle">
+            在天门山 99 道弯，Hitch Open 正创造自动驾驶的 AlphaGo 时刻。<br><br>
+            10.77 公里的天路，1100 米的落差，99 个弯道——<br>
+            F1 传奇车手 Romain Dumas 曾以 7'38"585 刷新人类极限。<br><br>
+            而今年，清华大学 AI 赛车在无 GPS、低能见度、湿滑赛面的极限环境中，<br>
+            以 16'10"838 全程自动驾驶登顶，<br>
+            让 AI 首次在真实世界完成"感知—决策—行动"的闭环。<br><br>
+            这一刻，物理智能的引擎被彻底点燃。
+        </p>
+
+        <!-- Records Grid -->
+        <div class="records-grid">
+            <div class="record-card">
+                <h3>人类赛车纪录</h3>
+                <div class="record-time">7'38"585</div>
+                <div class="record-team">法国 F1 赛车手 Romain Dumas</div>
+                <div class="record-year">2019</div>
+            </div>
+            <div class="record-card">
+                <h3>AI赛车纪录</h3>
+                <div class="record-time">16'10"838</div>
+                <div class="record-team">清华大学 极限竞速战队</div>
+                <div class="record-year">2025</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <h2 class="section-title" id="missionTitle">Hitch Open以竞速之名，开启物理智能时代</h2>
+        <p class="section-subtitle" id="missionSubtitle">
+            Hitch Open世界AI竞速锦标赛，以真实极限环境验证人工智能的感知与决策能力，推动AI从虚拟智能迈向物理智能。
+        </p>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3 id="mission1Title">以赛育人</h3>
+                <p id="mission1Text">Hitch Open联合清华大学、复旦大学、浙江大学、湖南大学等高校，让学生在真实山路极限环境中完成AI系统研发与实车测试，成为物理智能时代的创新实践课堂。</p>
+            </div>
+            <div class="mission-card">
+                <h3 id="mission2Title">以赛促研</h3>
+                <p id="mission2Text">通过天门山"无GPS、低能见度、多弯急坡"场景，验证AI算法在感知、决策、控制等环节的可靠性，加速物理AI从实验室走向真实世界。</p>
+            </div>
+            <div class="mission-card">
+                <h3 id="mission3Title">以赛兴产</h3>
+                <p id="mission3Text">依托中国电信5G-A网络与天翼云算力，赛事单场产生超3 TB真实物理数据，构建全球开放的物理智能数据平台，推动智能驾驶、文旅科技等产业地。</p>
+            </div>
+            <div class="mission-card">
+                <h3 id="mission4Title">以赛鉴智</h3>
+                <p id="mission4Text">以公开竞赛与数据开源机制为标准，联合政府、科研、产业和投资界，检验AI安全性与产业可行性，为新质生产力与物理智能治理提供中国样本。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact">
+        <div class="section">
+            <h2 class="section-title">传播影响力</h2>
+
+            <!-- Core Impact Stats -->
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-number" id="impactNumber1">50万+</div>
+                    <div class="impact-label" id="impactLabel1">天门山现场观赛人数</div>
+                    <div class="impact-sublabel" id="impactSublabel1">Hitch Open 决赛期间现场观众总数</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" id="impactNumber2">10亿+</div>
+                    <div class="impact-label" id="impactLabel2">主流媒体报道触达人数</div>
+                    <div class="impact-sublabel" id="impactSublabel2">各大官方及门户媒体累计触达规模</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number" id="impactNumber3">846万+</div>
+                    <div class="impact-label" id="impactLabel3">微博话题热度峰值</div>
+                    <div class="impact-sublabel" id="impactSublabel3">当日话题热度最高点</div>
+                </div>
+            </div>
+
+            <!-- Secondary Media Details -->
+            <div class="media-stats">
+                <div class="media-stat">
+                    <strong id="mediaStatTitle1">官方媒体报道</strong>
+                    <p id="mediaStatText1">28 家国家级与行业主流媒体联合发声</p>
+                </div>
+                <div class="media-stat">
+                    <strong id="mediaStatTitle2">社交媒体扩散</strong>
+                    <p id="mediaStatText2">全网曝光 5000 万+，互动量突破 1600 万+</p>
+                </div>
+                <div class="media-stat">
+                    <strong id="mediaStatTitle3">高校媒体联动</strong>
+                    <p id="mediaStatText3">清华、复旦、上交等 6 所高校官方矩阵报道，覆盖 100 万+ 青年科技受众</p>
+                </div>
+                <div class="media-stat">
+                    <strong id="mediaStatTitle4">产业媒体专题解析</strong>
+                    <p id="mediaStatText4">新华社、上海证券报、钛媒体、央视体育等 7 家头部媒体深度剖析 AI 物理智能价值</p>
+                </div>
+                <div class="media-stat">
+                    <strong id="mediaStatTitle5">海外传播网络</strong>
+                    <p id="mediaStatText5">新华社英文版、China Daily 等多家海外媒体转发报道</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Media Coverage Section -->
+    <section id="media-coverage" class="media-coverage">
+        <div class="section">
+            <h2 class="section-title" id="mediaCoverageTitle">媒体报道</h2>
+            <div class="media-grid" id="mediaGrid">
+                <!-- Media cards will be dynamically loaded from data/media.json -->
+            </div>
+            <div class="button-container">
+                <button class="btn btn-secondary" id="moreNewsBtn">查看更多报道</button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 2025 Highlights Gallery Section -->
+    <section id="highlights" class="highlights-section hidden">
+        <div class="section">
+            <h2 class="section-title" id="highlightsTitle">2025赛季高光时刻</h2>
+
+            <div class="highlights-gallery" id="highlightsGallery">
+                <!-- Gallery items will be dynamically loaded from data/highlights.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Highlights -->
+    <div id="highlightLightbox" class="highlight-lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div id="lightboxMedia" class="lightbox-media"></div>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle" class="lightbox-title"></h3>
+                <p id="lightboxDescription" class="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <section id="track" class="timeline">
+        <div class="section">
+            <h2 class="section-title" id="timelineTitle" data-zh="赛程" data-en="Schedule">赛程</h2>
+            <div class="timeline-items">
+                <!-- Timeline items will be dynamically loaded from data/timeline.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Section -->
+    <section id="venue" class="track">
+        <div class="section">
+            <h2 class="section-title" id="trackTitle">2025 决赛场地 - 天门山 99 道弯</h2>
+
+            <div class="track-content">
+                <div class="track-specs-list">
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec1Label">全长</div>
+                            <div class="spec-value" id="trackSpec1">10.77 公里</div>
+                        </div>
+                    </div>
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec2Label">海拔提升</div>
+                            <div class="spec-value" id="trackSpec2">200m → 1300m</div>
+                        </div>
+                    </div>
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec3Label">弯道数量</div>
+                            <div class="spec-value" id="trackSpec3">99 个弯道</div>
+                        </div>
+                    </div>
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec4Label">弯道类型</div>
+                            <div class="spec-value" id="trackSpec4">极端 180° 发卡弯</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="track-image-container">
+                    <img src="images/placeholder-image2.jpeg" alt="天门山赛道全景" class="track-image">
+                    <div class="track-image-caption">
+                        <h4 id="trackImageTitle">天门山赛道全景</h4>
+                        <p id="trackImageDesc">
+                            天门山99道弯，被誉为"通天大道"，是全球最极限的山路之一。全长逾10公里，180度急弯此消彼长。这里将成为AI竞速技术的终极试炼场，重新定义AI竞速的极限。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section id="teams" class="teams">
+        <div class="section">
+            <h2 class="section-title">2025赛季参赛队伍</h2>
+            <p class="section-subtitle">来自全国顶尖高校的9支精英战队</p>
+            <div class="teams-grid">
+                <!-- Teams will be dynamically loaded from data/teams.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="leaderboard">
+        <div class="section">
+            <h2 class="section-title">2025赛季积分排行榜</h2>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>队伍</th>
+                        <th>天门山 AI 竞速纪录</th>
+                        <th>积分</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Leaderboard data will be dynamically loaded from data/leaderboard.json -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="cta" class="cta-section">
+        <img src="images/cta/cta-background.jpg" alt="HITCH OPEN Racing Car" class="cta-car-image">
+        <div class="cta-content">
+            <p class="cta-description" id="ctaDescription" data-zh="我们正在寻找创新团队、教育机构和技术伙伴，共同推动自动驾驶与智能赛车的边界。"
+                data-en="We are seeking innovative teams, educational institutions, and technology partners to push the boundaries of autonomous driving and intelligent racing together.">
+                我们正在寻找创新团队、教育机构和技术伙伴，共同推动自动驾驶与智能赛车的边界。</p>
+            <p class="cta-question" id="ctaQuestion" data-zh="有兴趣参与 2026 Hitch Open?"
+                data-en="Interested in participating in 2026 Hitch Open?">有兴趣参与 2026 Hitch Open?</p>
+            <a href="#contact" class="cta-button" id="ctaButton" data-zh="联系我们" data-en="Contact Us">联系我们</a>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="partners">
+        <h2 class="section-title" id="partnersTitle" data-zh="合作伙伴" data-en="Partners">合作伙伴</h2>
+
+        <div class="partners-category">
+            <h3 class="partners-subtitle" data-zh="赛事主办单位" data-en="Event Organizer">赛事主办单位</h3>
+            <ul class="partners-list">
+                <li>
+                    <img class="partner-logo-img" src="images/partners/intelligent-racing-foundation.png" alt="智脑竞速基金会"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="智脑竞速基金会" data-en="Intelligent Racing Foundation">智脑竞速基金会</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/zhangjiajie-gov.png" alt="张家界市人民政府"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="张家界市人民政府" data-en="Zhangjiajie Municipal People's Government">
+                        张家界市人民政府</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="partners-category">
+            <h3 class="partners-subtitle" data-zh="赛事赞助伙伴" data-en="Event Sponsors">赛事赞助伙伴</h3>
+            <ul class="partners-list">
+                <li>
+                    <img class="partner-logo-img" src="images/partners/china-telecom.png" alt="中国电信"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="中国电信" data-en="China Telecom">中国电信</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/pix-moving.png" alt="PIX Moving"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="PIX Moving" data-en="PIX Moving">PIX Moving</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/point-one-navigation.png"
+                        alt="Point One Navigation" onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="Point One Navigation" data-en="Point One Navigation">Point One
+                        Navigation</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/seyond.png" alt="Seyond"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="Seyond" data-en="Seyond">Seyond</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/tianmen-mountain.png" alt="天门山国家森林公园"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="天门山国家森林公园" data-en="Tianmen Mountain National Forest Park">
+                        天门山国家森林公园</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="partners-category">
+            <h3 class="partners-subtitle" data-zh="官方社交媒体合作平台" data-en="Official Social Media Partners">官方社交媒体合作平台</h3>
+            <ul class="partners-list">
+                <li>
+                    <img class="partner-logo-img" src="images/partners/zhihu.png" alt="知乎"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="知乎" data-en="Zhihu">知乎</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/weibo-ai.png" alt="微博AI"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="微博AI" data-en="Weibo AI">微博AI</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/migu-video.png" alt="咪咕视频"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="咪咕视频" data-en="Migu Video">咪咕视频</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/tmtpost.png" alt="钛媒体"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="钛媒体" data-en="TMTPOST">钛媒体</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/asianfin.png" alt="AsianFin 亚财社"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="AsianFin 亚财社" data-en="AsianFin">AsianFin 亚财社</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="partners-category">
+            <h3 class="partners-subtitle" data-zh="赛事支持单位" data-en="Event Support Units">赛事支持单位</h3>
+            <ul class="partners-list">
+                <li>
+                    <img class="partner-logo-img" src="images/partners/cic.png" alt="CIC工信安全"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="CIC工信安全｜国家工业信息安全发展研究中心" data-en="CIC工信安全｜国家工业信息安全发展研究中心">
+                        CIC工信安全｜国家工业信息安全发展研究中心</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/quanlian-ma.png" alt="全联并购公会"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="全联并购公会" data-en="全联并购公会">全联并购公会</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/shangrong-capital.png" alt="北京尚融资本管理有限公司"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="北京尚融资本管理有限公司" data-en="北京尚融资本管理有限公司">北京尚融资本管理有限公司</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/zgc100.png" alt="中关村100企业家俱乐部"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="中关村100企业家俱乐部" data-en="中关村100企业家俱乐部">中关村100企业家俱乐部</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/unicorn-club.png" alt="独角兽俱乐部"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="独角兽俱乐部" data-en="独角兽俱乐部">独角兽俱乐部</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/world-film-congress.png" alt="世界电影产业大会"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="世界电影产业大会" data-en="世界电影产业大会">世界电影产业大会</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/boshi-charity.png" alt="帛施公益"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="帛施公益" data-en="帛施公益">帛施公益</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/zlead.png" alt="ZLEAD"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="ZLEAD" data-en="ZLEAD">ZLEAD</div>
+                </li>
+                <li>
+                    <img class="partner-logo-img" src="images/partners/shidai-qingnian.png" alt="上海市时代青年科创发展中心"
+                        onerror="this.style.display='none'">
+                    <div class="partner-name" data-zh="上海市时代青年科创发展中心" data-en="上海市时代青年科创发展中心">上海市时代青年科创发展中心</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" id="contactTitle">联系我们</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                通用咨询：<a href="mailto:info@intelligentracing.org">info@intelligentracing.org</a>
+            </div>
+            <div class="contact-item">
+                媒体合作：<a href="mailto:media@intelligentracing.com">media@intelligentracing.com</a>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://discord.gg/kyNC2nWB" class="social-link hidden" aria-label="Discord" target="_blank"
+                rel="noopener noreferrer">
+                <img src="images/discord.svg" alt="Discord">
+            </a>
+            <a href="https://www.douyin.com/user/MS4wLjABAAAAh6rH98XZdzUzeEnFjf6nRYkk0b-K2p3aXwzRZ4nJkkAl5C-rdABGfGdoJdFEn4Q0?from_tab_name=main"
+                class="social-link" aria-label="抖音" target="_blank" rel="noopener noreferrer">
+                <img src="images/tiktok.svg" alt="抖音">
+            </a>
+            <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzk4ODUyNjA0OQ==&scene=124#wechat_redirect"
+                class="social-link" aria-label="微信公众号" target="_blank" rel="noopener noreferrer">
+                <img src="images/wechat.svg" alt="微信公众号">
+            </a>
+            <a href="https://weibo.com/hitchopen" class="social-link" aria-label="微博" target="_blank"
+                rel="noopener noreferrer">
+                <img src="images/sinaweibo.svg" alt="微博">
+            </a>
+            <a href="https://x.com/HitchOpen" class="social-link" aria-label="X (Twitter)" target="_blank"
+                rel="noopener noreferrer">
+                <img src="images/x.svg" alt="X (Twitter)">
+            </a>
+            <a href="https://www.youtube.com/@HitchOpen" class="social-link" aria-label="YouTube" target="_blank"
+                rel="noopener noreferrer">
+                <img src="images/youtube.svg" alt="YouTube">
+            </a>
+            <a href="https://www.zhihu.com/org/hitch-open" class="social-link" aria-label="知乎" target="_blank"
+                rel="noopener noreferrer">
+                <img src="images/zhihu.svg" alt="知乎">
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Intelligentracing Foundation. All rights reserved.</p>
+    </footer>
+
+
+    <!-- Track Modal -->
+    <div id="trackModal" class="track-modal" onclick="closeTrackModal()">
+        <div class="track-modal-content" onclick="event.stopPropagation()">
+            <button class="track-modal-close" onclick="closeTrackModal()">×</button>
+            <div class="track-modal-body">
+                <h3 id="trackModalTitle">赛道图</h3>
+                <img id="trackModalImage" src="" alt="赛道图">
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Modal -->
+    <div id="teamModal" class="team-modal" onclick="closeTeamModal()">
+        <div class="team-modal-content" onclick="event.stopPropagation()">
+            <button class="team-modal-close" onclick="closeTeamModal()">×</button>
+            <div class="team-modal-body">
+                <h2 id="teamModalUniversityName" class="team-modal-university"></h2>
+                <h3 id="teamModalTeamName" class="team-modal-team-name"></h3>
+                <div class="team-modal-section">
+                    <h4 class="team-modal-section-title" id="teamModalIntroTitle">赛队介绍</h4>
+                    <p id="teamModalDescription" class="team-modal-description"></p>
+                </div>
+                <div class="team-modal-section">
+                    <h4 class="team-modal-section-title" id="teamModalProfessorsTitle">带队教授</h4>
+                    <div id="teamModalProfessors" class="team-modal-professors">
+                        <!-- Professors will be dynamically rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

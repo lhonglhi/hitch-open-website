@@ -1,0 +1,391 @@
+{
+  "title": {
+    "zh": "媒体报道",
+    "en": "Media Coverage"
+  },
+  "moreButton": {
+    "zh": "查看更多报道",
+    "en": "View More News"
+  },
+  "lessButton": {
+    "zh": "收起报道",
+    "en": "Show Less"
+  },
+  "items": [
+    {
+      "date": "2025年10月31日",
+      "title": {
+        "zh": "独家对话天翼交通巨有诚：用AI构筑智能交通的'指挥系统'",
+        "en": "Exclusive Interview with Tianyi Transport's Ju Youcheng: Building an Intelligent Transport 'Command System' with AI"
+      },
+      "source": {
+        "zh": "钛媒体",
+        "en": "TMTPost"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://www.tmtpost.com/7743269.html",
+      "image": "images/media/2025/news-10-31-1.jpg"
+    },
+    {
+      "date": "2025年10月29日",
+      "title": {
+        "zh": "独家对话均瑶总裁王均豪：造车\"不要卷\"，品牌要\"慢慢炖\"",
+        "en": "Exclusive Interview with Junyao President Wang Junhao: Don't Rush into Car Manufacturing, Brands Need 'Slow Stewing'"
+      },
+      "source": {
+        "zh": "钛媒体",
+        "en": "TMTPost"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.tmtpost.com/7741120.html",
+      "image": "images/media/2025/news-10-29-1.jpg"
+    },
+    {
+      "date": "2025年10月28日",
+      "title": {
+        "zh": "2025全国文旅上市公司上海行：多家文旅龙头业绩增长 加码\"文旅+\"消费新场景",
+        "en": "2025 National Cultural Tourism Listed Companies Shanghai Tour: Leading Companies Report Growth, Expanding 'Culture + Tourism' Consumer Scenarios"
+      },
+      "source": {
+        "zh": "第一财经",
+        "en": "Yicai"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://m.yicai.com/video/102884576.html",
+      "image": "images/media/2025/news-10-28-1.jpg"
+    },
+    {
+      "date": "2025年10月28日",
+      "title": {
+        "zh": "文旅产业资本\"沪\"动热 共享投资上海新机遇——2025全国文旅上市公司上海行活动成功举办",
+        "en": "Cultural Tourism Capital Heats Up in Shanghai, Sharing New Investment Opportunities — 2025 National Cultural Tourism Listed Companies Shanghai Tour Successfully Held"
+      },
+      "source": {
+        "zh": "上海证券报",
+        "en": "Shanghai Securities News"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://m.cnstock.com/commonDetail/567426?timestap=1761661498720",
+      "image": "images/media/2025/news-10-28-2.jpg"
+    },
+    {
+      "date": "2025年10月27日",
+      "title": {
+        "zh": "他们跑出了湖大人的速度与激情！",
+        "en": "They Showcased Hunan University's Speed and Passion!"
+      },
+      "source": {
+        "zh": "湖南大学公众号",
+        "en": "Hunan University Official Account"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://mp.weixin.qq.com/s/vllXWmBGxsRZ8UQZD6tyoQ",
+      "image": "images/media/2025/news-10-27-1.jpg"
+    },
+    {
+      "date": "2025年10月23日",
+      "title": {
+        "zh": "攻坚克难 季军荣归——我校\"智翼人工智能战队\"荣获Hitch Open世界AI竞速锦标赛季军",
+        "en": "Overcoming Challenges, Third Place Glory — Our University's 'Zhiyi AI Team' Wins Third Place at Hitch Open World AI Racing Championship"
+      },
+      "source": {
+        "zh": "吉林大学官方新闻",
+        "en": "Jilin University Official News"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://auto.jlu.edu.cn/info/1113/8317.htm",
+      "image": "images/media/2025/news-10-23-1.jpg"
+    },
+    {
+      "date": "2025年10月22日",
+      "title": {
+        "zh": "在\"99道弯\"天路上　清华大学队斩获AI竞速锦标赛冠军",
+        "en": "On the 99-Bend Road to Heaven: Tsinghua University Team Wins AI Racing Championship"
+      },
+      "source": {
+        "zh": "中国网",
+        "en": "China.com.cn"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "http://ydyl.china.com.cn/2025-10/20/content_118133048.shtml",
+      "image": "images/media/2025/news-10-22-1.jpg"
+    },
+    {
+      "date": "2025年10月20日",
+      "title": {
+        "zh": "全球首个！AI赛车决战天门山99弯极限山路",
+        "en": "World's First! AI Racing Cars Battle Tianmen Mountain's 99-Bend Extreme Mountain Road"
+      },
+      "source": {
+        "zh": "芒果tv",
+        "en": "Mango TV"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://www.mgtv.com/b/715001/23646306.html?f=m_wx&dc=6D425BC0-834C-4783-98CC-EADEBA39E57E",
+      "image": "images/media/2025/news-10-20-1.jpg"
+    },
+    {
+      "date": "2025年10月20日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛总决赛圆满收官 物理智能加速落地中国",
+        "en": "Hitch Open World AI Racing Championship Grand Final Concludes Successfully; Physical Intelligence Accelerates in China"
+      },
+      "source": {
+        "zh": "搜狐",
+        "en": "Sohu"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://www.sohu.com/a/945520174_121641403",
+      "image": "images/media/2025/news-10-20-2.jpg"
+    },
+    {
+      "date": "2025年10月20日",
+      "title": {
+        "zh": "\"云\"上竞速 驶向\"未来\"——世界AI竞速锦标赛总决赛在湖南张家界落幕",
+        "en": "Racing on the 'Cloud' Towards the 'Future' — World AI Racing Championship Grand Final Concludes in Zhangjiajie, Hunan"
+      },
+      "source": {
+        "zh": "中央广电总台国际在线",
+        "en": "China Radio International"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://news.cri.cn/2025-10-20/3e28acea-49ff-dbf2-fc46-8a1a604c2573.html",
+      "image": "images/media/2025/news-10-20-3.jpg"
+    },
+    {
+      "date": "2025年10月20日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛总决赛收官 清华大学团队斩获冠军",
+        "en": "Hitch Open World AI Racing Championship Grand Final Concludes; Tsinghua University Team Claims Championship"
+      },
+      "source": {
+        "zh": "新华社",
+        "en": "Xinhua"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://h.xinhuaxmt.com/vh512/share/12786056?docid=12786056&newstype=1001&d=135018c&channel=weixin&time=1760944391107",
+      "image": "images/media/2025/news-10-20-4.jpg"
+    },
+    {
+      "date": "2025年10月20日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛总决赛圆满收官 物理智能加速落地中国",
+        "en": "Hitch Open World AI Racing Championship Grand Final Concludes Successfully; Physical Intelligence Accelerates in China"
+      },
+      "source": {
+        "zh": "钛媒体",
+        "en": "TMTPost"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://www.tmtpost.com/7732122.html",
+      "image": "images/media/2025/news-10-20-5.jpg"
+    },
+    {
+      "date": "2025年10月19日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛决赛在张家界天门山成功举行",
+        "en": "Hitch Open World AI Racing Championship Final Successfully Held at Tianmen Mountain, Zhangjiajie"
+      },
+      "source": {
+        "zh": "红网",
+        "en": "Rednet"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://moment.rednet.cn/content/646954/53/15363316.html",
+      "image": "images/media/2025/news-10-19-1.jpg"
+    },
+    {
+      "date": "2025年10月19日",
+      "title": {
+        "zh": "世界AI竞速锦标赛决战天门山99道弯",
+        "en": "World AI Racing Championship Faces Off on Tianmen Mountain’s 99 Bends"
+      },
+      "source": {
+        "zh": "新华社",
+        "en": "Xinhua"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://h.xinhuaxmt.com/vh512/share/12784858?docid=12784858&newstype=1001&d=135018b&channel=weixin&time=1760839520680",
+      "image": "images/media/2025/news-10-19-2.jpg"
+    },
+    {
+      "date": "2025年10月19日",
+      "title": {
+        "zh": "世界AI竞速锦标赛落幕 清华大学战队斩获冠军",
+        "en": "World AI Racing Championship Concludes; Tsinghua University Takes the Title"
+      },
+      "source": {
+        "zh": "清华大学官方新闻",
+        "en": "Tsinghua University Official News"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://www.tsinghua.edu.cn/info/1182/121912.htm",
+      "image": "images/media/2025/news-10-19-3.jpg"
+    },
+    {
+      "date": "2025年10月19日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛总决赛收官 清华大学团队斩获冠军",
+        "en": "Hitch Open World AI Racing Championship Grand Final Concludes; Tsinghua University Team Claims Championship"
+      },
+      "source": {
+        "zh": "上海证券报",
+        "en": "Shanghai Securities News"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://www.cnstock.com/commonDetail/556289?timestap=1760887130647",
+      "image": "images/media/2025/news-10-19-4.jpg"
+    },
+    {
+      "date": "2025年10月18日",
+      "title": {
+        "zh": "Hitch Open天门山总决赛圆满落幕 清华战队创AI山路竞速世界纪录",
+        "en": "Hitch Open Tianmen Mountain Grand Final Concludes; Tsinghua Sets a World Record for AI Mountain Road Racing"
+      },
+      "source": {
+        "zh": "央视体育",
+        "en": "CCTV Sports"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://pic.cctv.cn/cctv/cctvh5/cctv5/2023/cctvsportsshare/router.html?id=ARTI1760780084081536&appkey=0-cctv5",
+      "image": "images/media/2025/news-10-18-1.jpg"
+    },
+    {
+      "date": "2025年10月17日",
+      "title": {
+        "zh": "Hitch Open艾伦·杨：以\"极限竞速\"助推物理AI落地",
+        "en": "Hitch Open’s Allen Yang: Advancing Physical AI Through “Extreme Racing”"
+      },
+      "source": {
+        "zh": "上海证券报",
+        "en": "Shanghai Securities News"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.cnstock.com/commonDetail/555454",
+      "image": "images/media/2025/news-10-17-1.jpg"
+    },
+    {
+      "date": "2025年10月17日",
+      "title": {
+        "zh": "天门山AI竞速决战18日开启 7校冲刺三强争夺 清华16分10秒领跑",
+        "en": "Tianmen Mountain AI Racing Showdown Starts on the 18th: Seven Universities Sprint for Top Three; Tsinghua Leads with 16:10"
+      },
+      "source": {
+        "zh": "央视体育",
+        "en": "CCTV Sports"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://pic.cctv.cn/cctv/cctvh5/cctv5/2023/cctvsportsshare/2025/04/cctv5_share/index.html?newlink=app://ARTI1760667909370655&id=ARTI1760667909370655",
+      "image": "images/media/2025/news-10-17-2.jpg"
+    },
+    {
+      "date": "2025年10月15日",
+      "title": {
+        "zh": "Hitch Open：建立开源物理智能数据平台 加速AI技术产业化进程",
+        "en": "Hitch Open: Building an Open Physical-Intelligence Data Platform to Accelerate AI Industrialization"
+      },
+      "source": {
+        "zh": "上海证券报",
+        "en": "Shanghai Securities News"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://www.cnstock.com/commonDetail/553689",
+      "image": "images/media/2025/news-10-15-1.jpg"
+    },
+    {
+      "date": "2025年10月14日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛 | 真AI挑战99弯极限山路",
+        "en": "Hitch Open World AI Racing Championship | Real AI Challenges the 99-Bend Extreme Mountain Road"
+      },
+      "source": {
+        "zh": "央视体育",
+        "en": "CCTV Sports"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://pic.cctv.cn/cctv/cctvh5/cctv5/2023/cctvsportsshare/2025/04/cctv5_share/index.html?newlink=app://ARTI1760412279227786&id=ARTI1760412279227786",
+      "image": "images/media/2025/news-10-14-1.jpg"
+    },
+    {
+      "date": "2025年10月13日",
+      "title": {
+        "zh": "HitchOpen世界AI竞速锦标赛总决赛即将在张家界天门山举行",
+        "en": "Hitch Open World AI Racing Championship Grand Final to be Held at Tianmen Mountain, Zhangjiajie"
+      },
+      "source": {
+        "zh": "中国新闻网",
+        "en": "China News Service"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://m.chinanews.com/wap/detail/chs/zw/400394.shtml",
+      "image": "images/media/2025/news-10-13-1.jpg"
+    },
+    {
+      "date": "2025年10月13日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛总决赛10月18日天门山开跑",
+        "en": "Hitch Open World AI Racing Championship Grand Final Kicks Off at Tianmen Mountain on October 18"
+      },
+      "source": {
+        "zh": "新华社",
+        "en": "Xinhua"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://h.xinhuaxmt.com/vh512/share/12776125?docid=12776125&newstype=1001&d=1350185&channel=weixin&time=1760359623432",
+      "image": "images/media/2025/news-10-13-2.jpg"
+    },
+    {
+      "date": "2025年10月13日",
+      "title": {
+        "zh": "HitchOpen世界AI竞速锦标赛10月18日天门山总对决 真AI挑战99弯极限山路",
+        "en": "Hitch Open Showdown at Tianmen Mountain on October 18: Real AI Takes on the 99-Bend Extreme Mountain Road"
+      },
+      "source": {
+        "zh": "红网",
+        "en": "Rednet"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://moment.rednet.cn/content/646954/57/15347816.html",
+      "image": "images/media/2025/news-10-13-3.jpg"
+    },
+    {
+      "date": "2025年10月13日",
+      "title": {
+        "zh": "Hitch Open世界AI竞速锦标赛将于10月18日在张家界天门山启幕",
+        "en": "Hitch Open World AI Racing Championship to Kick Off on October 18 at Tianmen Mountain, Zhangjiajie"
+      },
+      "source": {
+        "zh": "中国日报网",
+        "en": "China Daily"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://cn.chinadaily.com.cn/a/202510/13/WS68ecc9fea310c4deea5ec1bd.html",
+      "image": "images/media/2025/news-10-13-4.jpg"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "title": {
+    "zh": "赛程",
+    "en": "Schedule"
+  },
+  "statusLabels": {
+    "completed": {
+      "zh": "已完赛",
+      "en": "Completed"
+    },
+    "upcoming": {
+      "zh": "即将开始",
+      "en": "Coming Soon"
+    }
+  },
+  "items": [
+    {
+      "id": "oval",
+      "date": {
+        "zh": "R1｜2025年6月30日",
+        "en": "R1｜30 Jun 2025"
+      },
+      "title": {
+        "zh": "仿真椭圆赛道",
+        "en": "Virtual Oval Track"
+      },
+      "description": {
+        "zh": "第一站：基础赛道测试与算法验证",
+        "en": "Round 1: Basic Track Testing & Algorithm Validation"
+      },
+      "status": "completed",
+      "track": "oval",
+      "hasModal": true,
+      "trackImage": "images/tracks/oval-track.png"
+    },
+    {
+      "id": "formula",
+      "date": {
+        "zh": "R2｜2025年8月19日",
+        "en": "R2｜19 Aug 2025"
+      },
+      "title": {
+        "zh": "仿真复赛方程式赛道",
+        "en": "Virtual Formula Track"
+      },
+      "description": {
+        "zh": "第二站：复杂赛道高速挑战",
+        "en": "Round 2: Complex High-Speed Challenge"
+      },
+      "status": "completed",
+      "track": "formula",
+      "hasModal": true,
+      "trackImage": "images/tracks/formula-track.png"
+    },
+    {
+      "id": "tianmen",
+      "date": {
+        "zh": "R3｜2025年9月25日<br>至10月18日",
+        "en": "R3｜25 Sep –<br>18 Oct 2025"
+      },
+      "title": {
+        "zh": "天门山决赛",
+        "en": "Tianmen Mountain Finals"
+      },
+      "description": {
+        "zh": "终极对决：99道弯极限挑战",
+        "en": "Ultimate Challenge: 99 Hairpin Turns"
+      },
+      "status": "completed",
+      "track": "tianmen",
+      "hasModal": true,
+      "trackImage": "images/tracks/tianmen-track.png"
+    },
+    {
+      "id": "simulation2026",
+      "date": {
+        "zh": "R1｜2026年",
+        "en": "R1｜2026"
+      },
+      "title": {
+        "zh": "全新赛季: AI物理智能新征程",
+        "en": "New Season: AI Physical Intelligence New Journey"
+      },
+      "description": {
+        "zh": "敬请期待更多赛事详情",
+        "en": "Stay tuned for more details"
+      },
+      "status": "upcoming",
+      "track": "simulation2026",
+      "hasModal": true,
+      "trackImage": "images/tracks/upcoming-track.png"
+    }
+  ]
+}

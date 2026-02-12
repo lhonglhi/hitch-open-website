@@ -1,0 +1,96 @@
+{
+  "title": {
+    "zh": "2025赛季高光时刻",
+    "en": "2025 Season Highlights"
+  },
+  "subtitle": {
+    "zh": "记录每一个精彩瞬间",
+    "en": "Capturing Every Exciting Moment"
+  },
+  "items": [
+    {
+      "title": {
+        "zh": "2025年天门山总决赛集锦",
+        "en": "2025 Tianmen Mountain Finals Highlights"
+      },
+      "type": "video",
+      "thumbnail": "images/highlights/video-1-thumb.jpg",
+      "source": "https://www.youtube.com/embed/FaaFmDT7290",
+      "description": {
+        "zh": "2025赛季天门山总决赛精彩回顾",
+        "en": "2025 Season Tianmen Mountain Finals Recap"
+      },
+      "date": "2025-03-15"
+    },
+    {
+      "title": {
+        "zh": "清华大学创造新纪录",
+        "en": "Tsinghua University Sets New Record"
+      },
+      "type": "image",
+      "thumbnail": "images/highlights/image-1.jpg",
+      "source": "images/highlights/image-1.jpg",
+      "description": {
+        "zh": "清华大学赛车队以16:10.838的成绩刷新赛道纪录",
+        "en": "Tsinghua Racing Team sets new track record with 16:10.838"
+      },
+      "date": "2025-03-15"
+    },
+    {
+      "title": {
+        "zh": "赛前调试花絮",
+        "en": "Pre-Race Testing Behind the Scenes"
+      },
+      "type": "video",
+      "thumbnail": "images/highlights/video-2-thumb.jpg",
+      "source": "https://www.youtube.com/embed/FaaFmDT7290",
+      "description": {
+        "zh": "各队伍赛前紧张调试的珍贵画面",
+        "en": "Precious moments of teams' intense pre-race testing"
+      },
+      "date": "2025-03-10"
+    },
+    {
+      "title": {
+        "zh": "天门山赛道全景",
+        "en": "Tianmen Mountain Track Panorama"
+      },
+      "type": "image",
+      "thumbnail": "images/highlights/image-2.jpg",
+      "source": "images/highlights/image-2.jpg",
+      "description": {
+        "zh": "天门山赛道壮观全景图",
+        "en": "Spectacular panoramic view of Tianmen Mountain track"
+      },
+      "date": "2025-03-01"
+    },
+    {
+      "title": {
+        "zh": "技术研讨会精彩瞬间",
+        "en": "Technical Seminar Highlights"
+      },
+      "type": "image",
+      "thumbnail": "images/highlights/image-3.jpg",
+      "source": "images/highlights/image-3.jpg",
+      "description": {
+        "zh": "赛前技术研讨会上的学术交流",
+        "en": "Academic exchanges at the pre-race technical seminar"
+      },
+      "date": "2025-02-20"
+    },
+    {
+      "title": {
+        "zh": "颁奖典礼精彩回顾",
+        "en": "Award Ceremony Highlights"
+      },
+      "type": "video",
+      "thumbnail": "images/highlights/video-3-thumb.jpg",
+      "source": "https://www.youtube.com/embed/FaaFmDT7290",
+      "description": {
+        "zh": "2025赛季颁奖典礼精彩瞬间",
+        "en": "Exciting moments from 2025 season award ceremony"
+      },
+      "date": "2025-03-16"
+    }
+  ]
+}
