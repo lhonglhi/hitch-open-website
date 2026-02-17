@@ -2,8 +2,8 @@
   "zh": {
     "heroTitle": "HITCH OPEN",
     "heroSubtitle": "世界AI竞速锦标赛",
-    "heroTagline": "物理智能开源数据平台",
-    "heroDesc": "全球首个AI自主决策自然实验室启航，<br>L4-L5全自动驾驶挑战张家界天门山九十九道弯，让AI在大自然中理解物理世界",
+    "heroTagline": "全球首个物理智能大自然竞技场",
+    "heroDesc": "L4-L5全自动驾驶挑战张家界天门山九十九道弯，让AI在大自然中理解物理世界",
     "stat1": "所参赛高校",
     "stat2": "道极限弯道",
     "stat3": "公里赛道全长",
@@ -73,8 +73,8 @@
   "en": {
     "heroTitle": "HITCH OPEN",
     "heroSubtitle": "World AI Racing Championships",
-    "heroTagline": "Open-Source Physical Intelligence Data Platform",
-    "heroDesc": "The world's first natural-environment AI autonomy laboratory launches.<br>Fully autonomous L4–L5 driving takes on Tianmen Mountain's legendary 99 Bends—challenging AI to understand and act within the real physical world.",
+    "heroTagline": "Physical AI Colosseum in the Wild",
+    "heroDesc": "Fully autonomous L4–L5 driving takes on Tianmen Mountain's legendary 99 Bends—challenging AI to understand and act within the real physical world.",
     "stat1": "Participating Universities",
     "stat2": "Extreme Hairpin Turns",
     "stat3": "Track Length (km)",

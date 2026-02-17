@@ -685,6 +685,26 @@ function updateStaticContent(lang) {
     const teamModalProfessorsTitle = document.getElementById('teamModalProfessorsTitle');
     if (teamModalProfessorsTitle) teamModalProfessorsTitle.textContent = t.teamModalProfessorsTitle;
 
+    // Update committee section language-specific content
+    document.querySelectorAll('.committee-section .zh-content').forEach(el => {
+        el.style.display = lang === 'zh' ? '' : 'none';
+    });
+    document.querySelectorAll('.committee-section .en-content').forEach(el => {
+        el.style.display = lang === 'en' ? '' : 'none';
+    });
+
+    // Update committee expand button text
+    document.querySelectorAll('.committee-expand-btn').forEach(btn => {
+        const card = btn.closest('.committee-info-card');
+        const span = btn.querySelector('span');
+        if (card && span) {
+            const isExpanded = card.classList.contains('expanded');
+            span.textContent = isExpanded
+                ? (lang === 'zh' ? '收起' : 'Show Less')
+                : (lang === 'zh' ? '展开全文' : 'Read More');
+        }
+    });
+
     // Update all elements with data-zh and data-en attributes
     document.querySelectorAll('[data-zh][data-en]').forEach(element => {
         const text = element.getAttribute(`data-${lang}`);
@@ -694,6 +714,27 @@ function updateStaticContent(lang) {
             } else {
                 element.innerHTML = text;
             }
+        }
+    });
+}
+
+// Committee cards expand/collapse - toggle all cards together
+function toggleAllCommitteeCards() {
+    const cards = document.querySelectorAll('.committee-info-card');
+    const anyExpanded = Array.from(cards).some(c => c.classList.contains('expanded'));
+    const shouldExpand = !anyExpanded;
+
+    cards.forEach(card => {
+        if (shouldExpand) {
+            card.classList.add('expanded');
+        } else {
+            card.classList.remove('expanded');
+        }
+        const span = card.querySelector('.committee-expand-btn span');
+        if (span) {
+            span.textContent = shouldExpand
+                ? (currentLang === 'zh' ? '收起' : 'Show Less')
+                : (currentLang === 'zh' ? '展开全文' : 'Read More');
         }
     });
 }

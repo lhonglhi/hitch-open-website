@@ -32,6 +32,7 @@
                 <li><a href="#track" data-zh="赛程" data-en="Schedule">赛程</a></li>
                 <li><a href="#teams" data-zh="参赛队伍" data-en="Teams">参赛队伍</a></li>
                 <li><a href="#leaderboard" data-zh="积分榜" data-en="Leaderboard">积分榜</a></li>
+                <li><a href="#committee" data-zh="科技委员会" data-en="Committee">科技委员会</a></li>
                 <li><a href="#partners" data-zh="合作伙伴" data-en="Partners">合作伙伴</a></li>
             </ul>
             <div class="lang-switch">
@@ -51,9 +52,8 @@
         <div class="hero-content fade-in-up">
             <h1><img src="images/hitchOpen-trademark.svg" alt="HITCH OPEN™" class="hero-logo"></h1>
             <div class="hero-subtitle">世界AI竞速锦标赛</div>
-            <div class="hero-tagline">物理智能开源数据平台</div>
+            <div class="hero-tagline">全球首个物理智能大自然竞技场</div>
             <p class="hero-description">
-                全球首个AI自主决策自然实验室启航，<br>
                 L4-L5全自动驾驶挑战张家界天门山九十九道弯，让AI在大自然中理解物理世界
             </p>
             <div class="hero-stats">
@@ -314,6 +314,147 @@
                     <!-- Leaderboard data will be dynamically loaded from data/leaderboard.json -->
                 </tbody>
             </table>
+        </div>
+    </section>
+
+    <!-- Scientific & Technical Committee Section -->
+    <section id="committee" class="committee-section">
+        <div class="section">
+            <h2 class="section-title" data-zh="Hitch Open 科学技术委员会" data-en="Hitch Open Scientific &amp; Technical Committee">Hitch Open 科学技术委员会</h2>
+            <!-- Info Cards -->
+            <div class="committee-cards">
+                <!-- Goals -->
+                <div class="committee-info-card" onclick="toggleAllCommitteeCards()">
+                    <h3 class="committee-card-title" data-zh="我们的目标" data-en="Our Goals">我们的目标</h3>
+                    <div class="zh-content">
+                        <p class="committee-card-summary">Hitch Open 科学技术委员会致力于推动物理智能领域的创新与发展，旨在孵化出具有现象级影响力的、与人类最高行为智能对标的人工智能系统及其训练平台。</p>
+                        <div class="committee-card-detail">
+                            <p>过去十年间，人工智能已经在棋盘博弈、语言理解和图像生成等数字领域实现了里程碑式的突破，深刻改变了人们对机器智能边界的认知。物理智能的下一个现象级时刻，将发生在真实世界中——当一个人工智能系统能够像人类一样灵巧地操控物体、在陌生环境中自主导航和决策、并在动态变化的物理场景中展现创造性的问题求解能力时，这一时刻便真正到来。</p>
+                            <p>委员会相信，实现这一突破需要三个关键支柱：一是构建开放的大规模物理仿真训练平台，让全球研究者能够在统一的环境中训练和验证具身智能模型；二是建立与人类最高行为智能对标的评估基准，为技术进步提供清晰的衡量尺度；三是通过跨国协作汇聚多学科智慧，加速从基础研究到现实应用的转化。</p>
+                            <p>这一时刻的到来对产业意味着一次根本性的变革——制造业、物流、家庭服务、医疗护理等领域将迎来新一代能够真正理解和适应物理世界的智能系统，从根本上改变人与机器的协作方式。对消费者而言，它意味着智能技术将从屏幕走进生活的每一个角落：能够自主整理家务的家庭助手、能够安全陪护老人的护理伙伴、能够灵活应对复杂路况的出行工具。物理智能的普及将让每一个人在日常生活中切实感受到人工智能带来的便利与安全。</p>
+                            <p>我们将通过全球协作与知识共享，促进这一新兴技术的可持续进步。</p>
+                        </div>
+                    </div>
+                    <div class="en-content" style="display:none">
+                        <p class="committee-card-summary">The Hitch Open Scientific &amp; Technical Committee is dedicated to advancing innovation in physical intelligence, aiming to incubate groundbreaking AI systems and training platforms that benchmark against the highest levels of human behavioral intelligence.</p>
+                        <div class="committee-card-detail">
+                            <p>Over the past decade, AI has achieved milestone breakthroughs in digital domains such as board games, language understanding, and image generation, fundamentally reshaping our perception of machine intelligence. The next phenomenal moment for physical intelligence will emerge in the real world—when an AI system can manipulate objects with human-like dexterity, autonomously navigate unfamiliar environments, and demonstrate creative problem-solving in dynamic physical scenarios.</p>
+                            <p>The committee believes this breakthrough requires three key pillars: building open, large-scale physical simulation training platforms for global researchers; establishing evaluation benchmarks aligned with the highest human behavioral intelligence; and accelerating the transition from fundamental research to real-world applications through cross-border, multidisciplinary collaboration.</p>
+                            <p>This moment represents a fundamental transformation for industry—manufacturing, logistics, home services, and healthcare will welcome intelligent systems that truly understand the physical world. For consumers, intelligent technology will move from screens into every corner of daily life: autonomous household assistants, safe elderly care companions, and vehicles that navigate complex road conditions with ease.</p>
+                            <p>We will promote the sustainable advancement of this emerging technology through global collaboration and knowledge sharing.</p>
+                        </div>
+                    </div>
+                    <button class="committee-expand-btn" >
+                        <span>展开全文</span>
+                        <svg class="expand-icon" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+
+                <!-- Work -->
+                <div class="committee-info-card" onclick="toggleAllCommitteeCards()">
+                    <h3 class="committee-card-title" data-zh="我们的工作" data-en="Our Work">我们的工作</h3>
+                    <div class="zh-content">
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">探讨物理智能的中长期技术发展方向</div>
+                            <p class="bullet-detail">我们将深入分析物理智能领域的未来趋势，包括人工智能在物理环境中的感知、决策与行动能力的演进，以指导行业的前瞻性研究。</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">促进多国家在物理智能产业的合作</div>
+                            <p class="bullet-detail">我们鼓励跨国界的技术协作与资源共享，推动各国研究机构、企业和专家共同应对挑战，实现互利共赢。</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">推广以物理智能为技术背景的国际交流与竞赛活动</div>
+                            <p class="bullet-detail">我们将组织全球性的论坛、研讨会和竞赛活动，激发创新灵感，并为参与者提供展示与交流的平台。</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">教育公众对物理智能安全的理解，推动物理智能产品的广泛使用</div>
+                            <p class="bullet-detail">我们致力于通过教育性活动提升公众对物理智能安全性的认知，帮助消费者理解潜在风险与益处，从而促进这些技术的安全应用和普及。</p>
+                        </div>
+                    </div>
+                    <div class="en-content" style="display:none">
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">Explore long-term technical development directions</div>
+                            <p class="bullet-detail">We will conduct in-depth analysis of future trends in physical intelligence, including the evolution of AI perception, decision-making, and action capabilities in physical environments, to guide forward-looking industry research.</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">Foster multi-national industry cooperation</div>
+                            <p class="bullet-detail">We encourage cross-border technical collaboration and resource sharing, driving research institutions, enterprises, and experts from various countries to jointly address challenges and achieve mutual benefit.</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">Promote international exchanges and competitions</div>
+                            <p class="bullet-detail">We will organize global forums, seminars, and competitions to inspire innovation and provide participants with platforms for showcasing their work and exchanging ideas.</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">Educate the public on physical intelligence safety</div>
+                            <p class="bullet-detail">We are committed to enhancing public awareness of physical intelligence safety through educational activities, helping consumers understand potential risks and benefits, thereby promoting safe application and adoption.</p>
+                        </div>
+                    </div>
+                    <button class="committee-expand-btn" >
+                        <span>展开全文</span>
+                        <svg class="expand-icon" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+
+                <!-- Commitments -->
+                <div class="committee-info-card" onclick="toggleAllCommitteeCards()">
+                    <h3 class="committee-card-title" data-zh="我们的承诺" data-en="Our Commitments">我们的承诺</h3>
+                    <div class="zh-content">
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">开源算法及数据</div>
+                            <p class="bullet-detail">我们将公开分享核心算法和数据集，支持全球开发者自由访问与改进，推动物理智能技术的民主化发展。核心研究论文公开发表，模型权重与训练代码以开放许可协议发布，评估基准面向全球研究社区开放，训练平台为学术机构和独立研究者提供开放接入。</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">探索物理智能安全的最大公约数</div>
+                            <p class="bullet-detail">我们将积极参与政府间及国际组织对物理智能安全的政策讨论，通过公开的标准为物理智能安全提供可执行的评估体系。</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">集中关注于消费者市场的物理智能技术</div>
+                            <p class="bullet-detail">我们的工作重点置于面向消费者的应用场景，确保技术创新直接服务于日常生活，提升用户体验与便利性。委员会不会开发或推荐任何具体的商业产品，亦不会涉及不具备消费者用途的物理智能技术。特别声明：委员会的研究与活动范畴不包含军事及航空航天领域的应用。</p>
+                        </div>
+                    </div>
+                    <div class="en-content" style="display:none">
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">Open-source algorithms and data</div>
+                            <p class="bullet-detail">We will openly share core algorithms and datasets, supporting global developers in freely accessing and improving them. Core research papers will be publicly published, model weights and training code released under open licenses, evaluation benchmarks made accessible to the global research community, and training platforms provided to academic institutions and independent researchers.</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">Explore the greatest common ground for physical intelligence safety</div>
+                            <p class="bullet-detail">We will actively participate in intergovernmental and international discussions on physical intelligence safety policies, providing an actionable evaluation framework through open standards.</p>
+                        </div>
+                        <div class="committee-bullet-item">
+                            <div class="bullet-title">Focus on consumer-market physical intelligence</div>
+                            <p class="bullet-detail">Our work prioritizes consumer-facing applications, ensuring technological innovations directly serve everyday life. The committee will not develop or recommend any commercial products, nor engage with non-consumer physical intelligence technologies. Special declaration: the committee's research does not encompass military or aerospace applications.</p>
+                        </div>
+                    </div>
+                    <button class="committee-expand-btn" >
+                        <span>展开全文</span>
+                        <svg class="expand-icon" viewBox="0 0 12 12" fill="none"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 我们的成员 -->
+            <h3 class="committee-members-heading" data-zh="我们的成员" data-en="Our Members">我们的成员</h3>
+            <p class="committee-members-intro" data-zh="Hitch Open科学技术委员会将独立于Hitch Open智脑竞速基金会运行，并定期召开委员会全体会议。委员会中专家的增加及减少将由委员会全体会议决定。委员会目前由以下专家组成：" data-en="The Hitch Open Scientific &amp; Technical Committee operates independently from the Intelligent Racing Foundation, holding regular plenary meetings. The addition or removal of committee experts is decided by the full committee. The committee currently comprises the following experts:">Hitch Open科学技术委员会将独立于Hitch Open智脑竞速基金会运行，并定期召开委员会全体会议。委员会中专家的增加及减少将由委员会全体会议决定。委员会目前由以下专家组成：</p>
+
+            <div class="committee-members">
+                <div class="committee-member-card">
+                    <div class="committee-avatar" style="background: linear-gradient(135deg, #1a5276, #2980b9);">AY</div>
+                    <div class="committee-member-info">
+                        <h4 class="committee-member-name">Allen Y. Yang</h4>
+                        <p class="committee-member-role" data-zh="加州大学伯克利分校（UC Berkeley）" data-en="University of California, Berkeley">加州大学伯克利分校（UC Berkeley）</p>
+                    </div>
+                </div>
+                <div class="committee-member-card">
+                    <div class="committee-avatar" style="background: linear-gradient(135deg, #922b21, #CD202B);">SL</div>
+                    <div class="committee-member-info">
+                        <h4 class="committee-member-name" data-zh="李升波" data-en="Shengbo Eben Li">李升波</h4>
+                        <p class="committee-member-role" data-zh="清华大学车辆与运载学院" data-en="School of Vehicle and Mobility, Tsinghua University">清华大学车辆与运载学院</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="committee-welcome" data-zh="我们欢迎更多志同道合的专家加入，共同塑造物理智能的未来。" data-en="We welcome more like-minded experts to join us in shaping the future of physical intelligence.">我们欢迎更多志同道合的专家加入，共同塑造物理智能的未来。</p>
         </div>
     </section>
 
