@@ -13,6 +13,81 @@
   },
   "items": [
     {
+      "date": "2026年3月17日",
+      "title": {
+        "zh": "挑战\"极速时刻\"，人类再也阻挡不了AI迈入F1赛车的\"终极考场\"",
+        "en": "Challenging the 'Ultimate Speed Moment': Nothing Can Stop AI from Entering F1 Racing's 'Ultimate Arena'"
+      },
+      "source": {
+        "zh": "人民日报",
+        "en": "People's Daily"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://www.peopleapp.com/column/30051647405-500007395014",
+      "image": "images/media/2026/news-03-17-1.jpg"
+    },
+    {
+      "date": "2026年3月16日",
+      "title": {
+        "zh": "探索物理智能边界 Hitch Open2026赛季于上海F1赛场启动",
+        "en": "Exploring the Boundaries of Physical Intelligence: Hitch Open 2026 Season Launches at Shanghai F1 Circuit"
+      },
+      "source": {
+        "zh": "新华社",
+        "en": "Xinhua"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://h.xinhuaxmt.com/vh512/share/13008926?docid=13008926&newstype=1001&d=13525dc",
+      "image": "images/media/2026/news-03-16-1.jpg"
+    },
+    {
+      "date": "2026年3月16日",
+      "title": {
+        "zh": "以AI竞速叩开物理智能新局 让天门山天路成为全球创新坐标——专访Hitch Open世界AI竞速锦标赛全球执行主席唐敏勤",
+        "en": "Opening a New Chapter in Physical Intelligence Through AI Racing: Making Tianmen Mountain's Road to Heaven a Global Innovation Landmark — Exclusive Interview with Hitch Open Global Executive Chairman Tang Minqin"
+      },
+      "source": {
+        "zh": "上海证券报",
+        "en": "Shanghai Securities News"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.cnstock.com/commonDetail/650865",
+      "image": "images/media/2026/news-03-16-2.jpg"
+    },
+    {
+      "date": "2026年3月16日",
+      "title": {
+        "zh": "当AI进入真实世界：Hitch Open在F1赛道开启物理智能时代",
+        "en": "When AI Enters the Real World: Hitch Open Ushers in the Age of Physical Intelligence on the F1 Circuit"
+      },
+      "source": {
+        "zh": "钛媒体",
+        "en": "TMTPost"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://www.tmtpost.com/7916266.html",
+      "image": "images/media/2026/news-03-16-3.jpg"
+    },
+    {
+      "date": "2026年3月15日",
+      "title": {
+        "zh": "本届F1上海站最受欢迎的展台之一！赛车模拟器与AI弹钢琴让车迷流连忘返",
+        "en": "One of the Most Popular Booths at This Year's F1 Shanghai Grand Prix! Racing Simulators and AI Piano Performance Captivate Fans"
+      },
+      "source": {
+        "zh": "咪咕视频",
+        "en": "Migu Video"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://m.miguvideo.com/m/vertical/963639468?pwId=bc822742107f44569d3261db7a30c55d",
+      "image": "images/media/2026/news-03-15-1.jpg"
+    },
+    {
       "date": "2025年10月31日",
       "title": {
         "zh": "独家对话天翼交通巨有诚：用AI构筑智能交通的'指挥系统'",
