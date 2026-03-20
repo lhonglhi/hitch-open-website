@@ -73,6 +73,21 @@
       "image": "images/media/2026/news-03-16-3.jpg"
     },
     {
+      "date": "2026年3月16日",
+      "title": {
+        "zh": "探索物理智能的边界：Hitch Open 2026 赛季于上海 F1 赛场正式启航",
+        "en": "Exploring the Boundaries of Physical Intelligence: Hitch Open 2026 Season Officially Sets Sail at Shanghai F1 Circuit"
+      },
+      "source": {
+        "zh": "极客公园",
+        "en": "GeekPark"
+      },
+      "isLarge": false,
+      "isHidden": true,
+      "url": "https://www.geekpark.net/news/361211",
+      "image": "images/media/2026/news-03-16-4.jpg"
+    },
+    {
       "date": "2026年3月15日",
       "title": {
         "zh": "本届F1上海站最受欢迎的展台之一！赛车模拟器与AI弹钢琴让车迷流连忘返",
