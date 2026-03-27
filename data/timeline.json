@@ -13,7 +13,7 @@
       "en": "Coming Soon"
     }
   },
-  "items": [
+  "items2025": [
     {
       "id": "oval",
       "date": {
@@ -70,25 +70,62 @@
       "track": "tianmen",
       "hasModal": true,
       "trackImage": "images/tracks/tianmen-track.png"
-    },
+    }
+  ],
+  "items2026": [
     {
-      "id": "simulation2026",
+      "id": "pingpong2026",
       "date": {
-        "zh": "R1｜2026年",
-        "en": "R1｜2026"
+        "zh": "2026全年",
+        "en": "Throughout 2026"
       },
       "title": {
-        "zh": "全新赛季: AI物理智能新征程",
-        "en": "New Season: AI Physical Intelligence New Journey"
+        "zh": "机器人自主决策打乒乓",
+        "en": "Robot Autonomous Table Tennis"
       },
       "description": {
-        "zh": "敬请期待更多赛事详情",
-        "en": "Stay tuned for more details"
+        "zh": "Hitch Open 将在2026全年举办一系列机器人完全自主决策打乒乓挑战",
+        "en": "Hitch Open will host a series of fully autonomous robot table tennis challenges throughout 2026"
       },
       "status": "upcoming",
-      "track": "simulation2026",
-      "hasModal": true,
-      "trackImage": "images/tracks/upcoming-track.png"
+      "track": null,
+      "hasModal": false
+    },
+    {
+      "id": "tianmen2026",
+      "date": {
+        "zh": "2026年6月25日 – 6月26日",
+        "en": "25 – 26 Jun 2026"
+      },
+      "title": {
+        "zh": "天门山季后赛",
+        "en": "Tianmen Mountain Playoff"
+      },
+      "description": {
+        "zh": "Hitch Open 在天门山举办积分赛",
+        "en": "Hitch Open hosts a points race at Tianmen Mountain"
+      },
+      "status": "upcoming",
+      "track": null,
+      "hasModal": false
+    },
+    {
+      "id": "shanghai2026",
+      "date": {
+        "zh": "2026年12月",
+        "en": "December 2026"
+      },
+      "title": {
+        "zh": "Hitch Open 2026决赛",
+        "en": "Hitch Open 2026 Finals"
+      },
+      "description": {
+        "zh": "Hitch Open 2026 决赛在上海举办",
+        "en": "Hitch Open 2026 Finals held in Shanghai"
+      },
+      "status": "upcoming",
+      "track": null,
+      "hasModal": false
     }
   ]
 }

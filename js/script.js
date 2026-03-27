@@ -56,7 +56,8 @@ async function loadData() {
             media: mediaData.items.length,
             teams: teamsData.items.length,
             leaderboard: leaderboardData.items.length,
-            timeline: timelineData.items.length,
+            timeline2025: (timelineData.items2025 || []).length,
+            timeline2026: (timelineData.items2026 || []).length,
             highlights: highlightsData.items.length
         });
 
@@ -306,28 +307,14 @@ function renderLeaderboard() {
 }
 
 // Render timeline
-function renderTimeline() {
+// Render timeline
+let activeTimelineYear = '2026';
+
+function renderTimelineItems(items) {
     const timelineItems = document.querySelector('.timeline-items');
-    const timelineTitle = document.getElementById('timelineTitle');
+    if (!timelineItems) return;
 
-    if (!timelineItems) {
-        console.error('timeline-items element not found');
-        return;
-    }
-
-    // Check if data exists and has items
-    if (!timelineData || !timelineData.items || timelineData.items.length === 0) {
-        timelineItems.innerHTML = '<div class="no-data">No Data</div>';
-        return;
-    }
-
-    // Update title
-    if (timelineTitle) {
-        timelineTitle.textContent = timelineData.title[currentLang];
-    }
-
-    // Render timeline items
-    timelineItems.innerHTML = timelineData.items.map(item => {
+    timelineItems.innerHTML = items.map(item => {
         const statusClass = item.status === 'completed' ? 'completed' : 'upcoming';
         const statusBadgeClass = item.status === 'completed' ? 'completed-badge' : 'upcoming-badge';
         const statusText = timelineData.statusLabels[item.status][currentLang];
@@ -347,8 +334,44 @@ function renderTimeline() {
             </div>
         `;
     }).join('');
+}
 
-    console.log(`✓ Rendered ${timelineData.items.length} timeline items in ${currentLang}`);
+function renderTimeline() {
+    const timelineTitle = document.getElementById('timelineTitle');
+
+    if (!timelineData) {
+        console.error('timelineData not loaded');
+        return;
+    }
+
+    // Update title
+    if (timelineTitle) {
+        timelineTitle.textContent = timelineData.title[currentLang];
+    }
+
+    // Update tab labels for language
+    document.querySelectorAll('.timeline-tab').forEach(tab => {
+        tab.textContent = tab.getAttribute(`data-${currentLang}`) || tab.textContent;
+    });
+
+    // Render items for active year
+    const items = activeTimelineYear === '2026'
+        ? (timelineData.items2026 || [])
+        : (timelineData.items2025 || []);
+    renderTimelineItems(items);
+
+    console.log(`✓ Rendered ${items.length} timeline items (${activeTimelineYear}) in ${currentLang}`);
+}
+
+function initTimelineTabs() {
+    document.querySelectorAll('.timeline-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.timeline-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            activeTimelineYear = tab.getAttribute('data-year');
+            renderTimeline();
+        });
+    });
 }
 
 // Toggle more news function
@@ -764,6 +787,7 @@ function switchLanguage(lang) {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    initTimelineTabs();
     console.log('=== DOM loaded, setting up event listeners ===');
 
     // Smooth scrolling for navigation links

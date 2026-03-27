@@ -13,6 +13,21 @@
   },
   "items": [
     {
+      "date": "2026年3月24日",
+      "title": {
+        "zh": "伯克利科学家艾伦·杨：物理AI的\"Aha moment\"，不在代码里，在失控的弧线里｜《WAIC UP!》嘉宾",
+        "en": "Berkeley Scientist Allen Yang: Physical AI's 'Aha Moment' Is Not in the Code, But in the Uncontrolled Arc | WAIC UP! Guest"
+      },
+      "source": {
+        "zh": "WAIC",
+        "en": "WAIC"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://mp.weixin.qq.com/s/45CcqxCloz8H-TqoDs4qQA",
+      "image": "images/media/2026/news-03-24-1.jpg"
+    },
+    {
       "date": "2026年3月17日",
       "title": {
         "zh": "挑战\"极速时刻\"，人类再也阻挡不了AI迈入F1赛车的\"终极考场\"",
@@ -22,7 +37,7 @@
         "zh": "人民日报",
         "en": "People's Daily"
       },
-      "isLarge": true,
+      "isLarge": false,
       "isHidden": false,
       "url": "https://www.peopleapp.com/column/30051647405-500007395014",
       "image": "images/media/2026/news-03-17-1.jpg"
