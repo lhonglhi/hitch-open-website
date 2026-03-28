@@ -964,8 +964,7 @@
         .timeline-tabs {
             display: flex;
             gap: 12px;
-            max-width: 1000px;
-            margin: 40px auto 0;
+            margin: 40px 0 0;
         }
 
         .timeline-tab {
@@ -993,147 +992,112 @@
         }
 
         .timeline-items {
-            max-width: 1000px;
-            margin: 24px auto 0;
+            margin: 30px 0 0;
         }
 
         .timeline-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            padding: 30px;
-            padding-left: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            position: relative;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-            min-height: 180px;
-            align-items: center;
+            margin-bottom: 20px;
         }
 
-        .timeline-item::before {
+        .timeline-card {
+            position: relative;
+            height: 280px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background-color: #0a0a0a;
+            background-size: cover;
+            background-position: center;
+            background-clip: padding-box;
+            transition: border-color 0.25s;
+            overflow: hidden;
+        }
+
+        .timeline-card::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 8px;
-            background: #CD202B;
-            transition: all 0.3s;
+            inset: 0;
+            background: linear-gradient(to right, #0a0a0a 35%, rgba(10,10,10,0.75) 60%, rgba(10,10,10,0.2) 100%);
+            z-index: 1;
         }
 
-        .timeline-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(5px);
+        .timeline-card:hover {
+            border-color: rgba(205,32,43,0.35);
         }
 
-        .timeline-item:hover::before {
-            width: 12px;
+        .timeline-card.card-upcoming {
+            border: 1px dashed rgba(205,32,43,0.4);
         }
 
-        .timeline-item.completed::before {
-            background: #018F57;
+        .sched-left {
+            position: relative;
+            z-index: 2;
+            padding: 32px 40px;
+            width: 55%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
         }
 
-        .timeline-item.upcoming::before {
-            background: #CD202B;
+        .sched-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
         }
 
-        .timeline-date {
-            font-size: 16px;
+        .sched-badge {
+            font-size: 11px;
             font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
             color: #CD202B;
-            width: 200px;
-            min-width: 200px;
-            max-width: 200px;
-            word-wrap: break-word;
-            line-height: 1.5;
+            background: rgba(205,32,43,0.12);
+            padding: 4px 12px;
         }
 
-        .timeline-item.completed .timeline-date {
-            color: #4CAF50;
-        }
-
-        .timeline-content {
-            flex: 1;
-        }
-
-        .timeline-content h4 {
-            font-size: 22px;
-            margin-bottom: 10px;
+        .sched-status {
+            font-size: 11px;
             font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
         }
 
-        .timeline-content p {
-            color: #888888;
-            font-size: 15px;
-        }
+        .sched-status.status-done { color: #018F57; }
+        .sched-status.status-upcoming { color: #CD202B; }
 
-        .timeline-status {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 35px;
-            padding: 6px 16px;
-            border-radius: 20px;
+        .sched-date {
             font-size: 13px;
             font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
         }
 
-        .completed-badge {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
+        .sched-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
         }
 
-        .upcoming-badge {
-            background: rgba(205, 32, 43, 0.2);
-            color: #CD202B;
-            border: 1px solid #CD202B;
+        .sched-desc {
+            font-size: 15px;
+            color: #888888;
+            line-height: 1.7;
         }
 
-        .track-preview {
-            display: none;
-        }
+        .track-preview { display: none; }
 
         @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: column;
-                padding: 20px;
-                padding-left: 30px;
-                min-height: 220px;
-                align-items: flex-start;
+            .timeline-card {
+                height: auto;
+                min-height: 200px;
             }
-
-            .timeline-item::before {
-                width: 6px;
-            }
-
-            .timeline-item:hover::before {
-                width: 10px;
-            }
-
-            .timeline-date {
+            .sched-left {
                 width: 100%;
-                max-width: 100%;
-                min-width: auto;
-                margin-bottom: 15px;
-            }
-
-            .timeline-status {
-                position: relative;
-                top: auto;
-                right: auto;
-                transform: none;
-                margin-top: 15px;
-                display: inline-block;
-            }
-
-            .track-preview {
-                max-width: 100%;
+                padding: 24px;
             }
         }
 

@@ -16,18 +16,11 @@
   "items2025": [
     {
       "id": "oval",
-      "date": {
-        "zh": "R1｜2025年6月30日",
-        "en": "R1｜30 Jun 2025"
-      },
-      "title": {
-        "zh": "仿真椭圆赛道",
-        "en": "Virtual Oval Track"
-      },
-      "description": {
-        "zh": "第一站：基础赛道测试与算法验证",
-        "en": "Round 1: Basic Track Testing & Algorithm Validation"
-      },
+      "badge": { "zh": "R1", "en": "R1" },
+      "dotState": "done",
+      "date": { "zh": "2025年6月30日", "en": "30 Jun 2025" },
+      "title": { "zh": "仿真椭圆赛道", "en": "Virtual Oval Track" },
+      "description": { "zh": "第一站：基础赛道测试与算法验证", "en": "Round 1: Basic Track Testing & Algorithm Validation" },
       "status": "completed",
       "track": "oval",
       "hasModal": true,
@@ -35,18 +28,11 @@
     },
     {
       "id": "formula",
-      "date": {
-        "zh": "R2｜2025年8月19日",
-        "en": "R2｜19 Aug 2025"
-      },
-      "title": {
-        "zh": "仿真复赛方程式赛道",
-        "en": "Virtual Formula Track"
-      },
-      "description": {
-        "zh": "第二站：复杂赛道高速挑战",
-        "en": "Round 2: Complex High-Speed Challenge"
-      },
+      "badge": { "zh": "R2", "en": "R2" },
+      "dotState": "done",
+      "date": { "zh": "2025年8月19日", "en": "19 Aug 2025" },
+      "title": { "zh": "仿真复赛方程式赛道", "en": "Virtual Formula Track" },
+      "description": { "zh": "第二站：复杂赛道高速挑战", "en": "Round 2: Complex High-Speed Challenge" },
       "status": "completed",
       "track": "formula",
       "hasModal": true,
@@ -54,18 +40,11 @@
     },
     {
       "id": "tianmen",
-      "date": {
-        "zh": "R3｜2025年9月25日<br>至10月18日",
-        "en": "R3｜25 Sep –<br>18 Oct 2025"
-      },
-      "title": {
-        "zh": "天门山决赛",
-        "en": "Tianmen Mountain Finals"
-      },
-      "description": {
-        "zh": "终极对决：99道弯极限挑战",
-        "en": "Ultimate Challenge: 99 Hairpin Turns"
-      },
+      "badge": { "zh": "R3 · 总决赛", "en": "R3 · Final" },
+      "dotState": "done",
+      "date": { "zh": "2025年9月25日 — 10月18日", "en": "25 Sep — 18 Oct 2025" },
+      "title": { "zh": "天门山决赛", "en": "Tianmen Mountain Finals" },
+      "description": { "zh": "终极对决：99道弯极限挑战。张家界天门山，海拔200m→1300m，全长10.77公里，99个极端180°发卡弯。无GPS、低能见度、湿滑赛面——AI在最极端的自然环境中独立完成\"感知—决策—行动\"全闭环。", "en": "Ultimate Challenge: 99 Hairpin Turns. Tianmen Mountain, 200m→1300m elevation, 10.77km, 99 extreme 180° hairpins. No GPS, low visibility, wet surface — AI completes the full perception–decision–action loop in the most extreme natural environment." },
       "status": "completed",
       "track": "tianmen",
       "hasModal": true,
@@ -75,57 +54,39 @@
   "items2026": [
     {
       "id": "pingpong2026",
-      "date": {
-        "zh": "2026全年",
-        "en": "Throughout 2026"
-      },
-      "title": {
-        "zh": "机器人自主决策打乒乓",
-        "en": "Robot Autonomous Table Tennis"
-      },
-      "description": {
-        "zh": "Hitch Open 将在2026全年举办一系列机器人完全自主决策打乒乓挑战",
-        "en": "Hitch Open will host a series of fully autonomous robot table tennis challenges throughout 2026"
-      },
+      "badge": { "zh": "全年挑战", "en": "Year-Round" },
+      "dotState": "upcoming",
+      "date": { "zh": "2026全年", "en": "Throughout 2026" },
+      "title": { "zh": "机器人自主决策打乒乓", "en": "Robot Autonomous Table Tennis" },
+      "description": { "zh": "Hitch Open 将在2026全年举办一系列机器人完全自主决策打乒乓挑战", "en": "Hitch Open will host a series of fully autonomous robot table tennis challenges throughout 2026" },
       "status": "upcoming",
-      "track": null,
-      "hasModal": false
+      "track": "pingpong2026",
+      "hasModal": true,
+      "trackImage": "images/tracks/pingpong-track.png"
     },
     {
       "id": "tianmen2026",
-      "date": {
-        "zh": "2026年6月25日 – 6月26日",
-        "en": "25 – 26 Jun 2026"
-      },
-      "title": {
-        "zh": "天门山季后赛",
-        "en": "Tianmen Mountain Playoff"
-      },
-      "description": {
-        "zh": "Hitch Open 在天门山举办积分赛",
-        "en": "Hitch Open hosts a points race at Tianmen Mountain"
-      },
+      "badge": { "zh": "季后赛", "en": "Playoff" },
+      "dotState": "upcoming",
+      "date": { "zh": "2026年6月25日 – 6月26日", "en": "25 – 26 Jun 2026" },
+      "title": { "zh": "天门山季后赛", "en": "Tianmen Mountain Playoff" },
+      "description": { "zh": "Hitch Open 在天门山举办积分赛", "en": "Hitch Open hosts a points race at Tianmen Mountain" },
       "status": "upcoming",
-      "track": null,
-      "hasModal": false
+      "track": "tianmen2026",
+      "hasModal": true,
+      "trackImage": "images/tracks/tianmen2026-track.png"
     },
     {
       "id": "shanghai2026",
-      "date": {
-        "zh": "2026年12月",
-        "en": "December 2026"
-      },
-      "title": {
-        "zh": "Hitch Open 2026决赛",
-        "en": "Hitch Open 2026 Finals"
-      },
-      "description": {
-        "zh": "Hitch Open 2026 决赛在上海举办",
-        "en": "Hitch Open 2026 Finals held in Shanghai"
-      },
+      "badge": { "zh": "总决赛", "en": "Finals" },
+      "dotState": "upcoming",
+      "date": { "zh": "2026年12月", "en": "December 2026" },
+      "title": { "zh": "Hitch Open 2026决赛", "en": "Hitch Open 2026 Finals" },
+      "description": { "zh": "Hitch Open 2026 决赛在上海举办", "en": "Hitch Open 2026 Finals held in Shanghai" },
       "status": "upcoming",
-      "track": null,
-      "hasModal": false
+      "track": "shanghai2026",
+      "hasModal": true,
+      "trackImage": "images/tracks/shanghai-track.png"
     }
   ]
 }

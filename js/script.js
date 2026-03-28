@@ -24,9 +24,17 @@ const trackTitles = {
         zh: '天门山决赛赛道',
         en: 'Tianmen Mountain Final Track'
     },
-    'simulation2026': {
-        zh: '全新赛季: AI物理智能新征程',
-        en: 'New Season: AI Physical Intelligence New Journey'
+    'pingpong2026': {
+        zh: '机器人自主决策打乒乓',
+        en: 'Robot Autonomous Table Tennis'
+    },
+    'tianmen2026': {
+        zh: '天门山季后赛',
+        en: 'Tianmen Mountain Playoff'
+    },
+    'shanghai2026': {
+        zh: 'Hitch Open 2026决赛',
+        en: 'Hitch Open 2026 Finals'
     }
 };
 
@@ -314,23 +322,32 @@ function renderTimelineItems(items) {
     const timelineItems = document.querySelector('.timeline-items');
     if (!timelineItems) return;
 
-    timelineItems.innerHTML = items.map(item => {
-        const statusClass = item.status === 'completed' ? 'completed' : 'upcoming';
-        const statusBadgeClass = item.status === 'completed' ? 'completed-badge' : 'upcoming-badge';
+    timelineItems.innerHTML = items.map((item) => {
+        const cardClass = item.dotState === 'active' ? 'card-active'
+                        : item.status === 'upcoming' ? 'card-upcoming' : '';
+        const titleClass = item.dotState === 'active' ? 'title-active'
+                         : item.status === 'upcoming' ? 'title-upcoming' : '';
         const statusText = timelineData.statusLabels[item.status][currentLang];
-
-        const clickHandler = item.hasModal ? `onclick="openTrackModal('${item.track}')"` : '';
+        const statusClass = item.status === 'completed' ? 'status-done' : 'status-upcoming';
+        const statusIcon = item.status === 'completed' ? '✓ ' : '● ';
+        const badge = item.badge ? item.badge[currentLang] : '';
+        const clickHandler = item.hasModal ? `onclick="openTrackModal('${item.track}')" style="cursor:pointer"` : '';
         const trackAttr = item.track ? `data-track="${item.track}"` : '';
 
         return `
-            <div class="timeline-item ${statusClass}" ${clickHandler} ${trackAttr}>
-                <div class="timeline-date">${item.date[currentLang]}</div>
-                <div class="timeline-content">
-                    <h4>${item.title[currentLang]}</h4>
-                    <p>${item.description[currentLang]}</p>
+            <div class="timeline-item">
+                <div class="timeline-card ${cardClass}" style="background-image: url('${item.trackImage}')" ${clickHandler} ${trackAttr}>
+                    <div class="sched-left">
+                        <div class="sched-header">
+                            ${badge ? `<span class="sched-badge">${badge}</span>` : ''}
+                            <span class="sched-status ${statusClass}">${statusIcon}${statusText}</span>
+                        </div>
+                        <div class="sched-date">${item.date[currentLang]}</div>
+                        <div class="sched-name">${item.title[currentLang]}</div>
+                        <div class="sched-desc">${item.description[currentLang]}</div>
+                        ${item.hasModal ? `<div class="track-preview"><img src="${item.trackImage}" alt="赛道图"></div>` : ''}
+                    </div>
                 </div>
-                <div class="timeline-status ${statusBadgeClass}">${statusText}</div>
-                ${item.hasModal ? `<div class="track-preview"><img src="${item.trackImage}" alt="赛道图"></div>` : ''}
             </div>
         `;
     }).join('');
