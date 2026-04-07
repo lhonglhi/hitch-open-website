@@ -13,6 +13,36 @@
   },
   "items": [
     {
+      "date": "2026年4月6日",
+      "title": {
+        "zh": "Hitch Open 创始人唐敏勤（Crystal）亮相《夺金中国》，讲述AI从创新走向真实世界落地",
+        "en": "Hitch Open Founder Tang Minqin (Crystal) Appears on 'Gold Rush China', Sharing How AI Moves from Innovation to Real-World Applications"
+      },
+      "source": {
+        "zh": "湖南卫视",
+        "en": "Hunan TV"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.mgtv.com/b/829335/24288973.html?lastp=v_progdtl",
+      "image": "images/media/2026/news-04-06-1.jpg"
+    },
+    {
+      "date": "2026年4月1日",
+      "title": {
+        "zh": "Hitch Open 世界AI竞速锦标赛 2025 赛季官方纪录片《无人之境》，已于咪咕视频平台正式上线，并完成全网首发",
+        "en": "Hitch Open World AI Racing Championship 2025 Season Official Documentary 'No Man's Land' Officially Launches on Migu Video with Exclusive Global Premiere"
+      },
+      "source": {
+        "zh": "咪咕视频",
+        "en": "Migu Video"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.miguvideo.com/p/detail/963823696?lastLocation=aaff5d9d3fae483580bd972c30af2d82&sid=ge3uXEs4ETbFYo64ifQQe6PODEiRH1zx",
+      "image": "images/media/2026/news-04-01-1.jpg"
+    },
+    {
       "date": "2026年3月24日",
       "title": {
         "zh": "伯克利科学家艾伦·杨：物理AI的\"Aha moment\"，不在代码里，在失控的弧线里｜《WAIC UP!》嘉宾",
