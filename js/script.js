@@ -1,3 +1,14 @@
+// Convert Chinese date format (e.g. "2026年4月15日") to English (e.g. "April 15, 2026")
+function formatDate(dateStr, lang) {
+    if (lang !== 'en') return dateStr;
+    const months = ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'];
+    const match = dateStr.match(/(\d+)年(\d+)月(\d+)日/);
+    if (!match) return dateStr;
+    const [, year, month, day] = match;
+    return `${months[parseInt(month, 10) - 1]} ${parseInt(day, 10)}, ${year}`;
+}
+
 // Data storage
 let mediaData = null;
 let teamsData = null;
@@ -44,13 +55,15 @@ async function loadData() {
         console.log('Loading data from JSON files...');
 
         // Load all JSON files
+        const v = '20260410';
+        const fetchOpts = { cache: 'no-cache' };
         const [media, teams, leaderboard, timeline, highlights, translations] = await Promise.all([
-            fetch('data/media.json').then(r => r.json()),
-            fetch('data/teams.json').then(r => r.json()),
-            fetch('data/leaderboard.json').then(r => r.json()),
-            fetch('data/timeline.json').then(r => r.json()),
-            fetch('data/highlights.json').then(r => r.json()),
-            fetch('data/translations.json').then(r => r.json())
+            fetch(`data/media.json?v=${v}`, fetchOpts).then(r => r.json()),
+            fetch(`data/teams.json?v=${v}`, fetchOpts).then(r => r.json()),
+            fetch(`data/leaderboard.json?v=${v}`, fetchOpts).then(r => r.json()),
+            fetch(`data/timeline.json?v=${v}`, fetchOpts).then(r => r.json()),
+            fetch(`data/highlights.json?v=${v}`, fetchOpts).then(r => r.json()),
+            fetch(`data/translations.json?v=${v}`, fetchOpts).then(r => r.json())
         ]);
 
         mediaData = media;
@@ -129,7 +142,7 @@ function renderMedia() {
             <div class="${cardClass} ${clickable}" ${clickHandler} style="${cursorStyle}">
                 <div class="media-image" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('${imagePath}'); background-size: cover; background-position: center;"></div>
                 <div class="media-content">
-                    <div class="media-date">${item.date}</div>
+                    <div class="media-date">${formatDate(item.date, currentLang)}</div>
                     <h3 class="media-title">${title}</h3>
                     <div class="media-source">${source}</div>
                 </div>
@@ -830,16 +843,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.remove('section-hidden');
+                entry.target.classList.add('section-visible');
             }
         });
     }, observerOptions);
 
     document.querySelectorAll('.section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        section.classList.add('section-hidden');
         observer.observe(section);
     });
 

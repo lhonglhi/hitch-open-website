@@ -13,6 +13,21 @@
   },
   "items": [
     {
+      "date": "2026年4月15日",
+      "title": {
+        "zh": "Hitch Open在中美\"乒乓外交\"55周年活动上发布Hitch Open Ping-Pong Embodied (HOPE) AI Challenge乒乓球挑战赛",
+        "en": "Hitch Open Launches the Hitch Open Ping-Pong Embodied (HOPE) AI Challenge at the 55th Anniversary of China-US 'Ping-Pong Diplomacy' Event"
+      },
+      "source": {
+        "zh": "学习强国",
+        "en": "Xuexi Qiangguo"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://article.xuexi.cn/articles/index.html?art_id=3427692381415509828&t=1776238899543&showmenu=false&study_style_id=feeds_opaque&source=share&share_to=wx_single&item_id=3427692381415509828&ref_read_id=27ef57c0-3381-410b-826e-4e156cd7fadd_1776240649197",
+      "image": "images/media/2026/news-04-15-1.jpg"
+    },
+    {
       "date": "2026年4月6日",
       "title": {
         "zh": "Hitch Open 创始人唐敏勤（Crystal）亮相《夺金中国》，讲述AI从创新走向真实世界落地",
