@@ -313,6 +313,7 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             padding: 20px 30px;
+            -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             background: rgba(0, 0, 0, 0.3);
             min-width: 160px;
@@ -2135,6 +2136,7 @@
 
         /* Smooth Scroll */
         html {
+            -webkit-scroll-behavior: smooth;
             scroll-behavior: smooth;
         }
 
@@ -2429,4 +2431,16 @@
                 font-size: 14px;
                 padding: 0 10px;
             }
+        }
+
+        /* Section scroll fade-in (Safari-safe: use class instead of inline style) */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
         }

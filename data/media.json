@@ -13,6 +13,21 @@
   },
   "items": [
     {
+      "date": "2026年4月19日",
+      "title": {
+        "zh": "智元携手Hitch Open，拥抱全球顶尖学术资源",
+        "en": "ZHIYUAN Partners with Hitch Open, Embracing World-Class Academic Resources"
+      },
+      "source": {
+        "zh": "人民日报",
+        "en": "People's Daily"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://www.peopleapp.com/column/30051936957-500007450332",
+      "image": "images/media/2026/news-04-19-1.jpg"
+    },
+    {
       "date": "2026年4月15日",
       "title": {
         "zh": "Hitch Open在中美\"乒乓外交\"55周年活动上发布Hitch Open Ping-Pong Embodied (HOPE) AI Challenge乒乓球挑战赛",
