@@ -17,9 +17,34 @@ let timelineData = null;
 let highlightsData = null;
 let translationsData = null;
 
-// Current language
-let currentLang = 'zh';
+// Current language — default English; flipped to 'zh' only if visitor is confirmed in China
+let currentLang = 'en';
 let isShowingAll = false;
+
+// Detect initial language: respect saved choice, else geo-detect (CN → zh, anything else → en)
+async function detectInitialLanguage() {
+    const saved = localStorage.getItem('userLang');
+    if (saved === 'zh' || saved === 'en') return saved;
+    try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 1500);
+        const res = await fetch('https://api.country.is/', { signal: controller.signal });
+        clearTimeout(timer);
+        const data = await res.json();
+        if (data && data.country === 'CN') return 'zh';
+    } catch (e) {
+        console.log('Geo detection failed, defaulting to English:', e.message);
+    }
+    return 'en';
+}
+
+function applyLanguageUI(lang) {
+    document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick') || '';
+        btn.classList.toggle('active', onclickAttr.includes(`'${lang}'`));
+    });
+}
 
 // Track modal titles
 const trackTitles = {
@@ -795,12 +820,8 @@ function toggleAllCommitteeCards() {
 // Language switching
 function switchLanguage(lang) {
     currentLang = lang;
-
-    // Update active button
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
+    localStorage.setItem('userLang', lang);
+    applyLanguageUI(lang);
 
     // Update static content
     updateStaticContent(lang);
@@ -867,6 +888,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load data when window loads
 window.addEventListener('load', async function() {
     console.log('=== Page fully loaded, initializing ===');
+
+    // Decide language before rendering (geo-IP, with localStorage override)
+    currentLang = await detectInitialLanguage();
+    applyLanguageUI(currentLang);
+    console.log(`✓ Initial language: ${currentLang}`);
 
     // Load data from JSON files
     await loadData();
