@@ -644,8 +644,8 @@
             background: #1a1a1a;
             border-radius: 20px;
             max-width: 90%;
-            max-height: 90%;
-            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
             animation: slideUp 0.3s ease;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
         }
@@ -702,6 +702,8 @@
             width: 100%;
             height: auto;
             max-width: 1200px;
+            max-height: calc(90vh - 200px);
+            object-fit: contain;
             border-radius: 10px;
             display: block;
             margin: 0 auto;
@@ -2138,6 +2140,8 @@
         html {
             -webkit-scroll-behavior: smooth;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            max-width: 100%;
         }
 
         /* Animations */

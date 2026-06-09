@@ -61,12 +61,12 @@ const trackTitles = {
         en: 'Tianmen Mountain Final Track'
     },
     'pingpong2026': {
-        zh: '机器人自主决策打乒乓',
-        en: 'Robot Autonomous Table Tennis'
+        zh: 'HOPE AI Challenge',
+        en: 'HOPE AI Challenge'
     },
     'tianmen2026': {
-        zh: '天门山季后赛',
-        en: 'Tianmen Mountain Playoff'
+        zh: '天门山正赛',
+        en: 'Tianmen Mountain Main Race'
     },
     'shanghai2026': {
         zh: 'Hitch Open 2026决赛',
@@ -80,7 +80,7 @@ async function loadData() {
         console.log('Loading data from JSON files...');
 
         // Load all JSON files
-        const v = '20260410';
+        const v = '20260609';
         const fetchOpts = { cache: 'no-cache' };
         const [media, teams, leaderboard, timeline, highlights, translations] = await Promise.all([
             fetch(`data/media.json?v=${v}`, fetchOpts).then(r => r.json()),

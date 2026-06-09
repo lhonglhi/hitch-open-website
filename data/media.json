@@ -13,6 +13,21 @@
   },
   "items": [
     {
+      "date": "2026年5月21日",
+      "title": {
+        "zh": "Whale Dynamic 加入 Hitch Open 世界 AI 竞速锦标赛，成为官方测绘技术合作伙伴，为 2026 赛季提供天门山厘米级高清地图",
+        "en": "Whale Dynamic Joins Hitch Open World AI Championships as Official Mapping Technology Partner, Delivering Centimeter-Accurate HD Map of Tianmen Mountain for 2026 Racing Season"
+      },
+      "source": {
+        "zh": "雅虎财经",
+        "en": "Yahoo Finance"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://finance.yahoo.com/sectors/technology/articles/whale-dynamic-joins-hitch-open-210600723.html?guccounter=1",
+      "image": "images/media/2026/news-05-21-1.jpg"
+    },
+    {
       "date": "2026年4月19日",
       "title": {
         "zh": "智元携手Hitch Open，拥抱全球顶尖学术资源",
