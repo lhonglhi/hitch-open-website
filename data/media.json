@@ -13,6 +13,51 @@
   },
   "items": [
     {
+      "date": "2026年6月14日",
+      "title": {
+        "zh": "HOPE乒乓挑战赛入选第二届世界人形机器人运动会正赛 2026年8月冰丝带亮相",
+        "en": "Hitch Open Ping-Pong Embodied AI Challenge (HOPE AI Challenge) Selected as Official Event of the 2nd World Humanoid Robot Games, Debuting at Beijing's Ice Ribbon in August 2026"
+      },
+      "source": {
+        "zh": "新华社",
+        "en": "Xinhua"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://h.xinhuaxmt.com/vh512/share/13150047?docid=13150047&newstype=1001&d=1352706&channel=weixin&time=1781432656282",
+      "image": "images/media/2026/news-06-14-1.jpg"
+    },
+    {
+      "date": "2026年6月13日",
+      "title": {
+        "zh": "智脑竞速基金会发起 HOPE AI自主决策乒乓挑战赛入选世界人形机器人运动会正赛",
+        "en": "Initiated by the Intelligent Racing Foundation, the Hitch Open Ping-Pong Embodied AI Challenge (HOPE AI Challenge) Has Been Selected as an Official Event of the World Humanoid Robot Games"
+      },
+      "source": {
+        "zh": "上海证券报",
+        "en": "Shanghai Securities News"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.cnstock.com/commonDetail/729218?from=QRCODE",
+      "image": "images/media/2026/news-06-13-1.jpg"
+    },
+    {
+      "date": "2026年6月12日",
+      "title": {
+        "zh": "新增乒乓球等赛项 第二届世界人形机器人运动会50个赛项全部确定",
+        "en": "Table Tennis and Other Events Added: All 50 Events of the 2nd World Humanoid Robot Games Confirmed"
+      },
+      "source": {
+        "zh": "央视新闻",
+        "en": "CCTV News"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=5445271388779725289&toc_style_id=feeds_default&share_to=wechat&track_id=d00e52ea-f57e-45b3-9a45-067af4a073e1",
+      "image": "images/media/2026/news-06-12-1.jpg"
+    },
+    {
       "date": "2026年5月21日",
       "title": {
         "zh": "Whale Dynamic 加入 Hitch Open 世界 AI 竞速锦标赛，成为官方测绘技术合作伙伴，为 2026 赛季提供天门山厘米级高清地图",
@@ -46,7 +91,7 @@
       "date": "2026年4月15日",
       "title": {
         "zh": "Hitch Open在中美\"乒乓外交\"55周年活动上发布Hitch Open Ping-Pong Embodied (HOPE) AI Challenge乒乓球挑战赛",
-        "en": "Hitch Open Launches the Hitch Open Ping-Pong Embodied (HOPE) AI Challenge at the 55th Anniversary of China-US 'Ping-Pong Diplomacy' Event"
+        "en": "Hitch Open Launches the Hitch Open Ping-Pong Embodied AI Challenge (HOPE AI Challenge) at the 55th Anniversary of China-US 'Ping-Pong Diplomacy' Event"
       },
       "source": {
         "zh": "学习强国",
