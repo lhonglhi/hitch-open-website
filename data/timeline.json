@@ -78,6 +78,7 @@
     },
     {
       "id": "shanghai2026",
+      "isHidden": true,
       "badge": { "zh": "总决赛", "en": "Finals" },
       "dotState": "upcoming",
       "date": { "zh": "2026年12月", "en": "December 2026" },
