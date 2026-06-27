@@ -648,6 +648,30 @@
             overflow-y: auto;
             animation: slideUp 0.3s ease;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+        }
+
+        .track-modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .track-modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .track-modal-content::-webkit-scrollbar-thumb {
+            background: transparent;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+
+        .track-modal-content:hover::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .track-modal-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.35);
         }
 
         @keyframes slideUp {
@@ -707,6 +731,135 @@
             border-radius: 10px;
             display: block;
             margin: 0 auto;
+        }
+
+        .track-modal-desc {
+            color: #d0d0d0;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-top: 30px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .track-modal-desc:empty {
+            display: none;
+        }
+
+        .track-modal-desc h4 {
+            color: #ffffff;
+            font-size: 18px;
+            margin: 24px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .track-modal-desc h4:first-child {
+            margin-top: 0;
+        }
+
+        .track-modal-desc p {
+            margin: 0 0 12px;
+        }
+
+        .track-modal-hero {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto 32px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .track-modal-hero img {
+            margin: 0 auto !important;
+            border-radius: 0 !important;
+            display: block;
+        }
+
+        .track-modal-intro-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 80px 32px 26px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 35%, rgba(0, 0, 0, 0.88) 100%);
+            color: #ffffff;
+            font-size: 15px;
+            line-height: 1.7;
+            pointer-events: none;
+        }
+
+        .track-modal-intro-overlay:empty {
+            display: none;
+        }
+
+        .track-modal-intro-overlay p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .track-modal-intro-overlay {
+                padding: 50px 18px 18px;
+                font-size: 13px;
+                line-height: 1.6;
+            }
+        }
+
+        .track-events {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .track-event-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .track-event-date {
+            color: #9aa0a6;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 0 6px 14px;
+            border-left: 4px solid #CD202B;
+            margin-bottom: 12px;
+        }
+
+        .track-event-title {
+            color: #CD202B;
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 16px;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .track-event-body {
+            color: #c8c8c8;
+            font-size: 14px;
+            line-height: 1.75;
+            margin: 0 0 14px;
+        }
+
+        .track-event-body strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .track-event-body:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .track-events {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .track-event-title {
+                font-size: 18px;
+            }
         }
 
         @media (max-width: 768px) {

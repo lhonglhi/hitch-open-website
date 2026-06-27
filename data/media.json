@@ -13,6 +13,21 @@
   },
   "items": [
     {
+      "date": "2026年6月15日",
+      "title": {
+        "zh": "HOPE AI 挑战赛加入 2026 世界人形机器人运动会，乒乓球成为物理 AI 终极考场",
+        "en": "HOPE AI Challenge Joins World Humanoid Robot Games 2026, Elevating Ping-Pong as the Ultimate Physical AI Test"
+      },
+      "source": {
+        "zh": "Robotics Business News",
+        "en": "Robotics Business News"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://roboticsbusinessnews.com/news/43/3103/hope-ai-challenge-joins-world-humanoid-robot-games-2026-elevating-ping-pong-as-the-ultimate-physical-ai-test.html",
+      "image": "images/media/2026/news-06-15-1.jpg"
+    },
+    {
       "date": "2026年6月14日",
       "title": {
         "zh": "HOPE乒乓挑战赛入选第二届世界人形机器人运动会正赛 2026年8月冰丝带亮相",

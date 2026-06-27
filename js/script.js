@@ -74,6 +74,50 @@ const trackTitles = {
     }
 };
 
+// Track detailed descriptions (HTML allowed)
+const trackDetails = {
+    'pingpong2026': {
+        zh: {
+            intro: `HOPE AI Challenge 是 Hitch Open 2026 赛季全新旗舰赛项，全球首个 AI 自主决策机器人乒乓球赛事。机器人全程无人工干预，依托视觉实时感知、轨迹预测、战术选择与击球规划，与人类高水平选手高速连续对抗。两大核心节点贯穿 2026 赛季——7 月 WAIC 全球首发，8 月世界人形机器人运动会世界级实战验证。`,
+            body: `
+            <div class="track-events">
+                <div class="track-event-card">
+                    <div class="track-event-date">2026.7</div>
+                    <h4 class="track-event-title">WAIC 世界人工智能大会</h4>
+                    <p class="track-event-body">WAIC 是全球人工智能领域最具影响力的国家级顶级盛会之一，由国家部委、中科院、中国科协及上海市人民政府共同主办，是中国面向全球展示 AI 前沿趋势、产业方向与国际合作的重要窗口。</p>
+                    <p class="track-event-body">Hitch Open 将在 2026 WAIC 期间呈现 AI 自主决策机器人乒乓表演赛，以高观赏性、高互动性和高技术密度的机器人竞技场景，展示物理智能在真实运动对抗中的感知、决策与执行能力。</p>
+                </div>
+                <div class="track-event-card">
+                    <div class="track-event-date">2026.8.22-26</div>
+                    <h4 class="track-event-title">世界人形机器人运动会</h4>
+                    <p class="track-event-body">世界人形机器人运动会是全球最具话题性和前瞻性的机器人竞技舞台之一，依托国家级平台、央级媒体传播势能和北京"冰丝带"这一世界级地标，具备极强的科技传播力、公众关注度和国际影响力。</p>
+                    <p class="track-event-body">Hitch Open 将在这一顶级舞台上承办 AI 自主决策机器人乒乓官方比赛项目，以高观赏性、高技术密度和高实战价值的机器人竞技形式，集中呈现人形机器人在感知、决策、控制、协调与实时反应能力上的综合水平，帮助品牌占位具身智能与人形机器人未来赛道。</p>
+                </div>
+            </div>
+        `
+        },
+        en: {
+            intro: `HOPE AI Challenge is the flagship new event of the Hitch Open 2026 season — the world's first AI autonomous decision-making robot table-tennis competition. Robots run end-to-end with no human intervention: real-time vision, trajectory prediction, tactical choice and swing planning enable sustained high-speed rallies against elite human players. Two anchor moments shape the 2026 season — global launch at WAIC in July, and world-class field validation at the World Humanoid Robot Games in August.`,
+            body: `
+            <div class="track-events">
+                <div class="track-event-card">
+                    <div class="track-event-date">2026.7</div>
+                    <h4 class="track-event-title">WAIC · World AI Conference</h4>
+                    <p class="track-event-body">WAIC is one of the most influential national-level AI summits worldwide, co-organized by central ministries, the Chinese Academy of Sciences, the China Association for Science and Technology and the Shanghai Municipal Government. It is China's principal window for presenting AI frontier trends, industry direction and international collaboration to the world.</p>
+                    <p class="track-event-body">At WAIC 2026, Hitch Open will present an AI autonomous decision-making robot table-tennis exhibition — a highly watchable, highly interactive, highly technical competition scene that showcases physical AI's perception, decision-making and execution in real, full-speed sports.</p>
+                </div>
+                <div class="track-event-card">
+                    <div class="track-event-date">2026.8.22-26</div>
+                    <h4 class="track-event-title">World Humanoid Robot Games</h4>
+                    <p class="track-event-body">The World Humanoid Robot Games is among the most talked-about and forward-looking robot competition stages globally. Backed by a national-level platform, top-tier state media reach and Beijing's world-class "Ice Ribbon" landmark, it commands exceptional tech-communication power, public attention and international influence.</p>
+                    <p class="track-event-body">Hitch Open will host the official AI autonomous decision-making robot table-tennis competition on this premier stage. A highly watchable, technically dense and combat-ready format showcases humanoid robots' integrated abilities in perception, decision-making, control, coordination and real-time reaction — anchoring the brand in the future track of embodied AI and humanoid robotics.</p>
+                </div>
+            </div>
+        `
+        }
+    }
+};
+
 // Load JSON data
 async function loadData() {
     try {
@@ -409,10 +453,11 @@ function renderTimeline() {
         tab.textContent = tab.getAttribute(`data-${currentLang}`) || tab.textContent;
     });
 
-    // Render items for active year
-    const items = activeTimelineYear === '2026'
+    // Render items for active year (skip isHidden)
+    const rawItems = activeTimelineYear === '2026'
         ? (timelineData.items2026 || [])
         : (timelineData.items2025 || []);
+    const items = rawItems.filter(item => !item.isHidden);
     renderTimelineItems(items);
 
     console.log(`✓ Rendered ${items.length} timeline items (${activeTimelineYear}) in ${currentLang}`);
@@ -479,6 +524,14 @@ function openTrackModal(trackType) {
     // Set title based on current language
     const lang = currentLang || 'zh';
     modalTitle.textContent = trackTitles[trackType][lang];
+
+    // Set intro overlay + body description if available
+    const detail = trackDetails[trackType];
+    const langDetail = detail ? detail[lang] : null;
+    const modalIntro = document.getElementById('trackModalIntro');
+    const modalDesc = document.getElementById('trackModalDesc');
+    if (modalIntro) modalIntro.innerHTML = langDetail && langDetail.intro ? `<p>${langDetail.intro}</p>` : '';
+    if (modalDesc) modalDesc.innerHTML = langDetail && langDetail.body ? langDetail.body : '';
 
     // Show modal
     modal.classList.add('active');
