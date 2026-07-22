@@ -3,3 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/hitchopen.ai
     - /bin/cp -R index.html .htaccess css data images js video $DEPLOYPATH/
+
+# push 到 production 远端会自动触发本文件的部署任务
