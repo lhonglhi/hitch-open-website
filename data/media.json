@@ -13,6 +13,51 @@
   },
   "items": [
     {
+      "date": "2026年7月18日",
+      "title": {
+        "zh": "走进 WAIC 2026:直击具身智能创新与人形机器人",
+        "en": "Inside WAIC 2026: a glimpse of embodied AI innovations, humanoid robots"
+      },
+      "source": {
+        "zh": "新华网",
+        "en": "Xinhuanet"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://xhnewsapi.xinhuaxmt.com/share/news_pc?id=1233886470918144&showType=3033&utdId=null&version=5.4.0&twoShare=1&uuid=87e3-2f37-073a-552f-5a2b",
+      "image": "images/media/2026/news-07-18-1.jpg"
+    },
+    {
+      "date": "2026年7月17日",
+      "title": {
+        "zh": "《消费主张》:沉浸式逛世界人工智能大会,体验未来生活",
+        "en": "CCTV Consumption Report: An Immersive Tour of WAIC 2026, a Taste of Future Life"
+      },
+      "source": {
+        "zh": "央视财经",
+        "en": "CCTV Finance"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://app.cctv.com/special/m/livevod/index.html?guid=3ffd7484950443d09134df6b784dee9d&vtype=2&vsetId=C11350",
+      "image": "images/media/2026/news-07-17-1.jpg"
+    },
+    {
+      "date": "2026年7月16日",
+      "title": {
+        "zh": "智能伙伴 共创未来:2026世界人工智能大会暨人工智能全球治理高级别会议明天开幕",
+        "en": "Smart Partners, Creating the Future Together: WAIC 2026 and the High-Level Meeting on Global AI Governance Open Tomorrow"
+      },
+      "source": {
+        "zh": "央视财经",
+        "en": "CCTV Finance"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://app.cctv.com/special/m/livevod/index.html?vtype=2&guid=b26073fd8e694a2d876113daea04ae29&vsetId=C10330",
+      "image": "images/media/2026/news-07-16-1.jpg"
+    },
+    {
       "date": "2026年6月15日",
       "title": {
         "zh": "HOPE AI 挑战赛加入 2026 世界人形机器人运动会，乒乓球成为物理 AI 终极考场",

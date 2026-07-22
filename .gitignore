@@ -1,2 +1,23 @@
+# 系统垃圾
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器/工具
+.idea/
+.vscode/
+*.swp
+*.log
+
+# 设计/办公源文件(应放 ../源素材,不入库)
+*.psd
+*.ai
+*.sketch
+*.fig
+*.key
+*.pages
 Hitch_Open_科学技术委员会介绍.pdf
+
+# 本地临时
+tmp/
+*.bak
