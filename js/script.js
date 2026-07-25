@@ -209,7 +209,7 @@ function renderMedia() {
 
         return `
             <div class="${cardClass} ${clickable}" ${clickHandler} style="${cursorStyle}">
-                <div class="media-image" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('${imagePath}'); background-size: cover; background-position: center;"></div>
+                <div class="media-image"><img src="${imagePath}" alt="" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-failed')"></div>
                 <div class="media-content">
                     <div class="media-date">${formatDate(item.date, currentLang)}</div>
                     <h3 class="media-title">${title}</h3>
