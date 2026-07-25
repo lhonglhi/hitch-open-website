@@ -209,7 +209,7 @@ function renderMedia() {
 
         return `
             <div class="${cardClass} ${clickable}" ${clickHandler} style="${cursorStyle}">
-                <div class="media-image"><img src="${imagePath}" alt="" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-failed')"></div>
+                <div class="media-image"><img ${index < 4 ? `src="${imagePath}"` : `data-src="${imagePath}"`} alt="" decoding="async" onerror="this.parentElement.classList.add('img-failed')"></div>
                 <div class="media-content">
                     <div class="media-date">${formatDate(item.date, currentLang)}</div>
                     <h3 class="media-title">${title}</h3>
@@ -229,7 +229,29 @@ function renderMedia() {
         card.style.display = isShowingAll ? 'flex' : 'none';
     });
 
+    initMediaLazyLoad();
+
     console.log(`✓ Rendered ${mediaData.items.length} media items in ${currentLang}`);
+}
+
+// Manual lazy loading via IntersectionObserver — native loading="lazy" is
+// unreliable for innerHTML-inserted images on iOS Safari (stays blank until
+// a reflow, e.g. pinch-zoom). Falls back to eager loading without IO support.
+function initMediaLazyLoad() {
+    const imgs = document.querySelectorAll('.media-image img[data-src]');
+    if (!('IntersectionObserver' in window)) {
+        imgs.forEach(img => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+        return;
+    }
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const img = entry.target;
+            if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); }
+            obs.unobserve(img);
+        });
+    }, { rootMargin: '400px 0px' });
+    imgs.forEach(img => io.observe(img));
 }
 
 // Render teams
