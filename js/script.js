@@ -931,8 +931,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add fade-in animation on scroll
+    // threshold must be 0: a percentage threshold can never fire for sections
+    // taller than the viewport (e.g. the media grid on phones), leaving them
+    // permanently invisible but still clickable.
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0,
         rootMargin: '0px 0px -50px 0px'
     };
 
