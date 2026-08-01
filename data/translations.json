@@ -1,14 +1,9 @@
 {
   "zh": {
     "heroTitle": "HITCH OPEN",
-    "heroSubtitle": "世界AI竞速锦标赛",
-    "heroTagline": "全球首个物理智能大自然竞技场",
-    "heroDesc": "L4-L5全自动驾驶挑战张家界天门山九十九道弯，让AI在大自然中理解物理世界",
-    "stat1": "所参赛高校",
-    "stat2": "道极限弯道",
-    "stat3": "公里赛道全长",
-    "stat4": "米海拔海拔落差",
-    "btn1": "2026赛季",
+    "heroSubtitle": "AI 自主决策乒乓挑战赛",
+    "heroDesc": "HOPE 是 Hitch Open 面向具身智能前沿的旗舰赛项：在乒乓球这一高速、强对抗、毫秒级响应的真实物理考场上，人形机器人无遥控、无脚本、无干预，完全自主完成“感知—预测—规划—击球”闭环——共建全球首个“AI 自主决策乒乓技术标准”。",
+    "btn1": "探索 HOPE",
     "aboutTitle": "物理智能的下一个尖峰时刻",
     "aboutText": "在天门山 99 道弯,Hitch Open 正创造物理智能的下一个尖峰时刻。<br><br>10.77 公里的天路,1100 米的落差,99 个弯道——<br>F1 传奇车手 Romain Dumas 曾以 7'38\"585 刷新人类极限。<br><br>而今年,清华大学 AI 赛车在无 GPS、低能见度、湿滑赛面的极限环境中,<br>以 16'10\"838 全程自动驾驶登顶,<br>让 AI 首次在真实世界完成\"感知—决策—行动\"的闭环。<br><br>这一刻,物理智能的引擎被彻底点燃。",
     "recordsTitle1": "人类赛车纪录",
@@ -68,18 +63,19 @@
     "contactMedia": "媒体合作",
     "highlightsTitle": "2025赛季高光时刻",
     "teamModalIntroTitle": "赛队介绍",
-    "teamModalProfessorsTitle": "带队教授"
+    "teamModalProfessorsTitle": "带队教授",
+    "heroMeta": "2026.8.22–26 · 第二届世界人形机器人运动会 · 北京国家速滑馆“冰丝带”",
+    "cdCaption": "距开赛还有",
+    "cdDays": "天",
+    "cdHours": "时",
+    "cdMins": "分",
+    "cdSecs": "秒"
   },
   "en": {
     "heroTitle": "HITCH OPEN",
-    "heroSubtitle": "World AI Championships",
-    "heroTagline": "Physical AI Colosseum in the Wild",
-    "heroDesc": "Fully autonomous L4–L5 driving takes on Tianmen Mountain's legendary 99 Bends—challenging AI to understand and act within the real physical world.",
-    "stat1": "Participating Universities",
-    "stat2": "Extreme Hairpin Turns",
-    "stat3": "Track Length (km)",
-    "stat4": "Elevation Change (m)",
-    "btn1": "2026 Season",
+    "heroSubtitle": "Ping-Pong Embodied AI Challenge",
+    "heroDesc": "HOPE is Hitch Open’s flagship challenge at the frontier of embodied AI. On the high-speed, millisecond-response proving ground of real table tennis, humanoid robots play with no remote control, no scripts, no intervention — closing the perceive–predict–plan–strike loop entirely on their own, toward the world’s first technical standard for AI autonomous-decision ping-pong.",
+    "btn1": "Explore HOPE",
     "aboutTitle": "Physical AI's Next Peak Moment",
     "aboutText": "On Tianmen Mountain's iconic 99 Bends, Hitch Open is defining the next peak moment for physical AI.<br><br>A 10.77-km ascent, 1,100 meters of vertical change, and 99 technical corners—<br>F1 legend Romain Dumas once set the human benchmark with a 7'38\"585 run.<br><br>This year, Tsinghua University's AI racecar completed a full autonomous summit run in 16'10\"838<br>under extreme conditions with no GPS, low visibility, and slick surfaces—<br>marking the first time AI has achieved a complete 'perception–decision–action' loop in the real world.<br><br>This is the ignition point for the era of Physical Intelligence.",
     "recordsTitle1": "Human Record",
@@ -139,6 +135,12 @@
     "contactMedia": "Media Partnership",
     "highlightsTitle": "2025 Season Highlights",
     "teamModalIntroTitle": "Team Introduction",
-    "teamModalProfessorsTitle": "Faculty Advisors"
+    "teamModalProfessorsTitle": "Faculty Advisors",
+    "heroMeta": "Aug 22–26, 2026 · 2nd World Humanoid Robot Games · Beijing “Ice Ribbon”",
+    "cdCaption": "Countdown to First Serve",
+    "cdDays": "Days",
+    "cdHours": "Hours",
+    "cdMins": "Minutes",
+    "cdSecs": "Seconds"
   }
 }

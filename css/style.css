@@ -169,6 +169,26 @@
             color: #CD202B;
         }
 
+        /* Event-page links: arrow badge + separator from section links */
+        .nav-links a.nav-event {
+            font-weight: 600;
+        }
+
+        .nav-links a.nav-event::after {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-left: 7px;
+            vertical-align: 1px;
+            background: url('../images/icons/icon-arrow.svg') center / contain no-repeat;
+        }
+
+        .nav-links li.nav-sep {
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
+            padding-right: 50px;
+        }
+
         .lang-switch {
             display: flex;
             gap: 5px;
@@ -272,7 +292,7 @@
         }
 
         .hero-subtitle {
-            font-size: 64px;
+            font-size: 52px;
             font-weight: 700;
             margin-bottom: 30px;
         }
@@ -301,6 +321,64 @@
             font-weight: 600;
         }
 
+        .hero-event-meta {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: hsla(0, 0%, 100%, 0.85);
+            margin-bottom: 28px;
+        }
+
+        .hero-countdown-caption {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #CD202B;
+            margin-bottom: 14px;
+        }
+
+        .hero-countdown {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-countdown .hero-countdown-box {
+            display: flex;
+            gap: 48px;
+            justify-content: center;
+            padding: 20px 48px;
+            flex: 0 0 auto;
+            max-width: none;
+            min-width: 0;
+        }
+
+        .cd-seg {
+            text-align: center;
+            min-width: 56px;
+        }
+
+        .hero-countdown .hero-stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        @media (max-width: 768px) {
+            .hero-countdown .hero-countdown-box {
+                gap: 20px;
+                padding: 14px 20px;
+            }
+            .cd-seg {
+                min-width: 40px;
+            }
+            .hero-countdown .hero-stat-number {
+                font-size: 24px;
+            }
+        }
+
         .hero-stats {
             display: flex;
             gap: 30px;
@@ -316,7 +394,9 @@
             -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             background: rgba(0, 0, 0, 0.3);
+            flex: 1 1 0;
             min-width: 160px;
+            max-width: 260px;
             text-align: center;
         }
 
@@ -402,6 +482,250 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
+        }
+
+        /* Sub-page hero strip */
+        .page-hero {
+            padding: 180px 50px 90px;
+            text-align: center;
+            background-size: cover;
+            background-position: center 40%;
+        }
+
+        .page-hero-title {
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .page-hero-sub {
+            font-size: 26px;
+            font-weight: 600;
+            color: hsla(0, 0%, 100%, 0.75);
+            margin-bottom: 18px;
+        }
+
+        .page-hero-meta {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: hsla(0, 0%, 100%, 0.85);
+        }
+
+        .page-hero-logo {
+            display: block;
+            width: 620px;
+            max-width: 86%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        /* Home: event cards */
+        .event-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            text-decoration: none;
+            color: #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-6px);
+            border-color: #CD202B;
+        }
+
+        .event-card-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center 30%;
+        }
+
+        .event-card-body {
+            padding: 28px 30px 30px;
+            text-align: left;
+        }
+
+        .event-card-status {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #CD202B;
+            margin-bottom: 12px;
+        }
+
+        .event-card-body h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .event-card-body p {
+            font-size: 15px;
+            color: #cccccc;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .event-card-cta {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .event-card-cta::after {
+            content: '';
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            margin-left: 8px;
+            vertical-align: 0px;
+            background: url('../images/icons/icon-arrow.svg') center / contain no-repeat;
+        }
+
+        @media (max-width: 900px) {
+            .event-cards {
+                grid-template-columns: 1fr;
+            }
+            .page-hero-title {
+                font-size: 40px;
+            }
+            .page-hero-sub {
+                font-size: 19px;
+            }
+        }
+
+        /* HOPE section */
+        .hope-rules {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hope-rule {
+            border: 2px solid #CD202B;
+            border-radius: 10px;
+            padding: 12px 34px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            background: rgba(205, 32, 43, 0.08);
+        }
+
+        .hope-loop {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hope-loop-arrow {
+            color: #CD202B;
+            font-weight: 400;
+        }
+
+        .hope-loop-caption {
+            text-align: center;
+            color: #888888;
+            font-size: 14px;
+            margin-bottom: 50px;
+        }
+
+        .hope-values {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+        }
+
+        .hope-value-card {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 26px 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .hope-events {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            text-align: left;
+        }
+
+        .hope-unis-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: #cccccc;
+            margin-bottom: 24px;
+        }
+
+        .hope-unis {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hope-uni {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 14px;
+            color: #cccccc;
+            white-space: nowrap;
+        }
+
+        .hope-bridge {
+            padding: 70px 50px;
+            background: #0a0a0a;
+            text-align: center;
+        }
+
+        .hope-bridge p {
+            font-size: 22px;
+            color: #888888;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hope-values {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hope-loop {
+                font-size: 20px;
+                gap: 10px;
+            }
+            .hope-events {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Stats Section */

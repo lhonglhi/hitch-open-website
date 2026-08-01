@@ -666,10 +666,19 @@ function updateStaticContent(lang) {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     const heroTagline = document.querySelector('.hero-tagline');
     const heroDesc = document.querySelector('.hero-content p');
+    const heroMeta = document.querySelector('.hero-event-meta');
 
     if (heroSubtitle) heroSubtitle.innerHTML = t.heroSubtitle;
     if (heroTagline) heroTagline.innerHTML = t.heroTagline;
     if (heroDesc) heroDesc.innerHTML = t.heroDesc;
+    if (heroMeta && t.heroMeta) heroMeta.textContent = t.heroMeta;
+
+    // Countdown caption + unit labels
+    const cdTexts = { cdCaption: '.hero-countdown-caption', cdDays: '#cdLabelDays', cdHours: '#cdLabelHours', cdMins: '#cdLabelMins', cdSecs: '#cdLabelSecs' };
+    Object.keys(cdTexts).forEach(key => {
+        const el = document.querySelector(cdTexts[key]);
+        if (el && t[key]) el.textContent = t[key];
+    });
 
     // Update stat labels
     const statLabels = document.querySelectorAll('.hero-stats > div > div:last-child');
@@ -989,3 +998,31 @@ window.addEventListener('load', async function() {
 
     console.log('=== Initialization complete ===');
 });
+
+// HOPE hero countdown to first serve
+(function () {
+    const box = document.querySelector('.hero-countdown');
+    if (!box) return;
+    const target = new Date(box.dataset.target).getTime();
+    const pad = n => String(n).padStart(2, '0');
+    const cells = {
+        d: document.getElementById('cdDays'),
+        h: document.getElementById('cdHours'),
+        m: document.getElementById('cdMins'),
+        s: document.getElementById('cdSecs')
+    };
+    function tick() {
+        let diff = Math.max(0, target - Date.now());
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor(diff / 3600000) % 24;
+        const m = Math.floor(diff / 60000) % 60;
+        const s = Math.floor(diff / 1000) % 60;
+        cells.d.textContent = d;
+        cells.h.textContent = pad(h);
+        cells.m.textContent = pad(m);
+        cells.s.textContent = pad(s);
+        if (diff === 0) clearInterval(timer);
+    }
+    const timer = setInterval(tick, 1000);
+    tick();
+})();

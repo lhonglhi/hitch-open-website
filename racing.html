@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World AI Racing Championships | Hitch Open</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- Apple Touch Icon (for iOS home screen) -->
+    <link rel="apple-touch-icon" sizes="256x256" href="images/webclip.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=20260725a">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/160x160-logo.png" alt="HITCH OPEN">
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="hope.html" class="nav-event" data-zh="AI 自主决策乒乓挑战赛" data-en="HOPE AI Challenge">HOPE AI Challenge</a></li>
+                <li class="nav-sep"><a href="racing.html" class="nav-event" data-zh="AI 竞速锦标赛" data-en="AI Racing Championships">AI Racing Championships</a></li>
+                <li><a href="index.html#media-coverage" data-zh="新闻" data-en="News">News</a></li>
+                <li><a href="index.html#track" data-zh="赛程" data-en="Schedule">Schedule</a></li>
+                <li><a href="index.html#committee" data-zh="科技委员会" data-en="Committee">Committee</a></li>
+                <li><a href="index.html#partners" data-zh="合作伙伴" data-en="Partners">Partners</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button class="lang-btn" onclick="switchLanguage('zh')">中文</button>
+                <span class="lang-separator">/</span>
+                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)), url('images/hero-bg-image.png');">
+        <img class="page-hero-logo page-hero-logo-racing" src="images/logo-hitchopen-racing-red-chinese-white.svg" alt="Hitch Open 世界 AI 竞速锦标赛">
+    </section>
+
+    <!-- Watershed Moment Section -->
+    <!-- About Section (includes records) -->
+    <section id="about" class="section">
+        <h2 class="section-title">Physical AI's Next Peak Moment</h2>
+        <p class="section-subtitle">
+            On Tianmen Mountain's iconic 99 Bends, Hitch Open is defining the next peak moment for physical AI.<br><br>A 10.77-km ascent, 1,100 meters of vertical change, and 99 technical corners—<br>F1 legend Romain Dumas once set the human benchmark with a 7'38"585 run.<br><br>This year, Tsinghua University's AI racecar completed a full autonomous summit run in 16'10"838<br>under extreme conditions with no GPS, low visibility, and slick surfaces—<br>marking the first time AI has achieved a complete 'perception–decision–action' loop in the real world.<br><br>This is the ignition point for the era of Physical Intelligence.
+        </p>
+
+        <!-- Records Grid -->
+        <div class="records-grid">
+            <div class="record-card">
+                <h3>Human Record</h3>
+                <div class="record-time">7'38"585</div>
+                <div class="record-team">F1 Driver Romain Dumas</div>
+                <div class="record-year">2019</div>
+            </div>
+            <div class="record-card">
+                <h3>AI Record</h3>
+                <div class="record-time">16'10"838</div>
+                <div class="record-team">Tsinghua University Autonomous Racing Team</div>
+                <div class="record-year">2025</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <h2 class="section-title" id="missionTitle">Racing Into the Physical Intelligence Era</h2>
+        <p class="section-subtitle" id="missionSubtitle">The Hitch Open World AI Championship tests AI perception, planning, and control in real-world extreme environments—accelerating the shift from virtual intelligence to physical intelligence.</p>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3 id="mission1Title">Educating Through Competition</h3>
+                <p id="mission1Text">Partnering with Tsinghua University, Fudan University, Zhejiang University, Hunan University and more, Hitch Open places students in real mountain-road environments to develop and validate full-stack autonomous systems—becoming a new hands-on classroom for physical intelligence.</p>
+            </div>
+            <div class="mission-card">
+                <h3 id="mission2Title">Advancing Research Through Racing</h3>
+                <p id="mission2Text">Tianmen Mountain's conditions—no GPS, low visibility, steep gradients, and tight hairpins—serve as a real-world stress test for perception, planning, and control algorithms, accelerating the maturity of physical-world AI.</p>
+            </div>
+            <div class="mission-card">
+                <h3 id="mission3Title">Driving Industry Through Competition</h3>
+                <p id="mission3Text">Powered by China Telecom's 5G-A network and cloud infrastructure, each event generates over 3 TB of real-world physical data. This forms an open-source data platform that fuels innovation in autonomous driving, tourism technology, and beyond.</p>
+            </div>
+            <div class="mission-card">
+                <h3 id="mission4Title">Evaluating AI Through Competition</h3>
+                <p id="mission4Text">With open competition and transparent data-sharing standards, Hitch Open unites government, academia, industry, and investment sectors to verify AI safety and real-world feasibility—establishing a new model for physical intelligence governance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Section -->
+    <section id="venue" class="track">
+        <div class="section">
+            <h2 class="section-title" id="trackTitle">2025 Final Venue — Tianmen Mountain's 99 Bends</h2>
+
+            <div class="track-content">
+                <div class="track-specs-list">
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec1Label">Track Length</div>
+                            <div class="spec-value" id="trackSpec1">10.77 km</div>
+                        </div>
+                    </div>
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec2Label">Elevation Gain</div>
+                            <div class="spec-value" id="trackSpec2">200m → 1300m</div>
+                        </div>
+                    </div>
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec3Label">Number of Turns</div>
+                            <div class="spec-value" id="trackSpec3">99</div>
+                        </div>
+                    </div>
+                    <div class="track-spec-item">
+                        <img src="images/icons/spec-icon.svg" alt="Spec" class="spec-icon">
+                        <div class="spec-content">
+                            <div class="spec-label" id="trackSpec4Label">Corner Type</div>
+                            <div class="spec-value" id="trackSpec4">Extreme 180° Hairpins</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="track-image-container">
+                    <img src="images/placeholder-image2.jpeg" alt="Tianmen Mountain Track Panorama" class="track-image">
+                    <div class="track-image-caption">
+                        <h4 id="trackImageTitle">Tianmen Mountain — Full Track View</h4>
+                        <p id="trackImageDesc">The legendary 99 Bends stretch over 10 kilometers, with continuous 180° hairpins. This iconic mountain road serves as the definitive testbed for AI racing, pushing the limits of physical intelligence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section id="teams" class="teams">
+        <div class="section">
+            <h2 class="section-title">2025 Season Teams</h2>
+            <p class="section-subtitle">Elite Teams from Top National Universities</p>
+            <div class="teams-grid">
+                <!-- Teams will be dynamically loaded from data/teams.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="leaderboard">
+        <div class="section">
+            <h2 class="section-title">2025 Season Leaderboard</h2>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Team</th>
+                        <th>Tianmen Mountain AI Racing Record</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Leaderboard data will be dynamically loaded from data/leaderboard.json -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <!-- 2025 Highlights Gallery Section -->
+    <section id="highlights" class="highlights-section hidden">
+        <div class="section">
+            <h2 class="section-title" id="highlightsTitle">2025 Season Highlights</h2>
+
+            <div class="highlights-gallery" id="highlightsGallery">
+                <!-- Gallery items will be dynamically loaded from data/highlights.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Highlights -->
+    <div id="highlightLightbox" class="highlight-lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div id="lightboxMedia" class="lightbox-media"></div>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle" class="lightbox-title"></h3>
+                <p id="lightboxDescription" class="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Intelligentracing Foundation. All rights reserved.</p>
+    </footer>
+
+    <!-- Team Modal -->
+    <div id="teamModal" class="team-modal" onclick="closeTeamModal()">
+        <div class="team-modal-content" onclick="event.stopPropagation()">
+            <button class="team-modal-close" onclick="closeTeamModal()">×</button>
+            <div class="team-modal-body">
+                <h2 id="teamModalUniversityName" class="team-modal-university"></h2>
+                <h3 id="teamModalTeamName" class="team-modal-team-name"></h3>
+                <div class="team-modal-section">
+                    <h4 class="team-modal-section-title" id="teamModalIntroTitle">Team Introduction</h4>
+                    <p id="teamModalDescription" class="team-modal-description"></p>
+                </div>
+                <div class="team-modal-section">
+                    <h4 class="team-modal-section-title" id="teamModalProfessorsTitle">Faculty Advisors</h4>
+                    <div id="teamModalProfessors" class="team-modal-professors">
+                        <!-- Professors will be dynamically rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js?v=20260725b"></script>
+</body>
+
+</html>
