@@ -2472,6 +2472,16 @@
             /* Fix hero content padding on mobile */
             .hero-content {
                 padding: 110px 24px 30px;
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .hero-countdown .hero-countdown-box {
+                max-width: 100%;
+                flex-wrap: wrap;
+                box-sizing: border-box;
             }
 
             .hero-description {
