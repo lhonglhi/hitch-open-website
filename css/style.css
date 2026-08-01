@@ -335,7 +335,6 @@
                 font-size: 12px;
                 letter-spacing: 1px;
                 line-height: 1.9;
-                padding: 0 28px;
             }
         }
 
@@ -2451,7 +2450,7 @@
             }
 
             .hero-subtitle {
-                font-size: 40px;
+                font-size: 26px;
             }
 
             .hero-tagline {
@@ -2464,13 +2463,19 @@
                 display: none !important;
             }
 
+            /* Let hero grow past the viewport instead of clipping under the fixed navbar */
+            .hero {
+                height: auto;
+                min-height: 100vh;
+            }
+
             /* Fix hero content padding on mobile */
             .hero-content {
-                padding: 120px 0px 20px;
+                padding: 110px 24px 30px;
             }
 
             .hero-description {
-                padding: 20px 40px;
+                padding: 12px 0;
                 font-size: 13px;
                 margin-bottom: 20px;
                 margin-left: 0;
@@ -2618,11 +2623,11 @@
         /* Extra small devices (iPhone SE, etc.) */
         @media (max-width: 375px) {
             .hero-content {
-                padding: 120px 0px 20px;
+                padding: 110px 18px 30px;
             }
 
             .hero-description {
-                padding: 20px 40px;
+                padding: 12px 0;
                 font-size: 12px;
                 margin-left: 0;
                 margin-right: 0;
@@ -2630,7 +2635,7 @@
             }
 
             .hero-subtitle {
-                font-size: 36px;
+                font-size: 22px;
             }
 
             .hero-tagline {
