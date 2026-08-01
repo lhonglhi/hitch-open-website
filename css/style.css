@@ -285,8 +285,10 @@
         }
 
         .hero-logo {
-            height: 80px;
-            width: auto;
+            display: block;
+            margin: 0 auto;
+            width: min(420px, 86%);
+            height: auto;
             display: inline-block;
             vertical-align: middle;
         }
@@ -2446,7 +2448,8 @@
             }
 
             .hero-logo {
-                height: 50px;
+                width: min(300px, 80%);
+                height: auto;
             }
 
             .hero-subtitle {
