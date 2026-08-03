@@ -685,6 +685,55 @@
             text-align: left;
         }
 
+        .hope-orgs-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        .hope-orgs {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 70px;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+
+        .hope-org {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            max-width: 260px;
+        }
+
+        .hope-org-logo-slot {
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hope-org-logo {
+            max-width: 200px;
+            max-height: 56px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .hope-org-name {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #cccccc;
+            text-align: center;
+        }
+
         .hope-unis-title {
             text-align: center;
             font-size: 20px;
@@ -735,6 +784,9 @@
             }
             .hope-events {
                 grid-template-columns: 1fr;
+            }
+            .hope-orgs {
+                gap: 40px;
             }
         }
 
