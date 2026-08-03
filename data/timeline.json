@@ -24,7 +24,7 @@
       "status": "completed",
       "track": "oval",
       "hasModal": true,
-      "trackImage": "images/tracks/oval-track.png"
+      "trackImage": "images/tracks/oval-track.jpg"
     },
     {
       "id": "formula",
@@ -36,7 +36,7 @@
       "status": "completed",
       "track": "formula",
       "hasModal": true,
-      "trackImage": "images/tracks/formula-track.png"
+      "trackImage": "images/tracks/formula-track.jpg"
     },
     {
       "id": "tianmen",
@@ -48,7 +48,7 @@
       "status": "completed",
       "track": "tianmen",
       "hasModal": true,
-      "trackImage": "images/tracks/tianmen-track.png"
+      "trackImage": "images/tracks/tianmen-track.jpg"
     }
   ],
   "items2026": [
@@ -62,7 +62,7 @@
       "status": "upcoming",
       "track": "pingpong2026",
       "hasModal": true,
-      "trackImage": "images/tracks/pingpong-track.png"
+      "trackImage": "images/tracks/pingpong-track.jpg"
     },
     {
       "id": "tianmen2026",
@@ -74,7 +74,7 @@
       "status": "upcoming",
       "track": "tianmen2026",
       "hasModal": true,
-      "trackImage": "images/tracks/tianmen2026-track.png"
+      "trackImage": "images/tracks/tianmen2026-track.jpg"
     },
     {
       "id": "shanghai2026",
@@ -87,7 +87,7 @@
       "status": "upcoming",
       "track": "shanghai2026",
       "hasModal": true,
-      "trackImage": "images/tracks/shanghai-track.png"
+      "trackImage": "images/tracks/shanghai-track.jpg"
     }
   ]
 }

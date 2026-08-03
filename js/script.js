@@ -21,20 +21,33 @@ let translationsData = null;
 let currentLang = 'en';
 let isShowingAll = false;
 
-// Detect initial language: respect saved choice, else geo-detect (CN → zh, anything else → en)
-async function detectInitialLanguage() {
+// Detect initial language: respect saved choice, else infer from the browser itself.
+//
+// This used to call a third-party geo-IP API (api.country.is). Two problems:
+//   1. It is a cross-border request — unreliable or blocked from mainland China.
+//   2. Its failure path returned 'en', so the very visitors it existed to serve
+//      were the ones most likely to be handed the English site, after a 1.5s stall.
+//
+// navigator.languages is both instant and a better signal than IP: a Chinese
+// reader abroad still wants Chinese. Time zone is the fallback for the case where
+// the browser is set to English but the machine sits in mainland China.
+function detectInitialLanguage() {
     const saved = localStorage.getItem('userLang');
     if (saved === 'zh' || saved === 'en') return saved;
+
+    const langs = navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || ''];
+    if (langs.some(l => /^zh\b/i.test(l))) return 'zh';
+
     try {
-        const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), 1500);
-        const res = await fetch('https://api.country.is/', { signal: controller.signal });
-        clearTimeout(timer);
-        const data = await res.json();
-        if (data && data.country === 'CN') return 'zh';
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (['Asia/Shanghai', 'Asia/Chongqing', 'Asia/Chungking',
+             'Asia/Harbin', 'Asia/Urumqi', 'Asia/Kashgar'].includes(tz)) return 'zh';
     } catch (e) {
-        console.log('Geo detection failed, defaulting to English:', e.message);
+        /* Intl 不可用时按英文处理 */
     }
+
     return 'en';
 }
 
@@ -124,7 +137,7 @@ async function loadData() {
         console.log('Loading data from JSON files...');
 
         // Load all JSON files
-        const v = '20260609';
+        const v = '20260803';
         const fetchOpts = { cache: 'no-cache' };
         const [media, teams, leaderboard, timeline, highlights, translations] = await Promise.all([
             fetch(`data/media.json?v=${v}`, fetchOpts).then(r => r.json()),
@@ -798,6 +811,8 @@ function updateStaticContent(lang) {
     if (impactNumber2) impactNumber2.textContent = t.impactNumber2;
     const impactNumber3 = document.getElementById('impactNumber3');
     if (impactNumber3) impactNumber3.textContent = t.impactNumber3;
+    const impactNumber4 = document.getElementById('impactNumber4');
+    if (impactNumber4) impactNumber4.textContent = t.impactNumber4;
 
     // Update impact labels
     const impactLabel1 = document.getElementById('impactLabel1');
@@ -814,6 +829,11 @@ function updateStaticContent(lang) {
     if (impactLabel3) impactLabel3.textContent = t.impactLabel3;
     const impactSublabel3 = document.getElementById('impactSublabel3');
     if (impactSublabel3) impactSublabel3.textContent = t.impactSublabel3;
+
+    const impactLabel4 = document.getElementById('impactLabel4');
+    if (impactLabel4) impactLabel4.textContent = t.impactLabel4;
+    const impactSublabel4 = document.getElementById('impactSublabel4');
+    if (impactSublabel4) impactSublabel4.textContent = t.impactSublabel4;
 
     // Update media stats
     const mediaStatTitle1 = document.getElementById('mediaStatTitle1');

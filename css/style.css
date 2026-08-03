@@ -232,8 +232,10 @@
         }
 
         /* Hero Section */
+        /* 88vh：让下方的官方背书条在首屏就露出一截，同时 min-height 保证矮屏不裁切 hero 内容 */
         .hero {
-            height: 100vh;
+            height: 88vh;
+            min-height: 680px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -469,6 +471,160 @@
             display: none;
         }
 
+        /* Official Endorsement Bar —— 首屏下沿的赛事资质背书条 */
+        .endorsement-bar {
+            background: #0a0a0a;
+            border-top: 2px solid #CD202B;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 26px 60px;
+        }
+
+        .endorsement-inner {
+            max-width: 1320px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+        }
+
+        .endorsement-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #CD202B;
+            margin-bottom: 8px;
+        }
+
+        .endorsement-headline {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #ffffff;
+            text-wrap: balance;
+        }
+
+        .endorsement-logos {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-shrink: 0;
+        }
+
+        .endorsement-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 各 logo 渲染高度不同（字标约 22–40px、会徽 56px），直接排会让下方小字高低不齐。
+           统一套进 56px 高的槽位内居中，小字即可落在同一水平线上 */
+        .endorsement-logo-slot {
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 分隔线：左侧「赛事资质」组，右侧「技术支持」组，避免背书感被赞助商稀释 */
+        .endorsement-divider {
+            width: 1px;
+            align-self: stretch;
+            min-height: 40px;
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .endorsement-logo-img {
+            max-width: 130px;
+            max-height: 40px;
+            object-fit: contain;
+        }
+
+        /* 徽章型 logo（近方形，如运动会会徽）单独一档：
+           边长按「与字标渲染面积相当」取值（字标均值约 3100px² -> 边长 56px），
+           直接套字标的 40px 高度会太小，不配平又会比字标大近一倍 */
+        .endorsement-logo-emblem {
+            max-width: 56px;
+            max-height: 56px;
+        }
+
+        .endorsement-logo-text span {
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.92);
+            white-space: nowrap;
+        }
+
+        .endorsement-logo small {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.45);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1100px) {
+            .endorsement-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .endorsement-bar {
+                padding: 22px 24px;
+            }
+
+            .endorsement-headline {
+                font-size: 15px;
+            }
+
+            .endorsement-logos {
+                gap: 22px 28px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            /* 换行后竖分隔线没有意义 */
+            .endorsement-divider {
+                display: none;
+            }
+
+            .endorsement-logo {
+                flex: 0 0 auto;
+                max-width: 45%;
+            }
+
+            .endorsement-logo-text span {
+                font-size: 14px;
+                white-space: normal;
+            }
+
+            .endorsement-logo small {
+                white-space: normal;
+                text-align: center;
+            }
+
+            .endorsement-logo-img {
+                max-width: 120px;
+                max-height: 34px;
+            }
+
+            .endorsement-logo-emblem {
+                max-width: 48px;
+                max-height: 48px;
+            }
+
+            .endorsement-logo-slot {
+                height: 48px;
+            }
+        }
+
         /* Section Styles */
         .section {
             padding: 120px 60px;
@@ -477,12 +633,15 @@
         }
 
         .section-title {
+            text-wrap: balance;
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 60px;
             text-align: center;
         }
 
+        /* text-wrap: pretty 防止长段落末行只剩三两个字（孤行）；
+           浏览器不支持时自动忽略，退回原断行 */
         .section-subtitle {
             font-size: 20px;
             color: #888888;
@@ -492,6 +651,7 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
+            text-wrap: pretty;
         }
 
         /* Sub-page hero strip */
@@ -883,24 +1043,45 @@
             background: #0a0a0a;
         }
 
+        /* 4 个数据点：宽屏一排，1340px 以下回落 2×2（避免 auto-fit 排成 3+1 的跛脚布局） */
         .impact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 50px 60px;
             margin-bottom: 60px;
+        }
+
+        @media (min-width: 1340px) {
+            .impact-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 30px;
+            }
+
+            /* 一排时列宽约 282px，字号降到 52px 保证最长的 "500,000+" 也不折行 */
+            .impact-grid .impact-number {
+                font-size: 52px;
+            }
         }
 
         .impact-item {
             text-align: center;
         }
 
+        /* 沿用品牌红，不引入新色。原版斜向渐变把暗红 #CD202B 放在左上，
+           在近黑底上只有 3.6:1，比下方 #ccc 的小标签还暗，整块发闷。
+           两处调整：① 渐变翻转成纵向、亮红在上（字形上半部主导观感）
+                     ② 叠一层品牌红辉光，把「暗红贴在黑底上」变成「红字在发光」。
+           辉光半径不宜再大，超过约 24px 会糊成一团红雾、显廉价 */
         .impact-number {
             font-size: 64px;
             font-weight: 900;
-            background: linear-gradient(135deg, #CD202B, #E85D6F);
+            background: linear-gradient(180deg,
+                    var(--color-primary-light) 0%,
+                    var(--color-primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 22px var(--color-primary-alpha-50));
             margin-bottom: 15px;
         }
 
@@ -1824,31 +2005,37 @@
             background: #000000;
             position: relative;
             overflow: hidden;
-            padding: 60px 20px;
+            /* 底部留白交给紧邻的 Contact 区块，避免两段黑底之间出现大片空白 */
+            padding: 60px 20px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
+        /* 新图是近方构图（1.06:1），不能沿用旧 4:3 图的 1400px 宽度，
+           否则会撑成一个近 1400px 高的巨块；按 820px 宽显示，约 775px 高 */
         .cta-car-image {
             width: 100%;
-            max-width: 1400px;
+            max-width: 820px;
             height: auto;
             display: block;
             margin: 0 auto;
         }
 
+        /* 图底部保留了约 11% 的黑边（机器人脚下），文案上提 70px 正好压在黑边里 */
         .cta-content {
             max-width: 1000px;
-            margin: -200px auto 0;
+            margin: -70px auto 0;
             text-align: center;
-            padding: 0 40px 60px;
+            padding: 0 40px;
             width: 100%;
             position: relative;
             z-index: 2;
         }
 
+        /* text-wrap: balance 让两行长度均分（约 18/17 字），
+           而不是「第一行塞满 + 第二行只剩「边界。」」 */
         .cta-description {
             font-size: 28px;
             line-height: 1.5;
@@ -1856,14 +2043,17 @@
             margin-bottom: 30px;
             font-weight: 500;
             text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+            text-wrap: balance;
         }
 
+        /* 按钮移除后这是 CTA 的最后一行，不再需要与按钮之间的 40px 间距 */
         .cta-question {
             font-size: 24px;
             color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 40px;
+            margin-bottom: 0;
             font-weight: 400;
             text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+            text-wrap: balance;
         }
 
         .cta-button {
@@ -1973,6 +2163,20 @@
             display: none;
         }
 
+        /* 暂无官方 logo 文件时，回退为文字名称（拿到官方 logo 后去掉 li 上的 partner-text） */
+        .partners-list li.partner-text .partner-logo-img {
+            display: none;
+        }
+
+        .partners-list li.partner-text .partner-name {
+            display: block;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .partners-category {
                 margin: 40px 0;
@@ -1993,10 +2197,88 @@
             }
         }
 
+        /* 伙伴条目少的赛事页（HOPE）：两个分类左右并排，卡片固定宽度居中，
+           避免 auto-fit 把两三个条目拉伸成半屏宽的大空框 */
+        .partners-columns {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .partners-columns .partners-category {
+            margin: 0;
+            max-width: none;
+        }
+
+        .partners-columns .partners-list {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+            justify-content: center;
+        }
+
+        /* 卡片放大：220×120 → 300×160 */
+        .partners-columns .partners-list li {
+            padding: 30px 24px;
+            min-height: 160px;
+        }
+
+        /* logo 沿用「上限框」等比放大 1.4×（150×40 → 210×56），
+           各 logo 之间的相对大小保持不变，不会有某个标被单独撑大 */
+        .partners-columns .partner-logo-img {
+            max-width: 210px;
+            max-height: 56px;
+        }
+
+        /* 同理：徽章型 logo 在伙伴卡片里也走单独一档 */
+        .partners-columns .partner-logo-emblem {
+            max-width: 86px;
+            max-height: 86px;
+        }
+
+        .partners-columns .partners-list li.partner-text .partner-name {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 1024px) {
+            .partners-columns {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .partners-columns {
+                gap: 40px;
+            }
+
+            .partners-columns .partners-list {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 260px));
+                gap: 15px;
+            }
+
+            .partners-columns .partners-list li {
+                padding: 24px 20px;
+                min-height: 130px;
+            }
+
+            .partners-columns .partner-logo-img {
+                max-width: 180px;
+                max-height: 48px;
+            }
+
+            .partners-columns .partner-logo-emblem {
+                max-width: 72px;
+                max-height: 72px;
+            }
+        }
+
         /* Contact Section */
+        /* 上接 CTA 文案（原按钮已移除），顶部留白收紧成一个连续段落 */
         .contact {
             background: #000000;
-            padding: 80px 50px;
+            padding: 48px 50px 80px;
             text-align: center;
         }
 
@@ -2082,7 +2364,7 @@
 
         @media (max-width: 768px) {
             .contact {
-                padding: 60px 30px;
+                padding: 34px 30px 60px;
             }
 
             .contact .social-links {
@@ -2466,10 +2748,11 @@
                 display: none !important;
             }
 
-            /* Let hero grow past the viewport instead of clipping under the fixed navbar */
+            /* Let hero grow past the viewport instead of clipping under the fixed navbar；
+               88vh 让背书条在内容较短时也能露出，内容超高时 height:auto 照常撑开 */
             .hero {
                 height: auto;
-                min-height: 100vh;
+                min-height: 88vh;
             }
 
             /* Fix hero content padding on mobile */
@@ -2591,21 +2874,21 @@
             }
 
             .cta-section {
-                padding: 40px 0px;
+                padding: 40px 0 0;
             }
 
+            /* 近方图不能用 object-fit: cover 固定 400px 高，会把左右主体裁掉；
+               改为按原比例缩放 */
             .cta-car-image {
                 max-width: 100%;
                 width: 100%;
-                height: 400px;
-                object-fit: cover;
-                object-position: center;
+                height: auto;
             }
 
             .cta-content {
-                margin-top: -80px;
+                margin-top: -30px;
                 max-width: 100%;
-                padding: 0 20px 40px;
+                padding: 0 20px;
             }
 
             .cta-description {
@@ -2616,7 +2899,7 @@
 
             .cta-question {
                 font-size: 18px;
-                margin-bottom: 25px;
+                margin-bottom: 0;
             }
 
             .cta-button {
