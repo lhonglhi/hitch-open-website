@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="256x256" href="images/webclip.png">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=20260803s">
+    <link rel="stylesheet" href="css/style.css?v=20260804h">
 </head>
 
 <body>
@@ -50,7 +50,9 @@
 
 
 
-    <!-- HOPE Section -->
+    <!-- HOPE Section —— 浅色通栏。.section 自带 max-width:1440px，
+         底色必须由外层容器承载，否则宽屏上会变成一块悬浮白卡而不是通栏 -->
+    <div class="hope-intro-band">
     <section id="hope" class="section">
         <h2 class="section-title" data-zh="Hitch Open AI 自主决策乒乓挑战赛" data-en="Hitch Open Ping-Pong Embodied AI Challenge">Hitch Open Ping-Pong Embodied AI Challenge</h2>
         <p class="section-subtitle" data-zh="乒乓球是对人形机器人速度、适应能力和持续实时决策能力的终极考验。HOPE 集中检验动态平衡、高速运动控制、实时自主决策与场景泛化的综合能力——代表具身智能从“能动”迈向“会赛、善赛”的关键跨越，为具身智能走向真实世界提供可量化、可复现的开放验证体系。" data-en="Table tennis is the ultimate test of a humanoid robot's speed, adaptability and sustained real-time decision-making. HOPE examines dynamic balance, high-speed motion control, real-time autonomous decisions and scene generalization in a single arena — embodied AI's key leap from merely moving to competing and winning, backed by a quantifiable, reproducible open validation system.">
@@ -84,21 +86,68 @@
             </div>
         </div>
 
-        <!-- Participating universities -->
-        <h3 class="hope-unis-title" data-zh="2026 参赛高校与机构" data-en="2026 Participating Universities &amp; Institutes">2026 Participating Universities &amp; Institutes</h3>
+    </section>
+    </div>
+
+    <!-- Participating universities —— 浅色区块（HOPE 页独有）。
+         各校官方彩色校徽本就是为浅底设计的，放在纯黑上白卡边缘会硬碰（对比 19.8:1）。
+         整段反白后既不刺眼，又给通篇深色的页面一个明暗节奏，像一块官方院校榜。 -->
+    <section class="hope-unis-band">
+        <!-- 校徽为各校官方彩色版，取自微信「HitchOpen信息汇总」群 (2026-08-04)，
+             已去底转透明、统一裁切到 132px 高（显示 84px 的 2 倍） -->
+        <div class="hope-unis-head">
+            <h3 class="hope-unis-title" data-zh="2026 参赛高校与机构" data-en="2026 Participating Universities &amp; Institutes">2026 Participating Universities &amp; Institutes</h3>
+            <p class="hope-unis-sub" data-zh="12 所顶尖高校与科研机构同台竞技" data-en="12 leading universities and research institutes on one stage">12 leading universities and research institutes on one stage</p>
+        </div>
         <div class="hope-unis">
-            <span class="hope-uni" data-zh="加州大学伯克利分校" data-en="UC Berkeley">UC Berkeley</span>
-            <span class="hope-uni" data-zh="清华大学" data-en="Tsinghua University">Tsinghua University</span>
-            <span class="hope-uni" data-zh="北京大学" data-en="Peking University">Peking University</span>
-            <span class="hope-uni" data-zh="复旦大学" data-en="Fudan University">Fudan University</span>
-            <span class="hope-uni" data-zh="上海交通大学" data-en="Shanghai Jiao Tong University">Shanghai Jiao Tong University</span>
-            <span class="hope-uni" data-zh="中国科学技术大学" data-en="USTC">USTC</span>
-            <span class="hope-uni" data-zh="香港大学" data-en="University of Hong Kong">University of Hong Kong</span>
-            <span class="hope-uni" data-zh="深圳大学" data-en="Shenzhen University">Shenzhen University</span>
-            <span class="hope-uni" data-zh="北京信息科技大学" data-en="Beijing Information Science &amp; Technology University">Beijing Information Science &amp; Technology University</span>
-            <span class="hope-uni" data-zh="智源研究院 BAAI" data-en="BAAI">BAAI</span>
-            <span class="hope-uni" data-zh="上海创智学院" data-en="Shanghai Innovation Institute">Shanghai Innovation Institute</span>
-            <span class="hope-uni" data-zh="中国电信人工智能研究院 TeleAI" data-en="TeleAI, China Telecom">TeleAI, China Telecom</span>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/ucberkeley.png" alt="加州大学伯克利分校" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="加州大学伯克利分校" data-en="UC Berkeley">UC Berkeley</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/tsinghua.png" alt="清华大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="清华大学" data-en="Tsinghua University">Tsinghua University</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/pku.png" alt="北京大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="北京大学" data-en="Peking University">Peking University</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/fudan.png" alt="复旦大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="复旦大学" data-en="Fudan University">Fudan University</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/sjtu.png" alt="上海交通大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="上海交通大学" data-en="Shanghai Jiao Tong University">Shanghai Jiao Tong University</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/ustc.png" alt="中国科学技术大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="中国科学技术大学" data-en="USTC">USTC</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/hku.png" alt="香港大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="香港大学" data-en="University of Hong Kong">University of Hong Kong</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/szu.png" alt="深圳大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="深圳大学" data-en="Shenzhen University">Shenzhen University</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/bistu.png" alt="北京信息科技大学" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="北京信息科技大学" data-en="Beijing Information Science &amp; Technology University">Beijing Information Science &amp; Technology University</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/baai.png" alt="智源研究院 BAAI" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="智源研究院 BAAI" data-en="BAAI">BAAI</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/sii.png" alt="上海创智学院" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="上海创智学院" data-en="Shanghai Innovation Institute">Shanghai Innovation Institute</span>
+            </div>
+            <div class="hope-uni">
+                <span class="hope-uni-slot"><img class="hope-uni-logo" src="images/unis/teleai.png" alt="中国电信人工智能研究院 TeleAI" onerror="this.style.display='none'"></span>
+                <span class="hope-uni-name" data-zh="中国电信人工智能研究院 TeleAI" data-en="TeleAI, China Telecom">TeleAI, China Telecom</span>
+            </div>
         </div>
     </section>
 
@@ -111,14 +160,14 @@
                 <h3 class="partners-subtitle" data-zh="赛事合作伙伴" data-en="Event Partners">Event Partners</h3>
                 <ul class="partners-list">
                     <li>
-                        <img class="partner-logo-img" src="images/partners/beao-group.png" alt="北奥集团"
-                            onerror="this.style.display='none'">
+                        <span class="partner-logo-slot"><img class="partner-logo-img" src="images/partners/beao-group.png" alt="北奥集团"
+                            onerror="this.style.display='none'"></span>
                         <div class="partner-name" data-zh="北奥集团" data-en="Beao Group">Beao Group</div>
                     </li>
                     <li>
-                        <img class="partner-logo-img partner-logo-emblem"
+                        <span class="partner-logo-slot"><img class="partner-logo-img partner-logo-emblem"
                             src="images/partners/world-humanoid-robot-games.png" alt="第二届世界人形机器人运动会"
-                            onerror="this.style.display='none'">
+                            onerror="this.style.display='none'"></span>
                         <div class="partner-name" data-zh="世界人形机器人运动会" data-en="World Humanoid Robot Games">World Humanoid Robot Games</div>
                     </li>
                 </ul>
@@ -128,13 +177,13 @@
                 <h3 class="partners-subtitle" data-zh="官方赞助" data-en="Official Sponsors">Official Sponsors</h3>
                 <ul class="partners-list">
                     <li>
-                        <img class="partner-logo-img" src="images/partners/agibot.png" alt="智元机器人"
-                            onerror="this.style.display='none'">
+                        <span class="partner-logo-slot"><img class="partner-logo-img" src="images/partners/agibot.png" alt="智元机器人"
+                            onerror="this.style.display='none'"></span>
                         <div class="partner-name" data-zh="智元机器人" data-en="AGIBOT">AGIBOT</div>
                     </li>
                     <li>
-                        <img class="partner-logo-img" src="images/partners/optitrack.png" alt="OptiTrack"
-                            onerror="this.style.display='none'">
+                        <span class="partner-logo-slot"><img class="partner-logo-img" src="images/partners/optitrack.png" alt="OptiTrack"
+                            onerror="this.style.display='none'"></span>
                         <div class="partner-name" data-zh="OptiTrack" data-en="OptiTrack">OptiTrack</div>
                     </li>
                 </ul>
@@ -148,7 +197,7 @@
     </footer>
 
 
-    <script src="js/script.js?v=20260803s"></script>
+    <script src="js/script.js?v=20260804h"></script>
 </body>
 
 </html>

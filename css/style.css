@@ -232,10 +232,13 @@
         }
 
         /* Hero Section */
-        /* 88vh：让下方的官方背书条在首屏就露出一截，同时 min-height 保证矮屏不裁切 hero 内容 */
+        /* 88vh 让下方的官方背书条在首屏露出一截。
+           必须用 min-height 而非 height —— .hero 带 overflow:hidden，固定高度会在扁屏
+           (内容高于 88vh 时) 直接裁掉最底下的 CTA 按钮，看起来像被背书条盖住。
+           改 auto + min-height 后，内容超高时容器跟着长，永远不裁切。 */
         .hero {
-            height: 88vh;
-            min-height: 680px;
+            height: auto;
+            min-height: 88vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -276,6 +279,13 @@
             padding: 160px 0px 20px;
             position: relative;
             z-index: 2;
+        }
+
+        /* 扁屏(笔记本、外接宽屏)：160px 顶部留白占比过大，收回 45px 让 hero 整体更容易落在一屏内 */
+        @media (max-height: 820px) {
+            .hero-content {
+                padding-top: 115px;
+            }
         }
 
         .hero h1 {
@@ -560,6 +570,15 @@
             white-space: nowrap;
         }
 
+        .endorsement-logo-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            text-align: center;
+            white-space: nowrap;
+        }
+
         .endorsement-logo small {
             font-size: 11px;
             letter-spacing: 1px;
@@ -600,8 +619,8 @@
                 max-width: 45%;
             }
 
-            .endorsement-logo-text span {
-                font-size: 14px;
+            .endorsement-logo-name {
+                font-size: 12px;
                 white-space: normal;
             }
 
@@ -845,30 +864,220 @@
             text-align: left;
         }
 
+        /* 参赛高校徽章墙：原本是 14px 灰色文字小胶囊，分量太轻。
+           改为统一尺寸的卡片网格 —— 有官方校徽的放 logo，暂缺的以校名文字占位，
+           两种状态卡片等大，补齐 logo 时排版不变 */
+        /* ── HOPE 页浅色区段（竞速页与首页保持全深色）──────────────
+           赛事介绍用纯白、参赛高校用浅灰，形成 白 / 灰 的节奏而非一整块。
+           合作伙伴区保持深色：那 4 个伙伴 logo 都是纯白单色版，白底上会完全看不见。 */
+        .hope-intro-band {
+            background: #ffffff;
+        }
+
+        .hope-intro-band .section-title {
+            color: #111114;
+        }
+
+        .hope-intro-band .section-subtitle {
+            color: #56565e;
+        }
+
+        /* 白底上白字不可读：三无标签改为品牌红字 + 淡红底 */
+        .hope-intro-band .hope-rule {
+            color: var(--color-primary);
+            background: rgba(205, 32, 43, 0.06);
+        }
+
+        .hope-intro-band .hope-loop span {
+            color: #111114;
+        }
+
+        .hope-intro-band .hope-loop .hope-loop-arrow {
+            color: var(--color-primary);
+        }
+
+        .hope-intro-band .hope-loop-caption {
+            color: #6b6b72;
+        }
+
+        .hope-intro-band .track-event-date {
+            color: #6b6b72;
+        }
+
+        .hope-intro-band .track-event-body {
+            color: #44444c;
+        }
+
+        /* 浅色区块（HOPE 页独有）。竞速页与首页保持深色，品牌统一靠红色强调线、
+           字体与卡片几何维持，不靠底色 */
+        .hope-unis-band {
+            background: #f4f4f7;
+            padding: 84px 50px;
+        }
+
+        .hope-unis-head {
+            max-width: 1180px;
+            margin: 0 auto 28px auto;
+            border-bottom: 3px solid var(--color-primary);
+            padding-bottom: 14px;
+        }
+
         .hope-unis-title {
             text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: #cccccc;
-            margin-bottom: 24px;
+            font-size: 34px;
+            font-weight: 700;
+            color: #111114;
+            margin-bottom: 6px;
+        }
+
+        .hope-unis-sub {
+            text-align: center;
+            font-size: 17px;
+            color: #6b6b72;
         }
 
         .hope-unis {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 1000px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            max-width: 1180px;
             margin: 0 auto;
         }
 
+        /* 白色卡片：这些是各校官方彩色校徽，本就是为浅色背景设计的。
+           放在深色卡上时，清华紫 / 北大红 这类深色校徽会发闷，
+           伯克利那种「细金环 + 浅内芯」的更是看着比别人小一圈。
+           justify-content 用 flex-start + 固定槽位 —— 若用 center，
+           校名折行数不同会让整组上下浮动，各卡文字就对不齐了。 */
+        /* 无点击行为的元素不做 hover 反馈 —— 会让用户以为可以点。
+           保留 hover 的只有真正可交互的：链接、按钮、带 onclick 的卡片。 */
         .hope-uni {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            padding: 8px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 178px;
+            padding: 26px 16px 22px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.07);
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(20, 20, 30, 0.06);
+            transition: box-shadow .25s, transform .25s;
+        }
+
+        /* 校徽多为近方形，按高度统一；固定槽位让各卡名称落在同一水平线 */
+        .hope-uni-slot {
+            height: 84px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hope-uni-logo {
+            max-height: 84px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .hope-uni-name {
+            margin-top: 14px;
             font-size: 14px;
-            color: #cccccc;
-            white-space: nowrap;
+            font-weight: 600;
+            line-height: 1.45;
+            color: #33333a;
+            text-align: center;
+            text-wrap: balance;
+        }
+
+        @media (max-width: 1100px) {
+            .hope-unis {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* ── HOPE 页浅色区段（竞速页与首页保持全深色）──────────────
+           赛事介绍用纯白、参赛高校用浅灰，形成 白 / 灰 的节奏而非一整块。
+           合作伙伴区保持深色：那 4 个伙伴 logo 都是纯白单色版，白底上会完全看不见。 */
+        .hope-intro-band {
+            background: #ffffff;
+        }
+
+        .hope-intro-band .section-title {
+            color: #111114;
+        }
+
+        .hope-intro-band .section-subtitle {
+            color: #56565e;
+        }
+
+        /* 白底上白字不可读：三无标签改为品牌红字 + 淡红底 */
+        .hope-intro-band .hope-rule {
+            color: var(--color-primary);
+            background: rgba(205, 32, 43, 0.06);
+        }
+
+        .hope-intro-band .hope-loop span {
+            color: #111114;
+        }
+
+        .hope-intro-band .hope-loop .hope-loop-arrow {
+            color: var(--color-primary);
+        }
+
+        .hope-intro-band .hope-loop-caption {
+            color: #6b6b72;
+        }
+
+        .hope-intro-band .track-event-date {
+            color: #6b6b72;
+        }
+
+        .hope-intro-band .track-event-body {
+            color: #44444c;
+        }
+
+        /* 浅色区块（HOPE 页独有）。竞速页与首页保持深色，品牌统一靠红色强调线、
+           字体与卡片几何维持，不靠底色 */
+        .hope-unis-band {
+            background: #f4f4f7;
+            padding: 84px 50px;
+        }
+
+        .hope-unis-head {
+                margin-bottom: 20px;
+            }
+
+            .hope-unis-title {
+                font-size: 24px;
+            }
+
+            .hope-unis-sub {
+                font-size: 15px;
+            }
+
+            .hope-unis {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            /* 无点击行为的元素不做 hover 反馈 —— 会让用户以为可以点。
+           保留 hover 的只有真正可交互的：链接、按钮、带 onclick 的卡片。 */
+        .hope-uni {
+                min-height: 138px;
+                padding: 18px 10px 16px;
+            }
+
+            .hope-uni-slot,
+            .hope-uni-logo {
+                height: 56px;
+                max-height: 56px;
+            }
+
+            .hope-uni-name {
+                margin-top: 10px;
+                font-size: 12px;
+            }
         }
 
         .hope-bridge {
@@ -1020,11 +1229,6 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .mission-card:hover {
-            transform: translateY(-5px);
-            border-color: #CD202B;
         }
 
         .mission-card h3 {
@@ -1515,11 +1719,6 @@
             transition: all 0.3s;
         }
 
-        .team-modal-professor:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(5px);
-        }
-
         .professor-avatar {
             width: 120px;
             height: 120px;
@@ -1690,7 +1889,7 @@
             z-index: 1;
         }
 
-        .timeline-card:hover {
+        .timeline-card[onclick]:hover {
             border-color: rgba(205,32,43,0.35);
         }
 
@@ -2117,6 +2316,8 @@
             max-width: 1400px;
         }
 
+        /* 排版规则：区块级标题一律居中（与 .section-title / .section-subtitle 一致）；
+           卡片、条目内部的正文左对齐。全站按此执行，不再逐处破例。 */
         .partners-subtitle {
             color: #ffffff;
             font-size: 24px;
@@ -2124,7 +2325,7 @@
             margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(220, 20, 60, 0.5);
-            text-align: left;
+            text-align: center;
         }
 
         .partners-list {
@@ -2159,8 +2360,26 @@
             opacity: 0.8;
         }
 
+        /* 各 logo 渲染高度不同，套进固定槽位后下方名称才能齐平 */
+        .partner-logo-slot {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .partners-columns .partner-logo-slot {
+            height: 86px;
+        }
+
+        /* 每个 logo 下方标出名称 */
         .partner-name {
-            display: none;
+            display: block;
+            margin-top: 14px;
+            font-size: 13px;
+            line-height: 1.45;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
         }
 
         /* 暂无官方 logo 文件时，回退为文字名称（拿到官方 logo 后去掉 li 上的 partner-text） */
@@ -2987,12 +3206,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             transition: all 0.3s;
-        }
-
-        .committee-member-card:hover {
-            border-color: rgba(205, 32, 43, 0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(205, 32, 43, 0.15);
         }
 
         .committee-avatar {
