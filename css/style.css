@@ -570,15 +570,6 @@
             white-space: nowrap;
         }
 
-        .endorsement-logo-name {
-            font-size: 14px;
-            font-weight: 700;
-            color: #ffffff;
-            line-height: 1.3;
-            text-align: center;
-            white-space: nowrap;
-        }
-
         .endorsement-logo small {
             font-size: 11px;
             letter-spacing: 1px;
@@ -617,11 +608,6 @@
             .endorsement-logo {
                 flex: 0 0 auto;
                 max-width: 45%;
-            }
-
-            .endorsement-logo-name {
-                font-size: 12px;
-                white-space: normal;
             }
 
             .endorsement-logo small {
