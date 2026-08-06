@@ -984,57 +984,12 @@
         }
 
         @media (max-width: 768px) {
-            /* ── HOPE 页浅色区段（竞速页与首页保持全深色）──────────────
-           赛事介绍用纯白、参赛高校用浅灰，形成 白 / 灰 的节奏而非一整块。
-           合作伙伴区保持深色，是刻意的：全站只留「参赛高校」这一个彩色亮点，
-           其余 logo（北奥 / 运动会 / 智元 / OptiTrack）一律用白色单色版配深色底。
-           所以不必去要这几家的彩色版 —— 拿到了也不改。 */
-        .hope-intro-band {
-            background: #ffffff;
-        }
+            /* 手机端：区块内边距收紧 */
+            .hope-unis-band {
+                padding: 56px 24px;
+            }
 
-        .hope-intro-band .section-title {
-            color: #111114;
-        }
-
-        .hope-intro-band .section-subtitle {
-            color: #56565e;
-        }
-
-        /* 白底上白字不可读：三无标签改为品牌红字 + 淡红底 */
-        .hope-intro-band .hope-rule {
-            color: var(--color-primary);
-            background: rgba(205, 32, 43, 0.06);
-        }
-
-        .hope-intro-band .hope-loop span {
-            color: #111114;
-        }
-
-        .hope-intro-band .hope-loop .hope-loop-arrow {
-            color: var(--color-primary);
-        }
-
-        .hope-intro-band .hope-loop-caption {
-            color: #6b6b72;
-        }
-
-        .hope-intro-band .track-event-date {
-            color: #6b6b72;
-        }
-
-        .hope-intro-band .track-event-body {
-            color: #44444c;
-        }
-
-        /* 浅色区块（HOPE 页独有）。竞速页与首页保持深色，品牌统一靠红色强调线、
-           字体与卡片几何维持，不靠底色 */
-        .hope-unis-band {
-            background: #f4f4f7;
-            padding: 84px 50px;
-        }
-
-        .hope-unis-head {
+            .hope-unis-head {
                 margin-bottom: 20px;
             }
 
@@ -1051,9 +1006,7 @@
                 gap: 12px;
             }
 
-            /* 无点击行为的元素不做 hover 反馈 —— 会让用户以为可以点。
-           保留 hover 的只有真正可交互的：链接、按钮、带 onclick 的卡片。 */
-        .hope-uni {
+            .hope-uni {
                 min-height: 138px;
                 padding: 18px 10px 16px;
             }
