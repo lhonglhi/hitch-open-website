@@ -1265,6 +1265,8 @@
         .logo-marquee {
             position: relative;
             overflow: hidden;
+            /* 全条统一缩放系数：桌面 1，移动端整体调小，各家的相对配比不变 */
+            --k: 1;
             /* 两端渐隐，避免 logo 被硬边切断 */
             -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
@@ -1319,14 +1321,48 @@
             justify-content: center;
         }
 
+        /* 各家 logo 配色、明暗差异极大，且没有一家公开发布反白版本。
+           brightness(0) 先把整图压成纯黑、invert(1) 再翻成纯白，得到保留 alpha 的
+           白色剪影——任何「透明底」的彩色 logo 都能直接用，不必去找白色版。
+           代价：多色/依赖颜色表意的 logo 会被压平；这类可在该项加 .keep-color 保留原色。
+           前提是文件必须透明底，白底图会变成一个黑方块。 */
+        /* height 必须是确定值, 不能只给 max-height ——
+           多数 logo 的 SVG 只有 viewBox、没有内在宽高, 在 flex 容器里
+           拿不到确定尺寸就会塌成 0×0(实测 Reuters/LUSA/Antara 等 6 个都中招)。
+           给定高度后宽度按比例走, 超宽的字标由 max-width + object-fit 兜住。 */
         .logo-item img {
-            max-height: 34px;
+            height: calc(var(--h, 34) * var(--k) * 1px);
             width: auto;
-            max-width: 170px;
+            max-width: none;
             object-fit: contain;
-            filter: grayscale(100%) brightness(1.9);
-            opacity: 0.72;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1);
+            opacity: 0.78;
         }
+
+        .logo-item.keep-color img {
+            filter: none;
+            opacity: 0.9;
+        }
+
+        /* 统一高度并不等于「看起来一样大」：长条字标(China Daily 约 9.6:1)和
+           方章(AP 约 1.1:1)在同高时的墨量差 7 倍以上，肉眼读到的就是一大一小。
+           所以每家给一个按「等墨量」配平出来的 --h，宽度仍由比例自适应。
+           下面这块由 接入媒体logo.py 生成（算法见该脚本 SIZES 注释），勿手改。 */
+        /* logo-sizes:start */
+        .logo-item[data-brand="cctv"] img { --h: 37; }
+        .logo-item[data-brand="xinhua"] img { --h: 37; }
+        .logo-item[data-brand="peoples-daily"] img { --h: 44; }
+        .logo-item[data-brand="reuters"] img { --h: 43; }
+        .logo-item[data-brand="associated-press"] img { --h: 44; }
+        .logo-item[data-brand="bbc-science-focus"] img { --h: 32; }
+        .logo-item[data-brand="cgtn"] img { --h: 30; }
+        .logo-item[data-brand="global-times"] img { --h: 25; }
+        .logo-item[data-brand="china-daily"] img { --h: 21; }
+        .logo-item[data-brand="edaily"] img { --h: 28; }
+        .logo-item[data-brand="antara"] img { --h: 43; }
+        .logo-item[data-brand="newsbeast"] img { --h: 26; }
+        /* logo-sizes:end */
 
         /* 文字占位：等官方 logo 到位后整块被 <img> 取代 */
         .logo-mark {
@@ -1335,6 +1371,102 @@
             letter-spacing: 0.02em;
             color: #d8d8d8;
             white-space: nowrap;
+        }
+
+        /* ── 北京站积分榜 ──────────────────────────────────────────
+           表格外观复用 .leaderboard-table（见上方并列选择器），这里只加
+           标题区、名次/积分列的排版，以及「待确认」行的处理。 */
+        .standings {
+            background: linear-gradient(180deg, #000000, #0a0a0a);
+        }
+
+        .standings-head {
+            text-align: center;
+        }
+
+        .standings-sub {
+            margin-top: 14px;
+            font-size: 15px;
+            color: #999999;
+            line-height: 1.6;
+        }
+
+        /* 级别徽标 HOPE 250：借品牌红描边做成一枚「赛事级别」标 */
+        .standings-tier {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 6px 16px;
+            border: 1px solid var(--color-primary);
+            border-radius: 999px;
+            color: var(--color-primary-light);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+        }
+
+        .standings-table {
+            margin-top: 40px;
+        }
+
+        .standings-table .col-rank {
+            width: 84px;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+
+        .standings-table .col-result {
+            color: #aaaaaa;
+            font-size: 15px;
+        }
+
+        /* 积分列右对齐 + 等宽数字，纵向扫读时数位对齐 */
+        .standings-table .col-points {
+            text-align: right;
+            width: 110px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* 待组委会确认的并列名次：压暗，明确区别于已确认成绩 */
+        .standings-table .row-pending .col-team {
+            color: #8a8a8a;
+        }
+
+        .standings-pending {
+            font-style: italic;
+        }
+
+        .standings-notes {
+            list-style: none;
+            margin: 26px auto 0;
+            padding: 0;
+            max-width: 820px;
+        }
+
+        .standings-notes li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #888888;
+        }
+
+        .standings-notes li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 5px;
+            height: 1px;
+            background: #666666;
+        }
+
+        @media (max-width: 768px) {
+            .standings-table .col-rank { width: 54px; }
+            .standings-table .col-points { width: 68px; }
+            .standings-table .col-result { font-size: 13px; }
+            .standings-sub { font-size: 13px; }
         }
 
         /* Track Modal */
@@ -2165,7 +2297,8 @@
             background: linear-gradient(180deg, #0a0a0a, #000000);
         }
 
-        .leaderboard-table {
+        .leaderboard-table,
+        .standings-table {
             width: 100%;
             margin-top: 60px;
             border-collapse: collapse;
@@ -2174,11 +2307,13 @@
             overflow: hidden;
         }
 
-        .leaderboard-table thead {
+        .leaderboard-table thead,
+        .standings-table thead {
             background: rgba(80, 80, 100, 0.3);
         }
 
-        .leaderboard-table th {
+        .leaderboard-table th,
+        .standings-table th {
             padding: 20px;
             text-align: left;
             font-weight: 700;
@@ -2186,12 +2321,14 @@
             font-size: 16px;
         }
 
-        .leaderboard-table td {
+        .leaderboard-table td,
+        .standings-table td {
             padding: 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .leaderboard-table tr:hover {
+        .leaderboard-table tr:hover,
+        .standings-table tr:hover {
             background: rgba(255, 255, 255, 0.05);
         }
 
@@ -3024,9 +3161,8 @@
                 padding: 0 24px;
             }
 
-            .logo-item img {
-                max-height: 26px;
-                max-width: 128px;
+            .logo-marquee {
+                --k: 0.76;
             }
 
             .logo-mark {
@@ -3066,12 +3202,15 @@
                 min-width: 200px;
             }
 
-            .leaderboard-table {
+            .leaderboard-table,
+            .standings-table {
                 font-size: 13px;
             }
 
             .leaderboard-table th,
-            .leaderboard-table td {
+            .leaderboard-table td,
+            .standings-table th,
+            .standings-table td {
                 padding: 10px 8px;
                 font-size: 13px;
             }

@@ -1,0 +1,74 @@
+{
+  "title": {
+    "zh": "HOPE 全球积分榜 · 北京站",
+    "en": "HOPE Global Standings · Beijing"
+  },
+  "subtitle": {
+    "zh": "第一届 HOPE AI Challenge · 第二届世界人形机器人运动会 · 2026 年 8 月",
+    "en": "Inaugural HOPE AI Challenge · 2nd World Humanoid Robot Games · August 2026"
+  },
+  "tier": "HOPE 250",
+  "headers": {
+    "rank":   { "zh": "名次", "en": "Rank" },
+    "team":   { "zh": "战队", "en": "Team" },
+    "result": { "zh": "轮次", "en": "Result" },
+    "points": { "zh": "积分", "en": "Points" }
+  },
+  "items": [
+    {
+      "rank": "1",
+      "team":   { "zh": "北京大学智源研究院联合战队", "en": "Peking University–BAAI Joint Team" },
+      "result": { "zh": "冠军", "en": "Champion" },
+      "points": 250,
+      "rankClass": "rank-1"
+    },
+    {
+      "rank": "2",
+      "team":   { "zh": "香港大学 SMASH 战队", "en": "HKU SMASH Team" },
+      "result": { "zh": "亚军", "en": "Runner-up" },
+      "points": 165,
+      "rankClass": "rank-2"
+    },
+    {
+      "rank": "3",
+      "team":   { "zh": "上海交通大学上海创智学院联合战队", "en": "SJTU / Shanghai Innovation Institute Joint Team" },
+      "result": { "zh": "第三名赛胜方", "en": "Third-place match, winner" },
+      "points": 110,
+      "rankClass": "rank-3"
+    },
+    {
+      "rank": "4",
+      "team":   { "zh": "深圳大学战队", "en": "Shenzhen University" },
+      "result": { "zh": "第三名赛负方", "en": "Third-place match, runner-up" },
+      "points": 90,
+      "rankClass": ""
+    }
+  ],
+  "pending": {
+    "confirmed": false,
+    "rank": "5–8",
+    "count": 4,
+    "points": 50,
+    "result": { "zh": "八强赛负方（并列）", "en": "Quarter-finals (tied)" },
+    "placeholder": {
+      "zh": "4 支战队 · 队名待组委会确认后公布",
+      "en": "4 teams · names pending confirmation by the organising committee"
+    },
+    "teams": [
+      { "zh": "中国电信人工智能研究院人形机器人战队", "en": "TeleAI Humanoid Robot Team" },
+      { "zh": "复旦大学若客战队", "en": "Fudan University RoboK Team" },
+      { "zh": "清华北人智心联队", "en": "Tsinghua–BISTU Zhixin Joint Team" },
+      { "zh": "清华大学 iPingPong 战队", "en": "Tsinghua University iPingPong Team" }
+    ]
+  },
+  "notes": [
+    {
+      "zh": "本站为 HOPE 250 级别：冠军 250 分，亚军 165 分，第三名 110 分，第四名 90 分，5–8 名各 50 分。",
+      "en": "Beijing is a HOPE 250 event: 250 points for the champion, 165 for the runner-up, 110 for third, 90 for fourth and 50 each for places 5–8."
+    },
+    {
+      "zh": "名次以组委会公布的赛果为准；冠亚军另见新华网、央视网 2026 年 8 月报道。",
+      "en": "Placings follow the results published by the organising committee; the top two are also reported by Xinhuanet and CCTV, August 2026."
+    }
+  ]
+}

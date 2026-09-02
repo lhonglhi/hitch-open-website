@@ -152,6 +152,39 @@
     </section>
 
     <!-- Partners Section -->
+    <!-- 北京站积分榜。数据来自 data/hope-standings.json。
+         注意不要复用 .leaderboard-table —— renderLeaderboard() 写死了那个选择器,
+         会把 racing 的 2025 赛季数据灌进来。这里用 .standings-table + 独立渲染函数。
+         5–8 名队名在组委会确认前不公开: JSON 里 pending.confirmed=false 时
+         合并成一行显示，确认后改 true 即自动展开成 4 行。 -->
+    <section id="standings" class="standings">
+        <div class="section">
+            <div class="standings-head">
+                <h2 class="section-title" id="standingsTitle">HOPE Global Standings · Beijing</h2>
+                <p class="standings-sub" id="standingsSub">Inaugural HOPE AI Challenge · 2nd World Humanoid Robot Games · August 2026</p>
+                <div class="standings-tier" id="standingsTier">HOPE 250</div>
+            </div>
+
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th class="col-rank">Rank</th>
+                        <th class="col-team">Team</th>
+                        <th class="col-result">Result</th>
+                        <th class="col-points">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 由 data/hope-standings.json 动态填充 -->
+                </tbody>
+            </table>
+
+            <ul class="standings-notes">
+                <!-- 由 data/hope-standings.json 动态填充 -->
+            </ul>
+        </div>
+    </section>
+
     <section id="partners" class="partners">
         <h2 class="section-title" data-zh="合作伙伴" data-en="Partners">Partners</h2>
 

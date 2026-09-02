@@ -16,6 +16,7 @@ let leaderboardData = null;
 let timelineData = null;
 let highlightsData = null;
 let translationsData = null;
+let hopeStandingsData = null;
 
 // Current language — default English; flipped to 'zh' only if visitor is confirmed in China
 let currentLang = 'en';
@@ -148,6 +149,11 @@ async function loadData() {
             fetch(`data/translations.json?v=${v}`, fetchOpts).then(r => r.json())
         ]);
 
+        // 积分榜只在 HOPE 页出现，其它页面不必多拉一次
+        if (document.querySelector('.standings-table')) {
+            hopeStandingsData = await fetch(`data/hope-standings.json?v=${v}`, fetchOpts).then(r => r.json());
+        }
+
         mediaData = media;
         teamsData = teams;
         leaderboardData = leaderboard;
@@ -166,6 +172,7 @@ async function loadData() {
 
         // Render all sections with current language
         renderMedia();
+        renderHopeStandings();
         renderTeams();
         renderLeaderboard();
         renderTimeline();
@@ -432,6 +439,63 @@ function renderLeaderboard() {
 }
 
 // Render timeline
+// Render HOPE Beijing standings (hope.html only)
+function renderHopeStandings() {
+    const tbody = document.querySelector('.standings-table tbody');
+    if (!tbody || !hopeStandingsData) return;
+
+    const d = hopeStandingsData;
+    const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    setText('standingsTitle', d.title[currentLang]);
+    setText('standingsSub', d.subtitle[currentLang]);
+    setText('standingsTier', d.tier);
+
+    const th = document.querySelectorAll('.standings-table th');
+    if (th.length >= 4) {
+        th[0].textContent = d.headers.rank[currentLang];
+        th[1].textContent = d.headers.team[currentLang];
+        th[2].textContent = d.headers.result[currentLang];
+        th[3].textContent = d.headers.points[currentLang];
+    }
+
+    const row = (rank, team, result, points, cls) => `
+        <tr class="${cls || ''}">
+            <td class="col-rank">${rank}</td>
+            <td class="col-team">${team}</td>
+            <td class="col-result">${result}</td>
+            <td class="col-points">${points}</td>
+        </tr>`;
+
+    let html = d.items.map(i =>
+        row(i.rank, i.team[currentLang], i.result[currentLang], i.points, i.rankClass)
+    ).join('');
+
+    // 5–8 名：组委会确认前只给并列一行，确认后展开成 4 行
+    const p = d.pending;
+    if (p) {
+        if (p.confirmed) {
+            html += p.teams.map(t =>
+                row(p.rank, t[currentLang], p.result[currentLang], p.points, '')
+            ).join('');
+        } else {
+            html += row(
+                p.rank,
+                `<span class="standings-pending">${p.placeholder[currentLang]}</span>`,
+                p.result[currentLang], p.points, 'row-pending'
+            );
+        }
+    }
+    tbody.innerHTML = html;
+
+    const notes = document.querySelector('.standings-notes');
+    if (notes && d.notes) {
+        notes.innerHTML = d.notes.map(n => `<li>${n[currentLang]}</li>`).join('');
+    }
+
+    const shown = d.items.length + (p ? (p.confirmed ? p.teams.length : 1) : 0);
+    console.log(`\u2713 Rendered ${shown} standings rows in ${currentLang}`);
+}
+
 // Render timeline
 let activeTimelineYear = '2026';
 
@@ -931,6 +995,7 @@ function switchLanguage(lang) {
 
     // Re-render all JSON-driven sections with new language
     renderMedia();
+    renderHopeStandings();
     renderTeams();
     renderLeaderboard();
     renderTimeline();
