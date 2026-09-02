@@ -62,27 +62,6 @@
                 HOPE is Hitch Open's flagship challenge at the frontier of embodied AI. On the high-speed, millisecond-response proving ground of real table tennis, humanoid robots play with no remote control, no scripts, no intervention — closing the perceive–predict–plan–strike loop entirely on their own, toward the world's first technical standard for AI autonomous-decision ping-pong.
             </p>
             <div class="hero-event-meta">Aug 22–26, 2026 · 2nd World Humanoid Robot Games · Beijing "Ice Ribbon"</div>
-            <div class="hero-countdown-caption">Countdown to First Serve</div>
-            <div class="hero-countdown" data-target="2026-08-22T09:00:00+08:00">
-                <div class="hero-stat-card hero-countdown-box">
-                    <div class="cd-seg">
-                        <div class="hero-stat-number" id="cdDays">--</div>
-                        <div class="hero-stat-label" id="cdLabelDays">Days</div>
-                    </div>
-                    <div class="cd-seg">
-                        <div class="hero-stat-number" id="cdHours">--</div>
-                        <div class="hero-stat-label" id="cdLabelHours">Hours</div>
-                    </div>
-                    <div class="cd-seg">
-                        <div class="hero-stat-number" id="cdMins">--</div>
-                        <div class="hero-stat-label" id="cdLabelMins">Minutes</div>
-                    </div>
-                    <div class="cd-seg">
-                        <div class="hero-stat-number" id="cdSecs">--</div>
-                        <div class="hero-stat-label" id="cdLabelSecs">Seconds</div>
-                    </div>
-                </div>
-            </div>
             <div class="cta-buttons">
                 <a href="hope.html" class="btn btn-secondary">Explore HOPE</a>
             </div>
@@ -201,6 +180,58 @@
                 <div class="media-stat">
                     <strong id="mediaStatTitle5">Global Media Network</strong>
                     <p id="mediaStatText5">International coverage from Xinhua English, China Daily, and more</p>
+                </div>
+            </div>
+
+            <!-- 全球媒体报道：一句描述 + 横向滚动 logo 条。
+                 现在每个位子放的是文字 wordmark，等拿到官方 logo 文件后
+                 把 <span class="logo-mark"> 换成 <img src="images/media/logos/xxx.svg" alt="...">
+                 即可，栏位高度/间距已按 logo 备好，不用再改 CSS。
+                 注意：条内混排央媒与外媒，所以标题只说「全球媒体报道」，
+                 不写「国际媒体」——把央视/新华社归到国际名下对海外受众是反效果。 -->
+            <div class="global-pickup">
+                <div class="global-pickup-head">
+                    <h3 class="global-pickup-title" id="globalPickupTitle">As Covered By</h3>
+                    <p class="global-pickup-note" id="globalPickupNote">284 reports on the 2nd World Humanoid Robot Games, where HOPE ran as an official event — including 26 CCTV segments on the table tennis event and 27 overseas placements across 7 languages.</p>
+                </div>
+
+                <div class="logo-marquee">
+                    <div class="logo-track">
+                        <!-- 第一组 -->
+                        <div class="logo-set">
+                            <div class="logo-item"><span class="logo-mark">CCTV</span></div>
+                            <div class="logo-item"><span class="logo-mark">Xinhua</span></div>
+                            <div class="logo-item"><span class="logo-mark">People's Daily</span></div>
+                            <div class="logo-item"><span class="logo-mark">China News Service</span></div>
+                            <div class="logo-item"><span class="logo-mark">Reuters</span></div>
+                            <div class="logo-item"><span class="logo-mark">Associated Press</span></div>
+                            <div class="logo-item"><span class="logo-mark">BBC Science Focus</span></div>
+                            <div class="logo-item"><span class="logo-mark">CGTN</span></div>
+                            <div class="logo-item"><span class="logo-mark">Global Times</span></div>
+                            <div class="logo-item"><span class="logo-mark">China Daily</span></div>
+                            <div class="logo-item"><span class="logo-mark">Edaily</span></div>
+                            <div class="logo-item"><span class="logo-mark">Antara</span></div>
+                            <div class="logo-item"><span class="logo-mark">LUSA</span></div>
+                            <div class="logo-item"><span class="logo-mark">NewsBeast</span></div>
+                        </div>
+                        <!-- 第二组：与第一组完全相同，用于无缝循环。aria-hidden 避免读屏重复播报 -->
+                        <div class="logo-set" aria-hidden="true">
+                            <div class="logo-item"><span class="logo-mark">CCTV</span></div>
+                            <div class="logo-item"><span class="logo-mark">Xinhua</span></div>
+                            <div class="logo-item"><span class="logo-mark">People's Daily</span></div>
+                            <div class="logo-item"><span class="logo-mark">China News Service</span></div>
+                            <div class="logo-item"><span class="logo-mark">Reuters</span></div>
+                            <div class="logo-item"><span class="logo-mark">Associated Press</span></div>
+                            <div class="logo-item"><span class="logo-mark">BBC Science Focus</span></div>
+                            <div class="logo-item"><span class="logo-mark">CGTN</span></div>
+                            <div class="logo-item"><span class="logo-mark">Global Times</span></div>
+                            <div class="logo-item"><span class="logo-mark">China Daily</span></div>
+                            <div class="logo-item"><span class="logo-mark">Edaily</span></div>
+                            <div class="logo-item"><span class="logo-mark">Antara</span></div>
+                            <div class="logo-item"><span class="logo-mark">LUSA</span></div>
+                            <div class="logo-item"><span class="logo-mark">NewsBeast</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

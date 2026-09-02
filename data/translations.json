@@ -43,6 +43,8 @@
     "mediaStatText4": "新华社、上海证券报、钛媒体、央视体育等 7 家头部媒体深度剖析 AI 物理智能价值",
     "mediaStatTitle5": "海外传播网络",
     "mediaStatText5": "新华社英文版、China Daily 等多家海外媒体转发报道",
+    "globalPickupTitle": "全球媒体报道",
+    "globalPickupNote": "第二届世界人形机器人运动会共获 284 篇报道，HOPE 为本届运动会正赛赛项之一。其中，央视对乒乓赛项报道 26 篇，海外落地 27 篇、覆盖 7 个语种。",
     "partnersOrganizer": "赛事主办单位",
     "partnersSponsor": "赛事赞助伙伴",
     "partnersSocial": "官方社交媒体合作平台",
@@ -67,12 +69,7 @@
     "highlightsTitle": "2025赛季高光时刻",
     "teamModalIntroTitle": "赛队介绍",
     "teamModalProfessorsTitle": "带队教授",
-    "heroMeta": "2026.8.22–26 · 第二届世界人形机器人运动会 · 北京国家速滑馆“冰丝带”",
-    "cdCaption": "距开赛还有",
-    "cdDays": "天",
-    "cdHours": "时",
-    "cdMins": "分",
-    "cdSecs": "秒"
+    "heroMeta": "2026.8.22–26 · 第二届世界人形机器人运动会 · 北京国家速滑馆“冰丝带”"
   },
   "en": {
     "heroTitle": "HITCH OPEN",
@@ -118,6 +115,8 @@
     "mediaStatText4": "Seven top-tier media organizations, such as Xinhua News Agency, Shanghai Securities News, TMTPost, and CCTV Sports, have provided in-depth examinations of the value of AI physical intelligence",
     "mediaStatTitle5": "Global Media Network",
     "mediaStatText5": "International coverage from Xinhua English, China Daily, and more",
+    "globalPickupTitle": "As Covered By",
+    "globalPickupNote": "284 reports on the 2nd World Humanoid Robot Games, where HOPE ran as an official event — including 26 CCTV segments on the table tennis event and 27 overseas placements across 7 languages.",
     "partnersOrganizer": "Organizer",
     "partnersSponsor": "Sponsors",
     "partnersSocial": "Official Social Media Partners",
@@ -142,11 +141,6 @@
     "highlightsTitle": "2025 Season Highlights",
     "teamModalIntroTitle": "Team Introduction",
     "teamModalProfessorsTitle": "Faculty Advisors",
-    "heroMeta": "Aug 22–26, 2026 · 2nd World Humanoid Robot Games · Beijing “Ice Ribbon”",
-    "cdCaption": "Countdown to First Serve",
-    "cdDays": "Days",
-    "cdHours": "Hours",
-    "cdMins": "Minutes",
-    "cdSecs": "Seconds"
+    "heroMeta": "Aug 22–26, 2026 · 2nd World Humanoid Robot Games · Beijing “Ice Ribbon”"
   }
 }

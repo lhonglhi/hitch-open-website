@@ -352,54 +352,6 @@
             }
         }
 
-        .hero-countdown-caption {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #CD202B;
-            margin-bottom: 14px;
-        }
-
-        .hero-countdown {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .hero-countdown .hero-countdown-box {
-            display: flex;
-            gap: 48px;
-            justify-content: center;
-            padding: 20px 48px;
-            flex: 0 0 auto;
-            max-width: none;
-            min-width: 0;
-        }
-
-        .cd-seg {
-            text-align: center;
-            min-width: 56px;
-        }
-
-        .hero-countdown .hero-stat-number {
-            font-variant-numeric: tabular-nums;
-        }
-
-        @media (max-width: 768px) {
-            .hero-countdown .hero-countdown-box {
-                gap: 20px;
-                padding: 14px 20px;
-            }
-            .cd-seg {
-                min-width: 40px;
-            }
-            .hero-countdown .hero-stat-number {
-                font-size: 24px;
-            }
-        }
 
         .hero-stats {
             display: flex;
@@ -1271,6 +1223,119 @@
             font-size: 14px;
         }
 
+
+        /* ── 国际落地 Global Pickup ─────────────────────────────────────
+           刻意不复用 .impact-number 的大红渐变数字：上面 4 个是主指标，
+           这里再来一排同样的大红字会把层级拉平，主次不分。
+           这一块走「资料条」的调性——细上分隔线 + 小字号统计 + 名单，
+           安静地做背书，不跟主指标抢视线。 */
+        .global-pickup {
+            margin-top: 70px;
+            padding-top: 45px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .global-pickup-head {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .global-pickup-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-primary-light);
+            margin: 0 0 10px;
+        }
+
+        .global-pickup-note {
+            font-size: 13px;
+            color: #888888;
+            line-height: 1.7;
+            margin: 0 auto;
+            max-width: 780px;
+        }
+
+        /* ── 横向滚动 logo 条 ────────────────────────────────────────
+           .logo-track 里放两组完全相同的 .logo-set，整体左移一半宽度后
+           回到原位，视觉上就是无缝循环。用 translate3d 走合成层，不掉帧。
+           动画时长跟内容宽度挂钩：14 个位子 × 约 15s，改条目数时同步调 duration，
+           否则速度会变。 */
+        .logo-marquee {
+            position: relative;
+            overflow: hidden;
+            /* 两端渐隐，避免 logo 被硬边切断 */
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .logo-track {
+            display: flex;
+            width: max-content;
+            animation: logo-scroll 55s linear infinite;
+        }
+
+        /* 悬停暂停：这是真实交互，允许；但条目本身不可点击，所以不给 pointer 光标 */
+        .logo-marquee:hover .logo-track {
+            animation-play-state: paused;
+        }
+
+        .logo-set {
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        @keyframes logo-scroll {
+            from { transform: translate3d(0, 0, 0); }
+            to   { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* 关掉动效偏好：静止摊开，不做无限滚动 */
+        @media (prefers-reduced-motion: reduce) {
+            .logo-track {
+                animation: none;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+            .logo-set[aria-hidden="true"] {
+                display: none;
+            }
+            .logo-set {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* 每个 logo 位：固定高度的盒子，图片进来后按高度对齐、宽度自适应。
+           灰度 + 提亮是为了统一各家 logo 五花八门的配色，不让某一家跳出来。 */
+        .logo-item {
+            flex: 0 0 auto;
+            height: 62px;
+            padding: 0 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-item img {
+            max-height: 34px;
+            width: auto;
+            max-width: 170px;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(1.9);
+            opacity: 0.72;
+        }
+
+        /* 文字占位：等官方 logo 到位后整块被 <img> 取代 */
+        .logo-mark {
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #d8d8d8;
+            white-space: nowrap;
+        }
 
         /* Track Modal */
         .track-modal {
@@ -2926,12 +2991,6 @@
                 box-sizing: border-box;
             }
 
-            .hero-countdown .hero-countdown-box {
-                max-width: 100%;
-                flex-wrap: wrap;
-                box-sizing: border-box;
-            }
-
             .hero-description {
                 padding: 12px 0;
                 font-size: 13px;
@@ -2958,6 +3017,20 @@
 
             .impact-sublabel {
                 font-size: 12px;
+            }
+
+            .logo-item {
+                height: 52px;
+                padding: 0 24px;
+            }
+
+            .logo-item img {
+                max-height: 26px;
+                max-width: 128px;
+            }
+
+            .logo-mark {
+                font-size: 16px;
             }
 
             /* Mission Section Mobile */

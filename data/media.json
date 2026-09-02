@@ -13,6 +13,81 @@
   },
   "items": [
     {
+      "date": "2026年8月28日",
+      "title": {
+        "zh": "机器人办了一场（相当混乱的）运动会，画面令人瞠目",
+        "en": "Robots just held their own (very chaotic) athletic games. And the footage is jaw-dropping"
+      },
+      "source": {
+        "zh": "BBC 科学聚焦",
+        "en": "BBC Science Focus"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.sciencefocus.com/news/robots-just-held-their-own-very-chaotic-athletic-games-and-the-footage-is-jaw-dropping",
+      "image": "images/media/2026/news-08-28-1.jpg"
+    },
+    {
+      "date": "2026年8月27日",
+      "title": {
+        "zh": "第二届世界人形机器人运动会 HOPE AI 自主决策乒乓球赛事收官 北京大学智源研究院联合战队夺冠",
+        "en": "HOPE AI Autonomous Decision-Making Table Tennis Event Concludes at the 2nd World Humanoid Robot Games; Peking University–BAAI Joint Team Wins the Championship"
+      },
+      "source": {
+        "zh": "新华网",
+        "en": "Xinhuanet"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.news.cn/digital/20260827/b5a408695d6140f7b2829d1de3455600/c.html",
+      "image": "images/media/2026/news-08-27-1.jpg"
+    },
+    {
+      "date": "2026年8月26日",
+      "title": {
+        "zh": "世界人形机器人运动会：工程师与自己的机器同吃同住",
+        "en": "Engineers live alongside their machines at World Humanoid Robot Games"
+      },
+      "source": {
+        "zh": "路透社",
+        "en": "Reuters"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://www.youtube.com/watch?v=EwYRUGeqUL4",
+      "image": "images/media/2026/news-08-26-1.jpg"
+    },
+    {
+      "date": "2026年8月26日",
+      "title": {
+        "zh": "《正点财经》：聚焦第二届世界人形机器人运动会 机器人实现乒乓球「自主对打」",
+        "en": "CCTV Business Hour: Focus on the 2nd World Humanoid Robot Games — Robots Achieve Autonomous Table Tennis Rallies"
+      },
+      "source": {
+        "zh": "央视财经",
+        "en": "CCTV Finance"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://tv.cctv.com/2026/08/26/VIDEIhiHw6CCNdpz0c2gx7Nw260826.shtml",
+      "image": "images/media/2026/news-08-26-2.jpg"
+    },
+    {
+      "date": "2026年8月25日",
+      "title": {
+        "zh": "人形机器人在世界人形机器人运动会挑战乒乓球，将感知与决策推向新极限",
+        "en": "Humanoid robots take on table tennis challenge at WHRG, pushing perception and decision-making to new limits"
+      },
+      "source": {
+        "zh": "环球时报",
+        "en": "Global Times"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://www.globaltimes.cn/page/202608/1369009.shtml",
+      "image": "images/media/2026/news-08-25-1.jpg"
+    },
+    {
       "date": "2026年7月18日",
       "title": {
         "zh": "走进 WAIC 2026:直击具身智能创新与人形机器人",
