@@ -448,7 +448,7 @@ function renderHopeStandings() {
     const setText = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
     setText('standingsTitle', d.title[currentLang]);
     setText('standingsSub', d.subtitle[currentLang]);
-    setText('standingsTier', d.tier);
+    setText('standingsTier', typeof d.tier === 'string' ? d.tier : d.tier[currentLang]);
 
     const th = document.querySelectorAll('.standings-table th');
     if (th.length >= 4) {
@@ -494,7 +494,85 @@ function renderHopeStandings() {
 
     const shown = d.items.length + (p ? (p.confirmed ? p.teams.length : 1) : 0);
     console.log(`\u2713 Rendered ${shown} standings rows in ${currentLang}`);
+
+    renderHopeRules();
 }
+
+
+// 积分规则弹窗。数据来自 hope-standings.json 的 rules 段；
+// 由 renderHopeStandings() 调用，所以初次加载和切换语言都会自动重渲染。
+function renderHopeRules() {
+    const r = hopeStandingsData && hopeStandingsData.rules;
+    const modal = document.getElementById('rulesModal');
+    if (!modal) return;
+
+    const link = document.getElementById('standingsRulesLink');
+    if (!r) {                       // 没有 rules 数据就把入口藏掉,别留个点不开的链接
+        if (link) link.style.display = 'none';
+        return;
+    }
+    // 字段可能是字符串,也可能是 {zh,en}
+    const t = v => (v && typeof v === 'object') ? (v[currentLang] || v.en) : v;
+
+    if (link) { link.style.display = ''; link.textContent = t(r.linkLabel); }
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('rulesModalTitle', t(r.title));
+    set('rulesIntro', t(r.intro));
+
+    const tb = r.table;
+    const head = document.getElementById('rulesTableHead');
+    if (head && tb) {
+        head.innerHTML = ['place', 'atp', 'hope', 'note']
+            .map(k => `<th class="rules-col-${k}">${t(tb.headers[k])}</th>`).join('');
+    }
+    const body = document.getElementById('rulesTableBody');
+    if (body && tb) {
+        const row = (x, cls) => `
+            <tr class="${cls || ''}">
+                <td class="rules-col-place">${t(x.place)}</td>
+                <td class="rules-col-atp">${t(x.atp)}</td>
+                <td class="rules-col-hope">${t(x.hope)}</td>
+                <td class="rules-col-note">${t(x.note)}</td>
+            </tr>`;
+        body.innerHTML = tb.rows.map(x => row(x)).join('')
+                       + (tb.total ? row(tb.total, 'rules-row-total') : '');
+    }
+
+    set('rulesTiersTitle', r.tiers ? t(r.tiers.title) : '');
+    const tiers = document.getElementById('rulesTiers');
+    if (tiers) {
+        tiers.innerHTML = (r.tiers ? r.tiers.items : []).map(i => `
+            <li>
+                <span class="rules-tier-name">${t(i.name)}</span>
+                <span class="rules-tier-points">${i.points}</span>
+                <span class="rules-tier-desc">${t(i.desc)}</span>
+            </li>`).join('');
+    }
+    const fn = document.getElementById('rulesFootnotes');
+    if (fn) fn.innerHTML = (r.footnotes || []).map(n => `<li>${t(n)}</li>`).join('');
+}
+
+function openRulesModal() {
+    const modal = document.getElementById('rulesModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeRulesModal() {
+    const modal = document.getElementById('rulesModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Esc 关闭
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('rulesModal');
+        if (modal && modal.classList.contains('active')) closeRulesModal();
+    }
+});
 
 // Render timeline
 let activeTimelineYear = '2026';

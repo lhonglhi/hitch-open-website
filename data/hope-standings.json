@@ -7,11 +7,11 @@
     "zh": "第一届 HOPE AI Challenge · 第二届世界人形机器人运动会 · 2026 年 8 月",
     "en": "Inaugural HOPE AI Challenge · 2nd World Humanoid Robot Games · August 2026"
   },
-  "tier": "HOPE 250",
+  "tier": { "zh": "级别：HOPE 250", "en": "Tier: HOPE 250" },
   "headers": {
     "rank":   { "zh": "名次", "en": "Rank" },
     "team":   { "zh": "战队", "en": "Team" },
-    "result": { "zh": "轮次", "en": "Result" },
+    "result": { "zh": "赛果", "en": "Result" },
     "points": { "zh": "积分", "en": "Points" }
   },
   "items": [
@@ -45,7 +45,7 @@
     }
   ],
   "pending": {
-    "confirmed": false,
+    "confirmed": true,
     "rank": "5–8",
     "count": 4,
     "points": 50,
@@ -59,6 +59,51 @@
       { "zh": "复旦大学若客战队", "en": "Fudan University RoboK Team" },
       { "zh": "清华北人智心联队", "en": "Tsinghua–BISTU Zhixin Joint Team" },
       { "zh": "清华大学 iPingPong 战队", "en": "Tsinghua University iPingPong Team" }
+    ]
+  },
+  "rules": {
+    "linkLabel": { "zh": "积分规则", "en": "Points system" },
+    "title": { "zh": "HOPE 全球积分体系 · 规则", "en": "HOPE Global Points System · Rules" },
+    "intro": {
+      "zh": "HOPE 积分参照网球 ATP 巡回赛体系设计：每站赛事按级别设定分值，名次越高积分越多。北京站为 HOPE 250 级别。",
+      "en": "HOPE points follow the structure of tennis' ATP Tour: every event carries a tier that sets its points, and higher placings earn more. Beijing is a HOPE 250 event."
+    },
+    "table": {
+      "headers": {
+        "place": { "zh": "名次", "en": "Placing" },
+        "atp":   { "zh": "ATP 250 原版", "en": "ATP 250" },
+        "hope":  { "zh": "HOPE 250", "en": "HOPE 250" },
+        "note":  { "zh": "说明", "en": "Notes" }
+      },
+      "rows": [
+        { "place": { "zh": "冠军", "en": "Champion" }, "atp": "250", "hope": "250",
+          "note": { "zh": "与 ATP 250 相同", "en": "Same as ATP 250" } },
+        { "place": { "zh": "亚军", "en": "Runner-up" }, "atp": "165", "hope": "165",
+          "note": { "zh": "与 ATP 250 相同", "en": "Same as ATP 250" } },
+        { "place": { "zh": "季军（第三名赛胜方）", "en": "Third (third-place match, winner)" }, "atp": "100", "hope": "110",
+          "note": { "zh": "网球没有三四名决赛，两名半决赛负者同得 100 分；HOPE 设第三名赛，因此在不改变总分的前提下拆分，胜方 +10", "en": "Tennis has no third-place match, so both losing semi-finalists take 100. HOPE does play one, so the 200 is split without changing the total: +10 to the winner" } },
+        { "place": { "zh": "第四名（第三名赛负方）", "en": "Fourth (third-place match, runner-up)" }, "atp": "100", "hope": "90",
+          "note": { "zh": "同上，负方 −10；110 + 90 = 100 + 100，总量与 ATP 250 一致", "en": "The other half of the split: −10. 110 + 90 = 100 + 100, so the total is unchanged" } },
+        { "place": { "zh": "5–8 名（八强赛负方，并列）", "en": "5–8 (quarter-final losers, tied)" }, "atp": "50", "hope": "50",
+          "note": { "zh": "与 ATP 250 相同，四队并列", "en": "Same as ATP 250; four teams tied" } },
+        { "place": { "zh": "9–16 名（十六强负方，并列）", "en": "9–16 (round-of-16 losers, tied)" }, "atp": "25", "hope": "25",
+          "note": { "zh": "与 ATP 250 相同，未来扩大签表时适用", "en": "Same as ATP 250; applies if the draw expands" } }
+      ],
+      "total": { "place": { "zh": "前八名合计", "en": "Top-8 total" }, "atp": "815", "hope": "815",
+        "note": { "zh": "两列相等 —— HOPE 的拆分不改变积分总量，与 ATP 体系保持可比", "en": "The columns match: HOPE's split does not change the total, keeping it comparable with the ATP system" } }
+    },
+    "tiers": {
+      "title": { "zh": "级别阶梯", "en": "Tier ladder" },
+      "items": [
+        { "name": "HOPE 250", "points": "250", "desc": { "zh": "首届 / 新设站点（2026 北京站即此档）", "en": "Inaugural or newly added events (Beijing 2026)" } },
+        { "name": "HOPE 500", "points": "500", "desc": { "zh": "成熟年度站点", "en": "Established annual events" } },
+        { "name": "HOPE 1000", "points": "1000", "desc": { "zh": "洲际旗舰站", "en": "Continental flagship events" } },
+        { "name": { "zh": "HOPE 大满贯", "en": "HOPE Grand Slam" }, "points": "2000", "desc": { "zh": "世界人形机器人运动会正赛等最高级别", "en": "Highest tier, e.g. the World Humanoid Robot Games main competition" } }
+      ]
+    },
+    "footnotes": [
+      { "zh": "分值依据 ATP 巡回赛 2026 积分表。", "en": "Values follow the ATP Tour 2026 points table." },
+      { "zh": "第三名赛 110 / 90 的拆分为 HOPE 自定规则，目前为 v0.1 草案，须经组委会核准后生效。", "en": "The 110 / 90 split for the third-place match is a HOPE-specific rule, currently a v0.1 draft pending approval by the organising committee." }
     ]
   },
   "notes": [

@@ -814,11 +814,13 @@
             background: #ffffff;
         }
 
-        .hope-intro-band .section-title {
+        .hope-intro-band .section-title,
+        .hope-season-band .section-title {
             color: #111114;
         }
 
-        .hope-intro-band .section-subtitle {
+        .hope-intro-band .section-subtitle,
+        .hope-season-band .section-subtitle {
             color: #56565e;
         }
 
@@ -851,7 +853,7 @@
         /* 浅色区块（HOPE 页独有）。竞速页与首页保持深色，品牌统一靠红色强调线、
            字体与卡片几何维持，不靠底色 */
         .hope-unis-band {
-            background: #f4f4f7;
+            background: #ffffff;
             padding: 84px 50px;
         }
 
@@ -899,9 +901,9 @@
             min-height: 178px;
             padding: 26px 16px 22px;
             background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.07);
+            border: 1px solid rgba(0, 0, 0, 0.13);
             border-radius: 2px;
-            box-shadow: 0 1px 3px rgba(20, 20, 30, 0.06);
+            box-shadow: 0 1px 3px rgba(20, 20, 30, 0.07);
             transition: box-shadow .25s, transform .25s;
         }
 
@@ -1408,6 +1410,158 @@
             margin-top: 40px;
         }
 
+        /* 积分规则入口。低调的小字链接，别跟级别徽章抢视觉。 */
+        .standings-rules-link {
+            display: block;
+            margin: 14px auto 0;
+            padding: 4px 2px;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 13px;
+            font-family: inherit;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: color 0.25s, border-color 0.25s;
+        }
+
+        .standings-rules-link:hover,
+        .standings-rules-link:focus-visible {
+            color: #ffffff;
+            border-bottom-color: var(--color-primary);
+        }
+
+        /* 规则弹窗 */
+        .rules-modal .track-modal-content {
+            max-width: 880px;
+            width: 90%;
+        }
+
+        .rules-modal .track-modal-body h3 {
+            margin-bottom: 14px;
+        }
+
+        .rules-intro {
+            color: #b9b9b9;
+            font-size: 14px;
+            line-height: 1.75;
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 28px;
+        }
+
+        .rules-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .rules-table th {
+            padding: 10px 12px;
+            text-align: left;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+            white-space: nowrap;
+        }
+
+        .rules-table td {
+            padding: 12px;
+            color: #d8d8d8;
+            line-height: 1.65;
+            vertical-align: top;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .rules-col-atp,
+        .rules-col-hope {
+            width: 92px;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .rules-table td.rules-col-hope {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .rules-col-place {
+            width: 200px;
+            color: #ffffff;
+        }
+
+        .rules-col-note {
+            color: #9d9d9d;
+            font-size: 13px;
+        }
+
+        .rules-row-total td {
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            border-bottom: none;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .rules-subtitle {
+            margin: 34px 0 14px;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .rules-tiers {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rules-tiers li {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .rules-tier-name {
+            min-width: 132px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .rules-tier-points {
+            min-width: 56px;
+            color: var(--color-primary-light);
+            font-weight: 700;
+            font-size: 14px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .rules-tier-desc {
+            color: #9d9d9d;
+            font-size: 13px;
+        }
+
+        .rules-footnotes {
+            margin: 26px 0 0;
+            padding-left: 18px;
+            color: #8a8a8a;
+            font-size: 12.5px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 700px) {
+            .rules-modal .track-modal-body { padding: 28px 20px; }
+            .rules-col-place { width: auto; }
+            .rules-col-note { display: none; }
+            .rules-tiers li { flex-wrap: wrap; gap: 6px 12px; }
+            .rules-tier-desc { flex-basis: 100%; }
+        }
+
         .standings-table .col-rank {
             width: 84px;
             white-space: nowrap;
@@ -1669,6 +1823,90 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
+        }
+
+        /* HOPE 2026 赛季节点。层级只靠字号／字重／留白，不用线和圆点；
+           红色是稀缺资源，整块只给「查看积分榜」这一个动作。作用域限定在
+           .hope-events，竞速页的 .track-events 保持原样。 */
+        /* 浅灰通栏：与上方白色 intro 之间靠底色换档分隔，
+           顶部内边距恢复常规（白底时为避免两白相接空一片才清零过）。 */
+        .hope-season-band { background: #f4f4f7; }
+
+        .hope-events {
+            gap: 72px;
+            align-items: start;
+        }
+
+        .hope-events .track-event-date {
+            border-left: none;
+            padding: 0;
+            margin-bottom: 14px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: #8e9096;
+        }
+
+        .hope-events .track-event-title {
+            color: #15151a;
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+            margin: 0 0 14px;
+        }
+
+        .hope-events .track-event-body {
+            color: #4b4b53;
+            font-size: 14.5px;
+            line-height: 1.85;
+            max-width: 40em;
+            margin: 0;
+        }
+
+        .event-result {
+            margin: 24px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .event-result dt {
+            margin: 0;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #a3a5ab;
+        }
+
+        .event-result dd {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #15151a;
+        }
+
+        .event-result-link {
+            /* 父级 .track-event-card 是 column flex，子项默认拉伸满列宽，
+               inline-block 会被 flex 强制成 block —— 下边框会拖成一整行。
+               align-self 收回内容宽度，下划线才只在文字底下。 */
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 16px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #CD202B;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.25s;
+        }
+
+        .event-result-link:hover { border-bottom-color: #CD202B; }
+
+        @media (max-width: 768px) {
+            .hope-events { gap: 44px; }
         }
 
         .track-event-card {
@@ -2327,10 +2565,8 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .leaderboard-table tr:hover,
-        .standings-table tr:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
+        /* 榜单行不可点击，故不做 hover 反馈 —— 有交互效果就该有真的交互。
+           行的层级已由 .rank-1/2/3 的底色区分，不需要悬停高亮。 */
 
         .rank-1 {
             background: linear-gradient(90deg, rgba(105, 8, 116, 0.2), transparent);
@@ -2977,7 +3213,9 @@
             flex-direction: column;
         }
 
-        .media-card:hover {
+        /* 只对可点击的卡片做 hover —— renderMedia() 仅在 item.url 存在时
+           才加 .media-card-clickable；无链接的卡片不应表现得像能点。 */
+        .media-card-clickable:hover {
             transform: translateY(-5px);
             border-color: #CD202B;
             box-shadow: 0 10px 30px rgba(205, 32, 43, 0.3);
