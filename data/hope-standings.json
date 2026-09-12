@@ -90,7 +90,7 @@
           "note": { "zh": "与 ATP 250 相同，未来扩大签表时适用", "en": "Same as ATP 250; applies if the draw expands" } }
       ],
       "total": { "place": { "zh": "前八名合计", "en": "Top-8 total" }, "atp": "815", "hope": "815",
-        "note": { "zh": "两列相等 —— HOPE 的拆分不改变积分总量，与 ATP 体系保持可比", "en": "The columns match: HOPE's split does not change the total, keeping it comparable with the ATP system" } }
+        "note": { "zh": "两列相等：HOPE 的拆分不改变积分总量，与 ATP 体系保持可比", "en": "The columns match: HOPE's split does not change the total, keeping it comparable with the ATP system" } }
     },
     "tiers": {
       "title": { "zh": "级别阶梯", "en": "Tier ladder" },
