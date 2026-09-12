@@ -44,7 +44,7 @@
       "dotState": "done",
       "date": { "zh": "2025年9月25日 至 10月18日", "en": "25 Sep – 18 Oct 2025" },
       "title": { "zh": "天门山决赛", "en": "Tianmen Mountain Finals" },
-      "description": { "zh": "终极对决：99道弯极限挑战。张家界天门山，海拔200m→1300m，全长10.77公里，99个极端180°发卡弯。无GPS、低能见度、湿滑赛面，AI在最极端的自然环境中独立完成\"感知—决策—行动\"全闭环。", "en": "Ultimate Challenge: 99 Hairpin Turns. Tianmen Mountain, 200m→1300m elevation, 10.77km, 99 extreme 180° hairpins. No GPS, low visibility, wet surface. AI completes the full perception–decision–action loop in the most extreme natural environment." },
+      "description": { "zh": "终极对决：99道弯极限挑战。张家界天门山，海拔200m→1300m，全长10.77公里，99个极端180°发卡弯。无GPS、低能见度、湿滑赛面，AI在最极端的自然环境中独立完成\"感知、决策、行动\"全闭环。", "en": "Ultimate Challenge: 99 Hairpin Turns. Tianmen Mountain, 200m→1300m elevation, 10.77km, 99 extreme 180° hairpins. No GPS, low visibility, wet surface. AI completes the full perception–decision–action loop in the most extreme natural environment." },
       "status": "completed",
       "track": "tianmen",
       "hasModal": true,
