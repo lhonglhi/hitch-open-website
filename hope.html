@@ -75,9 +75,43 @@
     </section>
     </div>
 
-    <!-- 2026 赛季 —— 独立通栏。与上面的「HOPE 是什么」分开：介绍讲定义，
-         这一段讲这一年实际发生了什么，再往下接「2026 参赛高校与机构」，
-         时间与主体的顺序才连得上。 -->
+    <!-- 北京站积分榜。数据来自 data/hope-standings.json。
+         注意不要复用 .leaderboard-table —— renderLeaderboard() 写死了那个选择器,
+         会把 racing 的 2025 赛季数据灌进来。这里用 .standings-table + 独立渲染函数。
+         5–8 名队名在组委会确认前不公开: JSON 里 pending.confirmed=false 时
+         合并成一行显示，确认后改 true 即自动展开成 4 行。 -->
+    <section id="standings" class="standings">
+        <div class="section">
+            <div class="standings-head">
+                <h2 class="section-title" id="standingsTitle">HOPE Global Standings · Beijing</h2>
+                <p class="standings-sub" id="standingsSub">Inaugural HOPE AI Challenge · 2nd World Humanoid Robot Games · August 2026</p>
+                <div class="standings-tier" id="standingsTier">Tier: HOPE 250</div>
+                <button type="button" class="standings-rules-link" id="standingsRulesLink"
+                        onclick="openRulesModal()" aria-haspopup="dialog">Points system</button>
+            </div>
+
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th class="col-rank">Rank</th>
+                        <th class="col-team">Team</th>
+                        <th class="col-result">Result</th>
+                        <th class="col-points">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 由 data/hope-standings.json 动态填充 -->
+                </tbody>
+            </table>
+
+            <ul class="standings-notes">
+                <!-- 由 data/hope-standings.json 动态填充 -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- 2026 赛季 —— 独立通栏。排在积分榜之后：先摆结果，再讲这一年怎么走到这一步，
+         再往下接「2026 参赛高校与机构」，结果→过程→主体的顺序才连得上。 -->
     <div class="hope-season-band">
     <section id="season" class="section">
         <h2 class="section-title" data-zh="2026 赛季" data-en="2026 Season">2026 Season</h2>
@@ -97,7 +131,6 @@
                         <dt data-zh="冠军" data-en="Champion">Champion</dt>
                         <dd data-zh="北京大学智源研究院联合战队" data-en="Peking University–BAAI Joint Team">Peking University–BAAI Joint Team</dd>
                     </dl>
-                    <a class="event-result-link" href="#standings" data-zh="查看北京站积分榜 →" data-en="View the Beijing standings →">View the Beijing standings →</a>
                 </div>
             </div>
     </section>
@@ -166,40 +199,6 @@
     </section>
 
     <!-- Partners Section -->
-    <!-- 北京站积分榜。数据来自 data/hope-standings.json。
-         注意不要复用 .leaderboard-table —— renderLeaderboard() 写死了那个选择器,
-         会把 racing 的 2025 赛季数据灌进来。这里用 .standings-table + 独立渲染函数。
-         5–8 名队名在组委会确认前不公开: JSON 里 pending.confirmed=false 时
-         合并成一行显示，确认后改 true 即自动展开成 4 行。 -->
-    <section id="standings" class="standings">
-        <div class="section">
-            <div class="standings-head">
-                <h2 class="section-title" id="standingsTitle">HOPE Global Standings · Beijing</h2>
-                <p class="standings-sub" id="standingsSub">Inaugural HOPE AI Challenge · 2nd World Humanoid Robot Games · August 2026</p>
-                <div class="standings-tier" id="standingsTier">Tier: HOPE 250</div>
-                <button type="button" class="standings-rules-link" id="standingsRulesLink"
-                        onclick="openRulesModal()" aria-haspopup="dialog">Points system</button>
-            </div>
-
-            <table class="standings-table">
-                <thead>
-                    <tr>
-                        <th class="col-rank">Rank</th>
-                        <th class="col-team">Team</th>
-                        <th class="col-result">Result</th>
-                        <th class="col-points">Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- 由 data/hope-standings.json 动态填充 -->
-                </tbody>
-            </table>
-
-            <ul class="standings-notes">
-                <!-- 由 data/hope-standings.json 动态填充 -->
-            </ul>
-        </div>
-    </section>
 
     <section id="partners" class="partners">
         <h2 class="section-title" data-zh="合作伙伴" data-en="Partners">Partners</h2>
