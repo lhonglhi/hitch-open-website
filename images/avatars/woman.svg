@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Default avatar - young woman">
+  <defs><clipPath id="clip-woman"><circle cx="64" cy="64" r="64"/></clipPath></defs>
+  <circle cx="64" cy="64" r="64" fill="#E9E9EE"/>
+  <g clip-path="url(#clip-woman)">
+    <path d="M64 86c-24 0-43 16-45 42h90c-2-26-21-42-45-42z" fill="#4A505C"/>
+    <path d="M64 28c-16 0-26 11-26 27v31c0 4 9 4 9 0V60c0-10 7-16 17-16s17 6 17 16v26c0 4 9 4 9 0V55c0-16-10-27-26-27z" fill="#262A33"/>
+    <circle cx="64" cy="56" r="19" fill="#4A505C"/>
+    <path d="M45 55c0-12 8-21 19-21s19 9 19 21c0-8-8-12-19-12s-19 4-19 12z" fill="#262A33"/>
+  </g>
+</svg>

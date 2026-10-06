@@ -1,0 +1,370 @@
+/* ============================================================
+   8 号楼 · 连续对打纪录榜
+   ------------------------------------------------------------
+   这个页面是自包含的：不加载 css/style.css, 也不加载 js/script.js。
+   原因：主脚本一加载就会做 geo-IP 探测 + 拉 6 个 JSON + 对缺失元素
+   报 console 错误, 对一台现场一体机是纯负担; 且主样式表是为深色站
+   写的, 这里是亮色页, 基本用不上。视觉变量(红 #CD202B、系统字体栈)
+   与主站保持一致, 但样式互不影响。
+   ============================================================ */
+
+:root {
+    --b8-red: #CD202B;
+    --b8-ink: #15151a;
+    --b8-body: #4b4b53;
+    --b8-muted: #8e9096;
+    --b8-line: rgba(0, 0, 0, 0.1);
+    --b8-bg: #f4f4f7;
+    --b8-card: #ffffff;
+    --b8-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--b8-font);
+    background: var(--b8-bg);
+    color: var(--b8-ink);
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* ---------- 顶栏 ---------- */
+.b8-header {
+    background: #fff;
+    border-bottom: 1px solid var(--b8-line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.b8-header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.b8-header-inner img { display: block; height: 38px; width: auto; }
+
+.b8-lang { display: flex; align-items: center; gap: 8px; }
+
+.b8-lang button {
+    background: none;
+    border: none;
+    padding: 4px 2px;
+    font: inherit;
+    font-size: 13px;
+    color: var(--b8-muted);
+    cursor: pointer;
+}
+
+.b8-lang button.active { color: var(--b8-red); font-weight: 600; }
+.b8-lang span { color: var(--b8-line); font-size: 13px; }
+
+/* ---------- 标题区 ---------- */
+.b8-head {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 28px 30px;
+    text-align: center;
+}
+
+.b8-head h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--b8-ink);
+}
+
+.b8-head p {
+    margin: 14px 0 0;
+    font-size: 15px;
+    color: var(--b8-body);
+}
+
+/* ---------- 榜单 ---------- */
+.b8-board {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 28px 40px;
+}
+
+.b8-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+.b8-btn {
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.b8-btn-primary { background: var(--b8-red); color: #fff; }
+.b8-btn-primary:hover { background: #b31b25; }
+
+.b8-btn-ghost { background: transparent; color: var(--b8-body); border-color: var(--b8-line); }
+.b8-btn-ghost:hover { border-color: var(--b8-muted); color: var(--b8-ink); }
+
+.b8-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: var(--b8-card);
+    border: 1px solid var(--b8-line);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.b8-row {
+    display: grid;
+    grid-template-columns: 54px 56px 1fr auto auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.b8-row:first-child { border-top: none; }
+
+.b8-rank {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--b8-muted);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.b8-row-top .b8-rank { color: var(--b8-red); font-size: 20px; }
+
+.b8-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #f1f1f4;
+    display: block;
+}
+
+.b8-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--b8-ink);
+    overflow-wrap: anywhere;
+}
+
+.b8-date {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: var(--b8-muted);
+    font-weight: 400;
+}
+
+.b8-score {
+    text-align: right;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--b8-ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.b8-score small {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--b8-muted);
+    letter-spacing: 0.5px;
+}
+
+/* 行操作：真实可点, 所以保留 hover 反馈。
+   现场是触屏设备, 没有 hover, 所以常驻显示而不是悬停才出现。 */
+.b8-row-actions { display: flex; gap: 4px; margin-left: 14px; }
+
+.b8-icon-btn {
+    background: none;
+    border: none;
+    padding: 6px 8px;
+    font: inherit;
+    font-size: 12px;
+    color: var(--b8-muted);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.b8-icon-btn:hover { background: rgba(0, 0, 0, 0.05); color: var(--b8-ink); }
+.b8-icon-btn.b8-danger:hover { background: rgba(205, 32, 43, 0.08); color: var(--b8-red); }
+
+.b8-empty {
+    padding: 64px 22px;
+    text-align: center;
+    color: var(--b8-muted);
+    font-size: 15px;
+}
+
+/* ---------- 运营工具（导出/导入） ---------- */
+.b8-ops {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 28px 70px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.b8-ops .b8-btn { font-size: 13px; padding: 8px 16px; font-weight: 500; }
+
+.b8-footer {
+    text-align: center;
+    padding: 26px;
+    font-size: 12px;
+    color: var(--b8-muted);
+    border-top: 1px solid var(--b8-line);
+}
+
+/* ---------- 弹窗 ---------- */
+.b8-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 100;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.b8-modal.open { display: flex; align-items: flex-start; justify-content: center; }
+
+.b8-modal-card {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 560px;
+    margin: auto;
+    padding: 30px 32px 26px;
+    position: relative;
+}
+
+.b8-modal-card h2 { margin: 0 0 22px; font-size: 21px; font-weight: 700; }
+
+.b8-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--b8-muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.b8-close:hover { background: rgba(0, 0, 0, 0.05); color: var(--b8-ink); }
+
+.b8-field { margin-bottom: 20px; }
+
+.b8-field > label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--b8-body);
+}
+
+.b8-field input[type="text"],
+.b8-field input[type="number"] {
+    width: 100%;
+    font: inherit;
+    font-size: 16px;
+    padding: 11px 13px;
+    border: 1px solid var(--b8-line);
+    border-radius: 6px;
+    color: var(--b8-ink);
+    background: #fff;
+}
+
+.b8-field input:focus {
+    outline: none;
+    border-color: var(--b8-red);
+    box-shadow: 0 0 0 3px rgba(205, 32, 43, 0.1);
+}
+
+.b8-hint { margin: 7px 0 0; font-size: 12px; color: var(--b8-muted); }
+
+/* 头像选择器 */
+.b8-picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+    gap: 8px;
+}
+
+.b8-pick {
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.b8-pick img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 50%; }
+.b8-pick:hover { border-color: rgba(0, 0, 0, 0.12); }
+.b8-pick[aria-pressed="true"] { border-color: var(--b8-red); background: rgba(205, 32, 43, 0.06); }
+
+.b8-picker-group { margin-bottom: 12px; }
+
+.b8-picker-group > span {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--b8-muted);
+}
+
+.b8-error {
+    margin: 0 0 14px;
+    font-size: 13px;
+    color: var(--b8-red);
+    min-height: 18px;
+}
+
+.b8-actions { display: flex; justify-content: flex-end; gap: 10px; }
+
+/* ---------- 窄屏 ---------- */
+@media (max-width: 640px) {
+    .b8-head { padding: 40px 20px 24px; }
+    .b8-head h1 { font-size: 29px; }
+    .b8-board, .b8-ops { padding-left: 16px; padding-right: 16px; }
+    .b8-row { grid-template-columns: 34px 42px 1fr auto; gap: 11px; padding: 13px 14px; }
+    .b8-avatar { width: 42px; height: 42px; }
+    .b8-rank { font-size: 15px; }
+    .b8-row-top .b8-rank { font-size: 17px; }
+    .b8-name { font-size: 15px; }
+    .b8-score { font-size: 21px; }
+    /* 窄屏下操作按钮换到第二行, 避免挤掉分数 */
+    .b8-row-actions { grid-column: 3 / -1; justify-content: flex-end; margin-top: 2px; }
+    .b8-modal-card { padding: 26px 20px 22px; }
+}

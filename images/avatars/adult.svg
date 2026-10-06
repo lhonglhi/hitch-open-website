@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Default avatar - adult">
+  <defs><clipPath id="clip-adult"><circle cx="64" cy="64" r="64"/></clipPath></defs>
+  <circle cx="64" cy="64" r="64" fill="#E9E9EE"/>
+  <g clip-path="url(#clip-adult)">
+    <path d="M64 86c-25 0-45 16-47 42h94c-2-26-22-42-47-42z" fill="#4A505C"/>
+    <circle cx="64" cy="53" r="20" fill="#4A505C"/>
+    <path d="M44 51c0-13 9-22 20-22s20 9 20 22c0-8-6-12-12-12-3 0-5 2-8 2s-5-2-8-2c-6 0-12 4-12 12z" fill="#262A33"/>
+    <g fill="none" stroke="#E9E9EE" stroke-width="2.4">
+      <circle cx="56" cy="58" r="6"/><circle cx="73" cy="58" r="6"/>
+      <path d="M62 58h5"/>
+    </g>
+  </g>
+</svg>

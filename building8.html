@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 号楼 · 连续对打纪录榜 | Hitch Open</title>
+
+    <!-- 内部页面：无站内入口, 只能直接输地址进入。
+         用 noindex 而不是 robots.txt 挡: robots.txt 是公开的, 写进去等于
+         广播这个地址; 而且被 Disallow 的页面爬虫不会读取, 也就看不到 noindex。 -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="images/webclip.png">
+
+    <!-- 自包含样式。不加载 css/style.css，那是为深色站写的, 这里是亮色页。
+         .htaccess 对 css/js 是 1 年 immutable 缓存, 所以必须带 ?v= -->
+    <link rel="stylesheet" href="css/building8.css?v=20260911a">
+</head>
+
+<body>
+
+    <header class="b8-header">
+        <div class="b8-header-inner">
+            <a href="hope.html"><img src="images/160x160-logo.png" alt="HITCH OPEN"></a>
+            <div class="b8-lang">
+                <button type="button" onclick="b8SetLang('zh')">中文</button>
+                <span>/</span>
+                <button type="button" onclick="b8SetLang('en')">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="b8-head">
+        <h1 data-zh="8 号楼 · 连续对打纪录榜" data-en="Building 8 · Rally Record Board">8 号楼 · 连续对打纪录榜</h1>
+        <p data-zh="与机器人连续对打，一拍记 1 分。" data-en="Rally with the robot. One stroke, one point.">与机器人连续对打，一拍记 1 分。</p>
+    </div>
+
+    <main class="b8-board">
+        <div class="b8-toolbar">
+            <button type="button" class="b8-btn b8-btn-primary" onclick="b8OpenForm()"
+                    data-zh="添加纪录" data-en="Add a record">添加纪录</button>
+        </div>
+        <ul class="b8-list" id="b8List"></ul>
+    </main>
+
+    <!-- 运营工具。localStorage 会被「清除浏览数据」抹掉, 导出是唯一兜底;
+         导出的 JSON 可直接提交进仓库备份。 -->
+    <div class="b8-ops">
+        <button type="button" class="b8-btn b8-btn-ghost" onclick="b8Export()"
+                data-zh="导出备份" data-en="Export backup">导出备份</button>
+        <button type="button" class="b8-btn b8-btn-ghost" onclick="document.getElementById('b8File').click()"
+                data-zh="导入备份" data-en="Import backup">导入备份</button>
+        <input type="file" id="b8File" accept="application/json,.json" hidden onchange="b8ImportFile(this)">
+    </div>
+
+    <footer class="b8-footer">
+        <span data-zh="记录保存在本机浏览器中。" data-en="Records are stored in this browser.">记录保存在本机浏览器中。</span>
+    </footer>
+
+    <!-- 添加 / 修改纪录 -->
+    <div class="b8-modal" id="b8Modal" role="dialog" aria-modal="true" aria-labelledby="b8FormTitle">
+        <div class="b8-modal-card">
+            <button type="button" class="b8-close" onclick="b8CloseForm()" aria-label="Close">&times;</button>
+            <h2 id="b8FormTitle">添加纪录</h2>
+
+            <form onsubmit="b8Submit(event)">
+                <div class="b8-field">
+                    <label for="b8Name" data-zh="名字" data-en="Name">名字</label>
+                    <input type="text" id="b8Name" maxlength="24" autocomplete="off"
+                           data-zh-ph="怎么称呼你" data-en-ph="What should we call you">
+                </div>
+
+                <div class="b8-field">
+                    <label data-zh="头像" data-en="Avatar">头像</label>
+                    <div id="b8Picker"></div>
+                </div>
+
+                <div class="b8-field">
+                    <label for="b8Score" data-zh="连续拍数" data-en="Rallies">连续拍数</label>
+                    <input type="number" id="b8Score" min="1" step="1" inputmode="numeric"
+                           data-zh-ph="例如 24" data-en-ph="e.g. 24">
+                    <p class="b8-hint" data-zh="一拍记 1 分，填连续打了多少拍。"
+                       data-en="One stroke counts as one point. Enter how many strokes in a row.">一拍记 1 分，填连续打了多少拍。</p>
+                </div>
+
+                <p class="b8-error" id="b8Error"></p>
+
+                <div class="b8-actions">
+                    <button type="button" class="b8-btn b8-btn-ghost" onclick="b8CloseForm()"
+                            data-zh="取消" data-en="Cancel">取消</button>
+                    <button type="submit" class="b8-btn b8-btn-primary"
+                            data-zh="保存" data-en="Save">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/building8.js?v=20260911a"></script>
+</body>
+
+</html>

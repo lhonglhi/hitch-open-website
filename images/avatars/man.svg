@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Default avatar - young man">
+  <defs><clipPath id="clip-man"><circle cx="64" cy="64" r="64"/></clipPath></defs>
+  <circle cx="64" cy="64" r="64" fill="#E9E9EE"/>
+  <g clip-path="url(#clip-man)">
+    <path d="M64 86c-24 0-43 16-45 42h90c-2-26-21-42-45-42z" fill="#4A505C"/>
+    <circle cx="64" cy="53" r="20" fill="#4A505C"/>
+    <path d="M43 53c0-14 9-24 21-24s21 10 21 24c0-9-9-13-21-13s-21 4-21 13z" fill="#262A33"/>
+  </g>
+</svg>

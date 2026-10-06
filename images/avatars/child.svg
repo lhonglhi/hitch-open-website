@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Default avatar - child">
+  <defs><clipPath id="clip-child"><circle cx="64" cy="64" r="64"/></clipPath></defs>
+  <circle cx="64" cy="64" r="64" fill="#E9E9EE"/>
+  <g clip-path="url(#clip-child)">
+    <path d="M64 101c-15 0-27 10-29 27h58c-2-17-14-27-29-27z" fill="#4A505C"/>
+    <circle cx="64" cy="60" r="27" fill="#4A505C"/>
+    <path d="M37 62c0-18 12-30 27-30s27 12 27 30v4c0-13-12-19-27-19s-27 6-27 19z" fill="#262A33"/>
+  </g>
+</svg>
