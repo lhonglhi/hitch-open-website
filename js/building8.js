@@ -47,6 +47,39 @@ function b8AvatarById(id) {
     return b8AllAvatars().find(a => a.id === id) || B8_AVATARS.defaults[0];
 }
 
+/* ---------- 首次打开时的示例数据 ----------
+   localStorage 是按设备存的, 所以不写进代码的话, 换一台机器就是空榜。
+   这批 demo 数据只在「从未存过任何东西」时注入一次; 之后的增删改都以
+   实际存储为准, 不会再覆盖。
+   每条带 demo: true, 正式启用时清掉示例只要在控制台跑:
+       b8ClearDemo()
+   ------------------------------------------------------------ */
+const B8_SEED = [
+    ['王同学',   'tsinghua',   87, '2026-10-02'],
+    ['李研究员', 'baai',       74, '2026-10-02'],
+    ['小朋友',   'child',      56, '2026-10-01'],
+    ['Alice',    'ucberkeley', 56, '2026-10-03'],
+    ['张老师',   'adult',      41, '2026-10-04'],
+    ['陈同学',   'woman',      38, '2026-10-05'],
+    ['刘工',     'sjtu',       33, '2026-10-05'],
+    ['周同学',   'fudan',      29, '2026-10-03'],
+    ['Kevin',    'hku',        24, '2026-10-04'],
+    ['吴同学',   'szu',        21, '2026-10-06'],
+    ['赵老师',   'man',        17, '2026-10-06'],
+    ['孙同学',   'pku',        12, '2026-10-06']
+].map(([name, avatar, rallies, date], i) => ({
+    id: 'seed' + i, name, avatar, rallies, date, demo: true
+}));
+
+// 清掉示例数据, 保留真实纪录。正式启用前在控制台跑一次即可。
+function b8ClearDemo() {
+    const before = b8Records.length;
+    b8Records = b8Records.filter(r => !r.demo);
+    b8Save();
+    b8Render();
+    console.log(`[building8] 已清掉 ${before - b8Records.length} 条示例, 剩余 ${b8Records.length} 条`);
+}
+
 /* ---------- 文案 ---------- */
 const B8_T = {
     addTitle:    { zh: '添加纪录',   en: 'Add a record' },
@@ -66,7 +99,8 @@ const B8_T = {
     importBad:   { zh: '文件格式不对，导入取消。', en: 'Unrecognised file. Import cancelled.' },
     importOk:    { zh: '已导入 {n} 条纪录。',  en: 'Imported {n} records.' },
     importAsk:   { zh: '导入会覆盖当前 {cur} 条纪录，替换为文件里的 {n} 条。继续？',
-                   en: 'Importing replaces the current {cur} records with {n} from the file. Continue?' }
+                   en: 'Importing replaces the current {cur} records with {n} from the file. Continue?' },
+    count:       { zh: '共 {n} 条纪录',  en: '{n} records' }
 };
 
 let b8Lang = 'zh';
@@ -83,6 +117,9 @@ function t(key) {
 function b8Load() {
     try {
         const raw = localStorage.getItem(B8_KEY);
+        // 从未存过任何东西 = 第一次打开这台设备, 注入示例数据。
+        // 存过但为空数组(用户主动删光了)则尊重其为空, 不再塞回示例。
+        if (raw === null) return B8_SEED.map(r => Object.assign({}, r));
         if (!raw) return [];
         const parsed = JSON.parse(raw);
         const list = Array.isArray(parsed) ? parsed : parsed.records;
@@ -128,8 +165,13 @@ function b8Render() {
     const list = document.getElementById('b8List');
     const rows = b8Sorted();
 
+    // 纪录总数：16:9 看板上一屏放不下全部时, 让人知道榜里还有多少条
+    const counter = document.getElementById('b8Count');
+    if (counter) counter.textContent = rows.length ? t('count').replace('{n}', rows.length) : '';
+
     if (rows.length === 0) {
         list.innerHTML = `<li class="b8-empty">${b8Esc(t('empty'))}</li>`;
+        b8UpdateOverflow();
         return;
     }
 
@@ -148,6 +190,16 @@ function b8Render() {
             </span>
         </li>`;
     }).join('');
+
+    b8UpdateOverflow();
+}
+
+// 榜单是否溢出一屏, 决定底部渐隐是否出现
+function b8UpdateOverflow() {
+    const list = document.getElementById('b8List');
+    const board = document.querySelector('.b8-board');
+    if (!list || !board) return;
+    board.classList.toggle('has-more', list.scrollHeight > list.clientHeight + 2);
 }
 
 function b8Esc(s) {
@@ -327,7 +379,9 @@ function b8SetLang(lang) {
 document.addEventListener('DOMContentLoaded', function () {
     let saved = null;
     try { saved = localStorage.getItem('userLang'); } catch (e) { /* 隐私模式 */ }
+    const firstRun = localStorage.getItem(B8_KEY) === null;
     b8Records = b8Load();
+    if (firstRun && b8Records.length) b8Save();   // 把示例落盘, 让后续增删改有稳定基准
     b8SetLang(saved === 'en' ? 'en' : 'zh');
 
     document.getElementById('b8Modal').addEventListener('click', function (e) {
@@ -336,4 +390,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') b8CloseForm();
     });
+    window.addEventListener('resize', b8UpdateOverflow);
 });

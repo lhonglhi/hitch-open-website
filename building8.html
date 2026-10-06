@@ -17,7 +17,7 @@
 
     <!-- 自包含样式。不加载 css/style.css，那是为深色站写的, 这里是亮色页。
          .htaccess 对 css/js 是 1 年 immutable 缓存, 所以必须带 ?v= -->
-    <link rel="stylesheet" href="css/building8.css?v=20260911a">
+    <link rel="stylesheet" href="css/building8.css?v=20261006a">
 </head>
 
 <body>
@@ -25,10 +25,20 @@
     <header class="b8-header">
         <div class="b8-header-inner">
             <a href="hope.html"><img src="images/160x160-logo.png" alt="HITCH OPEN"></a>
-            <div class="b8-lang">
-                <button type="button" onclick="b8SetLang('zh')">中文</button>
-                <span>/</span>
-                <button type="button" onclick="b8SetLang('en')">EN</button>
+            <div class="b8-header-tools">
+                <!-- 运营工具收在顶栏: localStorage 会被「清除浏览数据」抹掉,
+                     导出是唯一兜底; 导出的 JSON 可直接提交进仓库备份。
+                     放这里是为了不占 16:9 看板的正文版面。 -->
+                <button type="button" class="b8-tool" onclick="b8Export()"
+                        data-zh="导出备份" data-en="Export">导出备份</button>
+                <button type="button" class="b8-tool" onclick="document.getElementById('b8File').click()"
+                        data-zh="导入备份" data-en="Import">导入备份</button>
+                <input type="file" id="b8File" accept="application/json,.json" hidden onchange="b8ImportFile(this)">
+                <div class="b8-lang">
+                    <button type="button" onclick="b8SetLang('zh')">中文</button>
+                    <span>/</span>
+                    <button type="button" onclick="b8SetLang('en')">EN</button>
+                </div>
             </div>
         </div>
     </header>
@@ -40,25 +50,13 @@
 
     <main class="b8-board">
         <div class="b8-toolbar">
+            <span class="b8-count" id="b8Count"></span>
             <button type="button" class="b8-btn b8-btn-primary" onclick="b8OpenForm()"
                     data-zh="添加纪录" data-en="Add a record">添加纪录</button>
         </div>
         <ul class="b8-list" id="b8List"></ul>
     </main>
 
-    <!-- 运营工具。localStorage 会被「清除浏览数据」抹掉, 导出是唯一兜底;
-         导出的 JSON 可直接提交进仓库备份。 -->
-    <div class="b8-ops">
-        <button type="button" class="b8-btn b8-btn-ghost" onclick="b8Export()"
-                data-zh="导出备份" data-en="Export backup">导出备份</button>
-        <button type="button" class="b8-btn b8-btn-ghost" onclick="document.getElementById('b8File').click()"
-                data-zh="导入备份" data-en="Import backup">导入备份</button>
-        <input type="file" id="b8File" accept="application/json,.json" hidden onchange="b8ImportFile(this)">
-    </div>
-
-    <footer class="b8-footer">
-        <span data-zh="记录保存在本机浏览器中。" data-en="Records are stored in this browser.">记录保存在本机浏览器中。</span>
-    </footer>
 
     <!-- 添加 / 修改纪录 -->
     <div class="b8-modal" id="b8Modal" role="dialog" aria-modal="true" aria-labelledby="b8FormTitle">
@@ -98,7 +96,7 @@
         </div>
     </div>
 
-    <script src="js/building8.js?v=20260911a"></script>
+    <script src="js/building8.js?v=20261006a"></script>
 </body>
 
 </html>

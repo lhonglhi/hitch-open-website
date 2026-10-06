@@ -3,9 +3,13 @@
    ------------------------------------------------------------
    这个页面是自包含的：不加载 css/style.css, 也不加载 js/script.js。
    原因：主脚本一加载就会做 geo-IP 探测 + 拉 6 个 JSON + 对缺失元素
-   报 console 错误, 对一台现场一体机是纯负担; 且主样式表是为深色站
+   报 console 错误, 对一台现场设备是纯负担; 且主样式表是为深色站
    写的, 这里是亮色页, 基本用不上。视觉变量(红 #CD202B、系统字体栈)
    与主站保持一致, 但样式互不影响。
+
+   布局：主目标是 16:9 大屏看板(1920x1080 及同比例)。
+   在横向大屏上整页锁定一屏不滚动, 字号随视口高度缩放, 榜单区占满
+   剩余高度; 窄屏/竖屏自动退回普通滚动布局。
    ============================================================ */
 
 :root {
@@ -18,14 +22,22 @@
     --b8-card: #ffffff;
     --b8-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
                "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    /* 随视口高度缩放的尺寸。clamp 的下限保证小窗口可读,
+       上限防止 4K 屏上字大到失真。 */
+    --b8-h1:     clamp(28px, 4.2vh, 54px);
+    --b8-sub:    clamp(13px, 1.7vh, 20px);
+    --b8-row-h:  clamp(56px, 7.4vh, 96px);
+    --b8-avatar: clamp(38px, 5.2vh, 66px);
+    --b8-name:   clamp(15px, 2.1vh, 25px);
+    --b8-score:  clamp(22px, 3.6vh, 47px);
+    --b8-rank:   clamp(16px, 2.4vh, 31px);
+    --b8-gutter: clamp(16px, 2.2vw, 48px);
 }
 
 * { box-sizing: border-box; }
 
-html, body {
-    margin: 0;
-    padding: 0;
-}
+html, body { margin: 0; padding: 0; }
 
 body {
     font-family: var(--b8-font);
@@ -39,82 +51,111 @@ body {
 .b8-header {
     background: #fff;
     border-bottom: 1px solid var(--b8-line);
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    flex: none;
 }
 
 .b8-header-inner {
-    max-width: 960px;
+    max-width: 1680px;
     margin: 0 auto;
-    padding: 14px 28px;
+    padding: clamp(10px, 1.2vh, 18px) var(--b8-gutter);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
 }
 
-.b8-header-inner img { display: block; height: 38px; width: auto; }
+.b8-header-inner > a { line-height: 0; }
+.b8-header-inner img { display: block; height: clamp(30px, 3.8vh, 48px); width: auto; }
 
-.b8-lang { display: flex; align-items: center; gap: 8px; }
+.b8-header-tools { display: flex; align-items: center; gap: clamp(8px, 1vw, 18px); }
+
+/* 运维工具(导出/导入)收在顶栏, 不占看板版面 */
+.b8-tool {
+    background: none;
+    border: none;
+    padding: 5px 4px;
+    font: inherit;
+    font-size: clamp(11px, 1.3vh, 14px);
+    color: var(--b8-muted);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.b8-tool:hover { color: var(--b8-ink); text-decoration: underline; }
+
+.b8-lang { display: flex; align-items: center; gap: 7px; padding-left: clamp(6px, 0.8vw, 14px); border-left: 1px solid var(--b8-line); }
 
 .b8-lang button {
     background: none;
     border: none;
     padding: 4px 2px;
     font: inherit;
-    font-size: 13px;
+    font-size: clamp(12px, 1.4vh, 15px);
     color: var(--b8-muted);
     cursor: pointer;
 }
 
 .b8-lang button.active { color: var(--b8-red); font-weight: 600; }
-.b8-lang span { color: var(--b8-line); font-size: 13px; }
+.b8-lang > span { color: var(--b8-line); font-size: 13px; }
 
 /* ---------- 标题区 ---------- */
 .b8-head {
-    max-width: 960px;
+    flex: none;
+    max-width: 1680px;
+    width: 100%;
     margin: 0 auto;
-    padding: 64px 28px 30px;
+    padding: clamp(22px, 4.4vh, 58px) var(--b8-gutter) clamp(14px, 2.2vh, 28px);
     text-align: center;
 }
 
 .b8-head h1 {
     margin: 0;
-    font-size: 40px;
+    font-size: var(--b8-h1);
     font-weight: 700;
     letter-spacing: -0.5px;
+    line-height: 1.15;
     color: var(--b8-ink);
 }
 
 .b8-head p {
-    margin: 14px 0 0;
-    font-size: 15px;
+    margin: clamp(8px, 1.2vh, 16px) 0 0;
+    font-size: var(--b8-sub);
     color: var(--b8-body);
 }
 
 /* ---------- 榜单 ---------- */
 .b8-board {
-    max-width: 960px;
+    position: relative;        /* 供底部渐隐定位 */
+    flex: 1 1 auto;
+    min-height: 0;             /* 关键: 允许内部滚动而不是撑开 flex 父级 */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1680px;
     margin: 0 auto;
-    padding: 0 28px 40px;
+    padding: 0 var(--b8-gutter) clamp(20px, 3vh, 46px);
 }
 
 .b8-toolbar {
+    flex: none;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 16px;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: clamp(10px, 1.4vh, 18px);
 }
+
+.b8-count { font-size: var(--b8-sub); color: var(--b8-muted); margin-right: auto; }
 
 .b8-btn {
     font: inherit;
-    font-size: 14px;
     font-weight: 600;
-    padding: 11px 22px;
-    border-radius: 6px;
+    border-radius: 7px;
     border: 1px solid transparent;
     cursor: pointer;
     transition: background 0.15s, border-color 0.15s, color 0.15s;
+    font-size: clamp(14px, 1.8vh, 20px);
+    padding: clamp(10px, 1.4vh, 16px) clamp(20px, 2vw, 34px);
 }
 
 .b8-btn-primary { background: var(--b8-red); color: #fff; }
@@ -124,39 +165,58 @@ body {
 .b8-btn-ghost:hover { border-color: var(--b8-muted); color: var(--b8-ink); }
 
 .b8-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;          /* 纪录多于一屏时在榜内滚动, 页面本身不滚 */
+    overscroll-behavior: contain;
     list-style: none;
     margin: 0;
     padding: 0;
     background: var(--b8-card);
     border: 1px solid var(--b8-line);
-    border-radius: 10px;
-    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* 榜单装不下时, 底部那一行会被从中间切断。给一个渐隐把切口变成
+   刻意的"还有更多"提示, 而不是看起来没渲染完。只在真的可滚动时出现
+   (由 JS 加 .has-more), 否则会把最后一行洗白。 */
+.b8-board.has-more::after {
+    content: "";
+    position: absolute;
+    left: calc(var(--b8-gutter) + 1px);
+    right: calc(var(--b8-gutter) + 1px);
+    bottom: calc(clamp(20px, 3vh, 46px) + 1px);
+    height: clamp(26px, 4vh, 56px);
+    background: linear-gradient(to top, var(--b8-card) 18%, rgba(255, 255, 255, 0));
+    border-radius: 0 0 11px 11px;
+    pointer-events: none;
 }
 
 .b8-row {
     display: grid;
-    grid-template-columns: 54px 56px 1fr auto auto;
+    grid-template-columns: clamp(46px, 4vw, 86px) auto 1fr auto auto;
     align-items: center;
-    gap: 16px;
-    padding: 14px 22px;
+    gap: clamp(12px, 1.4vw, 28px);
+    min-height: var(--b8-row-h);
+    padding: clamp(6px, 0.8vh, 12px) clamp(16px, 1.8vw, 34px);
     border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .b8-row:first-child { border-top: none; }
 
 .b8-rank {
-    font-size: 17px;
+    font-size: var(--b8-rank);
     font-weight: 700;
     color: var(--b8-muted);
     font-variant-numeric: tabular-nums;
     text-align: center;
 }
 
-.b8-row-top .b8-rank { color: var(--b8-red); font-size: 20px; }
+.b8-row-top .b8-rank { color: var(--b8-red); }
 
 .b8-avatar {
-    width: 48px;
-    height: 48px;
+    width: var(--b8-avatar);
+    height: var(--b8-avatar);
     border-radius: 50%;
     object-fit: contain;
     background: #f1f1f4;
@@ -164,23 +224,24 @@ body {
 }
 
 .b8-name {
-    font-size: 16px;
+    font-size: var(--b8-name);
     font-weight: 600;
     color: var(--b8-ink);
     overflow-wrap: anywhere;
+    line-height: 1.25;
 }
 
 .b8-date {
     display: block;
     margin-top: 3px;
-    font-size: 12px;
+    font-size: clamp(11px, 1.35vh, 15px);
     color: var(--b8-muted);
     font-weight: 400;
 }
 
 .b8-score {
     text-align: right;
-    font-size: 26px;
+    font-size: var(--b8-score);
     font-weight: 700;
     color: var(--b8-ink);
     font-variant-numeric: tabular-nums;
@@ -189,56 +250,46 @@ body {
 
 .b8-score small {
     display: block;
-    margin-top: 4px;
-    font-size: 11px;
+    margin-top: 5px;
+    font-size: clamp(10px, 1.15vh, 13px);
     font-weight: 500;
     color: var(--b8-muted);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
 }
 
 /* 行操作：真实可点, 所以保留 hover 反馈。
-   现场是触屏设备, 没有 hover, 所以常驻显示而不是悬停才出现。 */
-.b8-row-actions { display: flex; gap: 4px; margin-left: 14px; }
+   现场可能是触屏, 没有 hover, 所以常驻显示而不是悬停才出现。 */
+.b8-row-actions { display: flex; gap: 4px; margin-left: clamp(10px, 1.2vw, 26px); }
 
 .b8-icon-btn {
     background: none;
     border: none;
-    padding: 6px 8px;
+    padding: 7px 9px;
     font: inherit;
-    font-size: 12px;
+    font-size: clamp(12px, 1.4vh, 15px);
     color: var(--b8-muted);
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .b8-icon-btn:hover { background: rgba(0, 0, 0, 0.05); color: var(--b8-ink); }
 .b8-icon-btn.b8-danger:hover { background: rgba(205, 32, 43, 0.08); color: var(--b8-red); }
 
 .b8-empty {
-    padding: 64px 22px;
-    text-align: center;
-    color: var(--b8-muted);
-    font-size: 15px;
-}
-
-/* ---------- 运营工具（导出/导入） ---------- */
-.b8-ops {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 28px 70px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
+    height: 100%;
+    min-height: 180px;
+    text-align: center;
+    color: var(--b8-muted);
+    font-size: clamp(14px, 2vh, 22px);
 }
 
-.b8-ops .b8-btn { font-size: 13px; padding: 8px 16px; font-weight: 500; }
-
-.b8-footer {
-    text-align: center;
-    padding: 26px;
-    font-size: 12px;
-    color: var(--b8-muted);
-    border-top: 1px solid var(--b8-line);
+/* ---------- 16:9 / 横向大屏：锁定一屏, 不整页滚动 ---------- */
+@media (min-width: 1000px) and (min-height: 560px) and (min-aspect-ratio: 3/2) {
+    html, body { height: 100%; overflow: hidden; }
+    body { display: flex; flex-direction: column; }
 }
 
 /* ---------- 弹窗 ---------- */
@@ -248,7 +299,7 @@ body {
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
     z-index: 100;
-    padding: 24px;
+    padding: 20px;
     overflow-y: auto;
 }
 
@@ -256,38 +307,38 @@ body {
 
 .b8-modal-card {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 14px;
     width: 100%;
-    max-width: 560px;
+    max-width: 620px;
     margin: auto;
-    padding: 30px 32px 26px;
+    padding: clamp(22px, 3vh, 34px) clamp(20px, 2.4vw, 36px) clamp(20px, 2.6vh, 28px);
     position: relative;
 }
 
-.b8-modal-card h2 { margin: 0 0 22px; font-size: 21px; font-weight: 700; }
+.b8-modal-card h2 { margin: 0 0 clamp(16px, 2.4vh, 26px); font-size: clamp(19px, 2.6vh, 26px); font-weight: 700; }
 
 .b8-close {
     position: absolute;
-    top: 14px;
-    right: 16px;
+    top: 12px;
+    right: 14px;
     background: none;
     border: none;
-    font-size: 26px;
+    font-size: 28px;
     line-height: 1;
     color: var(--b8-muted);
     cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 4px 9px;
+    border-radius: 5px;
 }
 
 .b8-close:hover { background: rgba(0, 0, 0, 0.05); color: var(--b8-ink); }
 
-.b8-field { margin-bottom: 20px; }
+.b8-field { margin-bottom: clamp(14px, 2.2vh, 22px); }
 
 .b8-field > label {
     display: block;
     margin-bottom: 8px;
-    font-size: 13px;
+    font-size: clamp(12px, 1.6vh, 15px);
     font-weight: 600;
     color: var(--b8-body);
 }
@@ -296,10 +347,10 @@ body {
 .b8-field input[type="number"] {
     width: 100%;
     font: inherit;
-    font-size: 16px;
-    padding: 11px 13px;
+    font-size: clamp(16px, 2vh, 19px);
+    padding: clamp(10px, 1.4vh, 14px) 14px;
     border: 1px solid var(--b8-line);
-    border-radius: 6px;
+    border-radius: 7px;
     color: var(--b8-ink);
     background: #fff;
 }
@@ -310,19 +361,19 @@ body {
     box-shadow: 0 0 0 3px rgba(205, 32, 43, 0.1);
 }
 
-.b8-hint { margin: 7px 0 0; font-size: 12px; color: var(--b8-muted); }
+.b8-hint { margin: 7px 0 0; font-size: clamp(11px, 1.4vh, 14px); color: var(--b8-muted); }
 
 /* 头像选择器 */
 .b8-picker {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(clamp(52px, 6vh, 70px), 1fr));
     gap: 8px;
 }
 
 .b8-pick {
     background: none;
     border: 2px solid transparent;
-    border-radius: 10px;
+    border-radius: 11px;
     padding: 5px;
     cursor: pointer;
     line-height: 0;
@@ -345,26 +396,20 @@ body {
 }
 
 .b8-error {
-    margin: 0 0 14px;
-    font-size: 13px;
+    margin: 0 0 13px;
+    font-size: clamp(12px, 1.6vh, 15px);
     color: var(--b8-red);
     min-height: 18px;
 }
 
 .b8-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.b8-actions .b8-btn { font-size: clamp(14px, 1.8vh, 17px); padding: clamp(10px, 1.4vh, 13px) 24px; }
 
-/* ---------- 窄屏 ---------- */
+/* ---------- 窄屏 / 竖屏：退回普通滚动 ---------- */
 @media (max-width: 640px) {
-    .b8-head { padding: 40px 20px 24px; }
-    .b8-head h1 { font-size: 29px; }
-    .b8-board, .b8-ops { padding-left: 16px; padding-right: 16px; }
-    .b8-row { grid-template-columns: 34px 42px 1fr auto; gap: 11px; padding: 13px 14px; }
-    .b8-avatar { width: 42px; height: 42px; }
-    .b8-rank { font-size: 15px; }
-    .b8-row-top .b8-rank { font-size: 17px; }
-    .b8-name { font-size: 15px; }
-    .b8-score { font-size: 21px; }
-    /* 窄屏下操作按钮换到第二行, 避免挤掉分数 */
-    .b8-row-actions { grid-column: 3 / -1; justify-content: flex-end; margin-top: 2px; }
-    .b8-modal-card { padding: 26px 20px 22px; }
+    .b8-head { padding: 32px 18px 20px; }
+    .b8-row { grid-template-columns: 34px auto 1fr auto; gap: 11px; padding: 13px 14px; }
+    .b8-row-actions { grid-column: 3 / -1; justify-content: flex-end; margin-top: 2px; margin-left: 0; }
+    .b8-modal-card { padding: 24px 18px 20px; }
+    .b8-count { display: none; }
 }
