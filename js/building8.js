@@ -71,6 +71,17 @@ const B8_SEED = [
     id: 'seed' + i, name, avatar, rallies, date, demo: true
 }));
 
+// 把示例数据补回榜上, 不碰已有的真实纪录。
+// 用于设备上已经存过数据(所以首次注入没触发)但仍想看到示例的情况。
+function b8LoadDemo() {
+    const have = new Set(b8Records.map(r => r.id));
+    const add = B8_SEED.filter(r => !have.has(r.id)).map(r => Object.assign({}, r));
+    b8Records = b8Records.concat(add);
+    b8Save();
+    b8Render();
+    console.log(`[building8] 已补入 ${add.length} 条示例, 当前共 ${b8Records.length} 条`);
+}
+
 // 清掉示例数据, 保留真实纪录。正式启用前在控制台跑一次即可。
 function b8ClearDemo() {
     const before = b8Records.length;
