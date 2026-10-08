@@ -17,7 +17,7 @@
 
     <!-- 自包含样式。不加载 css/style.css，那是为深色站写的, 这里是亮色页。
          .htaccess 对 css/js 是 1 年 immutable 缓存, 所以必须带 ?v= -->
-    <link rel="stylesheet" href="css/building8.css?v=20261006b">
+    <link rel="stylesheet" href="css/building8.css?v=20261006c">
 </head>
 
 <body>
@@ -45,16 +45,32 @@
 
     <div class="b8-head">
         <h1 data-zh="8 号楼 · 连续对打纪录榜" data-en="Building 8 · Rally Record Board">8 号楼 · 连续对打纪录榜</h1>
-        <p data-zh="与机器人连续对打，一拍记 1 分。" data-en="Rally with the robot. One stroke, one point.">与机器人连续对打，一拍记 1 分。</p>
+        <!-- 两个榜都用这句, 所以不能再写「与机器人对打」 -->
+        <p data-zh="连续对打不失误，一拍记 1 分。" data-en="Rally without a miss. One stroke, one point.">连续对打不失误，一拍记 1 分。</p>
     </div>
 
-    <main class="b8-board">
-        <div class="b8-toolbar">
-            <span class="b8-count" id="b8Count"></span>
-            <button type="button" class="b8-btn b8-btn-primary" onclick="b8OpenForm()"
-                    data-zh="添加纪录" data-en="Add a record">添加纪录</button>
-        </div>
-        <ul class="b8-list" id="b8List"></ul>
+    <!-- 两个榜左右并排。cat=hr 人对机器人(左), cat=rr 机器人对机器人(右)。
+         记录存在同一个数组里, 由 cat 字段区分。 -->
+    <main class="b8-boards">
+        <section class="b8-board">
+            <div class="b8-board-head">
+                <h2 data-zh="人 对 机器人" data-en="Human vs Robot">人 对 机器人</h2>
+                <span class="b8-count" id="b8Count-hr"></span>
+                <button type="button" class="b8-btn b8-btn-primary" onclick="b8OpenForm(null,'hr')"
+                        data-zh="添加纪录" data-en="Add a record">添加纪录</button>
+            </div>
+            <ul class="b8-list" id="b8List-hr"></ul>
+        </section>
+
+        <section class="b8-board">
+            <div class="b8-board-head">
+                <h2 data-zh="机器人 对 机器人" data-en="Robot vs Robot">机器人 对 机器人</h2>
+                <span class="b8-count" id="b8Count-rr"></span>
+                <button type="button" class="b8-btn b8-btn-primary" onclick="b8OpenForm(null,'rr')"
+                        data-zh="添加纪录" data-en="Add a record">添加纪录</button>
+            </div>
+            <ul class="b8-list" id="b8List-rr"></ul>
+        </section>
     </main>
 
 
@@ -63,12 +79,14 @@
         <div class="b8-modal-card">
             <button type="button" class="b8-close" onclick="b8CloseForm()" aria-label="Close">&times;</button>
             <h2 id="b8FormTitle">添加纪录</h2>
+            <p class="b8-modal-cat" id="b8FormCat"></p>
 
             <form onsubmit="b8Submit(event)">
                 <div class="b8-field">
-                    <label for="b8Name" data-zh="名字" data-en="Name">名字</label>
-                    <input type="text" id="b8Name" maxlength="24" autocomplete="off"
-                           data-zh-ph="怎么称呼你" data-en-ph="What should we call you">
+                    <!-- 标签与占位文案由 b8ApplyFormCat() 按所属的榜切换,
+                         所以这里不挂 data-zh/data-en, 避免语言切换时被覆盖回去 -->
+                    <label for="b8Name" id="b8NameLabel">名字</label>
+                    <input type="text" id="b8Name" maxlength="28" autocomplete="off">
                 </div>
 
                 <div class="b8-field">
@@ -96,7 +114,7 @@
         </div>
     </div>
 
-    <script src="js/building8.js?v=20261006b"></script>
+    <script src="js/building8.js?v=20261006c"></script>
 </body>
 
 </html>

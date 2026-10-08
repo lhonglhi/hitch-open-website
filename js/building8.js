@@ -3,7 +3,11 @@
    ------------------------------------------------------------
    自包含脚本, 不依赖 js/script.js。
 
-   存储：浏览器 localStorage, 键 B8_KEY。
+   两个榜并排, 由记录上的 cat 字段区分:
+     hr = 人 对 机器人      (左)
+     rr = 机器人 对 机器人  (右)
+
+   存储：浏览器 localStorage, 键 B8_KEY, 两个榜存在同一个数组里。
    这个页面设计给 8 号楼现场的一台固定设备使用, 所以"同一台设备上
    的所有人共用一份榜"正是想要的效果, 不需要后端。
 
@@ -12,10 +16,21 @@
    ============================================================ */
 
 const B8_KEY = 'b8_rally_records_v1';
-const B8_SCHEMA = 1;
+const B8_SCHEMA = 2;          // 2: 记录新增 cat 字段(hr/rr)
+
+/* ---------- 两个榜 ---------- */
+const B8_CATS = [
+    { id: 'hr', zh: '人 对 机器人',       en: 'Human vs Robot' },
+    { id: 'rr', zh: '机器人 对 机器人',   en: 'Robot vs Robot' }
+];
+
+function b8CatById(id) {
+    return B8_CATS.find(c => c.id === id) || B8_CATS[0];
+}
 
 /* ---------- 头像清单 ---------- */
 // 校徽取自 HOPE 页的参赛高校区块, 复用同一批文件。
+// 两个榜共用同一份清单: 机器人对打的参赛主体也是这些高校与机构。
 const B8_AVATARS = {
     defaults: [
         { id: 'man',   src: 'images/avatars/man.svg',   zh: '男生',   en: 'Young man' },
@@ -24,18 +39,18 @@ const B8_AVATARS = {
         { id: 'adult', src: 'images/avatars/adult.svg', zh: '中年人', en: 'Adult' }
     ],
     unis: [
-        { id: 'pku',        src: 'images/unis/pku.png',        zh: '北京大学',                   en: 'Peking University' },
-        { id: 'tsinghua',   src: 'images/unis/tsinghua.png',   zh: '清华大学',                   en: 'Tsinghua University' },
-        { id: 'sjtu',       src: 'images/unis/sjtu.png',       zh: '上海交通大学',               en: 'Shanghai Jiao Tong University' },
-        { id: 'fudan',      src: 'images/unis/fudan.png',      zh: '复旦大学',                   en: 'Fudan University' },
-        { id: 'ustc',       src: 'images/unis/ustc.png',       zh: '中国科学技术大学',           en: 'USTC' },
-        { id: 'hku',        src: 'images/unis/hku.png',        zh: '香港大学',                   en: 'University of Hong Kong' },
-        { id: 'szu',        src: 'images/unis/szu.png',        zh: '深圳大学',                   en: 'Shenzhen University' },
-        { id: 'bistu',      src: 'images/unis/bistu.png',      zh: '北京信息科技大学',           en: 'BISTU' },
-        { id: 'ucberkeley', src: 'images/unis/ucberkeley.png', zh: '加州大学伯克利分校',         en: 'UC Berkeley' },
-        { id: 'baai',       src: 'images/unis/baai.png',       zh: '智源研究院 BAAI',            en: 'BAAI' },
-        { id: 'sii',        src: 'images/unis/sii.png',        zh: '上海创智学院',               en: 'Shanghai Innovation Institute' },
-        { id: 'teleai',     src: 'images/unis/teleai.png',     zh: '中国电信人工智能研究院',     en: 'TeleAI, China Telecom' }
+        { id: 'pku',        src: 'images/unis/pku.png',        zh: '北京大学',               en: 'Peking University' },
+        { id: 'tsinghua',   src: 'images/unis/tsinghua.png',   zh: '清华大学',               en: 'Tsinghua University' },
+        { id: 'sjtu',       src: 'images/unis/sjtu.png',       zh: '上海交通大学',           en: 'Shanghai Jiao Tong University' },
+        { id: 'fudan',      src: 'images/unis/fudan.png',      zh: '复旦大学',               en: 'Fudan University' },
+        { id: 'ustc',       src: 'images/unis/ustc.png',       zh: '中国科学技术大学',       en: 'USTC' },
+        { id: 'hku',        src: 'images/unis/hku.png',        zh: '香港大学',               en: 'University of Hong Kong' },
+        { id: 'szu',        src: 'images/unis/szu.png',        zh: '深圳大学',               en: 'Shenzhen University' },
+        { id: 'bistu',      src: 'images/unis/bistu.png',      zh: '北京信息科技大学',       en: 'BISTU' },
+        { id: 'ucberkeley', src: 'images/unis/ucberkeley.png', zh: '加州大学伯克利分校',     en: 'UC Berkeley' },
+        { id: 'baai',       src: 'images/unis/baai.png',       zh: '智源研究院 BAAI',        en: 'BAAI' },
+        { id: 'sii',        src: 'images/unis/sii.png',        zh: '上海创智学院',           en: 'Shanghai Innovation Institute' },
+        { id: 'teleai',     src: 'images/unis/teleai.png',     zh: '中国电信人工智能研究院', en: 'TeleAI, China Telecom' }
     ]
 };
 
@@ -53,22 +68,32 @@ function b8AvatarById(id) {
    实际存储为准, 不会再覆盖。
    每条带 demo: true, 正式启用时清掉示例只要在控制台跑:
        b8ClearDemo()
+   想在已经录过数据的设备上补回示例, 则跑:
+       b8LoadDemo()
    ------------------------------------------------------------ */
 const B8_SEED = [
-    ['王同学',   'tsinghua',   87, '2026-10-02'],
-    ['李研究员', 'baai',       74, '2026-10-02'],
-    ['小朋友',   'child',      56, '2026-10-01'],
-    ['Alice',    'ucberkeley', 56, '2026-10-03'],
-    ['张老师',   'adult',      41, '2026-10-04'],
-    ['陈同学',   'woman',      38, '2026-10-05'],
-    ['刘工',     'sjtu',       33, '2026-10-05'],
-    ['周同学',   'fudan',      29, '2026-10-03'],
-    ['Kevin',    'hku',        24, '2026-10-04'],
-    ['吴同学',   'szu',        21, '2026-10-06'],
-    ['赵老师',   'man',        17, '2026-10-06'],
-    ['孙同学',   'pku',        12, '2026-10-06']
-].map(([name, avatar, rallies, date], i) => ({
-    id: 'seed' + i, name, avatar, rallies, date, demo: true
+    // 人 对 机器人
+    ['hr', '王同学',   'tsinghua',   87, '2026-10-02'],
+    ['hr', '李研究员', 'baai',       74, '2026-10-02'],
+    ['hr', '小朋友',   'child',      56, '2026-10-01'],
+    ['hr', 'Alice',    'ucberkeley', 56, '2026-10-03'],
+    ['hr', '张老师',   'adult',      41, '2026-10-04'],
+    ['hr', '陈同学',   'woman',      38, '2026-10-05'],
+    ['hr', '刘工',     'sjtu',       33, '2026-10-05'],
+    ['hr', '周同学',   'fudan',      29, '2026-10-03'],
+    ['hr', 'Kevin',    'hku',        24, '2026-10-04'],
+    ['hr', '赵老师',   'man',        17, '2026-10-06'],
+    // 机器人 对 机器人。两台机器互打能稳定得多, 拍数量级明显高于人机。
+    ['rr', '北大智源联合战队',  'baai',       412, '2026-10-02'],
+    ['rr', '清华 iPingPong',    'tsinghua',   366, '2026-10-03'],
+    ['rr', '上交大创智联队',    'sjtu',       291, '2026-10-04'],
+    ['rr', '港大 SMASH',        'hku',        248, '2026-10-01'],
+    ['rr', '复旦若客',          'fudan',      197, '2026-10-05'],
+    ['rr', '深大战队',          'szu',        154, '2026-10-05'],
+    ['rr', '中科大蓝鲸',        'ustc',       132, '2026-10-06'],
+    ['rr', 'TeleAI 人形',       'teleai',      96, '2026-10-06']
+].map(([cat, name, avatar, rallies, date], i) => ({
+    id: 'seed' + i, cat, name, avatar, rallies, date, demo: true
 }));
 
 // 把示例数据补回榜上, 不碰已有的真实纪录。
@@ -95,12 +120,11 @@ function b8ClearDemo() {
 const B8_T = {
     addTitle:    { zh: '添加纪录',   en: 'Add a record' },
     editTitle:   { zh: '修改纪录',   en: 'Edit record' },
-    save:        { zh: '保存',       en: 'Save' },
-    cancel:      { zh: '取消',       en: 'Cancel' },
     edit:        { zh: '修改',       en: 'Edit' },
     del:         { zh: '删除',       en: 'Delete' },
     rallies:     { zh: '拍',         en: 'RALLIES' },
-    empty:       { zh: '还没有纪录。点「添加纪录」开始。', en: 'No records yet. Tap “Add a record” to start.' },
+    emptyHr:     { zh: '还没有纪录。点「添加纪录」开始。', en: 'No records yet. Tap “Add a record” to start.' },
+    emptyRr:     { zh: '还没有纪录。点「添加纪录」开始。', en: 'No records yet. Tap “Add a record” to start.' },
     errName:     { zh: '请填写名字。', en: 'Please enter a name.' },
     errScore:    { zh: '请填写 1 以上的整数拍数。', en: 'Please enter a whole number of 1 or more.' },
     errAvatar:   { zh: '请选择一个头像。', en: 'Please pick an avatar.' },
@@ -111,12 +135,17 @@ const B8_T = {
     importOk:    { zh: '已导入 {n} 条纪录。',  en: 'Imported {n} records.' },
     importAsk:   { zh: '导入会覆盖当前 {cur} 条纪录，替换为文件里的 {n} 条。继续？',
                    en: 'Importing replaces the current {cur} records with {n} from the file. Continue?' },
-    count:       { zh: '共 {n} 条纪录',  en: '{n} records' }
+    count:       { zh: '共 {n} 条',  en: '{n} records' },
+    nameLabelHr: { zh: '名字',       en: 'Name' },
+    nameLabelRr: { zh: '战队 / 机器人', en: 'Team / robot' },
+    namePhHr:    { zh: '怎么称呼你',   en: 'What should we call you' },
+    namePhRr:    { zh: '例如 清华 iPingPong', en: 'e.g. Tsinghua iPingPong' }
 };
 
 let b8Lang = 'zh';
 let b8Records = [];
 let b8EditingId = null;
+let b8EditingCat = 'hr';
 let b8PickedAvatar = null;
 
 function t(key) {
@@ -134,11 +163,17 @@ function b8Load() {
         if (!raw) return [];
         const parsed = JSON.parse(raw);
         const list = Array.isArray(parsed) ? parsed : parsed.records;
-        return Array.isArray(list) ? list.filter(b8Valid) : [];
+        // schema 1 的老记录没有 cat 字段。当时只有一个榜, 内容就是人机对打,
+        // 所以一律归到 hr, 不要丢数据。
+        return Array.isArray(list) ? list.filter(b8Valid).map(b8Normalise) : [];
     } catch (e) {
         console.warn('[building8] 读取本地纪录失败，按空榜处理', e);
         return [];
     }
+}
+
+function b8Normalise(r) {
+    return Object.assign({}, r, { cat: r.cat === 'rr' ? 'rr' : 'hr' });
 }
 
 function b8Save() {
@@ -163,9 +198,9 @@ function b8Valid(r) {
 }
 
 /* ---------- 排序 ---------- */
-// 拍数降序；同拍数时先达成的排前面。
-function b8Sorted() {
-    return b8Records.slice().sort((a, b) => {
+// 按榜筛选; 拍数降序; 同拍数时先达成的排前面。
+function b8Sorted(cat) {
+    return b8Records.filter(r => r.cat === cat).sort((a, b) => {
         const d = Number(b.rallies) - Number(a.rallies);
         return d !== 0 ? d : String(a.date || '').localeCompare(String(b.date || ''));
     });
@@ -173,16 +208,21 @@ function b8Sorted() {
 
 /* ---------- 渲染 ---------- */
 function b8Render() {
-    const list = document.getElementById('b8List');
-    const rows = b8Sorted();
+    B8_CATS.forEach(c => b8RenderBoard(c.id));
+}
 
-    // 纪录总数：16:9 看板上一屏放不下全部时, 让人知道榜里还有多少条
-    const counter = document.getElementById('b8Count');
+function b8RenderBoard(cat) {
+    const list = document.getElementById('b8List-' + cat);
+    const counter = document.getElementById('b8Count-' + cat);
+    if (!list) return;
+
+    const rows = b8Sorted(cat);
     if (counter) counter.textContent = rows.length ? t('count').replace('{n}', rows.length) : '';
 
     if (rows.length === 0) {
-        list.innerHTML = `<li class="b8-empty">${b8Esc(t('empty'))}</li>`;
-        b8UpdateOverflow();
+        const key = cat === 'rr' ? 'emptyRr' : 'emptyHr';
+        list.innerHTML = `<li class="b8-empty">${b8Esc(t(key))}</li>`;
+        b8UpdateOverflow(cat);
         return;
     }
 
@@ -202,15 +242,18 @@ function b8Render() {
         </li>`;
     }).join('');
 
-    b8UpdateOverflow();
+    b8UpdateOverflow(cat);
 }
 
-// 榜单是否溢出一屏, 决定底部渐隐是否出现
-function b8UpdateOverflow() {
-    const list = document.getElementById('b8List');
-    const board = document.querySelector('.b8-board');
-    if (!list || !board) return;
-    board.classList.toggle('has-more', list.scrollHeight > list.clientHeight + 2);
+// 该榜是否溢出一屏, 决定底部渐隐是否出现
+function b8UpdateOverflow(cat) {
+    const cats = cat ? [cat] : B8_CATS.map(c => c.id);
+    cats.forEach(id => {
+        const list = document.getElementById('b8List-' + id);
+        const board = list && list.closest('.b8-board');
+        if (!list || !board) return;
+        board.classList.toggle('has-more', list.scrollHeight > list.clientHeight + 2);
+    });
 }
 
 function b8Esc(s) {
@@ -247,9 +290,11 @@ function b8PickAvatar(id) {
 }
 
 /* ---------- 表单 ---------- */
-function b8OpenForm(id) {
+// id 为空 = 新增(此时必须给 cat); 给了 id = 修改(cat 取自该记录)。
+function b8OpenForm(id, cat) {
     b8EditingId = id || null;
     const rec = id ? b8Records.find(r => r.id === id) : null;
+    b8EditingCat = rec ? rec.cat : (cat === 'rr' ? 'rr' : 'hr');
 
     document.getElementById('b8FormTitle').textContent = rec ? t('editTitle') : t('addTitle');
     document.getElementById('b8Name').value = rec ? rec.name : '';
@@ -257,9 +302,20 @@ function b8OpenForm(id) {
     document.getElementById('b8Error').textContent = '';
     b8PickedAvatar = rec ? rec.avatar : null;
 
+    b8ApplyFormCat();
     b8RenderPicker();
     document.getElementById('b8Modal').classList.add('open');
     setTimeout(() => document.getElementById('b8Name').focus(), 50);
+}
+
+// 把当前所属的榜写进弹窗(标题下的一行 + 名字栏的措辞),
+// 免得在两个榜之间加错地方。
+function b8ApplyFormCat() {
+    const c = b8CatById(b8EditingCat);
+    document.getElementById('b8FormCat').textContent = c[b8Lang] || c.en;
+    const rr = b8EditingCat === 'rr';
+    document.getElementById('b8NameLabel').textContent = t(rr ? 'nameLabelRr' : 'nameLabelHr');
+    document.getElementById('b8Name').placeholder = t(rr ? 'namePhRr' : 'namePhHr');
 }
 
 function b8CloseForm() {
@@ -284,6 +340,7 @@ function b8Submit(event) {
     } else {
         b8Records.push({
             id: 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+            cat: b8EditingCat,
             name: name,
             avatar: b8PickedAvatar,
             rallies: score,
@@ -311,11 +368,12 @@ function b8Today() {
 
 /* ---------- 导出 / 导入 ---------- */
 // localStorage 会被"清除浏览数据"抹掉, 导出是唯一的兜底。
+// 一个文件同时含两个榜, 用 cat 区分。
 function b8Export() {
     const blob = new Blob([JSON.stringify({
         schema: B8_SCHEMA,
         exportedAt: new Date().toISOString(),
-        records: b8Sorted()
+        records: B8_CATS.reduce((acc, c) => acc.concat(b8Sorted(c.id)), [])
     }, null, 2)], { type: 'application/json' });
 
     const a = document.createElement('a');
@@ -342,10 +400,12 @@ function b8ImportFile(input) {
 
         const clean = incoming.filter(b8Valid).map(r => ({
             id: r.id || 'r' + Math.random().toString(36).slice(2, 10),
+            cat: r.cat === 'rr' ? 'rr' : 'hr',      // 老备份没有 cat, 归到人机榜
             name: String(r.name).trim(),
             avatar: b8AvatarById(r.avatar).id,
             rallies: Number(r.rallies),
-            date: r.date || b8Today()
+            date: r.date || b8Today(),
+            demo: !!r.demo
         }));
 
         const msg = t('importAsk').replace('{cur}', b8Records.length).replace('{n}', clean.length);
@@ -382,6 +442,7 @@ function b8SetLang(lang) {
     b8Render();
     if (document.getElementById('b8Modal').classList.contains('open')) {
         document.getElementById('b8FormTitle').textContent = b8EditingId ? t('editTitle') : t('addTitle');
+        b8ApplyFormCat();
         b8RenderPicker();
     }
 }
@@ -390,6 +451,7 @@ function b8SetLang(lang) {
 document.addEventListener('DOMContentLoaded', function () {
     let saved = null;
     try { saved = localStorage.getItem('userLang'); } catch (e) { /* 隐私模式 */ }
+
     const firstRun = localStorage.getItem(B8_KEY) === null;
     b8Records = b8Load();
     if (firstRun && b8Records.length) b8Save();   // 把示例落盘, 让后续增删改有稳定基准
@@ -401,5 +463,5 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') b8CloseForm();
     });
-    window.addEventListener('resize', b8UpdateOverflow);
+    window.addEventListener('resize', () => b8UpdateOverflow());
 });

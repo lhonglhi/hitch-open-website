@@ -8,8 +8,9 @@
    与主站保持一致, 但样式互不影响。
 
    布局：主目标是 16:9 大屏看板(1920x1080 及同比例)。
-   在横向大屏上整页锁定一屏不滚动, 字号随视口高度缩放, 榜单区占满
-   剩余高度; 窄屏/竖屏自动退回普通滚动布局。
+   两个榜左右并排(左: 人对机器人, 右: 机器人对机器人), 整页锁定一屏
+   不滚动, 字号随视口高度缩放, 榜单区占满剩余高度, 溢出时在榜内滚动;
+   窄屏/竖屏自动上下堆叠并退回普通滚动布局。
    ============================================================ */
 
 :root {
@@ -24,15 +25,18 @@
                "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
     /* 随视口高度缩放的尺寸。clamp 的下限保证小窗口可读,
-       上限防止 4K 屏上字大到失真。 */
-    --b8-h1:     clamp(28px, 4.2vh, 54px);
-    --b8-sub:    clamp(13px, 1.7vh, 20px);
-    --b8-row-h:  clamp(56px, 7.4vh, 96px);
-    --b8-avatar: clamp(38px, 5.2vh, 66px);
-    --b8-name:   clamp(15px, 2.1vh, 25px);
-    --b8-score:  clamp(22px, 3.6vh, 47px);
-    --b8-rank:   clamp(16px, 2.4vh, 31px);
-    --b8-gutter: clamp(16px, 2.2vw, 48px);
+       上限防止 4K 屏上字大到失真。
+       并排两个榜后每个只有半幅宽, 所以行内尺寸比单榜时收了一档。 */
+    --b8-h1:     clamp(26px, 3.8vh, 48px);
+    --b8-sub:    clamp(12px, 1.6vh, 19px);
+    --b8-h2:     clamp(16px, 2.3vh, 28px);
+    --b8-row-h:  clamp(52px, 6.9vh, 90px);
+    --b8-avatar: clamp(34px, 4.7vh, 60px);
+    --b8-name:   clamp(14px, 1.95vh, 23px);
+    --b8-score:  clamp(20px, 3.2vh, 42px);
+    --b8-rank:   clamp(14px, 2.1vh, 27px);
+    --b8-gutter: clamp(16px, 2.2vw, 46px);
+    --b8-pad-b:  clamp(18px, 2.6vh, 40px);
 }
 
 * { box-sizing: border-box; }
@@ -55,9 +59,9 @@ body {
 }
 
 .b8-header-inner {
-    max-width: 1680px;
+    max-width: 1800px;
     margin: 0 auto;
-    padding: clamp(10px, 1.2vh, 18px) var(--b8-gutter);
+    padding: clamp(9px, 1.1vh, 17px) var(--b8-gutter);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,11 +69,11 @@ body {
 }
 
 .b8-header-inner > a { line-height: 0; }
-.b8-header-inner img { display: block; height: clamp(30px, 3.8vh, 48px); width: auto; }
+.b8-header-inner img { display: block; height: clamp(28px, 3.5vh, 46px); width: auto; }
 
 .b8-header-tools { display: flex; align-items: center; gap: clamp(8px, 1vw, 18px); }
 
-/* 运维工具(导出/导入)收在顶栏, 不占看板版面 */
+/* 运营工具(导出/导入)收在顶栏, 不占看板版面 */
 .b8-tool {
     background: none;
     border: none;
@@ -83,7 +87,13 @@ body {
 
 .b8-tool:hover { color: var(--b8-ink); text-decoration: underline; }
 
-.b8-lang { display: flex; align-items: center; gap: 7px; padding-left: clamp(6px, 0.8vw, 14px); border-left: 1px solid var(--b8-line); }
+.b8-lang {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-left: clamp(6px, 0.8vw, 14px);
+    border-left: 1px solid var(--b8-line);
+}
 
 .b8-lang button {
     background: none;
@@ -101,10 +111,10 @@ body {
 /* ---------- 标题区 ---------- */
 .b8-head {
     flex: none;
-    max-width: 1680px;
+    max-width: 1800px;
     width: 100%;
     margin: 0 auto;
-    padding: clamp(22px, 4.4vh, 58px) var(--b8-gutter) clamp(14px, 2.2vh, 28px);
+    padding: clamp(18px, 3.6vh, 48px) var(--b8-gutter) clamp(12px, 1.9vh, 24px);
     text-align: center;
 }
 
@@ -118,34 +128,60 @@ body {
 }
 
 .b8-head p {
-    margin: clamp(8px, 1.2vh, 16px) 0 0;
+    margin: clamp(7px, 1.1vh, 14px) 0 0;
     font-size: var(--b8-sub);
     color: var(--b8-body);
 }
 
-/* ---------- 榜单 ---------- */
-.b8-board {
-    position: relative;        /* 供底部渐隐定位 */
+/* ---------- 两个榜的容器 ---------- */
+.b8-boards {
     flex: 1 1 auto;
     min-height: 0;             /* 关键: 允许内部滚动而不是撑开 flex 父级 */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(18px, 1.8vw, 38px);
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 var(--b8-gutter) var(--b8-pad-b);
+}
+
+/* 左右并排。断点与下方整屏锁定的断点一致(1000px),
+   避免出现「锁了高度却仍上下堆叠」导致内容被裁掉。 */
+@media (min-width: 1000px) {
+    .b8-boards { grid-template-columns: 1fr 1fr; }
+}
+
+.b8-board {
+    position: relative;        /* 供底部渐隐定位 */
+    min-height: 0;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 1680px;
-    margin: 0 auto;
-    padding: 0 var(--b8-gutter) clamp(20px, 3vh, 46px);
 }
 
-.b8-toolbar {
+.b8-board-head {
     flex: none;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    gap: 14px;
-    margin-bottom: clamp(10px, 1.4vh, 18px);
+    gap: clamp(8px, 1vw, 16px);
+    margin-bottom: clamp(8px, 1.2vh, 16px);
 }
 
-.b8-count { font-size: var(--b8-sub); color: var(--b8-muted); margin-right: auto; }
+.b8-board-head h2 {
+    margin: 0;
+    font-size: var(--b8-h2);
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    color: var(--b8-ink);
+    white-space: nowrap;
+}
+
+.b8-count {
+    font-size: clamp(11px, 1.45vh, 16px);
+    color: var(--b8-muted);
+    margin-right: auto;
+    white-space: nowrap;
+}
 
 .b8-btn {
     font: inherit;
@@ -154,8 +190,9 @@ body {
     border: 1px solid transparent;
     cursor: pointer;
     transition: background 0.15s, border-color 0.15s, color 0.15s;
-    font-size: clamp(14px, 1.8vh, 20px);
-    padding: clamp(10px, 1.4vh, 16px) clamp(20px, 2vw, 34px);
+    font-size: clamp(13px, 1.6vh, 17px);
+    padding: clamp(8px, 1.1vh, 13px) clamp(14px, 1.4vw, 26px);
+    white-space: nowrap;
 }
 
 .b8-btn-primary { background: var(--b8-red); color: #fff; }
@@ -179,14 +216,15 @@ body {
 
 /* 榜单装不下时, 底部那一行会被从中间切断。给一个渐隐把切口变成
    刻意的"还有更多"提示, 而不是看起来没渲染完。只在真的可滚动时出现
-   (由 JS 加 .has-more), 否则会把最后一行洗白。 */
+   (由 JS 给对应的 .b8-board 加 .has-more), 否则会把最后一行洗白。
+   .b8-list 是 .b8-board 的末个弹性子元素, 所以 bottom:1px 正好贴在榜底。 */
 .b8-board.has-more::after {
     content: "";
     position: absolute;
-    left: calc(var(--b8-gutter) + 1px);
-    right: calc(var(--b8-gutter) + 1px);
-    bottom: calc(clamp(20px, 3vh, 46px) + 1px);
-    height: clamp(26px, 4vh, 56px);
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    height: clamp(24px, 3.6vh, 50px);
     background: linear-gradient(to top, var(--b8-card) 18%, rgba(255, 255, 255, 0));
     border-radius: 0 0 11px 11px;
     pointer-events: none;
@@ -194,11 +232,11 @@ body {
 
 .b8-row {
     display: grid;
-    grid-template-columns: clamp(46px, 4vw, 86px) auto 1fr auto auto;
+    grid-template-columns: clamp(32px, 2.6vw, 58px) auto 1fr auto auto;
     align-items: center;
-    gap: clamp(12px, 1.4vw, 28px);
+    gap: clamp(9px, 0.9vw, 20px);
     min-height: var(--b8-row-h);
-    padding: clamp(6px, 0.8vh, 12px) clamp(16px, 1.8vw, 34px);
+    padding: clamp(6px, 0.7vh, 11px) clamp(12px, 1.1vw, 24px);
     border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -234,7 +272,7 @@ body {
 .b8-date {
     display: block;
     margin-top: 3px;
-    font-size: clamp(11px, 1.35vh, 15px);
+    font-size: clamp(10px, 1.25vh, 14px);
     color: var(--b8-muted);
     font-weight: 400;
 }
@@ -250,23 +288,23 @@ body {
 
 .b8-score small {
     display: block;
-    margin-top: 5px;
-    font-size: clamp(10px, 1.15vh, 13px);
+    margin-top: 4px;
+    font-size: clamp(9px, 1.05vh, 12px);
     font-weight: 500;
     color: var(--b8-muted);
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
 }
 
 /* 行操作：真实可点, 所以保留 hover 反馈。
    现场可能是触屏, 没有 hover, 所以常驻显示而不是悬停才出现。 */
-.b8-row-actions { display: flex; gap: 4px; margin-left: clamp(10px, 1.2vw, 26px); }
+.b8-row-actions { display: flex; gap: 2px; margin-left: clamp(6px, 0.7vw, 16px); }
 
 .b8-icon-btn {
     background: none;
     border: none;
-    padding: 7px 9px;
+    padding: 6px 7px;
     font: inherit;
-    font-size: clamp(12px, 1.4vh, 15px);
+    font-size: clamp(11px, 1.3vh, 14px);
     color: var(--b8-muted);
     cursor: pointer;
     border-radius: 5px;
@@ -280,10 +318,11 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
-    min-height: 180px;
+    min-height: 150px;
+    padding: 20px;
     text-align: center;
     color: var(--b8-muted);
-    font-size: clamp(14px, 2vh, 22px);
+    font-size: clamp(13px, 1.8vh, 19px);
 }
 
 /* ---------- 16:9 / 横向大屏：锁定一屏, 不整页滚动 ---------- */
@@ -315,7 +354,19 @@ body {
     position: relative;
 }
 
-.b8-modal-card h2 { margin: 0 0 clamp(16px, 2.4vh, 26px); font-size: clamp(19px, 2.6vh, 26px); font-weight: 700; }
+.b8-modal-card h2 {
+    margin: 0 0 4px;
+    font-size: clamp(19px, 2.6vh, 26px);
+    font-weight: 700;
+}
+
+/* 弹窗里标出是哪个榜, 避免加到错的那边 */
+.b8-modal-cat {
+    margin: 0 0 clamp(16px, 2.2vh, 24px);
+    font-size: clamp(12px, 1.5vh, 15px);
+    color: var(--b8-red);
+    font-weight: 600;
+}
 
 .b8-close {
     position: absolute;
@@ -405,11 +456,16 @@ body {
 .b8-actions { display: flex; justify-content: flex-end; gap: 10px; }
 .b8-actions .b8-btn { font-size: clamp(14px, 1.8vh, 17px); padding: clamp(10px, 1.4vh, 13px) 24px; }
 
-/* ---------- 窄屏 / 竖屏：退回普通滚动 ---------- */
+/* ---------- 窄屏 / 竖屏：上下堆叠 + 普通滚动 ---------- */
+@media (max-width: 999px) {
+    .b8-board { min-height: 46vh; }
+}
+
 @media (max-width: 640px) {
-    .b8-head { padding: 32px 18px 20px; }
-    .b8-row { grid-template-columns: 34px auto 1fr auto; gap: 11px; padding: 13px 14px; }
+    .b8-head { padding: 28px 16px 18px; }
+    .b8-row { grid-template-columns: 32px auto 1fr auto; gap: 10px; padding: 12px 13px; }
     .b8-row-actions { grid-column: 3 / -1; justify-content: flex-end; margin-top: 2px; margin-left: 0; }
     .b8-modal-card { padding: 24px 18px 20px; }
     .b8-count { display: none; }
+    .b8-board-head h2 { white-space: normal; }
 }
