@@ -17,7 +17,7 @@
 
     <!-- 自包含样式。不加载 css/style.css，那是为深色站写的, 这里是亮色页。
          .htaccess 对 css/js 是 1 年 immutable 缓存, 所以必须带 ?v= -->
-    <link rel="stylesheet" href="css/building8.css?v=20261006d">
+    <link rel="stylesheet" href="css/building8.css?v=20261006e">
 </head>
 
 <body>
@@ -52,7 +52,7 @@
     <!-- 两个榜左右并排。cat=hr 人对机器人(左), cat=rr 机器人对机器人(右)。
          记录存在同一个数组里, 由 cat 字段区分。 -->
     <main class="b8-boards">
-        <section class="b8-board">
+        <section class="b8-board" data-cat="hr">
             <div class="b8-board-head">
                 <h2 data-zh="人 对 机器人" data-en="Human vs Robot">人 对 机器人</h2>
                 <span class="b8-count" id="b8Count-hr"></span>
@@ -62,7 +62,7 @@
             <ul class="b8-list" id="b8List-hr"></ul>
         </section>
 
-        <section class="b8-board">
+        <section class="b8-board" data-cat="rr">
             <div class="b8-board-head">
                 <h2 data-zh="机器人 对 机器人" data-en="Robot vs Robot">机器人 对 机器人</h2>
                 <span class="b8-count" id="b8Count-rr"></span>
@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <script src="js/building8.js?v=20261006d"></script>
+    <script src="js/building8.js?v=20261006e"></script>
 </body>
 
 </html>

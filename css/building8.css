@@ -14,6 +14,13 @@
    ============================================================ */
 
 :root {
+    /* 两个榜的横幅底。先用纯黑, 以后换背景图只改这两行即可, 例如:
+         --b8-banner-hr: center/cover no-repeat url('images/b8-banner-hr.jpg');
+       换图后记得看一眼白字还压不压得住, 压不住就把 --b8-banner-scrim 调深。 */
+    --b8-banner-hr: #000000;
+    --b8-banner-rr: #000000;
+    --b8-banner-scrim: rgba(0, 0, 0, 0);   /* 换成图片后调成 rgba(0,0,0,.45) 之类 */
+
     --b8-red: #CD202B;
     --b8-ink: #15151a;
     --b8-body: #4b4b53;
@@ -159,26 +166,45 @@ body {
     flex-direction: column;
 }
 
+/* 榜头做成横幅, 直接贴在榜单上方(所以没有 margin-bottom, 圆角只收上面两角)。
+   底色走 --b8-banner-bg, 由下面按榜注入; scrim 是换背景图后压字用的遮罩层。 */
 .b8-board-head {
+    position: relative;
     flex: none;
     display: flex;
     align-items: center;
     gap: clamp(8px, 1vw, 16px);
-    margin-bottom: clamp(8px, 1.2vh, 16px);
+    padding: clamp(10px, 1.5vh, 20px) clamp(14px, 1.3vw, 28px);
+    background: var(--b8-banner-bg, #000);
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
 }
+
+.b8-board-head::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--b8-banner-scrim);
+    pointer-events: none;
+}
+
+.b8-board-head > * { position: relative; }   /* 压在 scrim 之上 */
+
+.b8-board[data-cat="hr"] .b8-board-head { --b8-banner-bg: var(--b8-banner-hr); }
+.b8-board[data-cat="rr"] .b8-board-head { --b8-banner-bg: var(--b8-banner-rr); }
 
 .b8-board-head h2 {
     margin: 0;
     font-size: var(--b8-h2);
     font-weight: 700;
     letter-spacing: -0.2px;
-    color: var(--b8-ink);
+    color: #ffffff;
     white-space: nowrap;
 }
 
 .b8-count {
     font-size: clamp(11px, 1.45vh, 16px);
-    color: var(--b8-muted);
+    color: rgba(255, 255, 255, 0.62);
     margin-right: auto;
     white-space: nowrap;
 }
@@ -211,8 +237,30 @@ body {
     padding: 0;
     background: var(--b8-card);
     border: 1px solid var(--b8-line);
-    border-radius: 12px;
+    border-top: none;                      /* 与上方横幅拼成一张卡 */
+    border-radius: 0 0 12px 12px;
+
+    /* 滚动条平时不显形, 滚动中(与鼠标悬停时)才出现。
+       宽度始终占位、只变滑块颜色, 所以显隐不会挤动内容。 */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.3s ease;
 }
+
+.b8-list::-webkit-scrollbar { width: 8px; }
+.b8-list::-webkit-scrollbar-track { background: transparent; }
+
+.b8-list::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+    transition: background 0.3s ease;
+}
+
+.b8-list.is-scrolling,
+.b8-list:hover { scrollbar-color: rgba(0, 0, 0, 0.26) transparent; }
+
+.b8-list.is-scrolling::-webkit-scrollbar-thumb,
+.b8-list:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.26); }
 
 /* 榜单装不下时, 底部那一行会被从中间切断。给一个渐隐把切口变成
    刻意的"还有更多"提示, 而不是看起来没渲染完。只在真的可滚动时出现

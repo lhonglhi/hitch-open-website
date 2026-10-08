@@ -469,4 +469,17 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Escape') b8CloseForm();
     });
     window.addEventListener('resize', () => b8UpdateOverflow());
+
+    // 滚动条平时隐形, 滚动时才显形, 停下 900ms 后再淡出。
+    // 只加/去一个 class, 滚动条宽度始终占位, 不会挤动内容。
+    B8_CATS.forEach(c => {
+        const list = document.getElementById('b8List-' + c.id);
+        if (!list) return;
+        let timer = null;
+        list.addEventListener('scroll', () => {
+            list.classList.add('is-scrolling');
+            clearTimeout(timer);
+            timer = setTimeout(() => list.classList.remove('is-scrolling'), 900);
+        }, { passive: true });
+    });
 });
