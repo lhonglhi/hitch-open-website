@@ -209,6 +209,47 @@ body {
     white-space: nowrap;
 }
 
+/* 横幅左侧的抽象图标: 圆头=人, 方头带天线=机器。
+   只用头型区分, 不画眼睛之类的细节 —— 在横幅这个尺寸下细节会糊成一团。 */
+.b8-vs-icon {
+    flex: none;
+    display: block;
+    line-height: 0;
+    color: #ffffff;
+}
+
+.b8-vs-icon svg {
+    display: block;
+    height: clamp(19px, 2.5vh, 32px);
+    width: auto;
+}
+
+/* 添加按钮: 做成不起眼的小加号。看板上以展示为主, 录入是低频动作,
+   不该用实心红按钮抢视线。 */
+.b8-add {
+    flex: none;
+    width: clamp(25px, 3.1vh, 38px);
+    height: clamp(25px, 3.1vh, 38px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 50%;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.72);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.b8-add svg { width: 54%; height: 54%; }
+
+.b8-add:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+}
+
 .b8-btn {
     font: inherit;
     font-weight: 600;

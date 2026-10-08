@@ -17,7 +17,7 @@
 
     <!-- 自包含样式。不加载 css/style.css，那是为深色站写的, 这里是亮色页。
          .htaccess 对 css/js 是 1 年 immutable 缓存, 所以必须带 ?v= -->
-    <link rel="stylesheet" href="css/building8.css?v=20261006e">
+    <link rel="stylesheet" href="css/building8.css?v=20261006h">
 </head>
 
 <body>
@@ -54,20 +54,24 @@
     <main class="b8-boards">
         <section class="b8-board" data-cat="hr">
             <div class="b8-board-head">
-                <h2 data-zh="人 对 机器人" data-en="Human vs Robot">人 对 机器人</h2>
+                <span class="b8-vs-icon"><svg viewBox="0 0 68 32" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="15" cy="9" r="7.5"/><path d="M15 19c-8 0-13.5 6-13.5 13h27C28.5 25 23 19 15 19z"/><circle cx="53" cy="1.8" r="1.8"/><rect x="52" y="3" width="2" height="3.5"/><rect x="43.5" y="6" width="19" height="13" rx="2.5"/><rect x="50.5" y="18.5" width="5" height="3.5"/><rect x="41" y="21.5" width="24" height="10.5" rx="2"/></svg></span>
+                <h2 data-zh="人 VS 机器人" data-en="Human VS Robot">人 VS 机器人</h2>
                 <span class="b8-count" id="b8Count-hr"></span>
-                <button type="button" class="b8-btn b8-btn-primary" onclick="b8OpenForm(null,'hr')"
-                        data-zh="添加纪录" data-en="Add a record">添加纪录</button>
+                <button type="button" class="b8-add" onclick="b8OpenForm(null,'hr')"
+                        data-zh-title="添加纪录" data-en-title="Add a record"
+                        aria-label="添加纪录"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></button>
             </div>
             <ul class="b8-list" id="b8List-hr"></ul>
         </section>
 
         <section class="b8-board" data-cat="rr">
             <div class="b8-board-head">
-                <h2 data-zh="机器人 对 机器人" data-en="Robot vs Robot">机器人 对 机器人</h2>
+                <span class="b8-vs-icon"><svg viewBox="0 0 68 32" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="15" cy="1.8" r="1.8"/><rect x="14" y="3" width="2" height="3.5"/><rect x="5.5" y="6" width="19" height="13" rx="2.5"/><rect x="12.5" y="18.5" width="5" height="3.5"/><rect x="3" y="21.5" width="24" height="10.5" rx="2"/><circle cx="53" cy="1.8" r="1.8"/><rect x="52" y="3" width="2" height="3.5"/><rect x="43.5" y="6" width="19" height="13" rx="2.5"/><rect x="50.5" y="18.5" width="5" height="3.5"/><rect x="41" y="21.5" width="24" height="10.5" rx="2"/></svg></span>
+                <h2 data-zh="机器人 VS 机器人" data-en="Robot VS Robot">机器人 VS 机器人</h2>
                 <span class="b8-count" id="b8Count-rr"></span>
-                <button type="button" class="b8-btn b8-btn-primary" onclick="b8OpenForm(null,'rr')"
-                        data-zh="添加纪录" data-en="Add a record">添加纪录</button>
+                <button type="button" class="b8-add" onclick="b8OpenForm(null,'rr')"
+                        data-zh-title="添加纪录" data-en-title="Add a record"
+                        aria-label="添加纪录"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"/></svg></button>
             </div>
             <ul class="b8-list" id="b8List-rr"></ul>
         </section>
@@ -114,7 +118,7 @@
         </div>
     </div>
 
-    <script src="js/building8.js?v=20261006e"></script>
+    <script src="js/building8.js?v=20261006h"></script>
 </body>
 
 </html>

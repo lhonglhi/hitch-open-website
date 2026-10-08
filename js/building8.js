@@ -20,8 +20,8 @@ const B8_SCHEMA = 2;          // 2: 记录新增 cat 字段(hr/rr)
 
 /* ---------- 两个榜 ---------- */
 const B8_CATS = [
-    { id: 'hr', zh: '人 对 机器人',       en: 'Human vs Robot' },
-    { id: 'rr', zh: '机器人 对 机器人',   en: 'Robot vs Robot' }
+    { id: 'hr', zh: '人 VS 机器人',       en: 'Human VS Robot' },
+    { id: 'rr', zh: '机器人 VS 机器人',   en: 'Robot VS Robot' }
 ];
 
 function b8CatById(id) {
@@ -436,6 +436,12 @@ function b8SetLang(lang) {
     });
     document.querySelectorAll('[data-zh-ph][data-en-ph]').forEach(el => {
         el.placeholder = el.getAttribute('data-' + b8Lang + '-ph') || '';
+    });
+    // 加号按钮没有可见文字, 靠 title/aria-label 说明用途
+    document.querySelectorAll('[data-zh-title][data-en-title]').forEach(el => {
+        const txt = el.getAttribute('data-' + b8Lang + '-title') || '';
+        el.title = txt;
+        el.setAttribute('aria-label', txt);
     });
 
     document.querySelectorAll('.b8-lang button').forEach(btn => {
