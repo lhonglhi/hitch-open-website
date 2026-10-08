@@ -93,18 +93,23 @@ const B8_SEED = [
     ['rr', '中科大蓝鲸',        'ustc',       132, '2026-10-06'],
     ['rr', 'TeleAI 人形',       'teleai',      96, '2026-10-06']
 ].map(([cat, name, avatar, rallies, date], i) => ({
-    id: 'seed' + i, cat, name, avatar, rallies, date, demo: true
+    // id 带上分类前缀。早期版本用纯位置序号(seed0/seed1...), 一旦重排示例
+    // 列表, 同一个 id 的含义就变了, 按 id 去重会误判成「已存在」而漏掉条目。
+    id: `seed-${cat}-${i}`, cat, name, avatar, rallies, date, demo: true
 }));
 
 // 把示例数据补回榜上, 不碰已有的真实纪录。
 // 用于设备上已经存过数据(所以首次注入没触发)但仍想看到示例的情况。
 function b8LoadDemo() {
-    const have = new Set(b8Records.map(r => r.id));
-    const add = B8_SEED.filter(r => !have.has(r.id)).map(r => Object.assign({}, r));
-    b8Records = b8Records.concat(add);
+    // 整组替换, 不做按 id 的增量补差: 示例列表一旦调整(增删、改分类、重排),
+    // 增量补差就会和设备上残留的旧示例对不上。先丢掉所有旧示例, 再装入
+    // 当前这一版, 真实纪录(demo 非 true)一条不动。重复执行结果一致。
+    const real = b8Records.filter(r => !r.demo);
+    const dropped = b8Records.length - real.length;
+    b8Records = real.concat(B8_SEED.map(r => Object.assign({}, r)));
     b8Save();
     b8Render();
-    console.log(`[building8] 已补入 ${add.length} 条示例, 当前共 ${b8Records.length} 条`);
+    console.log(`[building8] 清掉旧示例 ${dropped} 条, 装入 ${B8_SEED.length} 条, 保留真实纪录 ${real.length} 条`);
 }
 
 // 清掉示例数据, 保留真实纪录。正式启用前在控制台跑一次即可。
