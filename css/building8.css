@@ -16,16 +16,32 @@
 :root {
     /* 两个榜的横幅底。先用纯黑, 以后换背景图只改这两行即可, 例如:
          --b8-banner-hr: center/cover no-repeat url('images/b8-banner-hr.jpg');
-       换图后记得看一眼白字还压不压得住, 压不住就把 --b8-banner-scrim 调深。 */
+       换图后记得看一眼白字还压不压得住, 压不住就把 --b8-banner-scrim 调深。
+       深浅两套配色都用这同一个黑横幅, 不随主题变。 */
     --b8-banner-hr: #000000;
     --b8-banner-rr: #000000;
     --b8-banner-scrim: rgba(0, 0, 0, 0);   /* 换成图片后调成 rgba(0,0,0,.45) 之类 */
 
     --b8-red: #CD202B;
+    --b8-red-hover: #b31b25;
     --b8-ink: #15151a;
     --b8-body: #4b4b53;
-    --b8-muted: #8e9096;
+    /* 4.66:1 on #fff。原来是 #8e9096, 只有 3.19:1, 日期/名次/修改删除
+       这些小字在看板上远看发虚, 正文级 AA 要 4.5。 */
+    --b8-muted: #72747d;
     --b8-line: rgba(0, 0, 0, 0.1);
+    --b8-row-line: rgba(0, 0, 0, 0.06);
+    --b8-hover: rgba(0, 0, 0, 0.05);
+    --b8-hover-line: rgba(0, 0, 0, 0.12);
+    --b8-scroll-thumb: rgba(0, 0, 0, 0.26);
+    --b8-overlay: rgba(0, 0, 0, 0.45);
+    --b8-shadow: 0 10px 34px rgba(0, 0, 0, 0.14);
+    --b8-header-bg: #ffffff;
+    --b8-modal-bg: #ffffff;
+    --b8-input-bg: #ffffff;
+    /* 头像底盘: 深浅两套都保持浅色。校徽 PNG 里有深色描线的,
+       放到深底上会糊成一团, 始终给它垫一块浅盘最稳。 */
+    --b8-avatar-bg: #f1f1f4;
     --b8-bg: #f4f4f7;
     --b8-card: #ffffff;
     --b8-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
@@ -46,6 +62,26 @@
     --b8-pad-b:  clamp(18px, 2.6vh, 40px);
 }
 
+/* ---- 深色: 只覆盖颜色变量, 不碰任何布局规则 ---- */
+:root[data-theme="dark"] {
+    --b8-bg: #0b0b0e;
+    --b8-card: #17171c;
+    --b8-header-bg: #121216;
+    --b8-modal-bg: #1b1b21;
+    --b8-input-bg: #101014;
+    --b8-ink: #f0f0f3;
+    --b8-body: #c2c2ca;
+    --b8-muted: #82828c;
+    --b8-line: rgba(255, 255, 255, 0.11);
+    --b8-row-line: rgba(255, 255, 255, 0.07);
+    --b8-hover: rgba(255, 255, 255, 0.08);
+    --b8-hover-line: rgba(255, 255, 255, 0.18);
+    --b8-scroll-thumb: rgba(255, 255, 255, 0.24);
+    --b8-overlay: rgba(0, 0, 0, 0.66);
+    --b8-shadow: 0 10px 34px rgba(0, 0, 0, 0.55);
+    /* 横幅仍是纯黑: 比 #17171c 的卡更深, 深色下照样有层次 */
+}
+
 * { box-sizing: border-box; }
 
 html, body { margin: 0; padding: 0; }
@@ -56,11 +92,12 @@ body {
     color: var(--b8-ink);
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ---------- 顶栏 ---------- */
 .b8-header {
-    background: #fff;
+    background: var(--b8-header-bg);
     border-bottom: 1px solid var(--b8-line);
     flex: none;
 }
@@ -80,19 +117,100 @@ body {
 
 .b8-header-tools { display: flex; align-items: center; gap: clamp(8px, 1vw, 18px); }
 
-/* 运营工具(导出/导入)收在顶栏, 不占看板版面 */
-.b8-tool {
-    background: none;
+/* ---------- 设置菜单 ---------- */
+.b8-menu-wrap { position: relative; }
+
+.b8-icon-tool {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(26px, 3.2vh, 36px);
+    height: clamp(26px, 3.2vh, 36px);
+    padding: 0;
     border: none;
-    padding: 5px 4px;
-    font: inherit;
-    font-size: clamp(11px, 1.3vh, 14px);
+    border-radius: 7px;
+    background: transparent;
     color: var(--b8-muted);
     cursor: pointer;
-    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
 }
 
-.b8-tool:hover { color: var(--b8-ink); text-decoration: underline; }
+.b8-icon-tool svg { width: 62%; height: 62%; display: block; }
+
+.b8-icon-tool:hover,
+.b8-icon-tool[aria-expanded="true"] { background: var(--b8-hover); color: var(--b8-ink); }
+
+.b8-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 80;
+    min-width: 198px;
+    padding: 8px;
+    background: var(--b8-modal-bg);
+    border: 1px solid var(--b8-line);
+    border-radius: 10px;
+    box-shadow: var(--b8-shadow);
+}
+
+.b8-menu.open { display: block; }
+
+.b8-menu-label {
+    display: block;
+    padding: 4px 8px 7px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--b8-muted);
+}
+
+/* 浅色 / 深色二选一 */
+.b8-seg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 0 4px 8px;
+}
+
+.b8-seg button {
+    font: inherit;
+    font-size: 13px;
+    padding: 7px 6px;
+    border: 1px solid var(--b8-line);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--b8-body);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.b8-seg button:hover { border-color: var(--b8-hover-line); color: var(--b8-ink); }
+
+.b8-seg button[aria-pressed="true"] {
+    background: var(--b8-red);
+    border-color: var(--b8-red);
+    color: #fff;
+}
+
+.b8-menu-sep { height: 1px; margin: 4px 4px 6px; background: var(--b8-line); }
+
+.b8-menu-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    font-size: 13.5px;
+    padding: 8px 9px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--b8-body);
+    cursor: pointer;
+}
+
+.b8-menu-item:hover { background: var(--b8-hover); color: var(--b8-ink); }
 
 .b8-lang {
     display: flex;
@@ -263,10 +381,10 @@ body {
 }
 
 .b8-btn-primary { background: var(--b8-red); color: #fff; }
-.b8-btn-primary:hover { background: #b31b25; }
+.b8-btn-primary:hover { background: var(--b8-red-hover); }
 
 .b8-btn-ghost { background: transparent; color: var(--b8-body); border-color: var(--b8-line); }
-.b8-btn-ghost:hover { border-color: var(--b8-muted); color: var(--b8-ink); }
+.b8-btn-ghost:hover { border-color: var(--b8-hover-line); color: var(--b8-ink); }
 
 .b8-list {
     flex: 1 1 auto;
@@ -298,10 +416,10 @@ body {
 }
 
 .b8-list.is-scrolling,
-.b8-list:hover { scrollbar-color: rgba(0, 0, 0, 0.26) transparent; }
+.b8-list:hover { scrollbar-color: var(--b8-scroll-thumb) transparent; }
 
 .b8-list.is-scrolling::-webkit-scrollbar-thumb,
-.b8-list:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.26); }
+.b8-list:hover::-webkit-scrollbar-thumb { background: var(--b8-scroll-thumb); }
 
 /* 榜单装不下时, 底部那一行会被从中间切断。给一个渐隐把切口变成
    刻意的"还有更多"提示, 而不是看起来没渲染完。只在真的可滚动时出现
@@ -314,7 +432,7 @@ body {
     right: 1px;
     bottom: 1px;
     height: clamp(24px, 3.6vh, 50px);
-    background: linear-gradient(to top, var(--b8-card) 18%, rgba(255, 255, 255, 0));
+    background: linear-gradient(to top, var(--b8-card) 18%, transparent);
     border-radius: 0 0 11px 11px;
     pointer-events: none;
 }
@@ -326,7 +444,7 @@ body {
     gap: clamp(9px, 0.9vw, 20px);
     min-height: var(--b8-row-h);
     padding: clamp(6px, 0.7vh, 11px) clamp(12px, 1.1vw, 24px);
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 1px solid var(--b8-row-line);
 }
 
 .b8-row:first-child { border-top: none; }
@@ -346,7 +464,7 @@ body {
     height: var(--b8-avatar);
     border-radius: 50%;
     object-fit: contain;
-    background: #f1f1f4;
+    background: var(--b8-avatar-bg);
     display: block;
 }
 
@@ -399,8 +517,8 @@ body {
     border-radius: 5px;
 }
 
-.b8-icon-btn:hover { background: rgba(0, 0, 0, 0.05); color: var(--b8-ink); }
-.b8-icon-btn.b8-danger:hover { background: rgba(205, 32, 43, 0.08); color: var(--b8-red); }
+.b8-icon-btn:hover { background: var(--b8-hover); color: var(--b8-ink); }
+.b8-icon-btn.b8-danger:hover { background: rgba(205, 32, 43, 0.12); color: var(--b8-red); }
 
 .b8-empty {
     display: flex;
@@ -425,7 +543,7 @@ body {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: var(--b8-overlay);
     z-index: 100;
     padding: 20px;
     overflow-y: auto;
@@ -434,7 +552,8 @@ body {
 .b8-modal.open { display: flex; align-items: flex-start; justify-content: center; }
 
 .b8-modal-card {
-    background: #fff;
+    background: var(--b8-modal-bg);
+    border: 1px solid var(--b8-line);
     border-radius: 14px;
     width: 100%;
     max-width: 620px;
@@ -447,6 +566,7 @@ body {
     margin: 0 0 4px;
     font-size: clamp(19px, 2.6vh, 26px);
     font-weight: 700;
+    color: var(--b8-ink);
 }
 
 /* 弹窗里标出是哪个榜, 避免加到错的那边 */
@@ -471,7 +591,7 @@ body {
     border-radius: 5px;
 }
 
-.b8-close:hover { background: rgba(0, 0, 0, 0.05); color: var(--b8-ink); }
+.b8-close:hover { background: var(--b8-hover); color: var(--b8-ink); }
 
 .b8-field { margin-bottom: clamp(14px, 2.2vh, 22px); }
 
@@ -492,13 +612,13 @@ body {
     border: 1px solid var(--b8-line);
     border-radius: 7px;
     color: var(--b8-ink);
-    background: #fff;
+    background: var(--b8-input-bg);
 }
 
 .b8-field input:focus {
     outline: none;
     border-color: var(--b8-red);
-    box-shadow: 0 0 0 3px rgba(205, 32, 43, 0.1);
+    box-shadow: 0 0 0 3px rgba(205, 32, 43, 0.14);
 }
 
 .b8-hint { margin: 7px 0 0; font-size: clamp(11px, 1.4vh, 14px); color: var(--b8-muted); }
@@ -519,9 +639,10 @@ body {
     line-height: 0;
 }
 
-.b8-pick img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 50%; }
-.b8-pick:hover { border-color: rgba(0, 0, 0, 0.12); }
-.b8-pick[aria-pressed="true"] { border-color: var(--b8-red); background: rgba(205, 32, 43, 0.06); }
+.b8-pick img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain;
+               border-radius: 50%; background: var(--b8-avatar-bg); }
+.b8-pick:hover { border-color: var(--b8-hover-line); }
+.b8-pick[aria-pressed="true"] { border-color: var(--b8-red); background: rgba(205, 32, 43, 0.12); }
 
 .b8-picker-group { margin-bottom: 12px; }
 

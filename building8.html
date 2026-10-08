@@ -17,7 +17,15 @@
 
     <!-- 自包含样式。不加载 css/style.css，那是为深色站写的, 这里是亮色页。
          .htaccess 对 css/js 是 1 年 immutable 缓存, 所以必须带 ?v= -->
-    <link rel="stylesheet" href="css/building8.css?v=20261006h">
+    <!-- 必须在样式表之前执行: 否则深色模式下会先按浅色画一帧, 白闪一下 -->
+    <script>
+        try {
+            var t = localStorage.getItem('b8_theme');
+            if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        } catch (e) { /* 隐私模式下忽略 */ }
+    </script>
+
+    <link rel="stylesheet" href="css/building8.css?v=20261006i">
 </head>
 
 <body>
@@ -26,13 +34,31 @@
         <div class="b8-header-inner">
             <a href="hope.html"><img src="images/160x160-logo.png" alt="HITCH OPEN"></a>
             <div class="b8-header-tools">
-                <!-- 运营工具收在顶栏: localStorage 会被「清除浏览数据」抹掉,
-                     导出是唯一兜底; 导出的 JSON 可直接提交进仓库备份。
-                     放这里是为了不占 16:9 看板的正文版面。 -->
-                <button type="button" class="b8-tool" onclick="b8Export()"
-                        data-zh="导出备份" data-en="Export">导出备份</button>
-                <button type="button" class="b8-tool" onclick="document.getElementById('b8File').click()"
-                        data-zh="导入备份" data-en="Import">导入备份</button>
+                <!-- 导出/导入与配色都收进这个齿轮里: 看板上以展示为主,
+                     这些都是布置现场时才用一次的动作, 不该常驻在顶栏。
+                     localStorage 会被「清除浏览数据」抹掉, 导出是唯一兜底;
+                     导出的 JSON 可直接提交进仓库备份。 -->
+                <div class="b8-menu-wrap">
+                    <button type="button" class="b8-icon-tool" id="b8SettingsBtn"
+                            onclick="b8ToggleMenu(event)" aria-haspopup="true" aria-expanded="false"
+                            data-zh-title="设置" data-en-title="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+
+                    <div class="b8-menu" id="b8Menu" role="menu">
+                        <span class="b8-menu-label" data-zh="外观" data-en="Appearance">外观</span>
+                        <div class="b8-seg">
+                            <button type="button" data-theme-opt="light" onclick="b8SetTheme('light')"
+                                    data-zh="浅色" data-en="Light">浅色</button>
+                            <button type="button" data-theme-opt="dark" onclick="b8SetTheme('dark')"
+                                    data-zh="深色" data-en="Dark">深色</button>
+                        </div>
+                        <div class="b8-menu-sep"></div>
+                        <button type="button" class="b8-menu-item" onclick="b8Export()"
+                                data-zh="导出备份" data-en="Export backup">导出备份</button>
+                        <button type="button" class="b8-menu-item"
+                                onclick="document.getElementById('b8File').click()"
+                                data-zh="导入备份" data-en="Import backup">导入备份</button>
+                    </div>
+                </div>
                 <input type="file" id="b8File" accept="application/json,.json" hidden onchange="b8ImportFile(this)">
                 <div class="b8-lang">
                     <button type="button" onclick="b8SetLang('zh')">中文</button>
@@ -118,7 +144,7 @@
         </div>
     </div>
 
-    <script src="js/building8.js?v=20261006h"></script>
+    <script src="js/building8.js?v=20261006i"></script>
 </body>
 
 </html>

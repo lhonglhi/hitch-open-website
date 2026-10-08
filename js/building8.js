@@ -144,7 +144,8 @@ const B8_T = {
     nameLabelHr: { zh: '名字',       en: 'Name' },
     nameLabelRr: { zh: '战队 / 机器人', en: 'Team / robot' },
     namePhHr:    { zh: '怎么称呼你',   en: 'What should we call you' },
-    namePhRr:    { zh: '例如 清华 iPingPong', en: 'e.g. Tsinghua iPingPong' }
+    namePhRr:    { zh: '例如 清华 iPingPong', en: 'e.g. Tsinghua iPingPong' },
+    settings:    { zh: '设置',       en: 'Settings' }
 };
 
 let b8Lang = 'zh';
@@ -375,6 +376,7 @@ function b8Today() {
 // localStorage 会被"清除浏览数据"抹掉, 导出是唯一的兜底。
 // 一个文件同时含两个榜, 用 cat 区分。
 function b8Export() {
+    b8CloseMenu();
     const blob = new Blob([JSON.stringify({
         schema: B8_SCHEMA,
         exportedAt: new Date().toISOString(),
@@ -391,6 +393,7 @@ function b8Export() {
 }
 
 function b8ImportFile(input) {
+    b8CloseMenu();
     const file = input.files && input.files[0];
     if (!file) return;
     const reader = new FileReader();
@@ -425,6 +428,49 @@ function b8ImportFile(input) {
     reader.readAsText(file);
 }
 
+/* ---------- 配色 ---------- */
+// 深浅两套配色只差一组 CSS 变量, 由 <html data-theme> 切换。
+// 选择记在 localStorage, 换班/重启设备后仍保持。
+// 注意: 首屏的套用在 HTML <head> 里的内联脚本中完成, 不在这里,
+// 否则样式表已经按浅色画完一帧, 深色下会白闪。
+const B8_THEME_KEY = 'b8_theme';
+
+function b8SetTheme(theme) {
+    const dark = theme === 'dark';
+    if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+
+    try { localStorage.setItem(B8_THEME_KEY, dark ? 'dark' : 'light'); } catch (e) { /* 隐私模式 */ }
+    b8SyncThemeButtons();
+}
+
+function b8CurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+}
+
+function b8SyncThemeButtons() {
+    const now = b8CurrentTheme();
+    document.querySelectorAll('[data-theme-opt]').forEach(btn => {
+        btn.setAttribute('aria-pressed', String(btn.dataset.themeOpt === now));
+    });
+}
+
+/* ---------- 设置菜单 ---------- */
+function b8ToggleMenu(event) {
+    if (event) event.stopPropagation();   // 否则立刻被下面的全局点击处理器关掉
+    const menu = document.getElementById('b8Menu');
+    const btn = document.getElementById('b8SettingsBtn');
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+}
+
+function b8CloseMenu() {
+    const menu = document.getElementById('b8Menu');
+    if (!menu || !menu.classList.contains('open')) return;
+    menu.classList.remove('open');
+    document.getElementById('b8SettingsBtn').setAttribute('aria-expanded', 'false');
+}
+
 /* ---------- 语言 ---------- */
 function b8SetLang(lang) {
     b8Lang = (lang === 'zh') ? 'zh' : 'en';
@@ -450,6 +496,7 @@ function b8SetLang(lang) {
 
     try { localStorage.setItem('userLang', b8Lang); } catch (e) { /* 隐私模式下忽略 */ }
 
+    b8SyncThemeButtons();   // 这两个按钮的文字刚被双语处理器重写, aria-pressed 要补回来
     b8Render();
     if (document.getElementById('b8Modal').classList.contains('open')) {
         document.getElementById('b8FormTitle').textContent = b8EditingId ? t('editTitle') : t('addTitle');
@@ -471,8 +518,14 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('b8Modal').addEventListener('click', function (e) {
         if (e.target === this) b8CloseForm();
     });
+    b8SyncThemeButtons();
+
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') b8CloseForm();
+        if (e.key === 'Escape') { b8CloseForm(); b8CloseMenu(); }
+    });
+    // 点菜单以外的地方关掉它。菜单内部的点击不冒泡到这里。
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('#b8Menu')) b8CloseMenu();
     });
     window.addEventListener('resize', () => b8UpdateOverflow());
 
