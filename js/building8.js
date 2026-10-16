@@ -3,9 +3,11 @@
    ------------------------------------------------------------
    自包含脚本, 不依赖 js/script.js。
 
-   两个榜并排, 由记录上的 cat 字段区分:
-     hr = 人 对 机器人      (左)
-     rr = 机器人 对 机器人  (右)
+   两个榜, 由记录上的 cat 字段区分:
+     hr = 人 对 机器人
+     rr = 机器人 对 机器人
+   大屏(16:9 看板)上两个榜叠在一起, 每 B8_ROTATE_MS 轮换一个;
+   窄屏/竖屏两个榜都显示, 不轮播。
 
    存储：浏览器 localStorage, 键 B8_KEY, 两个榜存在同一个数组里。
    这个页面设计给 8 号楼现场的一台固定设备使用, 所以"同一台设备上
@@ -262,6 +264,178 @@ function b8UpdateOverflow(cat) {
     });
 }
 
+/* ============================================================
+   轮播
+   ------------------------------------------------------------
+   大屏上一次只显示一个榜, 每 B8_ROTATE_MS 换一次。
+   换成单榜是为了把行高和字号放大一档(远处看得清), 并在左右留出
+   背景空间; 代价是任一时刻只有一半信息在屏上, 所以下面这些情况
+   必须停表, 否则会从人手里把控制权抢走:
+     modal  表单开着 —— 不停表的话填到一半底下的榜就换了
+     menu   设置菜单开着
+     hover  鼠标在榜上(有人正在看/正要点修改)
+     scroll 榜内正在滚动(触屏现场没有 hover, 靠这个兜住)
+     hidden 页面切到后台
+   停表用「剩余时间」记账而不是重新计时, 所以鼠标划过一下不会把
+   刚走了 7 秒的那一轮重置回 8 秒。
+   ============================================================ */
+
+// 轮播一轮的时长。这是唯一的真值来源, CSS 里那条进度动画的时长
+// 由下面 b8RotInit() 写进 --b8-rotate, 不要去改 CSS 里的兜底值。
+const B8_ROTATE_MS = 8000;
+
+// 必须和 building8.css 里「16:9 / 横向大屏」那个断点逐字一致。
+// 不一致就会出现布局在轮播而脚本不转, 或者反过来。
+const B8_ROTATE_MQ = '(min-width: 1000px) and (min-height: 560px) and (min-aspect-ratio: 3/2)';
+
+let b8ActiveCat = B8_CATS[0].id;
+let b8RotMq = null;
+let b8RotTimer = null;
+let b8RotRemaining = B8_ROTATE_MS;
+let b8RotDeadline = 0;
+const b8RotHolds = new Set();
+
+function b8Rotating() {
+    return !!(b8RotMq && b8RotMq.matches);
+}
+
+function b8RenderRotator() {
+    const nav = document.getElementById('b8Rotator');
+    if (!nav) return;
+    nav.setAttribute('aria-label', nav.getAttribute('data-' + b8Lang + '-label') || '');
+    nav.innerHTML = B8_CATS.map(c => `
+        <button type="button" class="b8-dot" role="tab" data-dot="${c.id}"
+                aria-selected="${c.id === b8ActiveCat}"
+                onclick="b8PickBoard('${c.id}')"><span class="b8-dot-fill"></span><span>${b8Esc(c[b8Lang] || c.en)}</span></button>`
+    ).join('');
+}
+
+// 点指示条: 立刻切到那个榜, 并把这一轮重新计满 ——
+// 手动切过去的人需要完整的 8 秒, 而不是接着上一轮的残余。
+function b8PickBoard(cat) {
+    b8ShowBoard(cat, true);
+}
+
+function b8ShowBoard(cat, restart) {
+    b8ActiveCat = b8CatById(cat).id;
+
+    document.querySelectorAll('.b8-board').forEach(board => {
+        const on = board.dataset.cat === b8ActiveCat;
+        // 窄屏不轮播, 两个榜都要可见可用, 所以把 aria-hidden 清回 false
+        const hide = b8Rotating() && !on;
+        board.setAttribute('aria-hidden', String(hide));
+        // 隐起来的那个榜只是透明, 按钮仍在 tab 序列里。inert 把它整块
+        // 从焦点和点击里摘掉; 老浏览器不支持这个属性, 退化成仅 aria-hidden,
+        // 配合 CSS 的 pointer-events:none 也不会被误点。
+        if ('inert' in HTMLElement.prototype) board.inert = hide;
+    });
+
+    document.querySelectorAll('#b8Rotator .b8-dot').forEach(dot => {
+        const on = dot.dataset.dot === b8ActiveCat;
+        dot.setAttribute('aria-selected', String(on));
+        // 重建进度条元素以重启动画。同一个元素上改 class 不会让
+        // 已经跑完的 animation 重头来, 换个新元素最省事。
+        if (on) {
+            const fill = dot.querySelector('.b8-dot-fill');
+            if (fill) fill.replaceWith(fill.cloneNode(false));
+        }
+    });
+
+    if (restart !== false) b8RotRemaining = B8_ROTATE_MS;
+    b8RotSchedule();
+}
+
+function b8RotNext() {
+    const i = B8_CATS.findIndex(c => c.id === b8ActiveCat);
+    b8ShowBoard(B8_CATS[(i + 1) % B8_CATS.length].id, true);
+}
+
+function b8RotSchedule() {
+    clearTimeout(b8RotTimer);
+    b8RotTimer = null;
+    const nav = document.getElementById('b8Rotator');
+    const paused = b8RotHolds.size > 0;
+    if (nav) nav.classList.toggle('is-paused', paused);
+    if (!b8Rotating() || paused) return;
+    b8RotDeadline = Date.now() + b8RotRemaining;
+    b8RotTimer = setTimeout(b8RotNext, b8RotRemaining);
+}
+
+function b8RotHold(reason) {
+    if (b8RotHolds.has(reason)) return;
+    // 第一个 hold 落下时把走剩的时间记下来, 之后再叠 hold 不要重复记
+    if (b8RotHolds.size === 0 && b8RotTimer) {
+        b8RotRemaining = Math.max(400, b8RotDeadline - Date.now());
+    }
+    b8RotHolds.add(reason);
+    b8RotSchedule();
+}
+
+function b8RotRelease(reason) {
+    if (!b8RotHolds.delete(reason)) return;
+    b8RotSchedule();
+}
+
+function b8RotInit() {
+    // 让 CSS 的进度动画与这里的计时共用一个时长
+    document.documentElement.style.setProperty('--b8-rotate', (B8_ROTATE_MS / 1000) + 's');
+
+    b8RotMq = window.matchMedia(B8_ROTATE_MQ);
+    const onChange = () => b8ShowBoard(b8ActiveCat, true);
+    if (b8RotMq.addEventListener) b8RotMq.addEventListener('change', onChange);
+    else b8RotMq.addListener(onChange);          // 老 Safari
+
+    b8RenderRotator();
+    b8ShowBoard(b8ActiveCat, true);
+
+    // 鼠标在榜上或在指示条上就停表。两个元素之间移动时会先 leave 再 enter,
+    // 所以 leave 后延一帧再看是不是两个都不在 hover 上, 免得闪一下。
+    const zones = [document.querySelector('.b8-boards'), document.getElementById('b8Rotator')];
+    zones.forEach(el => {
+        if (!el) return;
+        el.addEventListener('pointerenter', () => b8RotHold('hover'));
+        el.addEventListener('pointerleave', () => setTimeout(() => {
+            const still = zones.some(z => z && z.matches(':hover'));
+            if (!still) b8RotRelease('hover');
+        }, 0));
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) b8RotHold('hidden');
+        else b8RotRelease('hidden');
+    });
+}
+
+/* ---------- 背景视频 ---------- */
+// 关掉时 CSS 会把这一层 display:none, 浏览器随即停止解码;
+// 这里再显式 pause() 一次, 不依赖那个副作用。
+// 现场设备是长时间开着的, 给个关的口子不是多余功能。
+const B8_VIDEO_KEY = 'b8_video';
+
+function b8VideoOn() {
+    return document.documentElement.classList.contains('b8-video-on');
+}
+
+function b8SetVideo(mode) {
+    const on = mode === 'on';
+    document.documentElement.classList.toggle('b8-video-on', on);
+    try { localStorage.setItem(B8_VIDEO_KEY, on ? 'on' : 'off'); } catch (e) { /* 隐私模式 */ }
+
+    const v = document.querySelector('.b8-bg video');
+    if (v) {
+        if (on) { const r = v.play(); if (r && r.catch) r.catch(() => { /* 被拦就留 poster */ }); }
+        else v.pause();
+    }
+    b8SyncVideoButtons();
+}
+
+function b8SyncVideoButtons() {
+    const now = b8VideoOn() ? 'on' : 'off';
+    document.querySelectorAll('[data-video-opt]').forEach(btn => {
+        btn.setAttribute('aria-pressed', String(btn.dataset.videoOpt === now));
+    });
+}
+
 function b8Esc(s) {
     return String(s).replace(/[&<>"']/g, c =>
         ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -311,6 +485,11 @@ function b8OpenForm(id, cat) {
     b8ApplyFormCat();
     b8RenderPicker();
     document.getElementById('b8Modal').classList.add('open');
+    // 表单开着就停表: 否则有人填到一半, 底下的榜自己换了,
+    // 保存后还得去另一个榜找自己那行。
+    b8RotHold('modal');
+    // 修改某条纪录时顺手把那个榜切到前面, 让人看得见改的是哪一条
+    if (rec && b8Rotating()) b8ShowBoard(rec.cat, true);
     setTimeout(() => document.getElementById('b8Name').focus(), 50);
 }
 
@@ -327,6 +506,7 @@ function b8ApplyFormCat() {
 function b8CloseForm() {
     document.getElementById('b8Modal').classList.remove('open');
     b8EditingId = null;
+    b8RotRelease('modal');
 }
 
 function b8Submit(event) {
@@ -356,7 +536,10 @@ function b8Submit(event) {
 
     b8Save();
     b8Render();
+    // 停在刚录入的那个榜上并重新计满一轮, 让人当场看到自己的名次
+    const landed = b8EditingCat;
     b8CloseForm();
+    if (b8Rotating()) b8ShowBoard(landed, true);
 }
 
 function b8Delete(id) {
@@ -462,6 +645,7 @@ function b8ToggleMenu(event) {
     const btn = document.getElementById('b8SettingsBtn');
     const open = menu.classList.toggle('open');
     btn.setAttribute('aria-expanded', String(open));
+    if (open) b8RotHold('menu'); else b8RotRelease('menu');
 }
 
 function b8CloseMenu() {
@@ -469,6 +653,7 @@ function b8CloseMenu() {
     if (!menu || !menu.classList.contains('open')) return;
     menu.classList.remove('open');
     document.getElementById('b8SettingsBtn').setAttribute('aria-expanded', 'false');
+    b8RotRelease('menu');
 }
 
 /* ---------- 语言 ---------- */
@@ -496,8 +681,12 @@ function b8SetLang(lang) {
 
     try { localStorage.setItem('userLang', b8Lang); } catch (e) { /* 隐私模式下忽略 */ }
 
-    b8SyncThemeButtons();   // 这两个按钮的文字刚被双语处理器重写, aria-pressed 要补回来
+    // 这几个分段按钮的文字刚被双语处理器重写, aria-pressed 要补回来
+    b8SyncThemeButtons();
+    b8SyncVideoButtons();
     b8Render();
+    b8RenderRotator();
+    if (b8RotMq) b8ShowBoard(b8ActiveCat, true);
     if (document.getElementById('b8Modal').classList.contains('open')) {
         document.getElementById('b8FormTitle').textContent = b8EditingId ? t('editTitle') : t('addTitle');
         b8ApplyFormCat();
@@ -519,6 +708,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target === this) b8CloseForm();
     });
     b8SyncThemeButtons();
+    b8SyncVideoButtons();
+    b8RotInit();
 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { b8CloseForm(); b8CloseMenu(); }
@@ -537,8 +728,14 @@ document.addEventListener('DOMContentLoaded', function () {
         let timer = null;
         list.addEventListener('scroll', () => {
             list.classList.add('is-scrolling');
+            // 触屏现场没有 hover, 用「正在滚动」兜住同一件事:
+            // 有人在翻榜的时候别把榜换掉。
+            b8RotHold('scroll');
             clearTimeout(timer);
-            timer = setTimeout(() => list.classList.remove('is-scrolling'), 900);
+            timer = setTimeout(() => {
+                list.classList.remove('is-scrolling');
+                b8RotRelease('scroll');
+            }, 900);
         }, { passive: true });
     });
 });

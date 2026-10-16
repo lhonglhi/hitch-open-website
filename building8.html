@@ -17,18 +17,45 @@
 
     <!-- 自包含样式。不加载 css/style.css，那是为深色站写的, 这里是亮色页。
          .htaccess 对 css/js 是 1 年 immutable 缓存, 所以必须带 ?v= -->
-    <!-- 必须在样式表之前执行: 否则深色模式下会先按浅色画一帧, 白闪一下 -->
+    <!-- 必须在样式表之前执行: 否则会先按浅色、无背景视频画一帧,
+         深色模式下白闪一下, 开了视频则会看到前景字的颜色跳一次。 -->
     <script>
         try {
             var t = localStorage.getItem('b8_theme');
             if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+            // 背景视频默认开。只有两种情况默认关: 用户明确关过,
+            // 或系统设了「减少动态效果」。
+            var v = localStorage.getItem('b8_video');
+            var calm = window.matchMedia
+                && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (v === 'on' || (v === null && !calm)) {
+                document.documentElement.classList.add('b8-video-on');
+            }
         } catch (e) { /* 隐私模式下忽略 */ }
     </script>
 
-    <link rel="stylesheet" href="css/building8.css?v=20261006j">
+    <link rel="stylesheet" href="css/building8.css?v=20261009b">
 </head>
 
 <body>
+
+    <!-- 背景: 深色渐变底(由 CSS 画) + 右侧这段抠像机器人动画。
+         素材是 3D 渲染的透明背景动画, 两种封装都带 alpha:
+           webm  VP9+alpha  Chrome / Firefox / Edge 走这个
+           mp4   HEVC+alpha Safari 走这个(Chrome 不支持带 alpha 的 HEVC)
+         顺序不能反 —— Safari 两个都认, 但 webm 里的 VP9 它解不了 alpha,
+         所以必须把 mp4 放前面让 Safari 先命中。Chrome 不认 hvc1,
+         会自动跳到 webm。
+         两头各做了 0.5s 的 alpha 淡入淡出, 循环时不会硬跳。
+         muted + playsinline 是自动播放的硬条件; 首帧本来就是全透明,
+         所以不需要 poster。这一层纯气氛, 不承载信息, 故 aria-hidden。 -->
+    <div class="b8-bg" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="video/b8-robot.mp4?v=20261009b" type="video/mp4; codecs=hvc1">
+            <source src="video/b8-robot.webm?v=20261009b" type="video/webm">
+        </video>
+    </div>
 
     <header class="b8-header">
         <div class="b8-header-inner">
@@ -50,6 +77,13 @@
                                     data-zh="浅色" data-en="Light">浅色</button>
                             <button type="button" data-theme-opt="dark" onclick="b8SetTheme('dark')"
                                     data-zh="深色" data-en="Dark">深色</button>
+                        </div>
+                        <span class="b8-menu-label" data-zh="背景动画" data-en="Background">背景动画</span>
+                        <div class="b8-seg">
+                            <button type="button" data-video-opt="on" onclick="b8SetVideo('on')"
+                                    data-zh="开" data-en="On">开</button>
+                            <button type="button" data-video-opt="off" onclick="b8SetVideo('off')"
+                                    data-zh="关" data-en="Off">关</button>
                         </div>
                         <div class="b8-menu-sep"></div>
                         <button type="button" class="b8-menu-item" onclick="b8Export()"
@@ -75,10 +109,12 @@
         <p data-zh="连续对打不失误，一拍记 1 分。" data-en="Rally without a miss. One stroke, one point.">连续对打不失误，一拍记 1 分。</p>
     </div>
 
-    <!-- 两个榜左右并排。cat=hr 人对机器人(左), cat=rr 机器人对机器人(右)。
-         记录存在同一个数组里, 由 cat 字段区分。 -->
+    <!-- 两个榜: cat=hr 人对机器人, cat=rr 机器人对机器人。
+         记录存在同一个数组里, 由 cat 字段区分。
+         大屏上两个榜叠在一起每 8 秒轮换, 窄屏/竖屏则上下都显示。
+         aria-hidden 由 js 的轮播逻辑维护, 窄屏下会被清回 false。 -->
     <main class="b8-boards">
-        <section class="b8-board" data-cat="hr">
+        <section class="b8-board" data-cat="hr" aria-hidden="false">
             <div class="b8-board-head">
                 <span class="b8-vs-icon"><svg viewBox="0 0 68 32" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="15" cy="9" r="7.5"/><path d="M15 19c-8 0-13.5 6-13.5 13h27C28.5 25 23 19 15 19z"/><circle cx="53" cy="1.8" r="1.8"/><rect x="52" y="3" width="2" height="3.5"/><rect x="43.5" y="6" width="19" height="13" rx="2.5"/><rect x="50.5" y="18.5" width="5" height="3.5"/><rect x="41" y="21.5" width="24" height="10.5" rx="2"/></svg></span>
                 <h2 data-zh="人 VS 机器人" data-en="Human VS Robot">人 VS 机器人</h2>
@@ -90,7 +126,7 @@
             <ul class="b8-list" id="b8List-hr"></ul>
         </section>
 
-        <section class="b8-board" data-cat="rr">
+        <section class="b8-board" data-cat="rr" aria-hidden="false">
             <div class="b8-board-head">
                 <span class="b8-vs-icon"><svg viewBox="0 0 68 32" fill="currentColor" aria-hidden="true" focusable="false"><circle cx="15" cy="1.8" r="1.8"/><rect x="14" y="3" width="2" height="3.5"/><rect x="5.5" y="6" width="19" height="13" rx="2.5"/><rect x="12.5" y="18.5" width="5" height="3.5"/><rect x="3" y="21.5" width="24" height="10.5" rx="2"/><circle cx="53" cy="1.8" r="1.8"/><rect x="52" y="3" width="2" height="3.5"/><rect x="43.5" y="6" width="19" height="13" rx="2.5"/><rect x="50.5" y="18.5" width="5" height="3.5"/><rect x="41" y="21.5" width="24" height="10.5" rx="2"/></svg></span>
                 <h2 data-zh="机器人 VS 机器人" data-en="Robot VS Robot">机器人 VS 机器人</h2>
@@ -102,6 +138,12 @@
             <ul class="b8-list" id="b8List-rr"></ul>
         </section>
     </main>
+
+    <!-- 轮播指示条。只在大屏轮播时出现(由 CSS 断点控制显隐)。
+         两个胶囊都是真按钮: 点一下立刻切到那个榜并重新计时,
+         不是只会亮一下的装饰。文字由 js 按 B8_CATS 填, 省得两处对不上。 -->
+    <nav class="b8-rotator" id="b8Rotator" role="tablist"
+         data-zh-label="切换排行榜" data-en-label="Switch board"></nav>
 
 
     <!-- 添加 / 修改纪录 -->
@@ -144,7 +186,7 @@
         </div>
     </div>
 
-    <script src="js/building8.js?v=20261006j"></script>
+    <script src="js/building8.js?v=20261009b"></script>
 </body>
 
 </html>

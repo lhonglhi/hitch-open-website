@@ -8,9 +8,11 @@
    与主站保持一致, 但样式互不影响。
 
    布局：主目标是 16:9 大屏看板(1920x1080 及同比例)。
-   两个榜左右并排(左: 人对机器人, 右: 机器人对机器人), 整页锁定一屏
-   不滚动, 字号随视口高度缩放, 榜单区占满剩余高度, 溢出时在榜内滚动;
-   窄屏/竖屏自动上下堆叠并退回普通滚动布局。
+   大屏上两个榜「叠在同一格里轮播」, 每 8 秒换一个, 单榜居中、左右
+   留出背景空间, 背景放一段静音循环视频; 整页锁定一屏不滚动, 字号随
+   视口高度缩放, 榜单区占满剩余高度, 溢出时在榜内滚动。
+   窄屏/竖屏退回「两个榜上下堆叠 + 普通滚动」, 不轮播 —— 小屏上内容
+   本来就要滚, 再加自动切换只会和手指抢控制权。
    ============================================================ */
 
 :root {
@@ -60,6 +62,16 @@
     --b8-rank:   clamp(14px, 2.1vh, 27px);
     --b8-gutter: clamp(16px, 2.2vw, 46px);
     --b8-pad-b:  clamp(18px, 2.6vh, 40px);
+
+    /* 轮播一轮的时长。由 js/building8.js 的 B8_ROTATE_MS 在启动时写入,
+       这里的值只是脚本没跑起来时的兜底 —— 不要只改这一处, 改了也不生效。 */
+    --b8-rotate: 8s;
+
+    /* 开了背景动画后的分栏几何。左边一栏放标题+榜+指示条, 右边留给机器人。
+       这两个值同时被 .b8-head / .b8-boards / .b8-rotator 和右侧动画用,
+       改一处就能整体调节分栏比例。 */
+    --b8-col:   min(920px, 50vw);
+    --b8-col-x: clamp(24px, 5vw, 110px);
 }
 
 /* ---- 深色: 只覆盖颜色变量, 不碰任何布局规则 ---- */
@@ -93,6 +105,95 @@
 * { box-sizing: border-box; }
 
 html, body { margin: 0; padding: 0; }
+
+/* ---------- 背景: 深色舞台 + 右侧抠像机器人 ----------
+   素材是 3D 渲染的透明背景动画(机器人持拍颠球), 自己不带底,
+   所以底由下面的渐变画。
+
+   为什么深浅两套主题都用深底: 机器人的四肢是浅灰白的, 放到浅色页面上
+   直接消失; 而它的头和躯干又有大面积纯黑, 也不能靠混合模式抠。
+   给它一块深色舞台是唯一两头都成立的做法。卡片本体仍按主题走 ——
+   浅色主题下是一张白卡浮在深色舞台上, 对比度反而比全浅底更好。
+
+   为什么右边单开一栏而不是铺满: 机器人身体占素材宽度约六成, 排行榜卡
+   又在正中, 铺满的话机器人整个藏在卡后面, 等于没放。所以大屏上把
+   标题+榜+指示条收进左栏, 右栏整个让给它。关掉背景动画时版式自动
+   变回居中(见下面的断点), 不会留一块空地。 */
+.b8-bg { display: none; }
+
+/* 舞台底。右下角那团暗红是品牌色压到很低的亮度, 给画面一点温度,
+   又不会把白字的对比度吃掉。 */
+html.b8-video-on body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(76% 86% at 74% 88%, rgba(205, 32, 43, 0.20) 0%, rgba(205, 32, 43, 0) 62%),
+        radial-gradient(58% 68% at 16% 10%, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0) 70%),
+        linear-gradient(152deg, #17171f 0%, #0a0a0f 54%, #101017 100%);
+}
+
+/* 机器人那一栏。贴右下角, 让素材里被画框切掉的下半身正好压在屏幕底边,
+   看起来像站在看板后面, 而不是被裁断。 */
+/* 注意这里不写 display: 机器人那栏只在下面的大屏断点里打开。
+   窄屏/竖屏是上下堆叠的滚动版式, 右下角钉一个固定元素会压住内容。
+   窄屏仍保留上面的深色舞台底, 配色不会两套互相打架。 */
+html.b8-video-on .b8-bg {
+    position: fixed;
+    right: clamp(0px, 2vw, 56px);
+    bottom: 0;
+    z-index: 0;
+    width: min(820px, 40vw);
+    height: min(86vh, 760px);
+    pointer-events: none;
+}
+
+.b8-bg video {
+    width: 100%;
+    height: 100%;
+    /* contain 而不是 cover: 素材是按固定画框构图的, cover 会把伸出去的
+       球拍和球裁掉。底对齐让它站在屏幕底边上。 */
+    object-fit: contain;
+    object-position: bottom center;
+    display: block;
+}
+
+/* 内容压在背景之上。body::before 和 .b8-bg 都是 z-index:0。 */
+html.b8-video-on .b8-header,
+html.b8-video-on .b8-head,
+html.b8-video-on .b8-boards,
+html.b8-video-on .b8-rotator { position: relative; z-index: 1; }
+
+html.b8-video-on body { background: transparent; }
+
+/* 卡片外面的那些字原本是「深字压浅底」, 现在底是深色舞台,
+   必须改成浅字。只改卡片以外的元素, 卡内一律仍走主题变量。 */
+html.b8-video-on .b8-header {
+    background: rgba(6, 6, 9, 0.46);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+html.b8-video-on .b8-head h1 { color: #ffffff; text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); }
+html.b8-video-on .b8-head p  { color: rgba(255, 255, 255, 0.74); }
+
+html.b8-video-on .b8-icon-tool { color: rgba(255, 255, 255, 0.72); }
+html.b8-video-on .b8-icon-tool:hover,
+html.b8-video-on .b8-icon-tool[aria-expanded="true"] {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+}
+
+html.b8-video-on .b8-lang { border-left-color: rgba(255, 255, 255, 0.16); }
+html.b8-video-on .b8-lang button { color: rgba(255, 255, 255, 0.68); }
+html.b8-video-on .b8-lang button.active { color: #ffffff; }
+html.b8-video-on .b8-lang > span { color: rgba(255, 255, 255, 0.24); }
+
+/* 投影挂在 .b8-board 整体上。横幅和榜单各挂一份的话,
+   两者接缝处会叠出一道暗痕。 */
+html.b8-video-on .b8-board { box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5); border-radius: 12px; }
 
 body {
     font-family: var(--b8-font);
@@ -540,10 +641,143 @@ body {
     font-size: clamp(13px, 1.8vh, 19px);
 }
 
-/* ---------- 16:9 / 横向大屏：锁定一屏, 不整页滚动 ---------- */
+/* ---------- 轮播指示条 ----------
+   两个胶囊, 当前那个里有一条按 --b8-rotate 匀速走满的进度。
+   它是真的可点(点了就切到那个榜并重新计时), 所以才做成按钮;
+   不做纯装饰的小圆点。 */
+.b8-rotator {
+    display: none;             /* 只在上面那个大屏断点里出现 */
+    flex: none;
+    justify-content: center;
+    gap: clamp(8px, 0.9vw, 16px);
+    padding: 0 var(--b8-gutter) var(--b8-pad-b);
+}
+
+.b8-dot {
+    position: relative;
+    overflow: hidden;
+    font: inherit;
+    font-size: clamp(11px, 1.35vh, 14px);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding: clamp(6px, 0.8vh, 10px) clamp(13px, 1.2vw, 22px);
+    border: 1px solid var(--b8-dot-line, var(--b8-line));
+    border-radius: 999px;
+    background: transparent;
+    color: var(--b8-dot-ink, var(--b8-muted));
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.b8-dot:hover { color: var(--b8-dot-on, var(--b8-ink)); border-color: var(--b8-hover-line); }
+
+.b8-dot[aria-selected="true"] {
+    color: var(--b8-dot-on, var(--b8-ink));
+    border-color: var(--b8-red);
+}
+
+.b8-dot > span { position: relative; z-index: 1; }
+
+/* 进度条。只在当前胶囊上走; 轮播被暂停时连同 JS 的计时一起停住,
+   所以暂停期间这条进度也会原地冻住, 不会和实际剩余时间脱节。 */
+.b8-dot-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: rgba(205, 32, 43, 0.22);
+    border-right: 1px solid rgba(205, 32, 43, 0.5);
+    pointer-events: none;
+}
+
+.b8-dot[aria-selected="true"] .b8-dot-fill {
+    animation: b8Fill var(--b8-rotate, 8s) linear forwards;
+}
+
+.b8-rotator.is-paused .b8-dot-fill { animation-play-state: paused; }
+
+@keyframes b8Fill { from { width: 0; } to { width: 100%; } }
+
+/* 背景视频开着时, 指示条也在视频上, 一并换成浅色 */
+html.b8-video-on .b8-rotator {
+    --b8-dot-line: rgba(255, 255, 255, 0.2);
+    --b8-dot-ink: rgba(255, 255, 255, 0.6);
+    --b8-dot-on: #ffffff;
+}
+
+/* 系统设了「减少动态效果」就不要自动走进度动画。
+   轮播本身仍然进行(那是内容需要), 只是去掉这条跑动的进度。
+   背景视频的默认开关也会在 JS 里一并按这个偏好处理。 */
+@media (prefers-reduced-motion: reduce) {
+    .b8-dot[aria-selected="true"] .b8-dot-fill { animation: none; width: 100%; }
+    /* 写成三级选择器是为了压过下面大屏断点里带 [aria-hidden] 的那两条。
+       媒体查询不提升特异性, 而这一块在它前面, 同级就压不住。 */
+    .b8-boards .b8-board[aria-hidden] { transition: none; }
+}
+
+/* ---------- 16:9 / 横向大屏：锁定一屏 + 单榜轮播 ----------
+   两个榜都留在 DOM 里, 叠进同一个 grid 格子, 靠透明度互换。
+   不用 display:none 换, 是因为那样切换瞬间高度会塌一下;
+   叠着放还有个好处: 两个榜的高度天然一致, 换榜时卡的外框纹丝不动。
+
+   注意断点要和下面 .b8-rotator 的显示条件、以及 JS 里
+   B8_ROTATE_MQ 的那串媒体查询完全一致, 否则会出现
+   「布局在轮播、脚本不转」或者反过来。 */
 @media (min-width: 1000px) and (min-height: 560px) and (min-aspect-ratio: 3/2) {
     html, body { height: 100%; overflow: hidden; }
     body { display: flex; flex-direction: column; }
+
+    /* 关着背景动画时: 单榜居中, 左右各留一截空白。 */
+    .b8-boards {
+        grid-template-columns: 1fr;
+        max-width: clamp(720px, 62vw, 1180px);
+        padding-bottom: clamp(10px, 1.4vh, 20px);
+    }
+
+    /* 开着背景动画时: 整体左移成一栏, 右边整块让给机器人。
+       三个块用同一组 --b8-col / --b8-col-x, 左边缘严格对齐。
+       关掉动画这些规则就全部失效, 自动变回上面的居中版式。 */
+    html.b8-video-on .b8-bg { display: block; }
+
+    html.b8-video-on .b8-head,
+    html.b8-video-on .b8-boards,
+    html.b8-video-on .b8-rotator {
+        width: var(--b8-col);
+        max-width: none;
+        margin-left: var(--b8-col-x);
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* 标题跟着左对齐。居中标题配左栏内容会显得两条轴线打架。 */
+    html.b8-video-on .b8-head { text-align: left; }
+    html.b8-video-on .b8-rotator { justify-content: flex-start; }
+
+    .b8-board { grid-area: 1 / 1; }
+
+    /* 两个榜淡出淡入必须「错开」, 不能同时进行。
+       同时交叉淡入时两张卡都是半透明的, 会互相透叠 —— 底下那个榜的
+       名字和分数会从上面这张卡里浮出来, 加上背景视频一起透过来,
+       半秒钟糊成一片, 看着像渲染出错。
+       所以: 旧的先用 0.2s 退干净, 新的延迟 0.22s 再进来,
+       中间那一瞬谁都不在, 在动态背景上反而像是刻意的节拍。 */
+    .b8-board[aria-hidden="true"] {
+        opacity: 0;
+        transform: translateY(10px) scale(0.985);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .b8-board[aria-hidden="false"] {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.3s ease 0.22s, transform 0.3s ease 0.22s;
+    }
+
+    .b8-rotator { display: flex; }
 }
 
 /* ---------- 弹窗 ---------- */
