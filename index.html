@@ -50,53 +50,77 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <video autoplay muted loop playsinline class="hero-video" poster="images/hope-hero.jpg" style="object-position: center 62%;">
-            <source src="video/hope-hero-video.mp4" type="video/mp4">
+    <section id="home" class="hero hero-film">
+        <video autoplay muted loop playsinline class="hero-video" poster="images/hero-2027.jpg">
+            <source src="video/hero-2027.mp4" type="video/mp4">
         </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content fade-in-up">
-            <h1><img src="images/hitchOpen-trademark.svg" alt="HITCH OPEN™" class="hero-logo"></h1>
-            <div class="hero-subtitle">Ping-Pong Embodied AI Challenge</div>
-            <p class="hero-description">
-                HOPE is Hitch Open's flagship challenge at the frontier of embodied AI. On the high-speed, millisecond-response proving ground of real table tennis, humanoid robots play with no remote control, no scripts, no intervention, closing the perceive–predict–plan–strike loop entirely on their own, toward the world's first technical standard for AI autonomous-decision ping-pong.
-            </p>
-            <div class="hero-event-meta">Aug 22–26, 2026 · 2nd World Humanoid Robot Games · Beijing "Ice Ribbon"</div>
-            <div class="cta-buttons">
-                <a href="hope.html" class="btn btn-secondary">Explore HOPE</a>
-            </div>
-        </div>
+        <h1 class="sr-only">Hitch Open 2027 Global Championships · Silicon Valley · Middle East · Hong Kong · Beijing · Tianmen Mountain</h1>
     </section>
 
-    <!-- Official Endorsement Bar：紧贴 hero 下沿，首屏即可见（hero 高度 88vh 让本条露出） -->
-    <section class="endorsement-bar">
+    <!-- 2027 全球合作伙伴 (草稿, 待老板确认名单 / 头衔): logo 来自 brand/partners -->
+    <section class="endorsement-bar endorsement-bar-partners endorsement-bar-major">
         <div class="endorsement-inner">
             <div class="endorsement-copy">
-                <div class="endorsement-eyebrow" data-zh="HOPE · 官方赛事资质" data-en="HOPE · Official Credentials">HOPE · Official Credentials</div>
-                <div class="endorsement-headline" data-zh="第二届世界人形机器人运动会正赛赛项" data-en="Official Competition Event of the 2nd World Humanoid Robot Games">Official Competition Event of the 2nd World Humanoid Robot Games</div>
+                <div class="endorsement-eyebrow">2027</div>
+                <div class="endorsement-headline" data-zh="全球合作伙伴" data-en="Global Partners">Global Partners</div>
             </div>
             <ul class="endorsement-logos">
                 <li class="endorsement-logo">
-                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/beao-group.png" alt="北奥集团"
-                        onerror="this.style.display='none'"></span>
-                    <small data-zh="战略合作伙伴" data-en="Strategic Partner">Strategic Partner</small>
-                </li>
-                <li class="endorsement-logo">
-                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img endorsement-logo-emblem"
-                        src="images/partners/world-humanoid-robot-games.png" alt="第二届世界人形机器人运动会"
-                        onerror="this.style.display='none'"></span>
-                    <small data-zh="官方赛事平台" data-en="Official Event Platform">Official Event Platform</small>
-                </li>
-                <li class="endorsement-divider" aria-hidden="true"></li>
-                <li class="endorsement-logo">
-                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/agibot.png" alt="智元机器人"
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/agibot.svg" alt="智元机器人 AGIBOT"
                         onerror="this.style.display='none'"></span>
                     <small data-zh="官方机器人赞助" data-en="Official Robot Sponsor">Official Robot Sponsor</small>
                 </li>
                 <li class="endorsement-logo">
-                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/optitrack.png" alt="OptiTrack"
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/chingmu.svg" alt="青瞳视觉 CHINGMU"
                         onerror="this.style.display='none'"></span>
-                    <small data-zh="官方动捕技术赞助" data-en="Official Motion Capture Sponsor">Official Motion Capture Sponsor</small>
+                    <small data-zh="全球战略合作伙伴" data-en="Global Strategic Partner">Global Strategic Partner</small>
+                </li>
+                <li class="endorsement-logo">
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/galbot.svg" alt="银河通用 Galbot"
+                        onerror="this.style.display='none'"></span>
+                    <small data-zh="全球赛事技术合作伙伴" data-en="Global Event Technology Partner">Global Event Technology Partner</small>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Hitch Open Junior 合作伙伴 (草稿): 跟全球赛分开放 -->
+    <section class="endorsement-bar endorsement-bar-partners">
+        <div class="endorsement-inner">
+            <div class="endorsement-copy">
+                <div class="endorsement-eyebrow">Hitch Open Junior</div>
+                <div class="endorsement-headline" data-zh="合作伙伴" data-en="Partners">Partners</div>
+            </div>
+            <ul class="endorsement-logos">
+                <li class="endorsement-logo">
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/gysh.svg" alt="GYSH 全球 STEM 写作大赛"
+                        onerror="this.style.display='none'"></span>
+                    <small data-zh="Junior 合作伙伴" data-en="Junior Partner">Junior Partner</small>
+                </li>
+                <li class="endorsement-logo">
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/caspa.png" alt="华美半导体协会 CASPA"
+                        onerror="this.style.display='none'"></span>
+                    <small data-zh="Junior 合作伙伴" data-en="Junior Partner">Junior Partner</small>
+                </li>
+                <li class="endorsement-logo">
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img endorsement-logo-emblem" src="images/partners/leadways.png" alt="Leadways"
+                        onerror="this.style.display='none'"></span>
+                    <small data-zh="Junior 合作伙伴" data-en="Junior Partner">Junior Partner</small>
+                </li>
+                <li class="endorsement-logo">
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/7edu.svg" alt="7EDU Impact Academy"
+                        onerror="this.style.display='none'"></span>
+                    <small data-zh="Junior 合作伙伴" data-en="Junior Partner">Junior Partner</small>
+                </li>
+                <li class="endorsement-logo">
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img" src="images/partners/hkmoca.png" alt="港澳侨商协会 Hong Kong &amp; Macau Overseas Chinese Association"
+                        onerror="this.style.display='none'"></span>
+                    <small data-zh="Junior 香港地区合作伙伴" data-en="Junior Hong Kong Partner">Junior Hong Kong Partner</small>
+                </li>
+                <li class="endorsement-logo">
+                    <span class="endorsement-logo-slot"><img class="endorsement-logo-img endorsement-logo-emblem" src="images/partners/nexgen-sparks.svg" alt="好好少年 NexGen Sparks"
+                        onerror="this.style.display='none'"></span>
+                    <small data-zh="Junior 合作伙伴" data-en="Junior Partner">Junior Partner</small>
                 </li>
             </ul>
         </div>
@@ -405,6 +429,13 @@
                     <div class="committee-member-info">
                         <h4 class="committee-member-name" data-zh="Allen Y. Yang 博士" data-en="Dr. Allen Y. Yang">Dr. Allen Y. Yang</h4>
                         <p class="committee-member-role" data-zh="加州大学伯克利分校（UC Berkeley）AI 智能运动项目主席" data-en="Chair, AI Racing Program, University of California, Berkeley">Chair, AI Racing Program, University of California, Berkeley</p>
+                    </div>
+                </div>
+                <div class="committee-member-card">
+                    <div class="committee-avatar" style="background: linear-gradient(135deg, #6c3483, #a569bd);">YG</div>
+                    <div class="committee-member-info">
+                        <h4 class="committee-member-name" data-zh="高岳 教授" data-en="Prof. Yue Gao">Prof. Yue Gao</h4>
+                        <p class="committee-member-role" data-zh="上海交通大学、上海创智学院教授" data-en="Professor, Shanghai Jiao Tong University &amp; Shanghai Innovation Institute">Professor, Shanghai Jiao Tong University &amp; Shanghai Innovation Institute</p>
                     </div>
                 </div>
             </div>

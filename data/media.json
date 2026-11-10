@@ -13,6 +13,96 @@
   },
   "items": [
     {
+      "date": "2026年11月8日",
+      "title": {
+        "zh": "第九届进博会｜首发首展首秀创新高 展示全球创新走向 逾480件前沿展品集中亮相",
+        "en": "9th CIIE | Record Debuts and Showcases Point to Global Innovation Trends, With 480+ Cutting-Edge Exhibits on Show"
+      },
+      "source": {
+        "zh": "大公报·香港文汇报",
+        "en": "Ta Kung Pao · Wen Wei Po (Hong Kong)"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://epaper.tkww.hk/s/202611/08/AP6aef863ae4b0bcb39b185e86.html",
+      "image": "images/media/2026/news-11-08-1.jpg"
+    },
+    {
+      "date": "2026年11月7日",
+      "title": {
+        "zh": "人形机器人能打赢王楚钦吗？进博参展企业：“可以请他，太火了”",
+        "en": "Can a humanoid robot beat Wang Chuqin? CIIE exhibitor: \"We could invite him — it's gone viral\""
+      },
+      "source": {
+        "zh": "中国新闻社",
+        "en": "China News Service"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://m.chinanews.com/wap/detail/chs/sp/jw696058.shtml",
+      "image": "images/media/2026/news-11-07-1.jpg"
+    },
+    {
+      "date": "2026年11月6日",
+      "title": {
+        "zh": "AI“下场”打乒乓 从“背题”到“会做题”",
+        "en": "AI steps onto the table tennis court: from \"memorizing answers\" to \"solving problems\""
+      },
+      "source": {
+        "zh": "新华社",
+        "en": "Xinhua News Agency"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://h.xinhuaxmt.com/vh512/share/13363303",
+      "image": "images/media/2026/news-11-06-1.jpg"
+    },
+    {
+      "date": "2026年11月5日",
+      "title": {
+        "zh": "《东方时空》申夜看进博·共享未来：机器人打乒乓球，黑科技黑在哪里？",
+        "en": "CCTV Oriental Horizon at the CIIE: Robots playing table tennis — what makes this \"black tech\" so cool?"
+      },
+      "source": {
+        "zh": "央视新闻",
+        "en": "CCTV News"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://app.cctv.com/special/m/livevod/index.html?vtype=2&guid=bd2c602297ff4ac38963ee5c237e079c&vsetId=C10313",
+      "image": "images/media/2026/news-11-05-1.jpg"
+    },
+    {
+      "date": "2026年11月5日",
+      "title": {
+        "zh": "没有人类，没有遥控，只有两台机器人在打乒乓球！",
+        "en": "No humans and no remote control, just two robots playing table tennis!"
+      },
+      "source": {
+        "zh": "CGTN",
+        "en": "CGTN"
+      },
+      "isLarge": true,
+      "isHidden": false,
+      "url": "https://news.cgtn.com/news/2026-11-05/No-humans-and-no-remote-control-just-two-robots-playing-table-tennis--1ROPL5peGk0/p.html",
+      "image": "images/media/2026/news-11-05-2.jpg"
+    },
+    {
+      "date": "2026年11月5日",
+      "title": {
+        "zh": "人形机器人开始在进博会“干活”了",
+        "en": "Humanoid robots start \"going to work\" at the CIIE"
+      },
+      "source": {
+        "zh": "第一财经",
+        "en": "Yicai"
+      },
+      "isLarge": false,
+      "isHidden": false,
+      "url": "https://mp.weixin.qq.com/s/j6Wn_x852Kn3nz1mZE9DvA",
+      "image": "images/media/2026/news-11-05-3.jpg"
+    },
+    {
       "date": "2026年8月28日",
       "title": {
         "zh": "机器人办了一场（相当混乱的）运动会，画面令人瞠目",
