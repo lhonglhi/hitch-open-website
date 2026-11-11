@@ -692,6 +692,16 @@
                 text-align: center;
                 gap: 24px;
             }
+
+            /* 竖排后标题栏的 220px 会变成高度, 留出一大块空白 */
+            .endorsement-bar-partners .endorsement-copy {
+                flex: none;
+            }
+
+            /* 竖排时 logo 栅格按内容收缩会缩成 0 宽, logo 叠在一起; 撑满一行 */
+            .endorsement-bar-partners .endorsement-logos {
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -3359,9 +3369,11 @@
             padding: 100px 50px;
         }
 
+        /* dense: 大卡 (占两列) 换行留下的空格, 由后面的小卡补上, 每行都排满 */
         .media-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-auto-flow: dense;
             gap: 20px;
             margin-top: 60px;
         }
