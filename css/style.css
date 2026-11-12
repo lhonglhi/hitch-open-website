@@ -618,6 +618,17 @@
             max-width: 220px;
         }
 
+        .endorsement-bar-major .endorsement-logo-img[src$="chingmu-en.svg"] {
+            width: 240px;
+            max-width: 240px;
+        }
+
+        /* 青瞳 logo 中英两版: 中文站用中文 logo, 英文站用英文横版 */
+        html:not([lang="en"]) .endorsement-logo-img.logo-en,
+        html[lang="en"] .endorsement-logo-img.logo-zh {
+            display: none;
+        }
+
         .endorsement-bar-major .endorsement-logo-img[src$="galbot.svg"] {
             width: 180px;
             max-width: 180px;
