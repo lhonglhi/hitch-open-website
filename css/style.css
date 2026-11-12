@@ -678,6 +678,7 @@
 
             .endorsement-bar-major .endorsement-logo-img[src$="agibot.svg"] { width: 150px; max-width: 150px; }
             .endorsement-bar-major .endorsement-logo-img[src$="chingmu.svg"] { width: 135px; max-width: 135px; }
+            .endorsement-bar-major .endorsement-logo-img[src$="chingmu-en.svg"] { width: 150px; max-width: 150px; }
             .endorsement-bar-major .endorsement-logo-img[src$="galbot.svg"] { width: 115px; max-width: 115px; }
 
             .endorsement-bar-major .endorsement-logo-text span {
