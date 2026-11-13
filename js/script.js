@@ -54,6 +54,10 @@ function detectInitialLanguage() {
 
 function applyLanguageUI(lang) {
     document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+    // 带 data-href-zh / data-href-en 的链接按语言换网址 (如青瞳 logo)
+    document.querySelectorAll('[data-href-zh][data-href-en]').forEach(a => {
+        a.href = a.getAttribute(`data-href-${lang}`);
+    });
     document.querySelectorAll('.lang-btn').forEach(btn => {
         const onclickAttr = btn.getAttribute('onclick') || '';
         btn.classList.toggle('active', onclickAttr.includes(`'${lang}'`));
