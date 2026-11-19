@@ -4056,3 +4056,55 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ==================== Honor strip (quiet recognition line) ==================== */
+        .honor-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 720px;
+            margin: 56px auto 0;
+            padding: 22px 0 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .honor-seal {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0 0 5px #0a0a0a, 0 0 0 6px rgba(255, 255, 255, 0.08);
+        }
+
+        .honor-eyebrow {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #CD202B;
+            margin-bottom: 6px;
+        }
+
+        .honor-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .honor-strip {
+                margin-top: 40px;
+                gap: 16px;
+                padding: 20px 20px 0;
+            }
+
+            .honor-seal {
+                width: 72px;
+                height: 72px;
+            }
+
+            .honor-title {
+                font-size: 15px;
+            }
+        }
