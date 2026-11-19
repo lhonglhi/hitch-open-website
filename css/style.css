@@ -4122,16 +4122,15 @@
         .honor-title {
             display: flex;
             align-items: baseline;
-            gap: 14px;
+            gap: 0.3em;
             color: #ffffff;
             line-height: 1.1;
         }
 
         .honor-num {
-            font-size: 44px;
-            font-weight: 800;
+            font-size: 26px;
+            font-weight: 700;
             color: #CD202B;
-            letter-spacing: -2px;
         }
 
         .honor-title-main {
@@ -4185,11 +4184,11 @@
 
             .honor-title {
                 flex-wrap: wrap;
-                gap: 2px 10px;
+                gap: 2px 0.3em;
             }
 
             .honor-num {
-                font-size: 32px;
+                font-size: 19px;
             }
 
             .honor-title-main {
