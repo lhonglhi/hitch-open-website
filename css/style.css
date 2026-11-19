@@ -4057,24 +4057,40 @@
             transform: translateY(0);
         }
 
-        /* ==================== Honor strip (quiet recognition line) ==================== */
-        .honor-strip {
+        /* ==================== Honor banner (CIIE recognition, links out) ==================== */
+        .honor-banner {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
-            max-width: 720px;
+            gap: 28px;
+            max-width: 960px;
             margin: 56px auto 0;
-            padding: 22px 0 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            text-decoration: none;
+            transition: border-color 0.3s, background 0.3s;
         }
 
-        .honor-seal {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
+        .honor-banner:hover {
+            border-color: rgba(205, 32, 43, 0.6);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .honor-logo {
+            height: 48px;
+            width: auto;
             flex-shrink: 0;
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0 0 5px #0a0a0a, 0 0 0 6px rgba(255, 255, 255, 0.08);
+        }
+
+        .honor-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 0;
+            padding-left: 28px;
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .honor-eyebrow {
@@ -4082,26 +4098,45 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #CD202B;
-            margin-bottom: 6px;
         }
 
         .honor-title {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
             color: #ffffff;
             line-height: 1.5;
         }
 
+        .honor-cta {
+            font-size: 14px;
+            font-weight: 600;
+            color: #CD202B;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .honor-banner:hover .honor-cta {
+            color: #E85D6F;
+        }
+
         @media (max-width: 768px) {
-            .honor-strip {
-                margin-top: 40px;
-                gap: 16px;
-                padding: 20px 20px 0;
+            .honor-banner {
+                flex-wrap: wrap;
+                gap: 14px;
+                margin: 40px 20px 0;
+                padding: 18px 20px;
             }
 
-            .honor-seal {
-                width: 72px;
-                height: 72px;
+            .honor-logo {
+                height: 36px;
+            }
+
+            .honor-text {
+                flex-basis: 100%;
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                padding-top: 12px;
             }
 
             .honor-title {
