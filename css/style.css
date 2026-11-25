@@ -3508,6 +3508,11 @@
             .media-card-large .media-image {
                 height: 200px;
             }
+
+            /* 手机上一列排, 大卡小卡一样宽, 标题也用同一个字号 */
+            .media-card-large .media-title {
+                font-size: 18px;
+            }
         }
 
         /* Responsive Design */
