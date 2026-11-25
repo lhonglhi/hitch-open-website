@@ -219,8 +219,10 @@ function renderMedia() {
 
     // Render media cards
     mediaGrid.innerHTML = mediaData.items.map((item, index) => {
-        const cardClass = `media-card ${item.isLarge ? 'media-card-large' : ''} ${item.isHidden ? 'media-card-hidden' : ''}`;
+        // 卡片一样大 (不再分大卡小卡); 标题最多 3 行, 完整标题放 title 提示
+        const cardClass = `media-card ${item.isHidden ? 'media-card-hidden' : ''}`;
         const title = item.title[currentLang];
+        const titleAttr = String(title).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const source = item.source[currentLang];
 
         // 获取图片路径：优先使用item.image，其次使用defaultImage，最后使用占位图
@@ -236,7 +238,7 @@ function renderMedia() {
                 <div class="media-image"><img ${index < 4 ? `src="${imagePath}"` : `data-src="${imagePath}"`} alt="" decoding="async" onerror="this.parentElement.classList.add('img-failed')"></div>
                 <div class="media-content">
                     <div class="media-date">${formatDate(item.date, currentLang)}</div>
-                    <h3 class="media-title">${title}</h3>
+                    <h3 class="media-title" title="${titleAttr}">${title}</h3>
                     <div class="media-source">${source}</div>
                 </div>
             </div>

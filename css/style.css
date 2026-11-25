@@ -3388,12 +3388,11 @@
             padding: 100px 50px;
         }
 
-        /* dense: 大卡 (占两列) 换行留下的空格, 由后面的小卡补上, 每行都排满 */
+        /* 所有卡片一样大: 电脑 3 列, 平板 2 列, 手机 1 列; 行内等高 */
         .media-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            grid-auto-flow: dense;
-            gap: 20px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
             margin-top: 60px;
         }
 
@@ -3402,43 +3401,46 @@
             border-radius: 15px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
         }
 
-        /* 只对可点击的卡片做 hover —— renderMedia() 仅在 item.url 存在时
-           才加 .media-card-clickable；无链接的卡片不应表现得像能点。 */
-        .media-card-clickable:hover {
-            transform: translateY(-5px);
-            border-color: #CD202B;
-            box-shadow: 0 10px 30px rgba(205, 32, 43, 0.3);
-        }
-
-        /* 可点击的媒体卡片样式 */
+        /* 只对可点击的卡片做 hover: renderMedia() 仅在 item.url 存在时
+           才加 .media-card-clickable; 无链接的卡片不应表现得像能点。 */
         .media-card-clickable {
             cursor: pointer;
         }
 
         .media-card-clickable:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
+            border-color: #CD202B;
             box-shadow: 0 15px 40px rgba(205, 32, 43, 0.4);
         }
 
         .media-card-clickable:active {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
         }
 
-        .media-card-large {
-            grid-column: span 2;
-        }
-
+        /* 配图统一 3:2 (源图 1200x800), 不裁切; 高度跟着卡片宽度走 */
         .media-image {
             width: 100%;
-            height: 200px;
+            aspect-ratio: 3 / 2;
             position: relative;
             overflow: hidden;
             background: #14171c;
+            flex-shrink: 0;
+        }
+        @supports not (aspect-ratio: 3 / 2) {
+            .media-image {
+                height: 0;
+                padding-top: 66.667%;
+            }
+            .media-image img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
         }
         .media-image img {
             width: 100%;
@@ -3457,12 +3459,8 @@
             display: none;
         }
 
-        .media-card-large .media-image {
-            height: 300px;
-        }
-
         .media-content {
-            padding: 25px;
+            padding: 24px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -3474,20 +3472,43 @@
             margin-bottom: 10px;
         }
 
+        /* 标题留固定行数的位置 (英文 4 行, 中文 3 行: 英文标题普遍更长): 短的留空,
+           长的截断加省略号 (完整标题在 title 提示里, 点开是原文)。
+           这样每张卡片高度一样, 来源都落在同一条线上 */
         .media-title {
             font-size: 18px;
             font-weight: 600;
             line-height: 1.5;
-            margin-bottom: 15px;
-            flex: 1;
+            height: 6em;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            overflow: hidden;
         }
 
-        /* 大卡只是占两列、图高一点; 标题字号跟小卡一样, 不另设 */
+        html[lang^="zh"] .media-title {
+            height: 4.5em;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+        }
 
         .media-source {
             font-size: 14px;
             color: #CD202B;
             font-weight: 600;
+            margin-top: auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 1024px) {
+            .media-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 20px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -3496,15 +3517,7 @@
             }
 
             .media-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .media-card-large {
-                grid-column: span 1;
-            }
-
-            .media-card-large .media-image {
-                height: 200px;
+                grid-template-columns: minmax(0, 1fr);
             }
         }
 

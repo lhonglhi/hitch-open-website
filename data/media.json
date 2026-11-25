@@ -22,7 +22,6 @@
         "zh": "大公报·香港文汇报",
         "en": "Ta Kung Pao · Wen Wei Po (Hong Kong)"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://epaper.tkww.hk/s/202611/08/AP6aef863ae4b0bcb39b185e86.html",
       "image": "images/media/2026/news-11-08-1.jpg"
@@ -37,7 +36,6 @@
         "zh": "中国新闻社",
         "en": "China News Service"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://m.chinanews.com/wap/detail/chs/sp/jw696058.shtml",
       "image": "images/media/2026/news-11-07-1.jpg"
@@ -52,7 +50,6 @@
         "zh": "新华社",
         "en": "Xinhua News Agency"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://h.xinhuaxmt.com/vh512/share/13363303",
       "image": "images/media/2026/news-11-06-1.jpg"
@@ -67,7 +64,6 @@
         "zh": "央视新闻",
         "en": "CCTV News"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://app.cctv.com/special/m/livevod/index.html?vtype=2&guid=bd2c602297ff4ac38963ee5c237e079c&vsetId=C10313",
       "image": "images/media/2026/news-11-05-1.jpg"
@@ -82,7 +78,6 @@
         "zh": "CGTN",
         "en": "CGTN"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://news.cgtn.com/news/2026-11-05/No-humans-and-no-remote-control-just-two-robots-playing-table-tennis--1ROPL5peGk0/p.html",
       "image": "images/media/2026/news-11-05-2.jpg"
@@ -97,7 +92,6 @@
         "zh": "第一财经",
         "en": "Yicai"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://mp.weixin.qq.com/s/j6Wn_x852Kn3nz1mZE9DvA",
       "image": "images/media/2026/news-11-05-3.jpg"
@@ -112,7 +106,6 @@
         "zh": "BBC 科学聚焦",
         "en": "BBC Science Focus"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.sciencefocus.com/news/robots-just-held-their-own-very-chaotic-athletic-games-and-the-footage-is-jaw-dropping",
       "image": "images/media/2026/news-08-28-1.jpg"
@@ -127,7 +120,6 @@
         "zh": "新华网",
         "en": "Xinhuanet"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.news.cn/digital/20260827/b5a408695d6140f7b2829d1de3455600/c.html",
       "image": "images/media/2026/news-08-27-1.jpg"
@@ -142,7 +134,6 @@
         "zh": "路透社",
         "en": "Reuters"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://www.youtube.com/watch?v=EwYRUGeqUL4",
       "image": "images/media/2026/news-08-26-1.jpg"
@@ -157,7 +148,6 @@
         "zh": "央视财经",
         "en": "CCTV Finance"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://tv.cctv.com/2026/08/26/VIDEIhiHw6CCNdpz0c2gx7Nw260826.shtml",
       "image": "images/media/2026/news-08-26-2.jpg"
@@ -172,7 +162,6 @@
         "zh": "环球时报",
         "en": "Global Times"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.globaltimes.cn/page/202608/1369009.shtml",
       "image": "images/media/2026/news-08-25-1.jpg"
@@ -187,7 +176,6 @@
         "zh": "新华网",
         "en": "Xinhuanet"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://xhnewsapi.xinhuaxmt.com/share/news_pc?id=1233886470918144&showType=3033&utdId=null&version=5.4.0&twoShare=1&uuid=87e3-2f37-073a-552f-5a2b",
       "image": "images/media/2026/news-07-18-1.jpg"
@@ -202,7 +190,6 @@
         "zh": "央视财经",
         "en": "CCTV Finance"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://app.cctv.com/special/m/livevod/index.html?guid=3ffd7484950443d09134df6b784dee9d&vtype=2&vsetId=C11350",
       "image": "images/media/2026/news-07-17-1b.jpg"
@@ -217,7 +204,6 @@
         "zh": "央视财经",
         "en": "CCTV Finance"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://app.cctv.com/special/m/livevod/index.html?vtype=2&guid=b26073fd8e694a2d876113daea04ae29&vsetId=C10330",
       "image": "images/media/2026/news-07-16-1.jpg"
@@ -232,7 +218,6 @@
         "zh": "Robotics Business News",
         "en": "Robotics Business News"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://roboticsbusinessnews.com/news/43/3103/hope-ai-challenge-joins-world-humanoid-robot-games-2026-elevating-ping-pong-as-the-ultimate-physical-ai-test.html",
       "image": "images/media/2026/news-06-15-1.jpg"
@@ -247,7 +232,6 @@
         "zh": "新华社",
         "en": "Xinhua"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://h.xinhuaxmt.com/vh512/share/13150047?docid=13150047&newstype=1001&d=1352706&channel=weixin&time=1781432656282",
       "image": "images/media/2026/news-06-14-1.jpg"
@@ -262,7 +246,6 @@
         "zh": "上海证券报",
         "en": "Shanghai Securities News"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.cnstock.com/commonDetail/729218?from=QRCODE",
       "image": "images/media/2026/news-06-13-1.jpg"
@@ -277,7 +260,6 @@
         "zh": "央视新闻",
         "en": "CCTV News"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://content-static.cctvnews.cctv.com/snow-book/index.html?item_id=5445271388779725289&toc_style_id=feeds_default&share_to=wechat&track_id=d00e52ea-f57e-45b3-9a45-067af4a073e1",
       "image": "images/media/2026/news-06-12-1.jpg"
@@ -292,7 +274,6 @@
         "zh": "雅虎财经",
         "en": "Yahoo Finance"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://finance.yahoo.com/sectors/technology/articles/whale-dynamic-joins-hitch-open-210600723.html?guccounter=1",
       "image": "images/media/2026/news-05-21-1.jpg"
@@ -307,7 +288,6 @@
         "zh": "人民日报",
         "en": "People's Daily"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://www.peopleapp.com/column/30051936957-500007450332",
       "image": "images/media/2026/news-04-19-1.jpg"
@@ -322,7 +302,6 @@
         "zh": "学习强国",
         "en": "Xuexi Qiangguo"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://article.xuexi.cn/articles/index.html?art_id=3427692381415509828&t=1776238899543&showmenu=false&study_style_id=feeds_opaque&source=share&share_to=wx_single&item_id=3427692381415509828&ref_read_id=27ef57c0-3381-410b-826e-4e156cd7fadd_1776240649197",
       "image": "images/media/2026/news-04-15-1.jpg"
@@ -337,7 +316,6 @@
         "zh": "湖南卫视",
         "en": "Hunan TV"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.mgtv.com/b/829335/24288973.html?lastp=v_progdtl",
       "image": "images/media/2026/news-04-06-1.jpg"
@@ -352,7 +330,6 @@
         "zh": "咪咕视频",
         "en": "Migu Video"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.miguvideo.com/p/detail/963823696?lastLocation=aaff5d9d3fae483580bd972c30af2d82&sid=ge3uXEs4ETbFYo64ifQQe6PODEiRH1zx",
       "image": "images/media/2026/news-04-01-1.jpg"
@@ -367,7 +344,6 @@
         "zh": "WAIC",
         "en": "WAIC"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://mp.weixin.qq.com/s/45CcqxCloz8H-TqoDs4qQA",
       "image": "images/media/2026/news-03-24-1.jpg"
@@ -382,7 +358,6 @@
         "zh": "人民日报",
         "en": "People's Daily"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.peopleapp.com/column/30051647405-500007395014",
       "image": "images/media/2026/news-03-17-1.jpg"
@@ -397,7 +372,6 @@
         "zh": "新华社",
         "en": "Xinhua"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://h.xinhuaxmt.com/vh512/share/13008926?docid=13008926&newstype=1001&d=13525dc",
       "image": "images/media/2026/news-03-16-1.jpg"
@@ -412,7 +386,6 @@
         "zh": "上海证券报",
         "en": "Shanghai Securities News"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.cnstock.com/commonDetail/650865",
       "image": "images/media/2026/news-03-16-2.jpg"
@@ -427,7 +400,6 @@
         "zh": "钛媒体",
         "en": "TMTPost"
       },
-      "isLarge": true,
       "isHidden": true,
       "url": "https://www.tmtpost.com/7916266.html",
       "image": "images/media/2026/news-03-16-3.jpg"
@@ -442,7 +414,6 @@
         "zh": "极客公园",
         "en": "GeekPark"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://www.geekpark.net/news/361211",
       "image": "images/media/2026/news-03-16-4.jpg"
@@ -457,7 +428,6 @@
         "zh": "咪咕视频",
         "en": "Migu Video"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://m.miguvideo.com/m/vertical/963639468?pwId=bc822742107f44569d3261db7a30c55d",
       "image": "images/media/2026/news-03-15-1.jpg"
@@ -472,7 +442,6 @@
         "zh": "钛媒体",
         "en": "TMTPost"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://www.tmtpost.com/7743269.html",
       "image": "images/media/2025/news-10-31-1.jpg"
@@ -487,7 +456,6 @@
         "zh": "钛媒体",
         "en": "TMTPost"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.tmtpost.com/7741120.html",
       "image": "images/media/2025/news-10-29-1.jpg"
@@ -502,7 +470,6 @@
         "zh": "第一财经",
         "en": "Yicai"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://m.yicai.com/video/102884576.html",
       "image": "images/media/2025/news-10-28-1.jpg"
@@ -517,7 +484,6 @@
         "zh": "上海证券报",
         "en": "Shanghai Securities News"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://m.cnstock.com/commonDetail/567426?timestap=1761661498720",
       "image": "images/media/2025/news-10-28-2.jpg"
@@ -532,7 +498,6 @@
         "zh": "湖南大学公众号",
         "en": "Hunan University Official Account"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://mp.weixin.qq.com/s/vllXWmBGxsRZ8UQZD6tyoQ",
       "image": "images/media/2025/news-10-27-1.jpg"
@@ -547,7 +512,6 @@
         "zh": "吉林大学官方新闻",
         "en": "Jilin University Official News"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://auto.jlu.edu.cn/info/1113/8317.htm",
       "image": "images/media/2025/news-10-23-1.jpg"
@@ -562,7 +526,6 @@
         "zh": "中国网",
         "en": "China.com.cn"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "http://ydyl.china.com.cn/2025-10/20/content_118133048.shtml",
       "image": "images/media/2025/news-10-22-1.jpg"
@@ -577,7 +540,6 @@
         "zh": "芒果tv",
         "en": "Mango TV"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://www.mgtv.com/b/715001/23646306.html?f=m_wx&dc=6D425BC0-834C-4783-98CC-EADEBA39E57E",
       "image": "images/media/2025/news-10-20-1.jpg"
@@ -592,7 +554,6 @@
         "zh": "搜狐",
         "en": "Sohu"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://www.sohu.com/a/945520174_121641403",
       "image": "images/media/2025/news-10-20-2.jpg"
@@ -607,7 +568,6 @@
         "zh": "中央广电总台国际在线",
         "en": "China Radio International"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://news.cri.cn/2025-10-20/3e28acea-49ff-dbf2-fc46-8a1a604c2573.html",
       "image": "images/media/2025/news-10-20-3.jpg"
@@ -622,7 +582,6 @@
         "zh": "新华社",
         "en": "Xinhua"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://h.xinhuaxmt.com/vh512/share/12786056?docid=12786056&newstype=1001&d=135018c&channel=weixin&time=1760944391107",
       "image": "images/media/2025/news-10-20-4.jpg"
@@ -637,7 +596,6 @@
         "zh": "钛媒体",
         "en": "TMTPost"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://www.tmtpost.com/7732122.html",
       "image": "images/media/2025/news-10-20-5.jpg"
@@ -652,7 +610,6 @@
         "zh": "红网",
         "en": "Rednet"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://moment.rednet.cn/content/646954/53/15363316.html",
       "image": "images/media/2025/news-10-19-1.jpg"
@@ -667,7 +624,6 @@
         "zh": "新华社",
         "en": "Xinhua"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://h.xinhuaxmt.com/vh512/share/12784858?docid=12784858&newstype=1001&d=135018b&channel=weixin&time=1760839520680",
       "image": "images/media/2025/news-10-19-2.jpg"
@@ -682,7 +638,6 @@
         "zh": "清华大学官方新闻",
         "en": "Tsinghua University Official News"
       },
-      "isLarge": true,
       "isHidden": false,
       "url": "https://www.tsinghua.edu.cn/info/1182/121912.htm",
       "image": "images/media/2025/news-10-19-3.jpg"
@@ -697,7 +652,6 @@
         "zh": "上海证券报",
         "en": "Shanghai Securities News"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://www.cnstock.com/commonDetail/556289?timestap=1760887130647",
       "image": "images/media/2025/news-10-19-4.jpg"
@@ -712,7 +666,6 @@
         "zh": "央视体育",
         "en": "CCTV Sports"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://pic.cctv.cn/cctv/cctvh5/cctv5/2023/cctvsportsshare/router.html?id=ARTI1760780084081536&appkey=0-cctv5",
       "image": "images/media/2025/news-10-18-1.jpg"
@@ -727,7 +680,6 @@
         "zh": "上海证券报",
         "en": "Shanghai Securities News"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://www.cnstock.com/commonDetail/555454",
       "image": "images/media/2025/news-10-17-1.jpg"
@@ -742,7 +694,6 @@
         "zh": "央视体育",
         "en": "CCTV Sports"
       },
-      "isLarge": false,
       "isHidden": false,
       "url": "https://pic.cctv.cn/cctv/cctvh5/cctv5/2023/cctvsportsshare/2025/04/cctv5_share/index.html?newlink=app://ARTI1760667909370655&id=ARTI1760667909370655",
       "image": "images/media/2025/news-10-17-2.jpg"
@@ -757,7 +708,6 @@
         "zh": "上海证券报",
         "en": "Shanghai Securities News"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://www.cnstock.com/commonDetail/553689",
       "image": "images/media/2025/news-10-15-1.jpg"
@@ -772,7 +722,6 @@
         "zh": "央视体育",
         "en": "CCTV Sports"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://pic.cctv.cn/cctv/cctvh5/cctv5/2023/cctvsportsshare/2025/04/cctv5_share/index.html?newlink=app://ARTI1760412279227786&id=ARTI1760412279227786",
       "image": "images/media/2025/news-10-14-1.jpg"
@@ -787,7 +736,6 @@
         "zh": "中国新闻网",
         "en": "China News Service"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://m.chinanews.com/wap/detail/chs/zw/400394.shtml",
       "image": "images/media/2025/news-10-13-1.jpg"
@@ -802,7 +750,6 @@
         "zh": "新华社",
         "en": "Xinhua"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://h.xinhuaxmt.com/vh512/share/12776125?docid=12776125&newstype=1001&d=1350185&channel=weixin&time=1760359623432",
       "image": "images/media/2025/news-10-13-2.jpg"
@@ -817,7 +764,6 @@
         "zh": "红网",
         "en": "Rednet"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://moment.rednet.cn/content/646954/57/15347816.html",
       "image": "images/media/2025/news-10-13-3.jpg"
@@ -832,7 +778,6 @@
         "zh": "中国日报网",
         "en": "China Daily"
       },
-      "isLarge": false,
       "isHidden": true,
       "url": "https://cn.chinadaily.com.cn/a/202510/13/WS68ecc9fea310c4deea5ec1bd.html",
       "image": "images/media/2025/news-10-13-4.jpg"
