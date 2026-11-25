@@ -189,6 +189,49 @@
             padding-right: 50px;
         }
 
+        /* 1239px 以下菜单按原间距放不下 (会压到 logo), 分两档收:
+           1000 至 1239px (横屏平板 / 窄电脑): 间距随宽度收紧, 字号 15px;
+           769 至 999px (竖屏平板): 只留前两个赛事入口, 页内锚点收起。
+           768px 以下整条菜单本来就不显示 (见后面的手机样式)。 */
+        @media (min-width: 769px) and (max-width: 1239px) {
+            .header {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+            .nav-links {
+                --nav-gap: clamp(20px, calc(20px + (100vw - 1000px) * 0.125), 50px);
+                gap: var(--nav-gap);
+            }
+
+            .nav-links a {
+                font-size: 15px;
+            }
+
+            .nav-links li.nav-sep {
+                padding-right: var(--nav-gap);
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 999px) {
+            .nav-links {
+                --nav-gap: 36px;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+
+            .nav-links li:nth-child(n+3) {
+                display: none;
+            }
+
+            .nav-links li.nav-sep {
+                border-right: 0;
+                padding-right: 0;
+            }
+        }
+
         .lang-switch {
             display: flex;
             gap: 5px;
@@ -3383,12 +3426,12 @@
         }
 
         /* Media Coverage Section */
+        /* 内边距由里面的 .section 给 (跟其他区块一样), 这里不再多加一层 */
         .media-coverage {
             background: #000000;
-            padding: 100px 50px;
         }
 
-        /* 所有卡片一样大: 电脑 3 列, 平板 2 列, 手机 1 列; 行内等高 */
+        /* 所有卡片一样大: 电脑 3 列, 平板 2 列 (700 至 1099px), 手机 1 列; 行内等高 */
         .media-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3504,18 +3547,15 @@
             text-overflow: ellipsis;
         }
 
-        @media (max-width: 1024px) {
+        /* 断点按卡片宽度定: 任何宽度下卡片都不窄于 310px 左右, 标题放得下 */
+        @media (max-width: 1099px) {
             .media-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 20px;
             }
         }
 
-        @media (max-width: 768px) {
-            .media-coverage {
-                padding: 60px 20px;
-            }
-
+        @media (max-width: 699px) {
             .media-grid {
                 grid-template-columns: minmax(0, 1fr);
             }
