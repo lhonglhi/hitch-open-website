@@ -3482,9 +3482,7 @@
             flex: 1;
         }
 
-        .media-card-large .media-title {
-            font-size: 22px;
-        }
+        /* 大卡只是占两列、图高一点; 标题字号跟小卡一样, 不另设 */
 
         .media-source {
             font-size: 14px;
@@ -3507,11 +3505,6 @@
 
             .media-card-large .media-image {
                 height: 200px;
-            }
-
-            /* 手机上一列排, 大卡小卡一样宽, 标题也用同一个字号 */
-            .media-card-large .media-title {
-                font-size: 18px;
             }
         }
 
